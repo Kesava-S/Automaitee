@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
-    getFirestore, collection, getDocs, addDoc, query, where, onSnapshot, updateDoc, deleteDoc, doc, orderBy, limit
+    getFirestore, collection, getDocs, addDoc, query, where, onSnapshot, updateDoc, deleteDoc, doc, orderBy, limit, getDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // --- FIREBASE CONFIGURATION ---
 // TODO: Replace with your actual Firebase project configuration
@@ -16,10 +17,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let db;
+let db, auth;
 try {
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
+    auth = getAuth(app);
     console.log("Firebase initialized");
 } catch (error) {
     console.error("Firebase initialization failed. Make sure to update firebaseConfig.", error);
@@ -293,19 +295,25 @@ if (navLogo) navLogo.addEventListener('click', goHome);
 
 if (navBtns.login) navBtns.login.addEventListener('click', () => switchView('login'));
 
-if (navBtns.logout) navBtns.logout.addEventListener('click', () => {
-    currentUser = null;
-    // Unsubscribe from real-time listeners
-    unsubscribeListeners.forEach(unsub => unsub());
-    unsubscribeListeners = [];
+if (navBtns.logout) navBtns.logout.addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+        currentUser = null;
+        // Unsubscribe from real-time listeners
+        unsubscribeListeners.forEach(unsub => unsub());
+        unsubscribeListeners = [];
 
-    // Clear login form
-    const loginForm = document.getElementById('unified-login-form');
-    if (loginForm) loginForm.reset();
+        // Clear login form
+        const loginForm = document.getElementById('unified-login-form');
+        if (loginForm) loginForm.reset();
 
-    navBtns.login.classList.remove('hidden');
-    navBtns.logout.classList.add('hidden');
-    switchView('landing');
+        navBtns.login.classList.remove('hidden');
+        navBtns.logout.classList.add('hidden');
+        switchView('landing');
+        alert("Logged out successfully.");
+    } catch (error) {
+        console.error("Logout error:", error);
+    }
 });
 
 // --- 3. Unified Login Logic (Firestore) ---
@@ -315,20 +323,27 @@ if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value; // Assuming a password input exists
 
         if (!db) {
             alert("Database not connected.");
             return;
         }
-
         try {
-            // Query Users Collection
+            // 1. Authenticate with Firebase Auth
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // 2. Fetch User Role from Firestore
+            // We assume the document ID in 'users' collection matches the Auth UID? 
+            // OR we query by email if the IDs don't match. 
+            // For this setup, let's query by email to be safe since we seeded data without UIDs.
             const q = query(collection(db, "users"), where("email", "==", email));
             const querySnapshot = await getDocs(q);
 
             if (!querySnapshot.empty) {
                 const userDoc = querySnapshot.docs[0];
-                currentUser = { id: userDoc.id, ...userDoc.data() };
+                currentUser = { id: userDoc.id, ...userDoc.data(), uid: user.uid }; // Add Firebase Auth UID to currentUser
 
                 navBtns.login.classList.add('hidden');
                 navBtns.logout.classList.remove('hidden');
@@ -351,13 +366,15 @@ if (loginForm) {
                     switchView(roleViewMap[currentUser.role]);
                 } else {
                     console.error("Unknown role:", currentUser.role);
+                    alert("Login successful but role is undefined.");
                 }
             } else {
-                alert('Invalid email. Please check your credentials.');
+                alert('User profile not found in database. Please contact admin.');
+                await signOut(auth); // Sign out if no profile found
             }
         } catch (error) {
             console.error("Login error:", error);
-            alert("Login failed. Check console for details.");
+            alert("Login failed: " + error.message);
         }
     });
 }
