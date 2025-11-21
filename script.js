@@ -111,9 +111,10 @@ const servicesData = [
     }
 ];
 
-document.addEventListener('DOMContentLoaded', async () => {
+// Main App Logic
+// (DOMContentLoaded wrapper removed as type="module" defers execution automatically)
     // Check/Seed DB
-    await seedDatabase();
+    // Database seeding moved to end to prevent blocking UI
 
     // --- 1. Render Services ---
     const accordionContainer = document.getElementById('services-accordion');
@@ -531,4 +532,5 @@ document.addEventListener('DOMContentLoaded', async () => {
             }, 1000);
         });
     }
-});
+// Start database seeding in the background
+seedDatabase().catch(console.error);
