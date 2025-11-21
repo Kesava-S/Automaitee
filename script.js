@@ -368,9 +368,48 @@ if (empReportForm) {
 const btnClockIn = document.getElementById('emp-clock-in');
 const btnClockOut = document.getElementById('emp-clock-out');
 
+// --- 5. Manager Dashboard Logic ---
+function initManagerDashboard() {
+    // Listen for Reports
+    const qReports = query(collection(db, "reports"), orderBy("createdAt", "desc"), limit(10));
+    const unsubReports = onSnapshot(qReports, (snapshot) => {
+        const reportTableBody = document.querySelector('#view-dashboard-manager .data-table tbody');
+        if (reportTableBody) {
+            reportTableBody.innerHTML = '';
+            snapshot.forEach(doc => {
+                const rep = doc.data();
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                        <td>${rep.submittedBy || rep.employee}</td>
+                        <td>${rep.date}</td>
+                        <td>${rep.reportText || rep.summary}</td>
+                        <td><span class="tag ${rep.status === 'Reviewed' ? 'done' : 'medium'}">${rep.status}</span></td>
+                    `;
+                reportTableBody.appendChild(tr);
+            });
         }
     });
-unsubscribeListeners.push(unsubAttendance);
+    unsubscribeListeners.push(unsubReports);
+
+    // Listen for Attendance
+    const unsubAttendance = onSnapshot(collection(db, "attendance"), (snapshot) => {
+        const attendanceList = document.querySelector('.attendance-list');
+        if (attendanceList) {
+            attendanceList.innerHTML = '';
+            snapshot.forEach(doc => {
+                const att = doc.data();
+                const li = document.createElement('li');
+                li.className = 'status-item';
+                const color = att.status === 'Clocked In' ? '#10b981' : '#ef4444';
+                li.innerHTML = `
+                        <span class="dot" style="background: ${color};"></span> 
+                        <span>${att.name} (${att.status})</span>
+                    `;
+                attendanceList.appendChild(li);
+            });
+        }
+    });
+    unsubscribeListeners.push(unsubAttendance);
 }
 
 // Manager Assign Task
@@ -405,18 +444,20 @@ if (assignTaskForm) {
 // Manager Role Assignment
 const roleForm = document.getElementById('mgr-role-form');
 if (roleForm) {
-    const empName = document.getElementById('role-emp-select').value;
-    const newRole = document.getElementById('role-input').value;
+    roleForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const empName = document.getElementById('role-emp-select').value;
+        const newRole = document.getElementById('role-input').value;
 
-    if (empName && newRole && db) {
-        await addDoc(collection(db, "notifications"), {
-            message: `Manager updated ${empName}'s role to: ${newRole}`,
-            createdAt: Date.now()
-        });
-        alert(`Role for ${empName} updated. Owner notified.`);
-        roleForm.reset();
-    }
-});
+        if (empName && newRole && db) {
+            await addDoc(collection(db, "notifications"), {
+                message: `Manager updated ${empName}'s role to: ${newRole}`,
+                createdAt: Date.now()
+            });
+            alert(`Role for ${empName} updated. Owner notified.`);
+            roleForm.reset();
+        }
+    });
 }
 
 // --- 6. Owner Dashboard Logic ---
