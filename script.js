@@ -374,7 +374,25 @@ if (loginForm) {
             }
         } catch (error) {
             console.error("Login error:", error);
-            alert("Login failed: " + error.message);
+            let msg = "An unexpected error occurred. Please try again.";
+
+            switch (error.code) {
+                case 'auth/invalid-credential':
+                case 'auth/user-not-found':
+                case 'auth/wrong-password':
+                    msg = "Your Email or password is incorrect.";
+                    break;
+                case 'auth/invalid-email':
+                    msg = "The email address is invalid.";
+                    break;
+                case 'auth/too-many-requests':
+                    msg = "Access to this account has been temporarily disabled due to many failed login attempts. Please try again later.";
+                    break;
+                case 'auth/network-request-failed':
+                    msg = "Network error. Please check your internet connection.";
+                    break;
+            }
+            alert(msg);
         }
     });
 }
