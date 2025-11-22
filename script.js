@@ -594,17 +594,22 @@ function initManagerDashboard() {
     // 1. Render My Tasks (Manager's own tasks)
     renderMyTasks('mgr-task-list', currentUser.name);
 
-    // 2. Populate Employee Dropdown for Task Assignment
+    // 2. Populate Employee Dropdown for Task Assignment & Table
+    let employeeOptions = []; // Store for table usage
+
     const qEmps = query(collection(db, "users"), where("role", "==", "employee"));
     const unsubEmps = onSnapshot(qEmps, (snapshot) => {
         const select = document.getElementById('task-emp-select');
         const roleSelect = document.getElementById('role-emp-select');
 
+        employeeOptions = []; // Reset
         if (select) select.innerHTML = '<option value="">Select Employee</option>';
         if (roleSelect) roleSelect.innerHTML = '<option value="">Select Employee</option>';
 
         snapshot.forEach(doc => {
             const user = doc.data();
+            employeeOptions.push(user.name); // Store name
+
             if (select) {
                 const opt = document.createElement('option');
                 opt.value = user.name;
@@ -613,7 +618,7 @@ function initManagerDashboard() {
             }
             if (roleSelect) {
                 const opt = document.createElement('option');
-                opt.value = doc.id; // Use ID for role update
+                opt.value = doc.id;
                 opt.textContent = user.name;
                 roleSelect.appendChild(opt);
             }
@@ -629,19 +634,83 @@ function initManagerDashboard() {
             table.innerHTML = '';
             snapshot.forEach(doc => {
                 const task = doc.data();
-                // Filter: Show if NOT assigned to me (i.e., assigned to an employee)
+                const taskId = doc.id;
+
+                // Filter: Show if NOT assigned to me
                 if (task.assignedTo !== currentUser.name) {
                     const tr = document.createElement('tr');
                     const isCompleted = task.status === 'Completed';
 
+                    // Build Employee Select Options
+                    let empSelectHTML = `<select class="mgr-task-assign-select" data-id="${taskId}">`;
+                    // Add current assigned user if not in list (to avoid blank)
+                    if (!employeeOptions.includes(task.assignedTo)) {
+                        empSelectHTML += `<option value="${task.assignedTo}" selected>${task.assignedTo}</option>`;
+                    }
+                    employeeOptions.forEach(empName => {
+                        const selected = empName === task.assignedTo ? 'selected' : '';
+                        empSelectHTML += `<option value="${empName}" ${selected}>${empName}</option>`;
+                    });
+                    empSelectHTML += `</select>`;
+
                     tr.innerHTML = `
                         <td>${task.title}</td>
-                        <td>${task.assignedTo}</td>
+                        <td>${empSelectHTML}</td>
                         <td><span class="status-badge ${isCompleted ? 'status-completed' : 'status-pending'}">${task.status}</span></td>
-                        <td>${task.deadline || 'N/A'}</td>
+                        <td><input type="date" class="mgr-task-deadline" data-id="${taskId}" value="${task.deadline || ''}"></td>
+                        <td>
+                            <button class="btn-small btn-danger mgr-task-delete" data-id="${taskId}" style="background:#ef4444; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Delete</button>
+                        </td>
                     `;
                     table.appendChild(tr);
                 }
+            });
+
+            // Attach Event Listeners for Controls
+            // 1. Reassign Task
+            table.querySelectorAll('.mgr-task-assign-select').forEach(select => {
+                select.addEventListener('change', async (e) => {
+                    const tid = e.target.getAttribute('data-id');
+                    const newAssignee = e.target.value;
+                    try {
+                        await updateDoc(doc(db, "tasks", tid), { assignedTo: newAssignee });
+                        showToast(`Task reassigned to ${newAssignee}`, "success");
+                    } catch (err) {
+                        console.error(err);
+                        showToast("Failed to reassign task", "error");
+                    }
+                });
+            });
+
+            // 2. Update Deadline
+            table.querySelectorAll('.mgr-task-deadline').forEach(input => {
+                input.addEventListener('change', async (e) => {
+                    const tid = e.target.getAttribute('data-id');
+                    const newDate = e.target.value;
+                    try {
+                        await updateDoc(doc(db, "tasks", tid), { deadline: newDate });
+                        showToast("Deadline updated", "success");
+                    } catch (err) {
+                        console.error(err);
+                        showToast("Failed to update deadline", "error");
+                    }
+                });
+            });
+
+            // 3. Delete Task
+            table.querySelectorAll('.mgr-task-delete').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    if (confirm("Are you sure you want to delete this task?")) {
+                        const tid = e.target.getAttribute('data-id');
+                        try {
+                            await deleteDoc(doc(db, "tasks", tid));
+                            showToast("Task deleted", "success");
+                        } catch (err) {
+                            console.error(err);
+                            showToast("Failed to delete task", "error");
+                        }
+                    }
+                });
             });
         }
     });
