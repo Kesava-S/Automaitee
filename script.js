@@ -824,6 +824,31 @@ function initManagerDashboard() {
     });
     unsubscribeListeners.push(unsubRequests);
 
+    // Manager Inquiries View
+    const qMgrInquiries = query(collection(db, "inquiries"), orderBy("createdAt", "desc"), limit(20));
+    const unsubMgrInquiries = onSnapshot(qMgrInquiries, (snapshot) => {
+        const inquiryTable = document.getElementById('mgr-inquiry-table');
+        if (inquiryTable) {
+            inquiryTable.innerHTML = '';
+            snapshot.forEach(doc => {
+                const inq = doc.data();
+                const tr = document.createElement('tr');
+                const needs = Array.isArray(inq.autoNeeds) ? inq.autoNeeds.join(', ') : (inq.autoNeeds || 'N/A');
+
+                tr.innerHTML = `
+                    <td>${inq.contactPerson || inq.name}</td>
+                    <td>${inq.contactEmail || inq.email}</td>
+                    <td>${inq.whatsapp || 'N/A'}</td>
+                    <td>${inq.businessName || 'N/A'}</td>
+                    <td><span class="text-small" style="display:block; max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${needs}">${needs}</span></td>
+                    <td>${inq.dateString}</td>
+                `;
+                inquiryTable.appendChild(tr);
+            });
+        }
+    });
+    unsubscribeListeners.push(unsubMgrInquiries);
+
     // Listen for Notifications (Manager)
     // Query for notifications where targetRole is 'manager' OR 'all'
     const qNotif = query(collection(db, "notifications"), where("targetRole", "==", "manager"), orderBy("createdAt", "desc"), limit(10));
@@ -1007,10 +1032,9 @@ function initOwnerDashboard() {
     });
     unsubscribeListeners.push(unsubNotif);
 
-    // Inquiries
-    const qInquiries = query(collection(db, "inquiries"), orderBy("createdAt", "desc"), limit(10));
+    // Inquiries (Updated for Table)
+    const qInquiries = query(collection(db, "inquiries"), orderBy("createdAt", "desc"), limit(20));
     const unsubInquiries = onSnapshot(qInquiries, (snapshot) => {
-        const inquiryList = document.getElementById('owner-inquiries-list');
         if (inquiryList) {
             inquiryList.innerHTML = '';
             if (snapshot.empty) {
@@ -1349,7 +1373,8 @@ if (multiStepForm) {
         website: { regex: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, msg: "Please enter a valid website URL." },
         contactEmail: { regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msg: "Please enter a valid email address." },
         contactPerson: { regex: /^[a-zA-Z\s\.]+$/, msg: "Contact Name can only contain letters." },
-        budget: { regex: /^[0-9\$\,\.\-\s]+$/, msg: "Budget should be numeric (e.g. $1000, 5000-10000)." }
+        budget: { regex: /^[0-9\$\,\.\-\s]+$/, msg: "Budget should be numeric (e.g. $1000, 5000-10000)." },
+        whatsapp: { regex: /^\+?[0-9\s\-]{7,15}$/, msg: "Please enter a valid phone number (e.g. +1234567890)." }
     };
 
     // Next Buttons

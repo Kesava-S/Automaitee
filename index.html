@@ -44,6 +44,7 @@
                             <div class="quiz-step active" data-step="1">
                                 <h3>1. Business Basics</h3>
                                 <div class="form-group">
+                                    <label>Business Name *</label>
                                     <input type="text" name="businessName" placeholder="Business Name" required>
                                     <div class="error-message"></div>
                                 </div>
@@ -61,6 +62,12 @@
                                     <div class="error-message"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Industry / Nature of Business *</label>
+                                    <input type="text" name="industry" placeholder="Industry / Nature of Business"
+                                        required>
+                                    <div class="error-message"></div>
+                                </div>
+                                <div class="form-group">
                                     <input type="text" name="website" placeholder="Website / Social Links">
                                     <div class="error-message"></div>
                                 </div>
@@ -73,7 +80,7 @@
                             <div class="quiz-step" data-step="2">
                                 <h3>2. Current Process Overview</h3>
                                 <div class="form-group">
-                                    <textarea name="manualTasks" placeholder="What daily tasks do you do manually?"
+                                    <textarea name="manualTasks" placeholder="What do you need to automate?"
                                         rows="3"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -111,18 +118,22 @@
                                     <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Areas for
                                         Automation:</label>
                                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
-                                        <label><input type="checkbox" name="autoNeeds" value="Lead Management"> Lead
-                                            Management</label>
-                                        <label><input type="checkbox" name="autoNeeds" value="Employee Management">
-                                            Employee Management</label>
-                                        <label><input type="checkbox" name="autoNeeds" value="Project Workflows">
-                                            Project Workflows</label>
+                                        <label><input type="checkbox" name="autoNeeds"
+                                                value="Lead Generation & Capture"> Lead Generation & Capture</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="Lead Nurturing"> Lead
+                                            Nurturing (Email/SMS/WhatsApp)</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="CRM & Sales Pipeline"> CRM
+                                            & Sales Pipeline Automation</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="Social Media Automation">
+                                            Social Media Automation</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="Ads Automation"> Ads
+                                            Automation (Meta/Google)</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="Reporting & Insights">
+                                            Reporting & Insights Automation</label>
+                                        <label><input type="checkbox" name="autoNeeds" value="Sales Automation"> Sales
+                                            Automation</label>
                                         <label><input type="checkbox" name="autoNeeds" value="Client Communication">
-                                            Client Communication</label>
-                                        <label><input type="checkbox" name="autoNeeds" value="Billing & Invoices">
-                                            Billing & Invoices</label>
-                                        <label><input type="checkbox" name="autoNeeds" value="Reporting">
-                                            Reporting</label>
+                                            Client Communication Automation</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -143,8 +154,7 @@
                             <div class="quiz-step" data-step="5">
                                 <h3>5. Expectations</h3>
                                 <div class="form-group">
-                                    <textarea name="outcome" placeholder="What outcome do you expect?"
-                                        rows="2"></textarea>
+                                    <textarea name="outcome" placeholder="Outcome you expect" rows="2"></textarea>
                                     <div class="error-message"></div>
                                 </div>
                                 <div class="form-group">
@@ -156,12 +166,19 @@
                                     <div class="error-message"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Primary Contact Name *</label>
                                     <input type="text" name="contactPerson" placeholder="Primary Contact Name" required>
                                     <div class="error-message"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Primary Contact Email *</label>
                                     <input type="email" name="contactEmail" placeholder="Primary Contact Email"
                                         required>
+                                    <div class="error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Primary WhatsApp Number *</label>
+                                    <input type="text" name="whatsapp" placeholder="e.g. +1234567890" required>
                                     <div class="error-message"></div>
                                 </div>
                                 <div class="step-buttons">
@@ -386,6 +403,26 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Inquiry List (Manager) -->
+                <div class="card full-width">
+                    <h3>Recent Inquiries</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Business</th>
+                                <th>Needs</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mgr-inquiry-table">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -578,9 +615,28 @@
                     </select>
                     <button type="submit" class="btn-secondary">Post</button>
                 </form>
-                <div id="owner-last-announcement" style="margin-top:10px; font-size:0.9em; color:#666;">
-                    <!-- Last announcement details injected here -->
-                </div>
+            </div>
+            </div>
+
+            <!-- Inquiry List (Owner) -->
+            <div class="card full-width">
+                <h3>Recent Inquiries</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>WhatsApp</th>
+                            <th>Business</th>
+                            <th>Needs</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="owner-inquiry-table">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
             </div>
 
             <!-- Website Inquiries (New) -->
