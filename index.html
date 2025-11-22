@@ -418,11 +418,22 @@
             <!-- Global Announcement (New) -->
             <div class="card full-width">
                 <h3>📢 Global Announcement</h3>
-                <p class="text-small">Send a popup greeting/announcement to all users.</p>
-                <form id="owner-announcement-form" style="display:flex; gap:10px;">
-                    <input type="text" id="announcement-input" placeholder="Enter message..." style="flex:1;" required>
+                <p class="text-small">Send a popup greeting/announcement to users.</p>
+                <form id="owner-announcement-form" style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <input type="text" id="announcement-input" placeholder="Enter message..."
+                        style="flex:2; min-width:200px;" required>
+                    <select id="announcement-target" style="flex:1; min-width:150px;">
+                        <option value="all">All Users</option>
+                        <option value="internal">Internal (Emp + Mgr)</option>
+                        <option value="employees">Employees Only</option>
+                        <option value="managers">Managers Only</option>
+                        <option value="clients">Clients Only</option>
+                    </select>
                     <button type="submit" class="btn-secondary">Post</button>
                 </form>
+                <div id="owner-last-announcement" style="margin-top:10px; font-size:0.9em; color:#666;">
+                    <!-- Last announcement details injected here -->
+                </div>
             </div>
 
             <!-- Website Inquiries (New) -->

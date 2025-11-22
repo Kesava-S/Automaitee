@@ -359,18 +359,38 @@ if (loginForm) {
                 const unsubAnnounce = onSnapshot(qAnnounce, (snapshot) => {
                     if (!snapshot.empty) {
                         const announce = snapshot.docs[0].data();
-                        // Simple check: Show if created recently (e.g., last 24 hours) OR just show latest.
-                        // To avoid showing same popup every reload, we could store ID in localStorage.
-                        // For now, let's just show it.
-                        const lastSeen = localStorage.getItem('lastSeenAnnouncement');
-                        if (lastSeen !== snapshot.docs[0].id) {
-                            const modal = document.getElementById('announcement-modal');
-                            const text = document.getElementById('announcement-text');
-                            if (modal && text) {
-                                text.textContent = announce.message;
-                                modal.classList.remove('hidden');
-                                // Save to local storage so we don't show again immediately if desired
-                                // localStorage.setItem('lastSeenAnnouncement', snapshot.docs[0].id);
+
+                        // Check Target Audience
+                        let show = false;
+                        const role = currentUser.role;
+                        const target = announce.targetAudience || 'all';
+
+                        if (role === 'owner') return; // Owner doesn't see the popup
+
+                        if (target === 'all') show = true;
+                        else if (target === 'internal' && (role === 'employee' || role === 'manager')) show = true;
+                        else if (target === 'employees' && role === 'employee') show = true;
+                        else if (target === 'managers' && role === 'manager') show = true;
+                        else if (target === 'clients' && role === 'client') show = true;
+
+                        if (show) {
+                            // Simple check: Show if created recently (e.g., last 24 hours) OR just show latest.
+                            const lastSeen = localStorage.getItem('lastSeenAnnouncement');
+                            if (lastSeen !== snapshot.docs[0].id) {
+                                const modal = document.getElementById('announcement-modal');
+                                const text = document.getElementById('announcement-text');
+                                if (modal && text) {
+                                    text.textContent = announce.message;
+                                    modal.classList.remove('hidden');
+
+                                    // Auto-hide after 5 seconds (Toast behavior)
+                                    setTimeout(() => {
+                                        modal.classList.add('hidden');
+                                    }, 5000);
+
+                                    // Save to local storage
+                                    localStorage.setItem('lastSeenAnnouncement', snapshot.docs[0].id);
+                                }
                             }
                         }
                     }
@@ -1080,14 +1100,34 @@ function initOwnerDashboard() {
 
     // --- Global Announcement ---
     const announceForm = document.getElementById('owner-announcement-form');
+
+    // Display Last Announcement
+    const qLastAnnounce = query(collection(db, "announcements"), orderBy("createdAt", "desc"), limit(1));
+    const unsubLastAnnounce = onSnapshot(qLastAnnounce, (snapshot) => {
+        const lastDiv = document.getElementById('owner-last-announcement');
+        if (lastDiv) {
+            if (snapshot.empty) {
+                lastDiv.textContent = "No announcements posted yet.";
+            } else {
+                const data = snapshot.docs[0].data();
+                const date = new Date(data.createdAt).toLocaleString();
+                lastDiv.innerHTML = `<strong>Last Posted:</strong> "${data.message}" <br> <small>To: ${data.targetAudience || 'All'} | On: ${date}</small>`;
+            }
+        }
+    });
+    unsubscribeListeners.push(unsubLastAnnounce);
+
     if (announceForm) {
         announceForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const msg = document.getElementById('announcement-input').value;
+            const target = document.getElementById('announcement-target').value;
+
             if (msg && db) {
                 try {
                     await addDoc(collection(db, "announcements"), {
                         message: msg,
+                        targetAudience: target,
                         createdAt: Date.now(),
                         createdBy: currentUser.email
                     });
