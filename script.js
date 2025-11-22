@@ -579,17 +579,48 @@ function initEmployeeDashboard() {
                 if (!personalList) {
                     personalList = document.createElement('ul');
                     personalList.id = 'emp-personal-notifs';
-                    personalList.className = 'notification-list';
-                    notifList.parentNode.insertBefore(personalList, notifList);
-                }
-                personalList.innerHTML = ''; // Clear and rebuild
-                const li = document.createElement('li');
-                li.innerHTML = `🔔 ${note.message}`;
-                personalList.appendChild(li);
-            });
+                    const li = document.createElement('li');
+                    li.innerHTML = `🔔 ${note.message}`;
+                    personalList.appendChild(li);
+                });
         }
     });
     unsubscribeListeners.push(unsubNotif);
+
+    // Listen for Announcements (Employee Area)
+    const qAnnounceList = query(collection(db, "announcements"), orderBy("createdAt", "desc"), limit(5));
+    const unsubAnnounceList = onSnapshot(qAnnounceList, (snapshot) => {
+        let announceContainer = document.getElementById('emp-announcement-list');
+        // Inject container if missing
+        if (!announceContainer) {
+            const grid = document.querySelector('#view-dashboard-employee .dashboard-grid');
+            if (grid) {
+                const card = document.createElement('div');
+                card.className = 'card full-width';
+                card.innerHTML = `<h3>📢 Announcements</h3><ul id="emp-announcement-list" class="notification-list"></ul>`;
+                grid.prepend(card);
+                announceContainer = card.querySelector('ul');
+            }
+        }
+
+        if (announceContainer) {
+            announceContainer.innerHTML = '';
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                // Filter logic
+                const target = data.targetAudience || 'all';
+                let show = false;
+                if (target === 'all' || target === 'internal' || target === 'employees') show = true;
+
+                if (show) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${data.message}</strong> <br><small>${new Date(data.createdAt).toLocaleDateString()}</small>`;
+                    announceContainer.appendChild(li);
+                }
+            });
+        }
+    });
+    unsubscribeListeners.push(unsubAnnounceList);
 }
 
 // Employee Report Submission
@@ -831,429 +862,487 @@ function initManagerDashboard() {
 
 // Manager Assign Task
 const assignTaskForm = document.getElementById('mgr-assign-task-form');
-if (assignTaskForm) {
-    assignTaskForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const title = document.getElementById('task-title').value;
-        const desc = document.getElementById('task-desc').value;
-        const project = document.getElementById('task-project').value;
-        const deadline = document.getElementById('task-deadline').value;
-        const empSelect = document.getElementById('task-emp-select');
-        const empName = empSelect.options[empSelect.selectedIndex].text;
-
-        if (title && empSelect.value && db) {
-            await addDoc(collection(db, "tasks"), {
-                title: title,
-                description: desc,
-                projectId: project,
-                deadline: deadline,
-                priority: "Medium", // Default
-                status: "Pending",
-                assignedTo: empName,
-                createdAt: Date.now()
-            });
-            alert(`Task "${title}" assigned to ${empName}.`);
-            assignTaskForm.reset();
-        }
-    });
-}
+// We handle this listener inside initManagerDashboard BUT we must prevent duplicates.
+// Actually, it's better to handle it globally or use the cloneNode trick inside init.
+// Let's move the listener attachment inside initManagerDashboard and use cloneNode.
 
 // Manager Role Assignment
 const mgrRoleForm = document.getElementById('mgr-role-form');
-if (mgrRoleForm) {
-    mgrRoleForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const empId = document.getElementById('role-emp-select').value;
-        const newRole = document.getElementById('role-input').value;
+// Same here.
 
-        if (empId && newRole && db) {
-            try {
-                // Update the user's document in Firestore
-                const userRef = doc(db, "users", empId);
+// --- 5. Manager Dashboard Logic ---
+function initManagerDashboard() {
+    // ... (existing code) ...
 
-                // Get current user data for name
-                const userSnap = await getDoc(userRef);
-                const userName = userSnap.exists() ? (userSnap.data().name || userSnap.data().email) : "Employee";
+    // Manager Assign Task Listener (with duplicate prevention)
+    const assignTaskForm = document.getElementById('mgr-assign-task-form');
+    if (assignTaskForm) {
+        const newForm = assignTaskForm.cloneNode(true);
+        assignTaskForm.parentNode.replaceChild(newForm, assignTaskForm);
 
-                await updateDoc(userRef, {
-                    position: newRole
-                });
+        newForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Re-fetch elements from the NEW form
+            const title = newForm.querySelector('#task-title').value;
+            const desc = newForm.querySelector('#task-desc').value;
+            const project = newForm.querySelector('#task-project').value;
+            const deadline = newForm.querySelector('#task-deadline').value;
+            const empSelect = newForm.querySelector('#task-emp-select');
+            const empName = empSelect.options[empSelect.selectedIndex].text;
 
-                // Notify Admin
-                await addDoc(collection(db, "notifications"), {
-                    message: `Manager updated ${userName}'s position to: ${newRole}`,
-                    targetRole: 'owner',
+            if (title && empSelect.value && db) {
+                await addDoc(collection(db, "tasks"), {
+                    title: title,
+                    description: desc,
+                    projectId: project,
+                    deadline: deadline,
+                    priority: "Medium", // Default
+                    status: "Pending",
+                    assignedTo: empName,
+                    source: "Manager",
                     createdAt: Date.now()
                 });
-
-                // Notify Employee
-                await addDoc(collection(db, "notifications"), {
-                    message: `Your position has been updated to: ${newRole}`,
-                    targetEmail: userSnap.data().email, // Target specific user
-                    createdAt: Date.now()
-                });
-
-                alert(`Employee position updated to ${newRole}!`);
-                mgrRoleForm.reset();
-            } catch (error) {
-                console.error("Error updating role:", error);
-                alert("Failed to update role.");
+                alert(`Task "${title}" assigned to ${empName}.`);
+                newForm.reset();
             }
-        }
-    });
-}
+        });
+    }
 
-// --- 6. Owner Dashboard Logic ---
-function initOwnerDashboard() {
-    // Notifications (Admin/Owner)
-    const qNotif = query(collection(db, "notifications"), where("targetRole", "==", "owner"), orderBy("createdAt", "desc"), limit(10));
-    const unsubNotif = onSnapshot(qNotif, (snapshot) => {
-        const notifList = document.getElementById('owner-notifications');
-        if (notifList) {
-            notifList.innerHTML = '';
-            snapshot.forEach(doc => {
-                const note = doc.data();
-                const li = document.createElement('li');
-                li.textContent = note.message;
-                notifList.appendChild(li);
-            });
-        }
-    });
-    unsubscribeListeners.push(unsubNotif);
+    // Manager Role Assignment Listener (with duplicate prevention)
+    const mgrRoleForm = document.getElementById('mgr-role-form');
+    if (mgrRoleForm) {
+        const newRoleForm = mgrRoleForm.cloneNode(true);
+        mgrRoleForm.parentNode.replaceChild(newRoleForm, mgrRoleForm);
 
-    // Inquiries
-    const qInquiries = query(collection(db, "inquiries"), orderBy("createdAt", "desc"), limit(10));
-    const unsubInquiries = onSnapshot(qInquiries, (snapshot) => {
-        const inquiryList = document.getElementById('owner-inquiries-list');
-        if (inquiryList) {
-            inquiryList.innerHTML = '';
-            if (snapshot.empty) {
-                inquiryList.innerHTML = '<tr><td colspan="4">No inquiries yet.</td></tr>';
-            } else {
+        newRoleForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const empId = newRoleForm.querySelector('#role-emp-select').value;
+            const newRole = newRoleForm.querySelector('#role-input').value;
+
+            if (empId && newRole && db) {
+                try {
+                    const userRef = doc(db, "users", empId);
+                    const userSnap = await getDoc(userRef);
+                    const userName = userSnap.exists() ? (userSnap.data().name || userSnap.data().email) : "Employee";
+
+                    await updateDoc(userRef, { position: newRole });
+
+                    // Notify Admin
+                    await addDoc(collection(db, "notifications"), {
+                        message: `Manager updated ${userName}'s position to: ${newRole}`,
+                        targetRole: 'owner',
+                        createdAt: Date.now()
+                    });
+
+                    // Notify Employee
+                    await addDoc(collection(db, "notifications"), {
+                        message: `Your position has been updated to: ${newRole}`,
+                        targetEmail: userSnap.data().email,
+                        createdAt: Date.now()
+                    });
+
+                    alert(`Employee position updated to ${newRole}!`);
+                    newRoleForm.reset();
+                } catch (error) {
+                    console.error("Error updating role:", error);
+                    alert("Failed to update role.");
+                }
+            }
+        });
+    }
+
+    // Manager Add Employee Logic (New)
+    const mgrAddEmpForm = document.getElementById('mgr-add-emp-form');
+    if (mgrAddEmpForm) {
+        const newEmpForm = mgrAddEmpForm.cloneNode(true);
+        mgrAddEmpForm.parentNode.replaceChild(newEmpForm, mgrAddEmpForm);
+
+        newEmpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = newEmpForm.querySelector('#mgr-new-emp-email').value;
+            // Manager creates the email (Login ID)
+            if (email && db) {
+                try {
+                    await addDoc(collection(db, "users"), {
+                        email: email,
+                        role: 'employee',
+                        name: email.split('@')[0],
+                        createdAt: Date.now()
+                    });
+                    alert('Employee added successfully. They can now login with this email.');
+                    newEmpForm.reset();
+                } catch (err) {
+                    console.error("Error adding employee:", err);
+                    alert("Failed to add employee.");
+                }
+            }
+        });
+    }
+
+    // --- 6. Owner Dashboard Logic ---
+    function initOwnerDashboard() {
+        // Notifications (Admin/Owner)
+        const qNotif = query(collection(db, "notifications"), where("targetRole", "==", "owner"), orderBy("createdAt", "desc"), limit(10));
+        const unsubNotif = onSnapshot(qNotif, (snapshot) => {
+            const notifList = document.getElementById('owner-notifications');
+            if (notifList) {
+                notifList.innerHTML = '';
                 snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
+                    const note = doc.data();
+                    const li = document.createElement('li');
+                    li.textContent = note.message;
+                    notifList.appendChild(li);
+                });
+            }
+        });
+        unsubscribeListeners.push(unsubNotif);
+
+        // Inquiries
+        const qInquiries = query(collection(db, "inquiries"), orderBy("createdAt", "desc"), limit(10));
+        const unsubInquiries = onSnapshot(qInquiries, (snapshot) => {
+            const inquiryList = document.getElementById('owner-inquiries-list');
+            if (inquiryList) {
+                inquiryList.innerHTML = '';
+                if (snapshot.empty) {
+                    inquiryList.innerHTML = '<tr><td colspan="4">No inquiries yet.</td></tr>';
+                } else {
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
                             <td>${data.name}</td>
                             <td>${data.email}</td>
                             <td>${data.message}</td>
                             <td>${data.dateString}</td>
                         `;
-                    inquiryList.appendChild(tr);
-                });
+                        inquiryList.appendChild(tr);
+                    });
+                }
             }
-        }
-    });
-    unsubscribeListeners.push(unsubInquiries);
+        });
+        unsubscribeListeners.push(unsubInquiries);
 
-    // --- User Management Logic ---
-    const userList = document.getElementById('admin-user-list');
-    const addUserBtn = document.getElementById('admin-add-user-btn');
-    const emailInput = document.getElementById('admin-new-user-email');
-    const roleInput = document.getElementById('admin-new-user-role');
+        // --- User Management Logic ---
+        const userList = document.getElementById('admin-user-list');
+        const addUserBtn = document.getElementById('admin-add-user-btn');
+        const emailInput = document.getElementById('admin-new-user-email');
+        const roleInput = document.getElementById('admin-new-user-role');
 
-    // Listen for Users
-    const qUsers = query(collection(db, "users"));
-    const unsubUsers = onSnapshot(qUsers, (snapshot) => {
-        if (userList) {
-            userList.innerHTML = ''; // Clear list to prevent duplicates
-            snapshot.forEach(doc => {
-                const user = doc.data();
-                // Don't allow deleting self
-                const isSelf = currentUser && user.email === currentUser.email;
+        // Listen for Users
+        const qUsers = query(collection(db, "users"));
+        const unsubUsers = onSnapshot(qUsers, (snapshot) => {
+            if (userList) {
+                userList.innerHTML = ''; // Clear list to prevent duplicates
+                snapshot.forEach(doc => {
+                    const user = doc.data();
+                    // Don't allow deleting self
+                    const isSelf = currentUser && user.email === currentUser.email;
 
-                const div = document.createElement('div');
-                div.className = 'control-item';
-                div.innerHTML = `
+                    const div = document.createElement('div');
+                    div.className = 'control-item';
+                    div.innerHTML = `
                     <div style="display:flex; flex-direction:column;">
                         <span style="font-weight:600;">${user.name || user.email}</span>
                         <span style="font-size:0.85em; color:#666;">${user.role.toUpperCase()} ${user.position ? '• ' + user.position : ''}</span>
                     </div>
                     ${!isSelf ? `<button class="text-btn delete" data-id="${doc.id}">Remove</button>` : ''}
                 `;
-                userList.appendChild(div);
-            });
-
-            // Attach event listeners to delete buttons
-            userList.querySelectorAll('.text-btn.delete').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const uid = e.target.getAttribute('data-id');
-                    // Find user name for notification
-                    const userItem = snapshot.docs.find(d => d.id === uid).data();
-                    const userName = userItem.name || userItem.email;
-                    const userRole = userItem.role;
-
-                    if (confirm('Are you sure you want to remove this user?')) {
-                        try {
-                            await deleteDoc(doc(db, "users", uid));
-
-                            // Notify Managers if an employee is removed
-                            if (userRole === 'employee') {
-                                await addDoc(collection(db, "notifications"), {
-                                    message: `Admin removed employee: ${userName}`,
-                                    targetRole: 'manager',
-                                    createdAt: Date.now()
-                                });
-                            }
-                        } catch (err) {
-                            console.error("Error deleting user:", err);
-                            alert("Failed to delete user.");
-                        }
-                    }
+                    userList.appendChild(div);
                 });
-            });
-        }
-    });
-    unsubscribeListeners.push(unsubUsers);
 
-    // Add User
-    if (addUserBtn) {
-        addUserBtn.addEventListener('click', async () => {
-            const email = emailInput.value;
-            const role = roleInput.value;
-            if (email && role && db) {
-                try {
-                    await addDoc(collection(db, "users"), {
-                        email: email,
-                        role: role,
-                        name: email.split('@')[0], // Default name
-                        createdAt: Date.now()
+                // Attach event listeners to delete buttons
+                userList.querySelectorAll('.text-btn.delete').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        const uid = e.target.getAttribute('data-id');
+                        // Find user name for notification
+                        const userItem = snapshot.docs.find(d => d.id === uid).data();
+                        const userName = userItem.name || userItem.email;
+                        const userRole = userItem.role;
+
+                        if (confirm('Are you sure you want to remove this user?')) {
+                            try {
+                                await deleteDoc(doc(db, "users", uid));
+
+                                // Notify Managers if an employee is removed
+                                if (userRole === 'employee') {
+                                    await addDoc(collection(db, "notifications"), {
+                                        message: `Admin removed employee: ${userName}`,
+                                        targetRole: 'manager',
+                                        createdAt: Date.now()
+                                    });
+                                }
+                            } catch (err) {
+                                console.error("Error deleting user:", err);
+                                alert("Failed to delete user.");
+                            }
+                        }
                     });
+                });
+            }
+        });
+        unsubscribeListeners.push(unsubUsers);
 
-                    // Notify Managers if a new employee is added
-                    if (role === 'employee') {
-                        await addDoc(collection(db, "notifications"), {
-                            message: `Admin added new employee: ${email}`,
-                            targetRole: 'manager',
+        // Add User
+        // Add User (Moved outside init to prevent duplicates, see below)
+        // We will attach the listener only if it hasn't been attached.
+        // Better pattern: Remove old listener or use a global setup function.
+        // For this codebase, let's use a simple check or cloneNode.
+        if (addUserBtn) {
+            // Clone to remove existing listeners
+            const newBtn = addUserBtn.cloneNode(true);
+            addUserBtn.parentNode.replaceChild(newBtn, addUserBtn);
+
+            newBtn.addEventListener('click', async () => {
+                const email = emailInput.value;
+                const role = roleInput.value;
+                if (email && role && db) {
+                    try {
+                        // Create Firestore Profile
+                        await addDoc(collection(db, "users"), {
+                            email: email,
+                            role: role,
+                            name: email.split('@')[0], // Default name
                             createdAt: Date.now()
                         });
+
+                        // Notify Managers if a new employee is added
+                        if (role === 'employee') {
+                            await addDoc(collection(db, "notifications"), {
+                                message: `Admin added new employee: ${email}`,
+                                targetRole: 'manager',
+                                createdAt: Date.now()
+                            });
+                        }
+
+                        alert('User added successfully. Note: Password must be set by user or via Auth console.');
+                        emailInput.value = '';
+                        roleInput.value = '';
+                    } catch (e) {
+                        console.error("Error adding user: ", e);
+                        alert("Failed to add user.");
                     }
-
-                    alert('User added successfully.');
-                    emailInput.value = '';
-                    roleInput.value = '';
-                } catch (e) {
-                    console.error("Error adding user: ", e);
-                    alert("Failed to add user.");
+                } else {
+                    alert("Please enter email and select a role.");
                 }
-            } else {
-                alert("Please enter email and select a role.");
-            }
-        });
-    }
-
-    // --- Executive Task Assignment ---
-    const ownerTaskForm = document.getElementById('owner-assign-task-form');
-    // Populate Dropdown with Managers and Employees
-    const qAllStaff = query(collection(db, "users"), where("role", "in", ["manager", "employee"]));
-    const unsubAllStaff = onSnapshot(qAllStaff, (snapshot) => {
-        const targetSelect = document.getElementById('owner-task-target');
-        if (targetSelect) {
-            targetSelect.innerHTML = '<option value="">Select Manager or Employee</option>';
-            snapshot.forEach(doc => {
-                const user = doc.data();
-                const opt = document.createElement('option');
-                opt.value = user.name || user.email; // Using Name/Email as identifier for now
-                opt.textContent = `${user.name || user.email} (${user.role})`;
-                targetSelect.appendChild(opt);
             });
         }
-    });
-    unsubscribeListeners.push(unsubAllStaff);
 
-    if (ownerTaskForm) {
-        ownerTaskForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const title = document.getElementById('owner-task-title').value;
-            const target = document.getElementById('owner-task-target').value;
-            const desc = document.getElementById('owner-task-desc').value;
-            const project = document.getElementById('owner-task-project').value;
-            const deadline = document.getElementById('owner-task-deadline').value;
-
-            if (title && target && db) {
-                try {
-                    await addDoc(collection(db, "tasks"), {
-                        title: title,
-                        description: desc,
-                        projectId: project,
-                        deadline: deadline,
-                        priority: "High", // Default high for executive
-                        status: "Pending",
-                        assignedTo: target,
-                        source: "Executive", // Differentiator
-                        createdAt: Date.now()
-                    });
-
-                    // Notify the user
-                    await addDoc(collection(db, "notifications"), {
-                        message: `Executive assigned you a new task: ${title}`,
-                        targetEmail: target.includes('@') ? target : null, // If value is email, target specific. If name, might miss. Ideally use ID.
-                        // Fallback: we are using name in dropdown. Let's hope name is unique or switch to ID later.
-                        // For now, let's just create a general notification or try to find email.
-                        // Simplified: Just create the task. The user sees it in their list.
-                        createdAt: Date.now()
-                    });
-
-                    alert("Task assigned successfully!");
-                    ownerTaskForm.reset();
-                } catch (err) {
-                    console.error("Error assigning task:", err);
-                    alert("Failed to assign task.");
-                }
-            }
-        });
-    }
-
-    // --- Global Announcement ---
-    const announceForm = document.getElementById('owner-announcement-form');
-
-    // Display Last Announcement
-    const qLastAnnounce = query(collection(db, "announcements"), orderBy("createdAt", "desc"), limit(1));
-    const unsubLastAnnounce = onSnapshot(qLastAnnounce, (snapshot) => {
-        const lastDiv = document.getElementById('owner-last-announcement');
-        if (lastDiv) {
-            if (snapshot.empty) {
-                lastDiv.textContent = "No announcements posted yet.";
-            } else {
-                const data = snapshot.docs[0].data();
-                const date = new Date(data.createdAt).toLocaleString();
-                lastDiv.innerHTML = `<strong>Last Posted:</strong> "${data.message}" <br> <small>To: ${data.targetAudience || 'All'} | On: ${date}</small>`;
-            }
-        }
-    });
-    unsubscribeListeners.push(unsubLastAnnounce);
-
-    if (announceForm) {
-        announceForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const msg = document.getElementById('announcement-input').value;
-            const target = document.getElementById('announcement-target').value;
-
-            if (msg && db) {
-                try {
-                    await addDoc(collection(db, "announcements"), {
-                        message: msg,
-                        targetAudience: target,
-                        createdAt: Date.now(),
-                        createdBy: currentUser.email
-                    });
-                    alert("Announcement posted!");
-                    document.getElementById('announcement-input').value = '';
-                } catch (err) {
-                    console.error("Error posting announcement:", err);
-                    alert("Failed to post announcement.");
-                }
-            }
-        });
-    }
-}
-
-// --- 8. Client Dashboard Logic ---
-function initClientDashboard() {
-    // Listen for Projects
-    const qProjects = query(collection(db, "projects"), where("clientId", "==", currentUser.email));
-    const unsubProjects = onSnapshot(qProjects, (snapshot) => {
-        const projectList = document.getElementById('client-project-list');
-        if (projectList) {
-            projectList.innerHTML = '';
-            if (snapshot.empty) {
-                projectList.innerHTML = '<p>No active projects.</p>';
-            } else {
+        // --- Executive Task Assignment ---
+        const ownerTaskForm = document.getElementById('owner-assign-task-form');
+        // Populate Dropdown with Managers and Employees
+        const qAllStaff = query(collection(db, "users"), where("role", "in", ["manager", "employee"]));
+        const unsubAllStaff = onSnapshot(qAllStaff, (snapshot) => {
+            const targetSelect = document.getElementById('owner-task-target');
+            if (targetSelect) {
+                targetSelect.innerHTML = '<option value="">Select Manager or Employee</option>';
                 snapshot.forEach(doc => {
-                    const proj = doc.data();
-                    const div = document.createElement('div');
-                    div.className = 'status-timeline'; // Reusing style
-                    div.innerHTML = `
+                    const user = doc.data();
+                    const opt = document.createElement('option');
+                    opt.value = user.name || user.email; // Using Name/Email as identifier for now
+                    opt.textContent = `${user.name || user.email} (${user.role})`;
+                    targetSelect.appendChild(opt);
+                });
+            }
+        });
+        unsubscribeListeners.push(unsubAllStaff);
+
+        if (ownerTaskForm) {
+            // Prevent duplicate listeners
+            const newForm = ownerTaskForm.cloneNode(true);
+            ownerTaskForm.parentNode.replaceChild(newForm, ownerTaskForm);
+
+            newForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const title = document.getElementById('owner-task-title').value;
+                const target = document.getElementById('owner-task-target').value;
+                const desc = document.getElementById('owner-task-desc').value;
+                const project = document.getElementById('owner-task-project').value;
+                const deadline = document.getElementById('owner-task-deadline').value;
+
+                if (title && target && db) {
+                    try {
+                        await addDoc(collection(db, "tasks"), {
+                            title: title,
+                            description: desc,
+                            projectId: project,
+                            deadline: deadline,
+                            priority: "High", // Default high for executive
+                            status: "Pending",
+                            assignedTo: target,
+                            source: "Executive", // Differentiator
+                            createdAt: Date.now()
+                        });
+
+                        // Notify the user
+                        await addDoc(collection(db, "notifications"), {
+                            message: `Executive assigned you a new task: ${title}`,
+                            targetEmail: target.includes('@') ? target : null, // If value is email, target specific. If name, might miss. Ideally use ID.
+                            // Fallback: we are using name in dropdown. Let's hope name is unique or switch to ID later.
+                            // For now, let's just create a general notification or try to find email.
+                            // Simplified: Just create the task. The user sees it in their list.
+                            createdAt: Date.now()
+                        });
+
+                        alert("Task assigned successfully!");
+                        ownerTaskForm.reset();
+                    } catch (err) {
+                        console.error("Error assigning task:", err);
+                        alert("Failed to assign task.");
+                    }
+                }
+            });
+        }
+
+        // --- Global Announcement ---
+        const announceForm = document.getElementById('owner-announcement-form');
+
+        // Display Last Announcement
+        const qLastAnnounce = query(collection(db, "announcements"), orderBy("createdAt", "desc"), limit(1));
+        const unsubLastAnnounce = onSnapshot(qLastAnnounce, (snapshot) => {
+            const lastDiv = document.getElementById('owner-last-announcement');
+            if (lastDiv) {
+                if (snapshot.empty) {
+                    lastDiv.textContent = "No announcements posted yet.";
+                } else {
+                    const data = snapshot.docs[0].data();
+                    const date = new Date(data.createdAt).toLocaleString();
+                    lastDiv.innerHTML = `<strong>Last Posted:</strong> "${data.message}" <br> <small>To: ${data.targetAudience || 'All'} | On: ${date}</small>`;
+                }
+            }
+        });
+        unsubscribeListeners.push(unsubLastAnnounce);
+
+        if (announceForm) {
+            announceForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const msg = document.getElementById('announcement-input').value;
+                const target = document.getElementById('announcement-target').value;
+
+                if (msg && db) {
+                    try {
+                        await addDoc(collection(db, "announcements"), {
+                            message: msg,
+                            targetAudience: target,
+                            createdAt: Date.now(),
+                            createdBy: currentUser.email
+                        });
+                        alert("Announcement posted!");
+                        document.getElementById('announcement-input').value = '';
+                    } catch (err) {
+                        console.error("Error posting announcement:", err);
+                        alert("Failed to post announcement.");
+                    }
+                }
+            });
+        }
+    }
+
+    // --- 8. Client Dashboard Logic ---
+    function initClientDashboard() {
+        // Listen for Projects
+        const qProjects = query(collection(db, "projects"), where("clientId", "==", currentUser.email));
+        const unsubProjects = onSnapshot(qProjects, (snapshot) => {
+            const projectList = document.getElementById('client-project-list');
+            if (projectList) {
+                projectList.innerHTML = '';
+                if (snapshot.empty) {
+                    projectList.innerHTML = '<p>No active projects.</p>';
+                } else {
+                    snapshot.forEach(doc => {
+                        const proj = doc.data();
+                        const div = document.createElement('div');
+                        div.className = 'status-timeline'; // Reusing style
+                        div.innerHTML = `
                         <h4>${proj.name}</h4>
                         <p>${proj.details}</p>
                         <p><strong>Status:</strong> ${proj.status}</p>
                         <p><small>${proj.startDate} to ${proj.endDate}</small></p>
                     `;
-                    projectList.appendChild(div);
-                });
+                        projectList.appendChild(div);
+                    });
+                }
             }
-        }
-    });
-    unsubscribeListeners.push(unsubProjects);
+        });
+        unsubscribeListeners.push(unsubProjects);
 
-    // Listen for Invoices
-    const qInvoices = query(collection(db, "invoices"), where("clientId", "==", currentUser.email));
-    const unsubInvoices = onSnapshot(qInvoices, (snapshot) => {
-        const invList = document.getElementById('client-invoice-list');
-        if (invList) {
-            invList.innerHTML = '';
-            if (snapshot.empty) {
-                invList.innerHTML = '<li>No invoices found.</li>';
-            } else {
-                snapshot.forEach(doc => {
-                    const inv = doc.data();
-                    const li = document.createElement('li');
-                    li.innerHTML = `
+        // Listen for Invoices
+        const qInvoices = query(collection(db, "invoices"), where("clientId", "==", currentUser.email));
+        const unsubInvoices = onSnapshot(qInvoices, (snapshot) => {
+            const invList = document.getElementById('client-invoice-list');
+            if (invList) {
+                invList.innerHTML = '';
+                if (snapshot.empty) {
+                    invList.innerHTML = '<li>No invoices found.</li>';
+                } else {
+                    snapshot.forEach(doc => {
+                        const inv = doc.data();
+                        const li = document.createElement('li');
+                        li.innerHTML = `
                         🧾 <strong>${inv.details}</strong> - $${inv.amount} 
                         <span class="tag ${inv.status === 'Paid' ? 'done' : 'high'}">${inv.status}</span>
                         <br><small>Due: ${inv.dueDate}</small>
                     `;
-                    invList.appendChild(li);
-                });
+                        invList.appendChild(li);
+                    });
+                }
             }
-        }
-    });
-    unsubscribeListeners.push(unsubInvoices);
-}
+        });
+        unsubscribeListeners.push(unsubInvoices);
+    }
 
-// --- 9. AI Chatbot Logic & Inquiry Form ---
-const chatInput = document.getElementById('ai-chat-input');
-const chatSend = document.getElementById('ai-chat-send');
-const chatMessages = document.getElementById('ai-chat-messages');
-const inquiryForm = document.getElementById('inquiry-form');
+    // --- 9. AI Chatbot Logic & Inquiry Form ---
+    const chatInput = document.getElementById('ai-chat-input');
+    const chatSend = document.getElementById('ai-chat-send');
+    const chatMessages = document.getElementById('ai-chat-messages');
+    const inquiryForm = document.getElementById('inquiry-form');
 
-// Handle Inquiry Form Submission
-if (inquiryForm) {
-    inquiryForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = inquiryForm.querySelector('input[type="text"]').value;
-        const email = inquiryForm.querySelector('input[type="email"]').value;
-        const message = inquiryForm.querySelector('textarea').value;
+    // Handle Inquiry Form Submission
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = inquiryForm.querySelector('input[type="text"]').value;
+            const email = inquiryForm.querySelector('input[type="email"]').value;
+            const message = inquiryForm.querySelector('textarea').value;
 
-        if (name && email && db) {
-            try {
-                await addDoc(collection(db, "inquiries"), {
-                    name: name,
-                    email: email,
-                    message: message,
-                    createdAt: Date.now(),
-                    dateString: new Date().toLocaleDateString()
-                });
-                alert("Thank you! Your inquiry has been sent. We will contact you shortly.");
-                inquiryForm.reset();
-            } catch (error) {
-                console.error("Error sending inquiry:", error);
-                alert("There was an error sending your message. Please try again.");
+            if (name && email && db) {
+                try {
+                    await addDoc(collection(db, "inquiries"), {
+                        name: name,
+                        email: email,
+                        message: message,
+                        createdAt: Date.now(),
+                        dateString: new Date().toLocaleDateString()
+                    });
+                    alert("Thank you! Your inquiry has been sent. We will contact you shortly.");
+                    inquiryForm.reset();
+                } catch (error) {
+                    console.error("Error sending inquiry:", error);
+                    alert("There was an error sending your message. Please try again.");
+                }
             }
-        }
-    });
-}
+        });
+    }
 
-function addMessage(text, sender) {
-    const div = document.createElement('div');
-    div.className = sender === 'ai' ? 'ai-msg' : 'user-msg';
-    div.textContent = text;
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = sender === 'ai' ? 'ai-msg' : 'user-msg';
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-if (chatSend) {
-    chatSend.addEventListener('click', () => {
-        const text = chatInput.value;
-        if (!text) return;
+    if (chatSend) {
+        chatSend.addEventListener('click', () => {
+            const text = chatInput.value;
+            if (!text) return;
 
-        addMessage(text, 'user');
-        chatInput.value = '';
+            addMessage(text, 'user');
+            chatInput.value = '';
 
-        setTimeout(() => {
-            addMessage("Great! I've tentatively booked that slot for you. One of our experts will call you then.", 'ai');
-        }, 1000);
-    });
-}
-// Start database seeding in the background
-seedDatabase().catch(console.error);
+            setTimeout(() => {
+                addMessage("Great! I've tentatively booked that slot for you. One of our experts will call you then.", 'ai');
+            }, 1000);
+        });
+    }
+    // Start database seeding in the background
+    seedDatabase().catch(console.error);
