@@ -547,22 +547,53 @@ const btnClockOut = document.getElementById('emp-clock-out');
 
 // --- 5. Manager Dashboard Logic ---
 function initManagerDashboard() {
+    // Fetch Employees for Dropdowns
+    const qEmployees = query(collection(db, "users"), where("role", "==", "employee"));
+    const unsubEmployees = onSnapshot(qEmployees, (snapshot) => {
+        const taskSelect = document.getElementById('task-emp-select');
+        const roleSelect = document.getElementById('role-emp-select');
+
+        // Clear existing options (keep default)
+        if (taskSelect) taskSelect.innerHTML = '<option value="">Select Employee</option>';
+        if (roleSelect) roleSelect.innerHTML = '<option value="">Select Employee</option>';
+
+        snapshot.forEach(doc => {
+            const emp = doc.data();
+            const empId = doc.id;
+            const empName = emp.name || emp.email;
+
+            if (taskSelect) {
+                const opt = document.createElement('option');
+                opt.value = empName; // Storing name for task assignment as per current schema
+                opt.textContent = empName;
+                taskSelect.appendChild(opt);
+            }
+            if (roleSelect) {
+                const opt = document.createElement('option');
+                opt.value = empId; // Storing ID for role update
+                opt.textContent = `${empName} (${emp.email})`;
+                roleSelect.appendChild(opt);
+            }
+        });
+    });
+    unsubscribeListeners.push(unsubEmployees);
+
     // Listen for Reports
     const qReports = query(collection(db, "reports"), orderBy("createdAt", "desc"), limit(10));
     const unsubReports = onSnapshot(qReports, (snapshot) => {
-        const reportTableBody = document.querySelector('#view-dashboard-manager .data-table tbody');
-        if (reportTableBody) {
-            reportTableBody.innerHTML = '';
+        const tableBody = document.getElementById('mgr-reports-table');
+        if (tableBody) {
+            tableBody.innerHTML = '';
             snapshot.forEach(doc => {
-                const rep = doc.data();
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                        <td>${rep.submittedBy || rep.employee}</td>
-                        <td>${rep.date}</td>
-                        <td>${rep.reportText || rep.summary}</td>
-                        <td><span class="tag ${rep.status === 'Reviewed' ? 'done' : 'medium'}">${rep.status}</span></td>
-                    `;
-                reportTableBody.appendChild(tr);
+                const report = doc.data();
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${report.submittedBy}</td>
+                    <td>${new Date(report.createdAt).toLocaleDateString()}</td>
+                    <td>${report.taskTitle}</td>
+                    <td><span class="status-badge status-completed">Submitted</span></td>
+                `;
+                tableBody.appendChild(row);
             });
         }
     });
@@ -646,20 +677,27 @@ if (assignTaskForm) {
 }
 
 // Manager Role Assignment
-const roleForm = document.getElementById('mgr-role-form');
-if (roleForm) {
-    roleForm.addEventListener('submit', async (e) => {
+const mgrRoleForm = document.getElementById('mgr-role-form');
+if (mgrRoleForm) {
+    mgrRoleForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const empName = document.getElementById('role-emp-select').value;
+        const empId = document.getElementById('role-emp-select').value;
         const newRole = document.getElementById('role-input').value;
 
-        if (empName && newRole && db) {
-            await addDoc(collection(db, "notifications"), {
-                message: `Manager updated ${empName}'s role to: ${newRole}`,
-                createdAt: Date.now()
-            });
-            alert(`Role for ${empName} updated. Owner notified.`);
-            roleForm.reset();
+        if (empId && newRole && db) {
+            try {
+                // Update the user's document in Firestore
+                const userRef = doc(db, "users", empId);
+                await updateDoc(userRef, {
+                    position: newRole // Updating 'position' field based on UI label "New Role (e.g. Senior Specialist)"
+                    // If you meant to change the access level 'role', use: role: newRole.toLowerCase()
+                });
+                alert(`Employee position updated to ${newRole}!`);
+                mgrRoleForm.reset();
+            } catch (error) {
+                console.error("Error updating role:", error);
+                alert("Failed to update role.");
+            }
         }
     });
 }
