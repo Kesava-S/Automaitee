@@ -408,19 +408,8 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>Today</td>
-                                <td>Completed API integration for Client X</td>
-                                <td><span class="tag done">Reviewed</span></td>
-                            </tr>
-                            <tr>
-                                <td>Jane Smith</td>
-                                <td>Today</td>
-                                <td>Working on UI designs</td>
-                                <td><span class="tag medium">Pending</span></td>
-                            </tr>
+                        <tbody id="mgr-reports-table">
+                            <!-- Populated via JS -->
                         </tbody>
                     </table>
                 </div>
@@ -496,9 +485,7 @@
                 <div class="card chat-card">
                     <h3>Chat with Manager</h3>
                     <div class="chat-box" id="client-chat-box">
-                        <div class="message received">
-                            <p>We've updated the landing page as requested.</p>
-                        </div>
+                        <!-- Populated via JS -->
                     </div>
                     <div class="chat-input">
                         <input type="text" placeholder="Type a message...">
@@ -524,11 +511,11 @@
                     <div class="stat-grid">
                         <div class="stat-item">
                             <span class="label">Revenue (MTD)</span>
-                            <span class="value">$45,200</span>
+                            <span class="value">$0</span>
                         </div>
                         <div class="stat-item">
                             <span class="label">Pending Invoices</span>
-                            <span class="value">$12,500</span>
+                            <span class="value">$0</span>
                         </div>
                     </div>
                 </div>
@@ -536,19 +523,8 @@
                 <!-- Project Overview -->
                 <div class="card">
                     <h3>Active Projects</h3>
-                    <ul class="project-list">
-                        <li>
-                            <strong>Alpha Automation</strong>
-                            <span class="tag done">On Track</span>
-                        </li>
-                        <li>
-                            <strong>Beta CRM Setup</strong>
-                            <span class="tag medium">Delayed</span>
-                        </li>
-                        <li>
-                            <strong>Gamma Ads</strong>
-                            <span class="tag high">Critical</span>
-                        </li>
+                    <ul class="project-list" id="owner-project-list">
+                        <!-- Populated via JS -->
                     </ul>
                 </div>
 
@@ -580,8 +556,7 @@
                         <div class="admin-panel">
                             <h4>🔔 Recent System Updates</h4>
                             <ul class="notification-list" id="owner-notifications">
-                                <li>System: Monthly backup completed.</li>
-                                <!-- Role updates will appear here -->
+                                <!-- Populated via JS -->
                             </ul>
                         </div>
 

@@ -1543,4 +1543,4 @@ if (chatSend) {
     });
 }
 // Start database seeding in the background
-seedDatabase().catch(console.error);
+// seedDatabase().catch(console.error);
