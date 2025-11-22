@@ -1202,6 +1202,60 @@ function initOwnerDashboard() {
             }
         });
     }
+
+    // --- Client Onboarding & Projects ---
+    const onboardForm = document.getElementById('owner-onboard-client-form');
+    if (onboardForm) {
+        const newForm = onboardForm.cloneNode(true);
+        onboardForm.parentNode.replaceChild(newForm, onboardForm);
+
+        newForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const clientName = document.getElementById('onboard-client-name').value;
+            const projectName = document.getElementById('onboard-project-name').value;
+            const startDate = document.getElementById('onboard-start-date').value;
+
+            if (clientName && projectName && startDate && db) {
+                try {
+                    await addDoc(collection(db, "projects"), {
+                        clientName: clientName,
+                        name: projectName,
+                        startDate: startDate,
+                        status: "Active",
+                        createdAt: Date.now()
+                    });
+                    showToast(`Project "${projectName}" created for ${clientName}.`, "success");
+                    newForm.reset();
+                } catch (err) {
+                    console.error("Error creating project:", err);
+                    showToast("Failed to create project.", "error");
+                }
+            }
+        });
+    }
+
+    // Render Active Projects
+    const qProjects = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+    const unsubProjects = onSnapshot(qProjects, (snapshot) => {
+        const list = document.getElementById('owner-project-list');
+        if (list) {
+            list.innerHTML = '';
+            if (snapshot.empty) {
+                list.innerHTML = '<li>No active projects.</li>';
+            } else {
+                snapshot.forEach(doc => {
+                    const proj = doc.data();
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <strong>${proj.name}</strong> <span class="text-small">(${proj.clientName})</span>
+                        <span class="tag" style="background:#dcfce7; color:#166534;">${proj.status}</span>
+                    `;
+                    list.appendChild(li);
+                });
+            }
+        }
+    });
+    unsubscribeListeners.push(unsubProjects);
 }
 
 // --- 8. Client Dashboard Logic ---

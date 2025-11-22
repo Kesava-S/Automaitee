@@ -41,6 +41,14 @@ service cloud.firestore {
       allow delete: if isSignedIn();
     }
 
+    // Projects:
+    // - Read: Authenticated
+    // - Write: Owner
+    match /projects/{projId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn(); // TODO: Restrict to Owner
+    }
+
     // Reports:
     // - Read: Managers and Owners
     // - Create: Employees
