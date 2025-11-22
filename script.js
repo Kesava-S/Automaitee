@@ -677,30 +677,42 @@ function initManagerDashboard() {
     unsubscribeListeners.push(unsubRequests);
 
     // Listen for Notifications (Manager)
-    const qNotif = query(collection(db, "notifications"), where("targetRole", "==", "manager"), orderBy("createdAt", "desc"), limit(5));
+    // Query for notifications where targetRole is 'manager' OR 'all'
+    const qNotif = query(collection(db, "notifications"), where("targetRole", "==", "manager"), orderBy("createdAt", "desc"), limit(10));
+
     const unsubNotif = onSnapshot(qNotif, (snapshot) => {
-        // Create or find a notification container for manager
-        // Assuming we inject it into the top of the dashboard or a specific area
-        // For now, let's alert if it's a very recent notification (last 10 seconds) to avoid spam on reload
-        // OR better, append to a notification list if we add one to Manager UI.
-        // Let's add a simple list to the top of Manager Hub
         let notifContainer = document.getElementById('manager-notifications');
+
+        // Ensure container exists
         if (!notifContainer) {
             const header = document.querySelector('#view-dashboard-manager .dashboard-header');
-            notifContainer = document.createElement('ul');
-            notifContainer.id = 'manager-notifications';
-            notifContainer.className = 'notification-list';
-            notifContainer.style.marginBottom = '1rem';
-            header.after(notifContainer);
+            if (header) {
+                notifContainer = document.createElement('ul');
+                notifContainer.id = 'manager-notifications';
+                notifContainer.className = 'notification-list';
+                notifContainer.style.marginBottom = '1rem';
+                notifContainer.style.background = '#fff3cd'; // Yellow background for visibility
+                notifContainer.style.padding = '10px';
+                notifContainer.style.borderRadius = '8px';
+                header.after(notifContainer);
+            }
         }
 
-        notifContainer.innerHTML = '';
-        snapshot.forEach(doc => {
-            const note = doc.data();
-            const li = document.createElement('li');
-            li.innerHTML = `🔔 ${note.message}`;
-            notifContainer.appendChild(li);
-        });
+        if (notifContainer) {
+            notifContainer.innerHTML = '';
+            if (snapshot.empty) {
+                notifContainer.style.display = 'none'; // Hide if empty
+            } else {
+                notifContainer.style.display = 'block';
+                snapshot.forEach(doc => {
+                    const note = doc.data();
+                    const li = document.createElement('li');
+                    li.innerHTML = `🔔 <strong>Notification:</strong> ${note.message} <br><small>${new Date(note.createdAt).toLocaleTimeString()}</small>`;
+                    li.style.marginBottom = '5px';
+                    notifContainer.appendChild(li);
+                });
+            }
+        }
     });
     unsubscribeListeners.push(unsubNotif);
 }
