@@ -1530,25 +1530,59 @@ if (chatSend && chatInput) {
                         response = "You cannot book a consultation in the past. Please enter a future date.";
                     } else {
                         bookingData.date = text;
-                        response = "Great. What time works best? (e.g., 14:00 or 2 PM)";
+                        response = "Great. Please select a time slot:";
                         chatState = 'time';
                         valid = true;
+
+                        // Add Time Options
+                        setTimeout(() => {
+                            const optionsDiv = document.createElement('div');
+                            optionsDiv.className = 'chat-options';
+                            const slots = ["10 AM - 12 PM", "12 PM - 2 PM", "2 PM - 4 PM", "4 PM - 6 PM"];
+                            slots.forEach(slot => {
+                                const btn = document.createElement('button');
+                                btn.className = 'chat-option-btn';
+                                btn.textContent = slot;
+                                btn.onclick = () => {
+                                    chatInput.value = slot;
+                                    chatSend.click();
+                                };
+                                optionsDiv.appendChild(btn);
+                            });
+                            chatMessages.appendChild(optionsDiv);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }, 700);
                     }
                 } else {
                     response = "Please enter a valid date in YYYY-MM-DD format (e.g., 2024-12-01).";
                 }
             } else if (chatState === 'time') {
-                // Validate Time (Simple 12h/24h check)
-                // Matches: 14:00, 2:30 PM, 2pm, 14.00
-                const timeRegex = /^([0-1]?[0-9]|2[0-3])[:.]?([0-5][0-9])?\s?(AM|PM|am|pm)?$/;
-
-                if (timeRegex.test(text) || text.toLowerCase().includes('pm') || text.toLowerCase().includes('am')) {
+                // Validate Time Slot Selection
+                const validSlots = ["10 AM - 12 PM", "12 PM - 2 PM", "2 PM - 4 PM", "4 PM - 6 PM"];
+                if (validSlots.includes(text)) {
                     bookingData.time = text;
                     response = "Got it. Finally, please enter your phone number so we can call you.";
                     chatState = 'phone';
                     valid = true;
                 } else {
-                    response = "Please enter a valid time (e.g., 14:00, 2:30 PM).";
+                    response = "Please select one of the available time slots.";
+                    // Re-show options
+                    setTimeout(() => {
+                        const optionsDiv = document.createElement('div');
+                        optionsDiv.className = 'chat-options';
+                        validSlots.forEach(slot => {
+                            const btn = document.createElement('button');
+                            btn.className = 'chat-option-btn';
+                            btn.textContent = slot;
+                            btn.onclick = () => {
+                                chatInput.value = slot;
+                                chatSend.click();
+                            };
+                            optionsDiv.appendChild(btn);
+                        });
+                        chatMessages.appendChild(optionsDiv);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 700);
                 }
             } else if (chatState === 'phone') {
                 // Validate Phone
