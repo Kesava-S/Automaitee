@@ -394,35 +394,10 @@ if (loginForm) {
                     showToast("Login successful but role is undefined.", "error");
                 }
             } else {
-                // Auto-create profile if missing
-                console.log("User authenticated but no profile found. Creating default profile...");
-                let defaultRole = 'client';
-                if (email.includes('admin')) defaultRole = 'owner';
-                else if (email.includes('manager')) defaultRole = 'manager';
-                else if (email.includes('emp')) defaultRole = 'employee';
-
-                const newProfile = {
-                    email: email,
-                    role: defaultRole,
-                    name: email.split('@')[0],
-                    createdAt: Date.now(),
-                    uid: user.uid
-                };
-
-                const docRef = await addDoc(collection(db, "users"), newProfile);
-                currentUser = { id: docRef.id, ...newProfile };
-
-                showToast(`Profile created for ${email}. Logging in...`, "success");
-                navBtns.login.classList.add('hidden');
-                navBtns.logout.classList.remove('hidden');
-
-                if (currentUser.role === 'employee') initEmployeeDashboard();
-                if (currentUser.role === 'manager') initManagerDashboard();
-                if (currentUser.role === 'client') initClientDashboard();
-                if (currentUser.role === 'owner') initOwnerDashboard();
-
-                const roleViewMap = { 'employee': 'employee', 'manager': 'manager', 'client': 'client', 'owner': 'owner' };
-                switchView(roleViewMap[currentUser.role]);
+                // Profile not found (Deleted or Unauthorized)
+                console.warn("User authenticated but no profile found.");
+                await signOut(auth);
+                showToast("Account not found or access revoked. Please contact Admin.", "error");
             }
         } catch (error) {
             console.error("Login error:", error);
@@ -977,12 +952,18 @@ function initOwnerDashboard() {
                     const userName = userItem.name || userItem.email;
                     const userRole = userItem.role;
 
-                    if (confirm('Are you sure you want to remove this user? This cannot be undone.')) {
+                    if (confirm(`Are you sure you want to remove ${userName}? All their assigned tasks will also be deleted.`)) {
                         try {
+                            // 1. Delete User Profile
                             await deleteDoc(doc(db, "users", uid));
-                            // Note: This only deletes from Firestore, not Auth.
 
-                            // Notify Managers if an employee is removed
+                            // 2. Delete Assigned Tasks
+                            const qTasks = query(collection(db, "tasks"), where("assignedTo", "==", userName));
+                            const taskSnaps = await getDocs(qTasks);
+                            const deletePromises = taskSnaps.docs.map(d => deleteDoc(doc(db, "tasks", d.id)));
+                            await Promise.all(deletePromises);
+
+                            // 3. Notify Managers
                             if (userRole === 'employee') {
                                 await addDoc(collection(db, "notifications"), {
                                     message: `Admin removed employee: ${userName}`,
@@ -990,6 +971,7 @@ function initOwnerDashboard() {
                                     createdAt: Date.now()
                                 });
                             }
+                            showToast(`User ${userName} and their tasks removed.`, "success");
                         } catch (err) {
                             console.error("Error deleting user:", err);
                             showToast("Failed to delete user.", "error");
