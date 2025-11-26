@@ -296,15 +296,35 @@ onAuthStateChanged(auth, async (user) => {
             if (currentUser.role === 'client') initClientDashboard();
             if (currentUser.role === 'owner') initOwnerDashboard();
 
-            // Redirect if on landing page
-            const activeView = document.querySelector('.view.active');
-            if (activeView && activeView.id === 'view-landing') {
-                const roleViewMap = { 'employee': 'employee', 'manager': 'manager', 'client': 'client', 'owner': 'owner' };
-                switchView(roleViewMap[currentUser.role]);
+            if (user) {
+                // User is signed in
+                const uid = user.uid;
+                document.getElementById('nav-login').classList.add('hidden');
+                document.getElementById('nav-logout').classList.remove('hidden');
+                document.getElementById('nav-careers').classList.add('hidden'); // Hide Careers for logged-in users
+
+                // Fetch user role
+                try {
+                    const userDoc = await getDoc(doc(db, "users", uid));
+                    if (userDoc.exists()) {
+                        currentUser = userDoc.data();
+                        console.log("User loaded:", currentUser);
+                        switchView(currentUser.role);
+                    } else {
+                        console.error("User document not found!");
+                        signOut(auth);
+                    }
+                } catch (error) {
+                    console.error("Error fetching user profile:", error);
+                }
+            } else {
+                // User is signed out
+                currentUser = null;
+                document.getElementById('nav-login').classList.remove('hidden');
+                document.getElementById('nav-logout').classList.add('hidden');
+                document.getElementById('nav-careers').classList.remove('hidden'); // Show Careers for guests
+                switchView('landing');
             }
-        } else {
-            console.error("Auth valid but Firestore profile missing.");
-            await signOut(auth);
         }
     } else {
         console.log("No active session.");
