@@ -971,7 +971,7 @@ function initManagerDashboard() {
 
 // --- 6. Owner Dashboard Logic ---
 function initOwnerDashboard() {
-    loadOwnerInquiries();
+    // loadOwnerInquiries(); // Logic is inline below
     loadOwnerBookings(); // Load AI bookings
     loadOwnerTasks();
     loadGlobalTaskMonitoring();
