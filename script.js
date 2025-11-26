@@ -279,7 +279,14 @@ onAuthStateChanged(auth, async (user) => {
         // 1. Update Navigation UI
         navBtns.login.classList.add('hidden');
         navBtns.logout.classList.remove('hidden');
-        navBtns.careers.classList.add('hidden'); // Hide Careers for logged-in users
+        // Only hide Careers if the user is an internal role (Owner, Manager, Employee)
+        // If they are a Client or just a User, they might want to see it (or we can decide logic)
+        // For now, let's keep it visible for everyone so they can apply, OR hide it only for Owner/Manager.
+        // The prompt says "required to signin... before entering details". This implies they sign in as a generic user.
+        // So we should NOT hide the Careers tab for them.
+        // Let's remove the line that hides it for everyone.
+        // navBtns.careers.classList.add('hidden'); <--- REMOVED
+
 
         // 2. Fetch User Profile
         // Try to find user by email (since we used email as key in seed, but moving to UID is better)
@@ -300,7 +307,12 @@ onAuthStateChanged(auth, async (user) => {
             const activeView = document.querySelector('.view.active');
             if (activeView && (activeView.id === 'view-landing' || activeView.id === 'view-login')) {
                 const roleViewMap = { 'employee': 'employee', 'manager': 'manager', 'client': 'client', 'owner': 'owner' };
-                switchView(roleViewMap[currentUser.role]);
+                if (roleViewMap[currentUser.role]) {
+                    switchView(roleViewMap[currentUser.role]);
+                } else {
+                    // If no specific dashboard role (e.g. applicant), go to Careers or Home
+                    switchView('careers');
+                }
             }
         } else {
             console.error("Auth valid but Firestore profile missing.");
@@ -1844,9 +1856,22 @@ async function loadCareers() {
 
 // Application Modal Logic
 window.openApplicationModal = (jobId, jobTitle) => {
+    if (!auth.currentUser) {
+        showToast("Please log in to apply for this role.", "warning");
+        switchView('login');
+        return;
+    }
     const modal = document.getElementById('application-modal');
     document.getElementById('app-role-title').textContent = jobTitle;
     document.getElementById('app-role-id').value = jobId;
+
+    // Pre-fill user details if available
+    if (currentUser) {
+        document.getElementById('app-name').value = currentUser.name || '';
+        document.getElementById('app-email').value = currentUser.email || '';
+        document.getElementById('app-phone').value = currentUser.phone || '';
+    }
+
     modal.classList.remove('hidden');
     modal.style.display = 'flex';
 };
