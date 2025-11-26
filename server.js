@@ -20,15 +20,30 @@ const upload = multer({
 });
 
 // Google Drive Configuration
-const KEY_FILE_PATH = path.join(__dirname, 'service-account.json');
+const DRIVE_FOLDER_ID = process.env.DRIVE_FOLDER_ID || '1YbIXDblvUzV1iZ8IZCN-2X1ScH6zEbpE';
 const SCOPES = ['https://www.googleapis.com/auth/drive.file'];
-const DRIVE_FOLDER_ID = '1YbIXDblvUzV1iZ8IZCN-2X1ScH6zEbpE';
 
-// Authenticate with Google
-const auth = new google.auth.GoogleAuth({
-    keyFile: KEY_FILE_PATH,
-    scopes: SCOPES,
-});
+// Construct Credentials from Env Vars
+let auth;
+if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+    // Option 1: Full JSON string in one env var (Best for platforms like Render/Heroku)
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: SCOPES,
+    });
+} else {
+    // Option 2: Local file fallback (for development)
+    const KEY_FILE_PATH = path.join(__dirname, 'service-account.json');
+    if (fs.existsSync(KEY_FILE_PATH)) {
+        auth = new google.auth.GoogleAuth({
+            keyFile: KEY_FILE_PATH,
+            scopes: SCOPES,
+        });
+    } else {
+        console.error("CRITICAL: No Google Credentials found (Env Var or File).");
+    }
+}
 
 const drive = google.drive({ version: 'v3', auth });
 

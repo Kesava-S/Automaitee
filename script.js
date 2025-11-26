@@ -1881,8 +1881,12 @@ if (appForm) {
             const formData = new FormData();
             formData.append('resume', resumeFile);
 
+            // TODO: Update this URL to your deployed backend (e.g., https://your-app.onrender.com)
+            // If frontend and backend are on the same domain, use '/upload-resume'
+            const BACKEND_URL = 'http://localhost:3000';
+
             try {
-                const response = await fetch('http://localhost:3000/upload-resume', {
+                const response = await fetch(`${BACKEND_URL}/upload-resume`, {
                     method: 'POST',
                     body: formData
                 });
