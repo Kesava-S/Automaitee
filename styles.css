@@ -60,7 +60,8 @@ body {
 }
 
 .logo-img {
-    height: 60px;
+    height: 80px;
+    /* Increased from 60px */
     width: auto;
     object-fit: contain;
 }
