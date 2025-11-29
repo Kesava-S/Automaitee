@@ -375,11 +375,11 @@ select:focus {
     overflow: hidden;
     transition: max-height 0.3s ease;
     background: var(--bg-light);
-    border-top: 1px solid transparent;
+    border-top: 0;
 }
 
 .accordion-item.active>.accordion-content {
-    border-top-color: #e2e8f0;
+    border-top: 1px solid #e2e8f0;
 }
 
 .accordion-content ul {

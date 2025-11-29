@@ -244,8 +244,8 @@ if (accordionContainer) {
                 <span style="font-size: 1.1rem; font-weight: 700;">${category.title}</span>
                 <span class="accordion-icon">▼</span>
             </div>
-            <div class="accordion-content" style="padding: 0.5rem;">
-                <div class="nested-accordion"></div>
+            <div class="accordion-content">
+                <div class="nested-accordion" style="padding: 0.5rem;"></div>
             </div>
         `;
 
