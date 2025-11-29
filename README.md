@@ -1,6 +1,6 @@
-# Kondamaal Website
+# kondamaal AutoTech Website
 
-This is a prototype website for Kondamaal, a Marketing Automation company.
+This is a prototype website for kondamaal AutoTech, a Marketing Automation company.
 
 ## Features
 
