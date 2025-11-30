@@ -268,6 +268,17 @@ const servicesData = [
         ],
         whyMatters: "Reduce admin overhead and free up time for core business activities.",
         cta: "Automate Operations"
+    },
+    {
+        title: "Data Cleaning & Database Automation",
+        tagline: "Clean data. Reduce errors. Automate reporting.",
+        features: [
+            { icon: "🔄", title: "Import & Export Workflows", desc: "CSV to database to reporting automated." },
+            { icon: "✅", title: "Data Validation & Deduplication", desc: "Keep records accurate and consistent." },
+            { icon: "📊", title: "Recurring Reports", desc: "Sales, inventory, and client reports generated automatically." }
+        ],
+        whyMatters: "Reduce errors, save time, and maintain reliable data for decision-making.",
+        cta: "Start Data Automation"
     }
 ];
 
