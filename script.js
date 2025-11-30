@@ -257,6 +257,17 @@ const servicesData = [
         ],
         whyMatters: "All-in-one packages combining lead capture, CRM, social, support, and funnel in one workflow.",
         cta: "Build My Funnel"
+    },
+    {
+        title: "Internal Tools for SMEs",
+        tagline: "Streamline tasks, track projects, and simplify workflows.",
+        features: [
+            { icon: "🖥️", title: "Employee & Project Dashboards", desc: "Manage data and projects efficiently." },
+            { icon: "⚙️", title: "Task Automation", desc: "Daily reports, approvals, and reminders automated." },
+            { icon: "📂", title: "Client Portals", desc: "Feedback collection and project tracking." }
+        ],
+        whyMatters: "Reduce admin overhead and free up time for core business activities.",
+        cta: "Automate Operations"
     }
 ];
 
