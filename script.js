@@ -221,6 +221,30 @@ const servicesData = [
         ],
         whyMatters: "Get a unified view of customer interactions and make smarter sales decisions effortlessly.",
         cta: "Start CRM Automation"
+    },
+    {
+        title: "Marketing Funnel Automation (End-to-End)",
+        tagline: "From Ad Click to Retention. The Complete Journey.",
+        isHighlight: true,
+        workflow: ["Ad click", "Lead", "Qualification", "Nurture", "Conversion", "Upsell", "CRM Update", "Retention"],
+        features: [
+            { icon: "🎯", title: "Ads", desc: "Meta, Google" },
+            { icon: "📄", title: "Landing pages", desc: "Form capture → auto follow-up" },
+            { icon: "📧", title: "Nurturing", desc: "Email/SMS/WhatsApp nurturing" },
+            { icon: "💹", title: "Tracking", desc: "Conversion & upsell tracking" }
+        ],
+        differentiation: [
+            "Pre-built industry templates: e-commerce, real estate, service businesses",
+            "“All-in-one” funnels instead of separate tools",
+            "GDPR-compliant, UK-based best practices"
+        ],
+        packages: [
+            { name: "Starter", services: "Lead capture + email auto + basic CRM integration", price: "£500 setup", fee: "£50-£100/month" },
+            { name: "Growth", services: "Starter + social automation + dashboards", price: "£1,500 setup", fee: "£150/month" },
+            { name: "Premium", services: "Growth + chatbot + invoice + full funnel automation", price: "£3,500 setup", fee: "£300-£500/month" }
+        ],
+        whyMatters: "All-in-one packages combining lead capture, CRM, social, support, and funnel in one workflow.",
+        cta: "Build My Funnel"
     }
 ];
 
@@ -290,8 +314,71 @@ if (accordionContainer) {
         // 2. Create Content based on Type
         let contentHTML = '';
 
-        if (category.features) {
-            // Render New Rich Layout
+        if (category.isHighlight) {
+            // Render Highlighted Complex Layout
+            contentHTML = `
+                <div class="service-detail-view">
+                    <p class="service-tagline">${category.tagline}</p>
+                    
+                    <div class="workflow-container">
+                        ${category.workflow.map((step, index) => `
+                            <span class="workflow-step">${step}</span>
+                            ${index < category.workflow.length - 1 ? '<span class="workflow-arrow">→</span>' : ''}
+                        `).join('')}
+                    </div>
+
+                    <div class="feature-grid">
+                        ${category.features.map(f => `
+                            <div class="feature-item">
+                                <span class="feature-icon">${f.icon}</span>
+                                <div class="feature-text">
+                                    <strong>${f.title}</strong> – ${f.desc}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <h4 style="margin-bottom: 1rem; color: var(--color-primary);">Packages & Pricing</h4>
+                    <table class="packages-table">
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Services</th>
+                                <th>Price (GBP)</th>
+                                <th>Ongoing Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${category.packages.map(pkg => `
+                                <tr>
+                                    <td><strong>${pkg.name}</strong></td>
+                                    <td>${pkg.services}</td>
+                                    <td>${pkg.price}</td>
+                                    <td>${pkg.fee}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+
+                    <h4 style="margin-bottom: 1rem; color: var(--color-primary);">Why Choose Us?</h4>
+                    <ul class="differentiation-list">
+                        ${category.differentiation.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+
+                    <div class="why-matters-box">
+                        <strong>Why it matters:</strong> ${category.whyMatters}
+                    </div>
+                    <button class="btn-primary cta-btn" onclick="document.querySelector('.inquiry-section').scrollIntoView({behavior: 'smooth'})">${category.cta}</button>
+                </div>
+            `;
+
+            // Append content directly
+            const contentDiv = parentItem.querySelector('.nested-accordion');
+            contentDiv.innerHTML = contentHTML;
+            contentDiv.style.padding = '0';
+
+        } else if (category.features) {
+            // Render Standard Rich Layout
             contentHTML = `
                 <div class="service-detail-view">
                     <p class="service-tagline">${category.tagline}</p>

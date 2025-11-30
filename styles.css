@@ -465,6 +465,80 @@ select:focus {
     }
 }
 
+/* Highlight Service Styles */
+.workflow-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: var(--bg-light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.workflow-step {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+.workflow-arrow {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.packages-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.packages-table th,
+.packages-table td {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.packages-table th {
+    background: var(--bg-light);
+    color: var(--color-primary);
+}
+
+.packages-table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.differentiation-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .differentiation-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.differentiation-list li {
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.differentiation-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
 /* Login Styles */
 .login-container {
     max-width: 400px;
