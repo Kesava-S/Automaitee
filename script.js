@@ -198,6 +198,18 @@ const servicesData = [
         ],
         whyMatters: "Make smarter business decisions with minimal effort, even if you’re not a data expert.",
         cta: "See Your Dashboard"
+    },
+    {
+        title: "Invoice & Payment Automation",
+        tagline: "Automate billing. Chase payments. Get paid faster.",
+        features: [
+            { icon: "🧾", title: "Auto Invoicing", desc: "Generate and send invoices automatically." },
+            { icon: "⏰", title: "Smart Payment Reminders", desc: "Follow up with clients automatically; pay only on success." },
+            { icon: "🔗", title: "Accounting Integration", desc: "Sync with Xero, QuickBooks, and more." },
+            { icon: "💳", title: "Recurring & Multi-Channel Support", desc: "Handle subscriptions and multiple payment options." }
+        ],
+        whyMatters: "Get paid on time without manual effort and keep your accounting simple and accurate.",
+        cta: "Automate Billing Now"
     }
 ];
 
