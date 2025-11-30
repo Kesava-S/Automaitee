@@ -220,7 +220,7 @@ const servicesData = [
             { icon: "⭐", title: "Lead Scoring & Alerts", desc: "Prioritize high-value leads with automated notifications." }
         ],
         whyMatters: "Get a unified view of customer interactions and make smarter sales decisions effortlessly.",
-        cta: "Integrate Your CRM"
+        cta: "Start CRM Automation"
     }
 ];
 
