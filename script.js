@@ -217,7 +217,7 @@ const servicesData = [
         ]
     },
     {
-        category: "Social Media Management",
+        category: "2. Social Media Management",
         services: [
             {
                 title: "Social Media & Content Automation",
@@ -233,7 +233,7 @@ const servicesData = [
         ]
     },
     {
-        category: "2. Integrations",
+        category: "3. Integrations",
         services: [
             {
                 title: "CRM Integration",
@@ -261,7 +261,7 @@ const servicesData = [
         ]
     },
     {
-        category: "3. Development",
+        category: "4. Development",
         services: [
             {
                 title: "Website Development",
@@ -288,7 +288,7 @@ const servicesData = [
         ]
     },
     {
-        category: "4. End-to-End Automation",
+        category: "5. End-to-End Automation",
         services: [
             {
                 title: "Marketing Funnel Automation (End-to-End)",
