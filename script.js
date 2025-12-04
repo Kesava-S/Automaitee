@@ -203,29 +203,6 @@ const servicesData = [
                 cta: "See Your Dashboard"
             },
             {
-                title: "Invoice & Payment Automation",
-                tagline: "Automate billing. Chase payments. Get paid faster.",
-                features: [
-                    { icon: "🧾", title: "Auto Invoicing", desc: "Generate and send invoices automatically." },
-                    { icon: "⏰", title: "Smart Payment Reminders", desc: "Follow up with clients automatically; pay only on success." },
-                    { icon: "🔗", title: "Accounting Integration", desc: "Sync with Xero, QuickBooks, and more." },
-                    { icon: "💳", title: "Recurring & Multi-Channel Support", desc: "Handle subscriptions and multiple payment options." }
-                ],
-                whyMatters: "Get paid on time without manual effort and keep your accounting simple and accurate.",
-                cta: "Automate Billing Now"
-            },
-            {
-                title: "Data Cleaning & Database Automation",
-                tagline: "Clean data. Reduce errors. Automate reporting.",
-                features: [
-                    { icon: "🔄", title: "Import & Export Workflows", desc: "CSV to database to reporting automated." },
-                    { icon: "✅", title: "Data Validation & Deduplication", desc: "Keep records accurate and consistent." },
-                    { icon: "📊", title: "Recurring Reports", desc: "Sales, inventory, and client reports generated automatically." }
-                ],
-                whyMatters: "Reduce errors, save time, and maintain reliable data for decision-making.",
-                cta: "Start Data Automation"
-            },
-            {
                 title: "Internal Tools for SMEs",
                 tagline: "Streamline tasks, track projects, and simplify workflows.",
                 features: [
