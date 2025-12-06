@@ -166,57 +166,6 @@ async function seedDatabase() {
 
 const servicesData = [
     {
-        category: "1. Automation Services",
-        services: [
-            {
-                title: "Marketing Automation",
-                tagline: "Capture. Engage. Convert.",
-                features: [
-                    { icon: "⚡", title: "Instant Lead Capture", desc: "Automatically get leads from your website or ads and send them to your CRM." },
-                    { icon: "🔄", title: "Automated Follow-Ups", desc: "Personalized WhatsApp or email messages, sent instantly." },
-                    { icon: "📊", title: "Easy Analytics", desc: "Track campaigns, leads, and conversions effortlessly." },
-
-                ],
-                whyMatters: "Never miss a lead, engage instantly, and make smarter marketing decisions—without extra work.",
-                cta: "See It in Action"
-            },
-            {
-                title: "Customer Support & Chatbot Automation",
-                tagline: "Respond faster. Reduce workload. Delight customers.",
-                features: [
-                    { icon: "💬", title: "Multi-Channel Chatbots", desc: "Website, WhatsApp, and Messenger." },
-                    { icon: "🎫", title: "Auto-Ticketing", desc: "Queries converted into tickets automatically." },
-                    { icon: "🤖", title: "Smart FAQ Automation", desc: "Auto-replies for FAQs with human escalation for complex issues." }
-                ],
-                whyMatters: "Get instant support automation, faster resolution, and happier customers—all without extra effort.",
-                cta: "Automate Support Now"
-            },
-            {
-                title: "Reporting & Dashboard Automation",
-                tagline: "Track performance. Spot issues. Make better decisions.",
-                features: [
-                    { icon: "📈", title: "Integrated Data", desc: "Pull data from CRM, website, social ads, and sales automatically." },
-                    { icon: "📊", title: "Automated Dashboards", desc: "Weekly/monthly reports with clear, actionable insights." },
-                    { icon: "🔔", title: "Alerts & Predictive Notifications", desc: "Get notified when leads or revenue drop." }
-                ],
-                whyMatters: "Make smarter business decisions with minimal effort, even if you’re not a data expert.",
-                cta: "See Your Dashboard"
-            },
-            {
-                title: "Internal Tools for SMEs",
-                tagline: "Streamline tasks, track projects, and simplify workflows.",
-                features: [
-                    { icon: "🖥️", title: "Employee & Project Dashboards", desc: "Manage data and projects efficiently." },
-                    { icon: "⚙️", title: "Task Automation", desc: "Daily reports, approvals, and reminders automated." },
-                    { icon: "📂", title: "Client Portals", desc: "Feedback collection and project tracking." }
-                ],
-                whyMatters: "Reduce admin overhead and free up time for core business activities.",
-                cta: "Automate Operations"
-            },
-
-        ]
-    },
-    {
         category: "2. Social Media Management",
         services: [
             {
@@ -230,34 +179,6 @@ const servicesData = [
                 whyMatters: "Maintain a professional digital presence without extra effort.",
                 cta: "Start Social Automation"
             }
-        ]
-    },
-    {
-        category: "3. Integrations",
-        services: [
-            {
-                title: "CRM Integration",
-                tagline: "Unify leads. Prioritize sales. Close deals faster.",
-                features: [
-                    { icon: "🔌", title: "Setup & Connect", desc: "Integrate forms, ads, email, WhatsApp, and social channels into your CRM." },
-                    { icon: "🗂️", title: "Automated Lead Management", desc: "Assign, tag, and remind sales teams automatically." },
-                    { icon: "⭐", title: "Lead Scoring & Alerts", desc: "Prioritize high-value leads with automated notifications." }
-                ],
-                whyMatters: "Get a unified view of customer interactions and make smarter sales decisions effortlessly.",
-                cta: "Start CRM Automation"
-            },
-            {
-                title: "Third-party App Integrations",
-                tagline: "Connect your favorite tools. Automate workflows.",
-                features: [
-                    { icon: "🔗", title: "API Connections", desc: "Seamlessly connect different software platforms." },
-                    { icon: "⚡", title: "n8n Integration", desc: "Automate workflows between apps without code." },
-                    { icon: "🎣", title: "Custom Webhooks", desc: "Trigger actions in real-time across systems." }
-                ],
-                whyMatters: "Eliminate data silos and make your tools talk to each other.",
-                cta: "Connect My Apps"
-            },
-
         ]
     },
     {
