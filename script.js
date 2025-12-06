@@ -374,8 +374,7 @@ function initScrollAnimations() {
 const backBtn = document.getElementById('back-to-home');
 if (backBtn) {
     backBtn.addEventListener('click', () => {
-        switchView('landing');
-        window.scrollTo(0, 0); // Scroll to top of home page
+        window.location.reload();
     });
 }
 
