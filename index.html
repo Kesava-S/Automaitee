@@ -1032,6 +1032,7 @@
                 document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
                 document.getElementById('view-landing').classList.remove('hidden');
                 document.getElementById('view-landing').classList.add('active');
+                window.scrollTo(0, 0); // Scroll to top of home page
             });
         }
 

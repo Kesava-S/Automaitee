@@ -1143,8 +1143,10 @@ textarea.error {
 }
 
 .sd-hero h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    font-size: 5rem;
+    /* Larger on desktop */
+    font-weight: 800;
+    /* Bolder */
     background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -1153,16 +1155,41 @@ textarea.error {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    letter-spacing: -0.03em;
+    /* Tighter tracking */
+    line-height: 1.1;
 }
 
 .sd-hero p {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    /* Larger on desktop */
     color: var(--text-light);
-    max-width: 700px;
-    line-height: 1.4;
+    max-width: 800px;
+    line-height: 1.5;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .sd-hero {
+        padding: 1rem;
+        height: 80vh;
+        /* Slightly shorter on mobile */
+    }
+
+    .sd-hero h1 {
+        font-size: 2.5rem;
+        /* Much smaller on mobile */
+        margin-bottom: 1rem;
+    }
+
+    .sd-hero p {
+        font-size: 1.1rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
 }
 
 .sd-section {

@@ -371,9 +371,13 @@ function initScrollAnimations() {
 }
 
 // Back Button Logic
-document.getElementById('back-to-home').addEventListener('click', () => {
-    switchView('landing');
-});
+const backBtn = document.getElementById('back-to-home');
+if (backBtn) {
+    backBtn.addEventListener('click', () => {
+        switchView('landing');
+        window.scrollTo(0, 0); // Scroll to top of home page
+    });
+}
 
 // --- 2. Navigation & Views ---
 const views = {
