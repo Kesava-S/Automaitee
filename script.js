@@ -321,6 +321,26 @@ const servicesData = [
                 cta: "Automate Processes"
             }
         ]
+    },
+    {
+        category: "6. Process & Task Automation",
+        services: [
+            {
+                title: "Business Workflow Automation",
+                tagline: "Streamline operations from data entry to notifications.",
+                features: [
+                    { icon: "📝", title: "Data Entry", desc: "Google Sheets ↔ CRM synchronization." },
+                    { icon: "🎣", title: "Lead Management", desc: "Lead capture → email/SMS follow-up." },
+                    { icon: "💳", title: "Finance", desc: "Invoice reminders & payment tracking." },
+                    { icon: "👥", title: "HR Processes", desc: "Onboarding/offboarding steps." },
+                    { icon: "📂", title: "Admin", desc: "File organisation, report generation." },
+                    { icon: "📱", title: "Social Media", desc: "Social media posting workflows." },
+                    { icon: "🔔", title: "Alerts", desc: "Slack/WhatsApp notifications for events." }
+                ],
+                whyMatters: "Automate repetitive tasks to save time and reduce errors.",
+                cta: "Automate My Workflows"
+            }
+        ]
     }
 ];
 
