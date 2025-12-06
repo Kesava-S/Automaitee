@@ -171,10 +171,18 @@ const servicesData = [
         services: [
             {
                 title: "Assisted Social Media Automation",
-                tagline: "Content coming soon...",
-                features: [],
-                whyMatters: "Content coming soon...",
-                cta: "Learn More"
+                tagline: "Low-cost, efficient, and scalable social media management.",
+                features: [
+                    { title: "Content Intake & Approval", desc: "Client submits ideas via Google Form/Notion. n8n routes submissions to team and SME for review. Approved content moves to scheduling." },
+                    { title: "Automated Scheduling & Publishing", desc: "Schedule posts on Facebook, Instagram, LinkedIn, X (Twitter). Apply platform-specific formats and posting rules. Manual oversight ensures quality." },
+                    { title: "Content Repurposing", desc: "Auto-generate captions, hashtags, and post variations. Convert content for multiple platforms. Drafts sent for team refinement." },
+                    { title: "Engagement Monitoring", desc: "Track comments, DMs, and mentions automatically. Alerts sent to Slack/WhatsApp. Team manually responds or escalates issues." },
+                    { title: "Performance Reporting", desc: "Weekly snapshots & monthly reports generated automatically. Metrics: reach, engagement, followers, top posts." },
+                    { title: "Lead Capture from Social Channels", desc: "Collect leads from comments, DMs, and lead ads. Auto-send welcome messages and push to CRM. Notify sales team for manual follow-up." },
+                    { title: "Assisted Creative Management", desc: "Automate file organization, versioning, and draft approvals. Team handles final design, editing, and approval." }
+                ],
+                whyMatters: "Repetitive tasks handled by automation. Human oversight ensures creativity, accuracy, and brand consistency.",
+                cta: "Start Automating"
             }
         ]
     },
