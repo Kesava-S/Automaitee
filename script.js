@@ -203,10 +203,18 @@ const servicesData = [
         services: [
             {
                 title: "Marketing Automation",
-                tagline: "Content coming soon...",
-                features: [],
-                whyMatters: "Content coming soon...",
-                cta: "Learn More"
+                tagline: "Scale your reach and nurture leads automatically.",
+                features: [
+                    { title: "Lead Capture & Nurture Automation", desc: "Auto-collect leads from website forms, ads, social DMs. Send instant welcome emails/SMS. Add leads into CRM with tags and follow-up tasks." },
+                    { title: "Email & Drip Campaign Automation", desc: "Auto-trigger drip sequences (offers, reminders, onboarding). Segment customers based on activity, behaviour, or tags." },
+                    { title: "Social Media Automation", desc: "Schedule posts across Facebook, Instagram, LinkedIn, X. Auto-post announcements, offers, and updates from a central source." },
+                    { title: "WhatsApp / SMS Marketing", desc: "Send promotional messages, reminders, or event alerts. Trigger personalised replies based on customer input." },
+                    { title: "Ad Performance Reporting", desc: "Pull data from Meta/Google Ads automatically. Generate daily/weekly reports and send to Slack/Email." },
+                    { title: "Customer Segmentation & Tagging", desc: "Auto-tag customers based on behaviour, purchase history, or engagement. Sync segments with email tools (Mailchimp, HubSpot, Zoho)." },
+                    { title: "Review & Feedback Automation", desc: "Auto-request Google/Trustpilot reviews post-purchase. Store feedback in CRM and notify team for low ratings." }
+                ],
+                whyMatters: "Engage customers at the right time, with the right message, without manual effort.",
+                cta: "Boost Marketing"
             }
         ]
     },
@@ -502,6 +510,20 @@ function switchView(viewName) {
 
         // Scroll to top
         window.scrollTo(0, 0);
+
+        // 3. Update Navbar Active State
+        // Remove active class from all buttons
+        Object.values(navBtns).forEach(btn => btn.classList.remove('active'));
+
+        // Add active class based on view
+        if (viewName === 'landing') {
+            navBtns.home.classList.add('active');
+        } else if (viewName === 'careers') {
+            navBtns.careers.classList.add('active');
+        } else if (viewName === 'login') {
+            navBtns.login.classList.add('active');
+        }
+        // Dashboards don't necessarily need a highlighted nav button, or we could highlight 'Home' or a 'Dashboard' button if it existed.
     } else {
         console.error(`View '${viewName}' not found.`);
     }
