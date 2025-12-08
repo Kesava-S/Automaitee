@@ -100,7 +100,8 @@ body {
     }
 
     .logo span {
-        font-size: 1rem;
+        font-size: 1.3rem;
+        /* Increased from 1rem */
     }
 }
 
@@ -171,8 +172,7 @@ body {
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 3.8rem;
-        /* Increased from 3rem */
+        /* font-size: 3.8rem; - Removed to match desktop */
         line-height: 1.1;
     }
 }
@@ -187,12 +187,7 @@ body {
     animation: fadeInUp 1.2s var(--ease-out-expo) 0.2s forwards;
 }
 
-@media (max-width: 768px) {
-    .hero .subtitle {
-        font-size: 1.5rem;
-        /* Increased from 1.2rem */
-    }
-}
+
 
 .hero-tagline {
     font-size: 1.2rem;
@@ -202,12 +197,7 @@ body {
     animation: fadeInUp 1.2s var(--ease-out-expo) 0.4s forwards;
 }
 
-@media (max-width: 768px) {
-    .hero-tagline {
-        font-size: 1.3rem;
-        /* Added mobile size */
-    }
-}
+
 
 @keyframes fadeInUp {
     to {
