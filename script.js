@@ -170,7 +170,7 @@ const servicesData = [
         category: "1. Comprehensive Business Automation",
         services: [
             {
-                title: "Automate Your Business Processes",
+                title: "Automate Your Business Marketing",
                 tagline: "Save Hours Every Week",
                 features: [
                     { title: "Social Media Posting Automation", desc: "Schedule posts across Instagram, Facebook, LinkedIn, and X automatically at the best times." },
