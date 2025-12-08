@@ -167,22 +167,27 @@ async function seedDatabase() {
 
 const servicesData = [
     {
-        category: "1. Assisted Social Media Automation",
+        category: "1. Comprehensive Business Automation",
         services: [
             {
-                title: "Assisted Social Media Automation",
-                tagline: "Low-cost, efficient, and scalable social media management.",
+                title: "Automate Your Business Processes",
+                tagline: "Save Hours Every Week",
                 features: [
-                    { title: "Content Intake & Approval", desc: "Client submits ideas via Google Form/Notion. n8n routes submissions to team and SME for review. Approved content moves to scheduling." },
-                    { title: "Automated Scheduling & Publishing", desc: "Schedule posts on Facebook, Instagram, LinkedIn, X (Twitter). Apply platform-specific formats and posting rules. Manual oversight ensures quality." },
-                    { title: "Content Repurposing", desc: "Auto-generate captions, hashtags, and post variations. Convert content for multiple platforms. Drafts sent for team refinement." },
-                    { title: "Engagement Monitoring", desc: "Track comments, DMs, and mentions automatically. Alerts sent to Slack/WhatsApp. Team manually responds or escalates issues." },
-                    { title: "Performance Reporting", desc: "Weekly snapshots & monthly reports generated automatically. Metrics: reach, engagement, followers, top posts." },
-                    { title: "Lead Capture from Social Channels", desc: "Collect leads from comments, DMs, and lead ads. Auto-send welcome messages and push to CRM. Notify sales team for manual follow-up." },
-                    { title: "Assisted Creative Management", desc: "Automate file organization, versioning, and draft approvals. Team handles final design, editing, and approval." }
+                    { title: "Social Media Posting Automation", desc: "Schedule posts across Instagram, Facebook, LinkedIn, and X automatically at the best times." },
+                    { title: "Lead Generation Automation", desc: "Capture leads from ads, website forms, and WhatsApp in real time, and route them directly to your CRM or sales team." },
+                    { title: "CRM Automation", desc: "Automatically update contacts, lead stages, and assign tasks to your team — keeping your CRM always up-to-date." },
+                    { title: "Paid Ads Automation", desc: "Pull ad metrics from Facebook, Instagram, and Google Ads, generate performance reports, and receive instant alerts for anomalies." },
+                    { title: "Content Pipeline Automation", desc: "Streamline content creation from idea → approval → scheduled posting, ensuring consistent posting without delays." }
                 ],
-                whyMatters: "Repetitive tasks handled by automation. Human oversight ensures creativity, accuracy, and brand consistency.",
-                cta: "Start Automating"
+                whyMatters: "We help businesses automate social media posting, lead capture, CRM updates, ad reporting, and content workflows — all using n8n. Our custom workflows ensure every lead is followed up instantly and your marketing runs smoothly without manual effort.",
+                differentiation: [
+                    "Save hours of manual work each week",
+                    "Never miss a lead or follow-up",
+                    "Track ad performance automatically",
+                    "Post content consistently and on schedule",
+                    "Fully customizable workflows tailored to your business"
+                ],
+                cta: "Book a Demo"
             }
         ]
     },
@@ -206,26 +211,7 @@ const servicesData = [
             }
         ]
     },
-    {
-        category: "3. Marketing Automation",
-        services: [
-            {
-                title: "Marketing Automation",
-                tagline: "Scale your reach and nurture leads automatically.",
-                features: [
-                    { title: "Lead Capture & Nurture Automation", desc: "Auto-collect leads from website forms, ads, social DMs. Send instant welcome emails/SMS. Add leads into CRM with tags and follow-up tasks." },
-                    { title: "Email & Drip Campaign Automation", desc: "Auto-trigger drip sequences (offers, reminders, onboarding). Segment customers based on activity, behaviour, or tags." },
-                    { title: "Social Media Automation", desc: "Schedule posts across Facebook, Instagram, LinkedIn, X. Auto-post announcements, offers, and updates from a central source." },
-                    { title: "WhatsApp / SMS Marketing", desc: "Send promotional messages, reminders, or event alerts. Trigger personalised replies based on customer input." },
-                    { title: "Ad Performance Reporting", desc: "Pull data from Meta/Google Ads automatically. Generate daily/weekly reports and send to Slack/Email." },
-                    { title: "Customer Segmentation & Tagging", desc: "Auto-tag customers based on behaviour, purchase history, or engagement. Sync segments with email tools (Mailchimp, HubSpot, Zoho)." },
-                    { title: "Review & Feedback Automation", desc: "Auto-request Google/Trustpilot reviews post-purchase. Store feedback in CRM and notify team for low ratings." }
-                ],
-                whyMatters: "Engage customers at the right time, with the right message, without manual effort.",
-                cta: "Boost Marketing"
-            }
-        ]
-    },
+
     {
         category: "4. Internal Process and Task Automation",
         services: [
