@@ -32,12 +32,16 @@
     -webkit-font-smoothing: antialiased;
 }
 
+html,
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 /* Apple-Style Navbar */
@@ -170,14 +174,16 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        height: 100dvh;
-        /* Force exact viewport height */
-        min-height: unset;
-        /* Reset min-height */
         width: 100vw;
-        /* Ensure background fills full width */
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        height: 100dvh;
+        min-height: unset;
         padding: 0 1rem;
-        margin: 0;
+        box-sizing: border-box;
     }
 
     .hero h1 {
