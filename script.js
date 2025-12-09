@@ -445,6 +445,7 @@ const views = {
     owner: document.getElementById('view-dashboard-owner'),
     careers: document.getElementById('view-careers'),
     services: document.getElementById('view-services'),
+    privacyPolicy: document.getElementById('view-privacy-policy'),
     serviceDetail: document.getElementById('view-service-detail')
 };
 
@@ -517,7 +518,7 @@ onAuthStateChanged(auth, async (user) => {
 
         // 2. Restore View or Redirect
         const lastView = localStorage.getItem('lastView');
-        const allowedGuestViews = ['landing', 'login', 'careers', 'services'];
+        const allowedGuestViews = ['landing', 'login', 'careers', 'services', 'privacyPolicy'];
 
         if (lastView && allowedGuestViews.includes(lastView)) {
             // If it's a reload on a public page, just replace to ensure state is clean
@@ -659,6 +660,16 @@ if (navBtns.careers) navBtns.careers.addEventListener('click', () => {
     switchView('careers');
     loadCareers(); // Load careers data when navigating to the careers page
 });
+
+// Footer Links
+const footerPrivacyLink = document.getElementById('footer-privacy-link');
+if (footerPrivacyLink) {
+    footerPrivacyLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('privacyPolicy');
+    });
+}
+
 if (navBtns.logout) navBtns.logout.addEventListener('click', async () => {
     try {
         // Unsubscribe all active listeners before logging out
