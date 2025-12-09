@@ -443,14 +443,32 @@ select:focus {
 
 /* Services Accordion */
 .services-section {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 4rem;
+}
+
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(0, 113, 227, 0.05) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .services-section h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--color-primary);
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    padding-top: 4rem;
 }
 
 .accordion-item {
@@ -1173,12 +1191,14 @@ textarea.error {
 }
 
 .service-card {
-    background: #ffffff;
+    background: rgba(28, 28, 30, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 24px;
     padding: 2.5rem 2rem;
     cursor: pointer;
     transition: all 0.5s var(--ease-out-expo);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     /* Subtle light border */
     box-shadow: var(--shadow-card);
     /* Soft shadow */
@@ -1215,7 +1235,7 @@ textarea.error {
     font-size: 2rem;
     /* Reduced from 2.5rem */
     font-weight: 700;
-    color: var(--text-main);
+    color: #f5f5f7;
     margin-top: 1rem;
     margin-bottom: 1rem;
     line-height: 1.1;
@@ -1225,7 +1245,7 @@ textarea.error {
 
 .service-card p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: #86868b;
     line-height: 1.6;
     max-width: 90%;
     margin-bottom: 2rem;
