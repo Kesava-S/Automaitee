@@ -170,10 +170,11 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 100dvh;
-        /* Ensure full coverage on mobile browsers */
+        height: 100dvh;
+        /* Force exact viewport height */
+        min-height: unset;
+        /* Reset min-height */
         padding: 0 1rem;
-        /* Reduce padding to give text more room */
     }
 
     .hero h1 {
