@@ -1678,3 +1678,30 @@ textarea.error {
         /* Smaller on mobile to fit */
     }
 }
+
+/* Cookie Policy Specific Styles (Mirroring Privacy Policy) */
+#view-cookie-policy .hero {
+    min-height: 40vh !important;
+    height: auto !important;
+    padding: 6rem 2rem 4rem !important;
+    justify-content: flex-start;
+}
+
+#view-cookie-policy .hero h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+#view-cookie-policy .card {
+    margin-top: 2rem !important;
+    margin-bottom: 4rem !important;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    #view-cookie-policy .hero h1 {
+        font-size: 3rem;
+    }
+}

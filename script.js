@@ -446,6 +446,7 @@ const views = {
     careers: document.getElementById('view-careers'),
     services: document.getElementById('view-services'),
     privacyPolicy: document.getElementById('view-privacy-policy'),
+    cookiePolicy: document.getElementById('view-cookie-policy'),
     serviceDetail: document.getElementById('view-service-detail')
 };
 
@@ -518,7 +519,7 @@ onAuthStateChanged(auth, async (user) => {
 
         // 2. Restore View or Redirect
         const lastView = localStorage.getItem('lastView');
-        const allowedGuestViews = ['landing', 'login', 'careers', 'services', 'privacyPolicy'];
+        const allowedGuestViews = ['landing', 'login', 'careers', 'services', 'privacyPolicy', 'cookiePolicy'];
 
         if (lastView && allowedGuestViews.includes(lastView)) {
             // If it's a reload on a public page, just replace to ensure state is clean
@@ -684,6 +685,14 @@ if (footerPrivacyLink) {
     footerPrivacyLink.addEventListener('click', (e) => {
         e.preventDefault();
         switchView('privacyPolicy');
+    });
+}
+
+const footerCookieLink = document.getElementById('footer-cookie-link');
+if (footerCookieLink) {
+    footerCookieLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('cookiePolicy');
     });
 }
 
