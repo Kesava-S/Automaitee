@@ -187,11 +187,14 @@ body {
     }
 
     .hero h1 {
-        font-size: 15vw;
-        /* Massive text to fill the width */
-        line-height: 1.0;
+        font-size: 17vw;
+        /* Increased to max out width */
+        line-height: 0.95;
+        /* Tighter line height for massive text */
         margin-bottom: 1.5rem;
         width: 100%;
+        word-break: break-word;
+        /* Ensure long words don't overflow */
     }
 
     .hero .subtitle {
