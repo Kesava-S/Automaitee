@@ -1,6 +1,6 @@
-# Kondamaal AutoTech Website
+# Kondamaal Business Automation Website
 
-This is a prototype website for Kondamaal AutoTech (KAT), a Marketing Automation company.
+This is a prototype website for Kondamaal Business Automation, a Marketing Automation company.
 
 ## Features
 
