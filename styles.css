@@ -169,19 +169,28 @@ body {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        min-height: 100dvh;
+        /* Ensure full coverage on mobile browsers */
+        padding: 0 1rem;
+        /* Reduce padding to give text more room */
+    }
+
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 13vw;
+        /* Massive text to fill the width */
         line-height: 1.1;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        width: 100%;
     }
 
     .hero .subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .hero-tagline {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 }
 
