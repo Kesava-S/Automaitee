@@ -170,8 +170,18 @@ body {
 
 @media (max-width: 768px) {
     .hero h1 {
-        /* font-size: 3.8rem; - Removed to match desktop */
+        font-size: 3.5rem;
         line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
     }
 }
 
