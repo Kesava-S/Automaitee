@@ -444,6 +444,7 @@ const views = {
     client: document.getElementById('view-dashboard-client'),
     owner: document.getElementById('view-dashboard-owner'),
     careers: document.getElementById('view-careers'),
+    services: document.getElementById('view-services'),
     serviceDetail: document.getElementById('view-service-detail')
 };
 
@@ -451,6 +452,7 @@ const navBtns = {
     home: document.getElementById('nav-home'),
     login: document.getElementById('nav-login'),
     logout: document.getElementById('nav-logout'),
+    services: document.getElementById('nav-services'),
     careers: document.getElementById('nav-careers')
 };
 
@@ -490,16 +492,16 @@ onAuthStateChanged(auth, async (user) => {
             if (currentUser.role === 'owner') initOwnerDashboard();
 
             // 4. Redirect if on landing page or login page
+            // 4. Redirect if on landing page or login page
             const activeView = document.querySelector('.view.active');
-            if (activeView && (activeView.id === 'view-landing' || activeView.id === 'view-login')) {
-                const roleViewMap = { 'employee': 'employee', 'manager': 'manager', 'client': 'client', 'owner': 'owner' };
-                if (roleViewMap[currentUser.role]) {
-                    switchView(roleViewMap[currentUser.role]);
-                } else {
-                    // If no specific dashboard role (e.g. applicant), go to Careers or Home
-                    switchView('careers');
-                }
-            }
+            // Check if we are already on the correct view to avoid unnecessary render/history
+            const roleViewMap = { 'employee': 'employee', 'manager': 'manager', 'client': 'client', 'owner': 'owner' };
+            const targetView = roleViewMap[currentUser.role] || 'careers';
+
+            // If we are reloading, we want to REPLACE the current history entry with the correct authenticated view
+            // so that the "Loading..." or initial state isn't stuck in history.
+            switchView(targetView, 'replace');
+
         } else {
             console.error("Auth valid but Firestore profile missing.");
             await signOut(auth);
@@ -515,13 +517,14 @@ onAuthStateChanged(auth, async (user) => {
 
         // 2. Restore View or Redirect
         const lastView = localStorage.getItem('lastView');
-        const allowedGuestViews = ['landing', 'login', 'careers'];
+        const allowedGuestViews = ['landing', 'login', 'careers', 'services'];
 
         if (lastView && allowedGuestViews.includes(lastView)) {
-            switchView(lastView);
+            // If it's a reload on a public page, just replace to ensure state is clean
+            switchView(lastView, 'replace');
         } else {
             // Default to landing if no history or if history was a protected route
-            switchView('landing');
+            switchView('landing', 'replace');
         }
     }
 });
@@ -538,7 +541,7 @@ window.handleServiceCtaClick = function () {
 
 window.switchView = switchView;
 
-function switchView(viewName, addToHistory = true) {
+function switchView(viewName, historyMode = 'push') {
     // 1. Hide all views
     Object.values(views).forEach(el => {
         if (el) {
@@ -554,17 +557,21 @@ function switchView(viewName, addToHistory = true) {
         // Force reflow to enable transition
         void target.offsetWidth;
         target.classList.add('active');
-        console.log(`Switched to view: ${viewName}`);
+        console.log(`Switched to view: ${viewName} [Mode: ${historyMode}]`);
 
         // Save state
         localStorage.setItem('lastView', viewName);
 
         // History API Integration
-        if (addToHistory) {
-            const state = { view: viewName };
-            const url = viewName === 'landing' ? '/' : `#${viewName}`;
+        const state = { view: viewName };
+        const url = viewName === 'landing' ? '/' : `#${viewName}`;
+
+        if (historyMode === 'push') {
             history.pushState(state, '', url);
+        } else if (historyMode === 'replace') {
+            history.replaceState(state, '', url);
         }
+        // If historyMode is 'none', do nothing (used for popstate)
 
         // Scroll to top
         window.scrollTo(0, 0);
@@ -578,6 +585,8 @@ function switchView(viewName, addToHistory = true) {
             navBtns.home.classList.add('active');
         } else if (viewName === 'careers') {
             navBtns.careers.classList.add('active');
+        } else if (viewName === 'services') {
+            navBtns.services.classList.add('active');
         } else if (viewName === 'login') {
             navBtns.login.classList.add('active');
         }
@@ -587,36 +596,44 @@ function switchView(viewName, addToHistory = true) {
 }
 
 // Handle Browser Back Button
+// Handle Browser Back Button
 window.addEventListener('popstate', (event) => {
-    if (event.state && event.state.view) {
-        if (event.state.view === 'service-detail') {
-            // If we are navigating TO service detail via back/forward, we need to re-open it?
-            // Actually, openServiceDetail sets the innerHTML. If we just switchView to 'service-detail', it might be empty if not re-populated.
-            // Ideally, we should store the service ID in state and re-fetch/render.
-            // BUT, for now, if we are going BACK from service detail, we want to go to landing.
-            // If we are going FORWARD to service detail, we might have an issue.
-            // Let's assume the user is going BACK to landing.
-            switchView(event.state.view, false);
+    const targetView = event.state ? event.state.view : null;
+
+    // Define protected views
+    const protectedViews = ['employee', 'manager', 'client', 'owner'];
+
+    if (targetView) {
+        // Auth Check for Back Navigation
+        if (protectedViews.includes(targetView) && !currentUser) {
+            console.warn("Blocked back navigation to protected view without auth.");
+            switchView('landing', 'replace'); // Redirect to landing
+            return;
+        }
+
+        if (targetView === 'service-detail') {
+            // Handle service detail special case (if needed)
+            switchView(targetView, 'none');
         } else {
-            switchView(event.state.view, false);
+            switchView(targetView, 'none');
         }
     } else {
-        // If no state (e.g., initial load or back to root), go to landing or home
-        // Check hash to be sure
+        // Fallback for no state (e.g. initial load or hash nav)
         const hash = window.location.hash.replace('#', '');
-        if (hash === 'service-detail') {
-            // If hash is service-detail but no state, we can't render it easily without service data.
-            // Fallback to landing.
-            switchView('landing', false);
-        } else if (hash && views[hash]) {
-            switchView(hash, false);
+
+        if (hash && views[hash]) {
+            if (protectedViews.includes(hash) && !currentUser) {
+                switchView('landing', 'replace');
+            } else {
+                switchView(hash, 'none'); // Assume browser handled the URL change
+            }
         } else {
-            // If logged in, go to dashboard, else landing
+            // Default fallback
             if (currentUser) {
                 const dashboardView = currentUser.role === 'employee' ? 'employee' : currentUser.role === 'manager' ? 'manager' : currentUser.role === 'client' ? 'client' : 'owner';
-                switchView(dashboardView, false);
+                switchView(dashboardView, 'replace');
             } else {
-                switchView('landing', false);
+                switchView('landing', 'replace');
             }
         }
     }
@@ -637,6 +654,7 @@ const navLogo = document.getElementById('nav-logo');
 if (navLogo) navLogo.addEventListener('click', goHome);
 
 if (navBtns.login) navBtns.login.addEventListener('click', () => switchView('login'));
+if (navBtns.services) navBtns.services.addEventListener('click', () => switchView('services'));
 if (navBtns.careers) navBtns.careers.addEventListener('click', () => {
     switchView('careers');
     loadCareers(); // Load careers data when navigating to the careers page
@@ -650,7 +668,7 @@ if (navBtns.logout) navBtns.logout.addEventListener('click', async () => {
         await signOut(auth);
         currentUser = null;
         showToast("Logged out successfully!", "success");
-        switchView('landing'); // Redirect to landing page after logout
+        switchView('landing', 'replace'); // Redirect to landing page after logout
         // Clear any dashboard-specific UI elements or data if necessary
     } catch (error) {
         console.error("Logout error:", error);
