@@ -197,6 +197,42 @@
                                         (Optional).</p>
                                     <input type="file" multiple>
                                 </div>
+
+                                <div class="consent-box" style="margin: 1.5rem 0; text-align: left;">
+                                    <div class="form-group checkbox-group">
+                                        <label
+                                            style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                            <input type="checkbox" name="consentData" required>
+                                            <span>I consent to Kondamaal Business Automation collecting and processing
+                                                my personal data for the purpose of responding to my inquiry. *</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group checkbox-group">
+                                        <label
+                                            style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                            <input type="checkbox" name="consentContact" required>
+                                            <span>I agree to be contacted via email or WhatsApp regarding my request.
+                                                *</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group checkbox-group">
+                                        <label
+                                            style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                            <input type="checkbox" name="consentPrivacy" required>
+                                            <span>I confirm that I have read and agree to the <a href="#"
+                                                    onclick="switchView('privacyPolicy'); return false;">Privacy
+                                                    Policy</a>. *</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group checkbox-group">
+                                        <label
+                                            style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                            <input type="checkbox" name="consentMarketing">
+                                            <span>I agree to receive marketing emails and updates. I understand I can
+                                                unsubscribe at any time. (Optional)</span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="step-buttons">
                                     <button type="button" class="btn-secondary btn-prev">Back</button>
                                     <button type="submit" class="btn-primary">Submit Inquiry</button>
@@ -308,6 +344,31 @@
                         <div class="form-group">
                             <label>Resume (PDF only) *</label>
                             <input type="file" id="app-resume" accept="application/pdf" required>
+                        </div>
+
+                        <div class="consent-box" style="margin: 1.5rem 0; text-align: left;">
+                            <div class="form-group checkbox-group">
+                                <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                    <input type="checkbox" id="app-consentData" required>
+                                    <span>I consent to Kondamaal Business Automation collecting and processing my
+                                        personal data for the purpose of responding to my application. *</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                    <input type="checkbox" id="app-consentContact" required>
+                                    <span>I agree to be contacted via email or WhatsApp regarding my application.
+                                        *</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem;">
+                                    <input type="checkbox" id="app-consentPrivacy" required>
+                                    <span>I confirm that I have read and agree to the <a href="#"
+                                            onclick="switchView('privacyPolicy'); return false;">Privacy Policy</a>.
+                                        *</span>
+                                </label>
+                            </div>
                         </div>
                         <button type="submit" class="btn-primary full-width-btn">Submit Application</button>
                     </form>
