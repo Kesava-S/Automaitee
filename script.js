@@ -9,13 +9,13 @@ console.log("Script.js loaded!");
 // --- FIREBASE CONFIGURATION ---
 // TODO: Replace with your actual Firebase project configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA0OaZk65LzGnZG3WPN1SmiI8XzB1xkmag",
-    authDomain: "brandify-digital.firebaseapp.com",
-    projectId: "brandify-digital",
-    storageBucket: "brandify-digital.firebasestorage.app",
-    messagingSenderId: "80977859472",
-    appId: "1:80977859472:web:88a05035249c96df605915",
-    measurementId: "G-8YES8L8T3E"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -2240,11 +2240,17 @@ if (appForm) {
 
             // TODO: Update this URL to your deployed backend (e.g., https://your-app.onrender.com)
             // If frontend and backend are on the same domain, use '/upload-resume'
-            const BACKEND_URL = 'http://localhost:3000';
+            const BACKEND_URL = '/api';
 
             try {
+                if (!auth.currentUser) throw new Error("User must be logged in to upload.");
+                const token = await auth.currentUser.getIdToken();
+
                 const response = await fetch(`${BACKEND_URL}/upload-resume`, {
                     method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
                     body: formData
                 });
 
