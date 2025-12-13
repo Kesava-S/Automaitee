@@ -1,25 +1,8 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { services } from '../../data/services'
 
 export default function Services() {
-    const services = [
-        {
-            title: "Marketing Automation",
-            description: "Automate social media posting, lead capture, and ad reporting to save hours every week."
-        },
-        {
-            title: "CRM Integration",
-            description: "Seamlessly sync data between your sales tools and customer databases."
-        },
-        {
-            title: "Custom Workflows",
-            description: "Tailored automation solutions designed specifically for your unique business processes."
-        },
-        {
-            title: "Data Analytics",
-            description: "Real-time insights and reporting dashboards to help you make data-driven decisions."
-        }
-    ]
-
     return (
         <>
             <Head>
@@ -38,11 +21,14 @@ export default function Services() {
             <section className="services-section">
                 <div className="container">
                     <div className="grid">
-                        {services.map((service, index) => (
-                            <div key={index} className="card">
+                        {services.map((service) => (
+                            <Link key={service.id} href={`/services/${service.slug}`} className="card" style={{ display: 'block' }}>
                                 <h3>{service.title}</h3>
                                 <p>{service.description}</p>
-                            </div>
+                                <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
+                                    Learn more →
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
