@@ -2,7 +2,6 @@
   "name": "brandify-digital",
   "version": "1.0.0",
   "description": "This is a prototype website for Kondamaal, a Marketing Automation company.",
-  "main": "script.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
