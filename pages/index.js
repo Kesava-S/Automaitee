@@ -19,7 +19,7 @@ export default function Home() {
                     <div className="grid">
                         <div className="card">
                             <h3>Cost Effective</h3>
-                            <p>Significantly reduce operational costs by automating repetitive tasks and workflows.</p>
+                            <p>We offer tailored pricing with no fixed charges, delivering the best quality at the most affordable rates.</p>
                         </div>
                         <div className="card">
                             <h3>24/7 Operation</h3>
