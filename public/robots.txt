@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block sensitive or non-essential paths (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://kondamaal.com/sitemap.xml
