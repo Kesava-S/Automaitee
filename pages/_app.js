@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import * as Sentry from "@sentry/nextjs";
+import { DefaultSeo, OrganizationJsonLd, WebPageJsonLd } from 'next-seo';
+import SEO from '../next-seo.config';
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
@@ -28,11 +31,36 @@ function MyApp({ Component, pageProps }) {
     }
 
     return (
-        <>
+        <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+            <DefaultSeo {...SEO} />
+            <OrganizationJsonLd
+                type="Organization"
+                id="https://kondamaal.com/#organization"
+                name="Kondamaal Automations"
+                url="https://kondamaal.com/"
+                logo="https://kondamaal.com/logo.png"
+                contactPoint={[
+                    {
+                        telephone: '+1-555-555-5555',
+                        contactType: 'customer service',
+                    },
+                ]}
+                sameAs={['https://www.facebook.com/kondamaal', 'https://www.linkedin.com/company/kondamaal']}
+            />
+            <WebPageJsonLd
+                description="Streamline your business processes with intelligent automation."
+                id="https://kondamaal.com/#website"
+                lastReviewed="2025-12-13T16:00:00Z"
+                reviewedBy={{
+                    type: 'Person',
+                    name: 'Kondamaal Admin',
+                }}
+            />
+
             <Head>
-                <title>Kondamaal Business Automation</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+                <link rel="icon" href="/logo.png" />
+                <link rel="apple-touch-icon" href="/logo.png" />
             </Head>
 
             <nav className="navbar">
@@ -58,7 +86,7 @@ function MyApp({ Component, pageProps }) {
             <main id="app">
                 <Component {...pageProps} user={user} />
             </main>
-        </>
+        </Sentry.ErrorBoundary>
     )
 }
 

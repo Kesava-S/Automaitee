@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://brandify-digital.vercel.app/sitemap.xml

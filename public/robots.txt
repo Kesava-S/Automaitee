@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /employee
+Disallow: /api/
+
+Sitemap: https://kondamaal.com/sitemap.xml
