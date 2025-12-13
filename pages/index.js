@@ -6,7 +6,7 @@ export default function Home() {
             <section className="hero">
                 <div className="container">
                     <h1>Business Automation.<br />Simplified.</h1>
-                    <p>Reduce team costs and streamline operations with our intelligent AI workforce solutions.</p>
+                    <p>Reduce workforce cost with AI workforce</p>
                     <Link href="/services" className="cta-button">
                         View Our Services
                     </Link>
@@ -26,8 +26,8 @@ export default function Home() {
                             <p>Our automated systems work round the clock, ensuring your business never sleeps.</p>
                         </div>
                         <div className="card">
-                            <h3>Scalable</h3>
-                            <p>Solutions that grow with your business, handling increased workload effortlessly.</p>
+                            <h3>Transparent</h3>
+                            <p>Workflows are transparent and personalized for your business.</p>
                         </div>
                     </div>
                 </div>
