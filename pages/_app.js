@@ -1,7 +1,5 @@
 import '../styles/globals.css'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { supabase } from '../lib/supabaseClient'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as Sentry from "@sentry/nextjs";
@@ -9,25 +7,6 @@ import { DefaultSeo } from 'next-seo';
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
-    const [user, setUser] = useState(null)
-
-    useEffect(() => {
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                const currentUser = session?.user
-                setUser(currentUser ?? null)
-            }
-        )
-
-        return () => {
-            authListener.subscription.unsubscribe()
-        }
-    }, [])
-
-    const handleLogout = async () => {
-        await supabase.auth.signOut()
-        router.push('/')
-    }
 
     return (
         <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
@@ -73,22 +52,11 @@ function MyApp({ Component, pageProps }) {
                     <Link href="/services" legacyBehavior>
                         <a className={`nav-btn ${router.pathname === '/services' ? 'active' : ''}`}>Services</a>
                     </Link>
-                    <Link href="/careers" legacyBehavior>
-                        <a className={`nav-btn ${router.pathname === '/careers' ? 'active' : ''}`}>Careers</a>
-                    </Link>
-
-                    {!user ? (
-                        <Link href="/login" legacyBehavior>
-                            <a className={`nav-btn ${router.pathname === '/login' ? 'active' : ''}`}>Login</a>
-                        </Link>
-                    ) : (
-                        <button onClick={handleLogout} className="nav-btn">Logout</button>
-                    )}
                 </div>
             </nav>
 
             <main id="app">
-                <Component {...pageProps} user={user} />
+                <Component {...pageProps} />
             </main>
         </Sentry.ErrorBoundary>
     )
