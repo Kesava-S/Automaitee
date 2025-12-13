@@ -36,7 +36,13 @@ function MyApp({ Component, pageProps }) {
 
             <footer>
                 <div className="container">
-                    <p>&copy; {new Date().getFullYear()} Kondamaal Automations. All rights reserved.</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+                        <p>&copy; {new Date().getFullYear()} Kondamaal Automations. All rights reserved.</p>
+                        <div style={{ display: 'flex', gap: '1.5rem' }}>
+                            <Link href="/privacy-policy" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Privacy Policy</Link>
+                            <Link href="/terms-of-service" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Terms of Service</Link>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </>
