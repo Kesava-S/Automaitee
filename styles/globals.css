@@ -1,12 +1,11 @@
 :root {
-    --background: #ffffff;
-    --foreground: #1d1d1f;
-    --accent: #0071e3;
-    --accent-hover: #0077ed;
-    --gray-50: #f5f5f7;
-    --gray-100: #e8e8ed;
-    --gray-500: #86868b;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --background: #000000;
+    --foreground: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --accent-gradient: linear-gradient(135deg, #0071e3 0%, #42a1ff 100%);
+    --text-secondary: #a1a1a6;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -42,11 +41,11 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--card-border);
     height: 64px;
     display: flex;
     align-items: center;
@@ -60,9 +59,11 @@ a {
 }
 
 .logo {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.25rem;
-    letter-spacing: -0.02em;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
@@ -72,7 +73,7 @@ a {
 
 .nav-link {
     font-size: 0.9rem;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     transition: color 0.2s ease;
 }
 
@@ -85,7 +86,7 @@ a {
 .hero {
     padding: 180px 0 100px;
     text-align: center;
-    background: radial-gradient(circle at 50% 0%, #fbfbfd 0%, #ffffff 100%);
+    background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
 }
 
 .hero h1 {
@@ -94,14 +95,14 @@ a {
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero p {
     font-size: 1.5rem;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto 2.5rem;
     line-height: 1.4;
@@ -109,24 +110,25 @@ a {
 
 .cta-button {
     display: inline-block;
-    background: var(--accent);
+    background: var(--accent-gradient);
     color: white;
-    padding: 12px 24px;
+    padding: 14px 32px;
     border-radius: 980px;
     font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 113, 227, 0.4);
 }
 
 .cta-button:hover {
-    background: var(--accent-hover);
-    transform: scale(1.02);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 113, 227, 0.6);
 }
 
 /* Services Grid */
 .services-section {
     padding: 100px 0;
-    background: var(--gray-50);
+    background: #000000;
 }
 
 .section-title {
@@ -144,26 +146,27 @@ a {
 }
 
 .card {
-    background: white;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    color: #fff;
 }
 
 .card p {
-    color: var(--gray-500);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
@@ -171,9 +174,10 @@ a {
 footer {
     padding: 4rem 0;
     text-align: center;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    border-top: 1px solid var(--gray-100);
+    border-top: 1px solid var(--card-border);
+    background: #000000;
 }
 
 @media (max-width: 768px) {

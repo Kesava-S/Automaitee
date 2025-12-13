@@ -28,18 +28,18 @@ export default function Services() {
 
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>
                 <div className="container">
-                    <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem' }}>Our Services</h1>
-                    <p style={{ fontSize: '1.25rem', color: 'var(--gray-500)', maxWidth: '600px', margin: '0 auto' }}>
+                    <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Our Services</h1>
+                    <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
                         Comprehensive solutions to power your business growth.
                     </p>
                 </div>
             </div>
 
-            <section className="services-section" style={{ background: 'white' }}>
+            <section className="services-section">
                 <div className="container">
                     <div className="grid">
                         {services.map((service, index) => (
-                            <div key={index} className="card" style={{ background: 'var(--gray-50)' }}>
+                            <div key={index} className="card">
                                 <h3>{service.title}</h3>
                                 <p>{service.description}</p>
                             </div>
