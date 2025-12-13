@@ -4,14 +4,15 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "node scripts/generate-sitemap.js && node scripts/generate-robots.js && next build",
+        "build": "node scripts/generate-sitemap.js && node scripts/generate-robots.js && next build && next-image-export-optimizer",
         "start": "next start",
         "lint": "next lint"
     },
     "dependencies": {
+        "lucide-react": "^0.378.0",
         "next": "^14.2.3",
+        "next-image-export-optimizer": "^1.19.0",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "lucide-react": "^0.378.0"
+        "react-dom": "^18.3.1"
     }
 }
