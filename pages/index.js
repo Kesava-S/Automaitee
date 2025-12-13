@@ -1,8 +1,12 @@
 import Link from 'next/link'
+import Head from 'next/head'
 
 export default function Home() {
     return (
         <>
+            <Head>
+                <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, lead capture, and reporting with AI automation and reduce workforce costs." />
+            </Head>
             <section className="hero">
                 <div className="container">
                     <h1>Business Automation.<br />Simplified.</h1>
