@@ -98,29 +98,32 @@ export default function ServicePage({ service }) {
                             ))}
                         </div>
                     ) : (
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
                             <div>
                                 <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '1.5rem' }}>{service.featuresTitle || 'Key Features'}</h2>
-                                <ul style={{ listStyle: 'none' }}>
-                                    {service.features.map((feature, index) => (
-                                        <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                            <span style={{ color: '#0071e3', fontSize: '1.2rem' }}>•</span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+                                    {service.features.map((feature, index) => {
+                                        const [title, desc] = feature.includes(' – ') ? feature.split(' – ') : [feature, ''];
+                                        return (
+                                            <div key={index} className="feature-card" style={{ padding: '1.5rem' }}>
+                                                <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: desc ? '0.5rem' : '0', color: '#1d1d1f' }}>{title}</h3>
+                                                {desc && <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{desc}</p>}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
 
                             <div>
                                 <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '1.5rem' }}>Benefits</h2>
-                                <ul style={{ listStyle: 'none' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                                     {service.benefits.map((benefit, index) => (
-                                        <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                            <span style={{ color: '#34c759', fontSize: '1.2rem' }}>✓</span>
-                                            {benefit}
-                                        </li>
+                                        <div key={index} className="feature-card" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                            <span style={{ color: '#34c759', fontSize: '1.2rem', flexShrink: 0 }}>✓</span>
+                                            <span style={{ fontWeight: '500', color: '#1d1d1f' }}>{benefit}</span>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     )}
