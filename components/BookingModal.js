@@ -171,12 +171,19 @@ export default function BookingModal({ isOpen, onClose }) {
                                     const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
                                     const isToday = date.toDateString() === new Date().toDateString();
 
+                                    // Disable past dates and today
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0);
+                                    const isDisabled = date <= today;
+
                                     return (
                                         <button
                                             key={day}
                                             className={`calendar-day ${isSelected ? 'selected' : ''} ${isToday ? 'today' : ''}`}
                                             onClick={() => handleDateClick(day)}
                                             type="button"
+                                            disabled={isDisabled}
+                                            style={isDisabled ? { opacity: 0.3, cursor: 'not-allowed' } : {}}
                                         >
                                             {day}
                                         </button>
