@@ -71,6 +71,12 @@ export default function ServicePage({ service }) {
                         {service.title}
                     </h1>
 
+                    {service.animatedSubtext && (
+                        <p className="animated-text" style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>
+                            {service.animatedSubtext}
+                        </p>
+                    )}
+
                     <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary)', maxWidth: '800px', lineHeight: '1.5', marginBottom: '4rem' }}>
                         {service.fullDescription}
                     </p>
