@@ -104,8 +104,8 @@ export default function ServicePage({ service }) {
                     <div style={{ marginTop: '6rem', padding: '3rem', background: 'var(--gray-50)', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to get started?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Transform your business with our {service.title.toLowerCase()} solutions.</p>
-                        <Link href="/" className="cta-button">
-                            Contact Us
+                        <Link href="/book-consultation" className="cta-button">
+                            Book a Free Consultation
                         </Link>
                     </div>
                 </div>
