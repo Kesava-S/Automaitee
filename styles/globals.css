@@ -203,6 +203,29 @@ footer {
     display: inline-block;
 }
 
+/* Feature Cards for Process Automation */
+.feature-card {
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 71, 227, 0.1);
+}
+
+.feature-card h3 {
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+    color: #0071e3 !important;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;

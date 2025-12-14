@@ -84,7 +84,7 @@ export default function ServicePage({ service }) {
                     {service.detailedFeatures ? (
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
                             {service.detailedFeatures.map((section, index) => (
-                                <div key={index} style={{ marginBottom: '2rem' }}>
+                                <div key={index} className="feature-card">
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem', color: '#1d1d1f' }}>{section.title}</h3>
                                     <ul style={{ listStyle: 'none' }}>
                                         {section.items.map((item, i) => (
