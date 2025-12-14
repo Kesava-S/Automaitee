@@ -8,16 +8,16 @@ export const services = [
         animatedSubtext: "Improve your team's productivity...",
         featuresTitle: "Key Solutions",
         features: [
-            "CRM Integration",
-            "Social Media Scheduling",
-            "Content Distribution Workflows",
-            "Email Marketing Sequences",
-            "Multi-Channel Campaign Automation",
-            "Automated Lead Capture",
-            "Customer Segmentation & Targeting",
-            "Automated Follow-Ups / Drip Campaigns",
-            "Ad Performance Reporting",
-            "Analytics & ROI Tracking"
+            "CRM Integration – Keep all your contacts in one place",
+            "Customer Targeting – Reach the right people, every time",
+            "Social Media Scheduling – Post consistently without lifting a finger",
+            "Content Workflows – Automate content delivery across channels",
+            "Email Sequences – Nurture leads automatically",
+            "Lead Capture – Turn visitors into customers effortlessly",
+            "Automated Follow-Ups – Stay top-of-mind with drip campaigns",
+            "Multi-Channel Campaigns – Run ads and promotions everywhere",
+            "Ad Performance Reporting – See what’s working instantly",
+            "Analytics & ROI Tracking – Measure success and make data-driven decisions"
         ],
         benefits: [
             "Save 20+ hours per week",
