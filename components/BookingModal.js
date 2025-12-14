@@ -32,12 +32,12 @@ export default function BookingModal({ isOpen, onClose }) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     const generateTimeSlots = () => {
-        const slots = [];
-        for (let i = 9; i <= 17; i++) {
-            slots.push(`${i}:00`);
-            slots.push(`${i}:30`);
-        }
-        return slots;
+        return [
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00"
+        ];
     };
 
     const handleDateClick = (day) => {
@@ -198,7 +198,7 @@ export default function BookingModal({ isOpen, onClose }) {
 
                             {selectedDate && (
                                 <div className="time-slots">
-                                    <h4>Available Times for {selectedDate.toLocaleDateString()}</h4>
+                                    <h4>Available Times for {selectedDate.toLocaleDateString()} (GMT)</h4>
                                     <div className="slots-grid">
                                         {generateTimeSlots().map(time => (
                                             <button
