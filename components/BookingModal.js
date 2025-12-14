@@ -136,10 +136,15 @@ export default function BookingModal({ isOpen, onClose }) {
                                         <label>Industry</label>
                                         <select name="industry" value={formData.industry} onChange={handleInputChange}>
                                             <option value="">Select...</option>
-                                            <option value="Tech">Tech</option>
-                                            <option value="Retail">Retail</option>
-                                            <option value="Service">Service</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Real Estate">Real Estate</option>
+                                            <option value="Hospitality">Hospitality</option>
+                                            <option value="Marketing / Advertising">Marketing / Advertising</option>
+                                            <option value="E-commerce">E-commerce</option>
+                                            <option value="Manufacturing / Industrial">Manufacturing / Industrial</option>
+                                            <option value="Healthcare">Healthcare</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>
                                 </div>
