@@ -37,6 +37,7 @@ export const services = [
         slug: "process-automation",
         description: "Streamline your business. Save time. Delight your customers.",
         fullDescription: "Streamline your business. Save time. Delight your customers.",
+        animatedSubtext: "free your team to do 10x more...",
         detailedFeatures: [
             {
                 title: "Instant Quotes & Smart Pricing",
