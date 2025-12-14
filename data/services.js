@@ -26,7 +26,10 @@ export const services = [
             "Reduce Marketing cost",
             "Improve customer engagement across channels",
             "Data-driven insights"
-        ]
+        ],
+        ctaTitle: "Ready to grow?",
+        ctaDescription: "Automate your marketing and save time.",
+        ctaButtonText: "Book Your Free Consultation"
     },
     {
         id: "crm-integration",
