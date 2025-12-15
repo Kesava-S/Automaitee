@@ -6,14 +6,14 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Kondamaal Automations | Business Automation Simplified</title>
+                <title>Kondamaal Automations | AI & Business Automation Simplified</title>
                 <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, lead capture, and reporting with AI automation and reduce workforce costs." />
 
-                <meta property="og:title" content="Kondamaal Automations | Business Automation Simplified" />
+                <meta property="og:title" content="Kondamaal Automations | AI & Business Automation Simplified" />
                 <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, lead capture, and reporting with AI automation and reduce workforce costs." />
                 <meta property="og:url" content="https://kondamaal.com/" />
 
-                <meta name="twitter:title" content="Kondamaal Automations | Business Automation Simplified" />
+                <meta name="twitter:title" content="Kondamaal Automations | AI & Business Automation Simplified" />
                 <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, lead capture, and reporting with AI automation and reduce workforce costs." />
 
                 <script
@@ -34,7 +34,7 @@ export default function Home() {
             </Head>
             <section className="hero">
                 <div className="container">
-                    <h1>Business Automation.<br />Simplified.</h1>
+                    <h1>Kondamaal Automations | AI & Business Automation Simplified</h1>
                     <p>Reduce workforce cost with AI Automation</p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <Link href="/book-consultation" className="cta-button">
