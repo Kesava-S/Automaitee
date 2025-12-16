@@ -111,6 +111,9 @@ export default function BookingModal({ isOpen, onClose }) {
                     <div className="booking-grid">
                         {/* Left Column: Form */}
                         <div className="form-column">
+                            <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: '600' }}>
+                                Kondamaal - AI Automation Partner
+                            </h3>
                             <h2 className="animated-text" style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>
                                 Schedule a time to talk
                             </h2>
