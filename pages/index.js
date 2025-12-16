@@ -50,6 +50,7 @@ export default function Home() {
             <section className="services-section">
                 <div className="container">
                     <h2 className="section-title">Why Kondamaal</h2>
+                    <p style={{ textAlign: 'center', fontSize: '1.2rem', color: 'var(--text-secondary)', marginTop: '-1rem', marginBottom: '3rem' }}>AI Automation partner for your business</p>
                     <div className="grid">
                         <div className="card">
                             <h3>Cost Effective</h3>
