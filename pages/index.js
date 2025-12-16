@@ -49,7 +49,7 @@ export default function Home() {
 
             <section className="services-section">
                 <div className="container">
-                    <h2 className="section-title">Why Choose Us</h2>
+                    <h2 className="section-title">Why Kondamaal</h2>
                     <div className="grid">
                         <div className="card">
                             <h3>Cost Effective</h3>
