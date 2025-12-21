@@ -20,6 +20,7 @@ export default function Services() {
 
             <section className="services-section">
                 <div className="container">
+                    <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Business Automations</h2>
                     <div className="grid">
                         {services.map((service) => (
                             <Link key={service.id} href={`/services/${service.slug}`} className="card" style={{ display: 'block' }}>
@@ -30,6 +31,14 @@ export default function Services() {
                                 </div>
                             </Link>
                         ))}
+                    </div>
+
+                    <h2 style={{ fontSize: '2rem', marginTop: '4rem', marginBottom: '2rem' }}>Personal Automations</h2>
+                    <div className="grid">
+                        <div className="card">
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Coming Soon</h3>
+                            <p style={{ color: 'var(--text-secondary)' }}>We are working on bringing personal automation services to you.</p>
+                        </div>
                     </div>
                 </div>
             </section>
