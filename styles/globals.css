@@ -96,9 +96,7 @@ a {
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* Gradient moved to .animated-word */
 }
 
 .hero p {
@@ -554,4 +552,35 @@ footer {
     .calendar-column {
         padding: 2rem;
     }
+}
+
+/* Text Reveal Animation */
+@keyframes blurSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.word-wrapper {
+    display: inline-block;
+}
+
+.animated-word {
+    display: inline-block;
+    opacity: 0;
+    animation: blurSlideUp 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9) forwards;
+
+    /* Gradient Text Styling */
+    background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

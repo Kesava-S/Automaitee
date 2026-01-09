@@ -2,11 +2,27 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { faqs } from '../data/faqs'
 
+
+const AnimatedText = ({ text, delayOffset = 0 }) => {
+    return text.split(" ").map((word, i) => (
+        <span
+            key={i}
+            className="animated-word"
+            style={{
+                animationDelay: `${delayOffset + i * 0.1}s`,
+                marginRight: "0.25em"
+            }}
+        >
+            {word}
+        </span>
+    ));
+};
+
 export default function Home() {
     return (
         <>
             <Head>
-                <title>Kondamaal | AI & Business Automation</title>
+                <title>Kondamaal | AI & Business Automation partner</title>
                 <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
                 <meta property="og:title" content="Kondamaal | AI & Business Automation" />
@@ -34,7 +50,11 @@ export default function Home() {
             </Head>
             <section className="hero">
                 <div className="container">
-                    <h1>Kondamaal<br />AI & Business Automation partner</h1>
+                    <h1>
+                        <AnimatedText text="Kondamaal" />
+                        <br />
+                        <AnimatedText text="AI & Business Automation partner" delayOffset={0.3} />
+                    </h1>
                     <p>Save time with AI Automation</p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <Link href="/book-consultation" className="cta-button">
