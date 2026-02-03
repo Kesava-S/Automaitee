@@ -3,7 +3,15 @@ export const services = [
         id: "marketing-automation",
         title: "Marketing Automation",
         slug: "marketing-automation",
-        description: "Automate social media posting, lead capture, and ad reporting to save hours every week.",
+        description: "End-to-end automation from lead capture to personalized retention.",
+        processSteps: [
+            "Lead Capture",
+            "db Validation",
+            "Follow-up",
+            "Reminders",
+            "Review",
+            "Offers"
+        ],
         fullDescription: "We build intelligent marketing automation systems that reduce your staff's work with AI-driven workflows.",
         animatedSubtext: "Improve your team's productivity...",
         featuresTitle: "Key Solutions",

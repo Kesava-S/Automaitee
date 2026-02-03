@@ -25,7 +25,30 @@ export default function Services() {
                         {services.map((service) => (
                             <Link key={service.id} href={`/services/${service.slug}`} className="card" style={{ display: 'block' }}>
                                 <h2>{service.title}</h2>
-                                <p>{service.description}</p>
+                                <p style={{ marginBottom: service.processSteps ? '1.5rem' : '0' }}>{service.description}</p>
+
+                                {service.processSteps && (
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
+                                        {service.processSteps.map((step, index) => (
+                                            <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+                                                <span style={{
+                                                    background: 'rgba(0, 113, 227, 0.1)',
+                                                    color: '#0071e3',
+                                                    padding: '4px 10px',
+                                                    borderRadius: '20px',
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: '600',
+                                                    whiteSpace: 'nowrap'
+                                                }}>
+                                                    {step}
+                                                </span>
+                                                {index < service.processSteps.length - 1 && (
+                                                    <span style={{ margin: '0 4px', color: '#86868b', fontSize: '0.9rem' }}>→</span>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                                 <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
                                     Learn more →
                                 </div>
