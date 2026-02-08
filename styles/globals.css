@@ -72,15 +72,17 @@ a {
 }
 
 .nav-link {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-secondary);
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--foreground);
+    color: #0071e3;
+    transform: scale(1.1);
 }
 
 /* Hero */
