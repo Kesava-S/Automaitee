@@ -8,6 +8,7 @@ export const services = [
         fullDescription: "We build intelligent marketing automation systems that reduce your staff's work with AI-driven workflows.",
         animatedSubtext: "Improve your team's productivity...",
         featuresTitle: "Key Solutions",
+        workflowImage: '/images/Smart-Lead-Automation.jpg',
 
         detailedFeatures: [
             {
