@@ -22,14 +22,14 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>HubSmort | Digital AI Automation</title>
+                <title>Automaitee | Digital AI Automation</title>
                 <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
-                <meta property="og:title" content="HubSmort | AI & Business Automation" />
+                <meta property="og:title" content="Automaitee | AI & Business Automation" />
                 <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
                 <meta property="og:url" content="https://kondamaal.com/" />
 
-                <meta name="twitter:title" content="HubSmort | AI & Business Automation" />
+                <meta name="twitter:title" content="Automaitee | AI & Business Automation" />
                 <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
                 <script
@@ -38,11 +38,11 @@ export default function Home() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Organization",
-                            "name": "HubSmort AI Digital Automation",
-                            "url": "https://kondamaal.com",
-                            "logo": "https://kondamaal.com/logo.png",
+                            "name": "Automaitee AI Digital Automation",
+                            "url": "https://automaitee.com",
+                            "logo": "https://automaitee.com/logo.png",
                             "description": "Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.",
-                            "email": "support@kondamaal.com",
+                            "email": "support@automaitee.com",
                             "sameAs": []
                         })
                     }}
@@ -51,7 +51,7 @@ export default function Home() {
             <section className="hero">
                 <div className="container">
                     <h1>
-                        <AnimatedText text="HubSmort" />
+                        <AnimatedText text="Automaitee" />
                         <br />
                         <AnimatedText text="AI Digital Automation" delayOffset={0.3} />
                     </h1>
@@ -69,7 +69,7 @@ export default function Home() {
 
             <section className="services-section">
                 <div className="container">
-                    <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Why HubSmort</h2>
+                    <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Why Automaitee</h2>
                     <p style={{ textAlign: 'center', fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '4rem' }}>AI Automation partner for your business</p>
                     <div className="grid">
                         <div className="card">

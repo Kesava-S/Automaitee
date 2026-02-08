@@ -19,14 +19,14 @@ export default function ServicePage({ service }) {
     return (
         <>
             <Head>
-                <title>{service.title} | HubSmort AI</title>
+                <title>{service.title} | Automaitee AI</title>
                 <meta name="description" content={service.description} />
 
-                <meta property="og:title" content={`${service.title} | HubSmort AI`} />
+                <meta property="og:title" content={`${service.title} | Automaitee AI`} />
                 <meta property="og:description" content={service.description} />
-                <meta property="og:url" content={`https://hubsmort.com/services/${service.slug}`} />
+                <meta property="og:url" content={`https://automaitee.com/services/${service.slug}`} />
 
-                <meta name="twitter:title" content={`${service.title} | HubSmort AI`} />
+                <meta name="twitter:title" content={`${service.title} | Automaitee AI`} />
                 <meta name="twitter:description" content={service.description} />
 
                 <script
@@ -39,8 +39,8 @@ export default function ServicePage({ service }) {
                             "description": service.description,
                             "provider": {
                                 "@type": "Organization",
-                                "name": "HubSmort AI",
-                                "url": "https://hubsmort.com"
+                                "name": "Automaitee AI",
+                                "url": "https://automaitee.com"
                             },
                             "areaServed": "Global",
                             "hasOfferCatalog": {

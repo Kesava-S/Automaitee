@@ -27,13 +27,13 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>HubSmort AI Digital Automation</title>
+                <title>Automaitee AI Digital Automation</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/logo.png" />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="HubSmort AI Digital Automation" />
+                <meta property="og:site_name" content="Automaitee AI Digital Automation" />
                 <meta property="og:image" content="https://kondamaal.com/logo.png" />
 
                 {/* Twitter */}
@@ -44,8 +44,8 @@ function MyApp({ Component, pageProps }) {
             <nav className="navbar">
                 <div className="container nav-content">
                     <Link href="/" replace={router.pathname === '/'} className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <img src="/logo.png" alt="HubSmort Logo" style={{ height: '48px', width: 'auto' }} loading="lazy" />
-                        HubSmort
+                        <img src="/logo.png" alt="Automaitee Digital Logo" style={{ height: '48px', width: 'auto' }} loading="lazy" />
+                        Automaitee Digital
                     </Link>
                     <div className="nav-links">
                         <Link href="/" replace={router.pathname === '/'} className={`nav-link ${router.pathname === '/' ? 'active' : ''}`}>
@@ -68,7 +68,7 @@ function MyApp({ Component, pageProps }) {
             <footer>
                 <div className="container">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-                        <p>&copy; {new Date().getFullYear()} HubSmort. All rights reserved.</p>
+                        <p>&copy; {new Date().getFullYear()} Automaitee. All rights reserved.</p>
                         <div style={{ display: 'flex', gap: '1.5rem' }}>
                             <Link href="/privacy-policy" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Privacy Policy</Link>
                             <Link href="/terms-of-service" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Terms of Service</Link>

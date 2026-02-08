@@ -84,7 +84,7 @@ export default function CustomPage() {
     return (
         <>
             <Head>
-                <title>{content.title} | HubSmort AI</title>
+                <title>{content.title} | Automaitee AI</title>
                 <meta name="description" content={content.description} />
             </Head>
 

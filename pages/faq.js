@@ -6,7 +6,7 @@ export default function FAQ() {
     return (
         <>
             <Head>
-                <title>Frequently Asked Questions | HubSmort AI</title>
+                <title>Frequently Asked Questions | Automaitee AI</title>
                 <meta name="description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
             </Head>
 
