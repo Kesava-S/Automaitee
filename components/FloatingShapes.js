@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
+import { Settings, Zap, Cpu, Share2, Bot, Workflow, Sparkles } from 'lucide-react';
 
 const shapes = [
-    { type: 'circle', color: '#0071e3', size: 20, top: '10%', left: '15%', delay: 0 },
-    { type: 'triangle', color: '#ff3b30', size: 30, top: '20%', left: '80%', delay: 1 },
-    { type: 'square', color: '#34c759', size: 25, top: '70%', left: '10%', delay: 2 },
-    { type: 'circle', color: '#ff9f0a', size: 15, top: '80%', left: '85%', delay: 0.5 },
-    { type: 'triangle', color: '#af52de', size: 35, top: '15%', left: '5%', delay: 1.5 },
-    { type: 'square', color: '#5856d6', size: 20, top: '60%', left: '90%', delay: 2.5 },
-    { type: 'circle', color: '#ff2d55', size: 25, top: '40%', left: '20%', delay: 1.2 },
-    { type: 'triangle', color: '#00c7be', size: 15, top: '30%', left: '95%', delay: 0.8 },
+    // Geometric Shapes
+    { type: 'circle', color: '#0071e3', size: 15, top: '12%', left: '10%', delay: 0 },
+    { type: 'triangle', color: '#ff3b30', size: 20, top: '18%', left: '85%', delay: 1.5 },
+    { type: 'square', color: '#34c759', size: 18, top: '75%', left: '8%', delay: 2.2 },
+    { type: 'circle', color: '#ff9f0a', size: 12, top: '85%', left: '88%', delay: 0.8 },
+
+    // Tech & Automation Icons
+    { type: 'icon', Icon: Settings, color: '#86868b', size: 24, top: '25%', left: '75%', delay: 3 }, // Gear (Automation)
+    { type: 'icon', Icon: Zap, color: '#ffcc00', size: 22, top: '60%', left: '82%', delay: 1.2 },    // Speed/Energy
+    { type: 'icon', Icon: Share2, color: '#0071e3', size: 26, top: '20%', left: '25%', delay: 2.8 }, // Connections (Integration)
+    { type: 'icon', Icon: Cpu, color: '#34c759', size: 24, top: '65%', left: '15%', delay: 0.5 },    // Tech/Chip
+    { type: 'icon', Icon: Workflow, color: '#af52de', size: 24, top: '45%', left: '92%', delay: 3.5 }, // Workflow
+    { type: 'icon', Icon: Bot, color: '#5856d6', size: 28, top: '35%', left: '5%', delay: 2.0 },     // AI/Bot
+    { type: 'icon', Icon: Sparkles, color: '#ff2d55', size: 20, top: '15%', left: '50%', delay: 4.1 }, // Magic/AI
 ];
 
 export default function FloatingShapes() {
@@ -41,27 +48,40 @@ export default function FloatingShapes() {
                         left: shape.left,
                         width: `${shape.size}px`,
                         height: `${shape.size}px`,
-                        backgroundColor: shape.type !== 'triangle' ? shape.color : 'transparent',
+                        // Apply CSS shape styles only if it's NOT an icon
+                        backgroundColor: (shape.type !== 'triangle' && shape.type !== 'icon') ? shape.color : 'transparent',
                         borderRadius: shape.type === 'circle' ? '50%' : shape.type === 'square' ? '4px' : '0',
                         borderBottom: shape.type === 'triangle' ? `${shape.size}px solid ${shape.color}` : 'none',
                         borderLeft: shape.type === 'triangle' ? `${shape.size / 2}px solid transparent` : 'none',
                         borderRight: shape.type === 'triangle' ? `${shape.size / 2}px solid transparent` : 'none',
-                        opacity: 0.6,
-                        animation: `float ${6 + i}s ease-in-out infinite`,
+                        color: shape.type === 'icon' ? shape.color : undefined, // Check for icon color
+                        opacity: 0.5,
+                        animation: `float ${7 + i}s ease-in-out infinite`,
                         animationDelay: `${shape.delay}s`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }}
-                />
+                >
+                    {shape.type === 'icon' && shape.Icon && (
+                        <shape.Icon size={shape.size} strokeWidth={2} />
+                    )}
+                </div>
             ))}
             <style jsx>{`
                 @keyframes float {
                     0% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-20px) rotate(180deg); }
-                    100% { transform: translateY(0px) rotate(360deg); }
+                    33% { transform: translateY(-15px) rotate(10deg); }
+                    66% { transform: translateY(10px) rotate(-10deg); }
+                    100% { transform: translateY(0px) rotate(0deg); }
                 }
-                .shape-triangle {
-                    width: 0 !important;
-                    height: 0 !important;
-                    background-color: transparent !important;
+                /* Additional rotation for geometric shapes for more dynamism */
+                .shape-triangle, .shape-square {
+                     animation: floatRotate 8s ease-in-out infinite alternate !important;
+                }
+                 @keyframes floatRotate {
+                    0% { transform: translateY(0px) rotate(0deg); }
+                    100% { transform: translateY(-20px) rotate(180deg); }
                 }
             `}</style>
         </div>
