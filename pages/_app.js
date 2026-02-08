@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 
 import { useState, useEffect } from 'react'
 import BookingModal from '../components/BookingModal'
+import ChatBot from '../components/ChatBot'
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
@@ -79,6 +80,7 @@ function MyApp({ Component, pageProps }) {
             </footer>
 
             <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+            <ChatBot />
         </>
     )
 }
