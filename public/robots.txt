@@ -1,9 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-# Block sensitive or non-essential paths (if any in future)
-# Disallow: /admin/
-# Disallow: /private/
+# Host
+Host: https://automaitee.com
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://automaitee.com/sitemap.xml
