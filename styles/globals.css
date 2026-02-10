@@ -68,8 +68,8 @@ a {
 }
 
 .logo-image {
-    height: 58px;
-    /* Maximized for mobile (64px header - minimal padding) */
+    height: 70px;
+    /* Bigger logo for mobile (80px header) */
     width: auto;
     object-fit: contain;
     transition: height 0.3s ease;
@@ -95,7 +95,7 @@ a {
 /* Mobile Menu Drawer */
 .mobile-menu {
     position: fixed;
-    top: 64px;
+    top: 80px;
     /* Height of mobile navbar */
     left: 0;
     width: 100%;
@@ -323,9 +323,9 @@ footer {
     }
 
     .navbar {
-        height: 64px;
-        /* Fixed height for mobile */
-        min-height: 64px;
+        height: 80px;
+        /* Increased height for bigger logo */
+        min-height: 80px;
         padding: 0 1rem;
         /* Horizontal padding only */
         display: flex;
