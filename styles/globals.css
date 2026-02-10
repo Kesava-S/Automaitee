@@ -46,7 +46,7 @@ a {
     -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
     border-bottom: 1px solid var(--card-border);
-    height: 64px;
+    height: 90px;
     display: flex;
     align-items: center;
 }
