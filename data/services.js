@@ -12,7 +12,7 @@ export const services = [
 
         detailedFeatures: [
             {
-                title: "1️⃣ Lead Capture (all sources in one place)",
+                title: "Lead Capture (all sources in one place)",
                 items: [
                     "Visitors from your website, social media, ads, and chatbots are captured automatically.",
                     "AI fills missing info and avoids duplicate entries.",
@@ -20,7 +20,7 @@ export const services = [
                 ]
             },
             {
-                title: "2️⃣ Lead Verification & Segmentation",
+                title: "Lead Verification & Segmentation",
                 items: [
                     "AI verifies each lead and enriches data in real-time.",
                     "Segments leads by behavior, location, and purchase likelihood.",
@@ -28,7 +28,7 @@ export const services = [
                 ]
             },
             {
-                title: "3️⃣ Automated Engagement & Nurturing",
+                title: "Automated Engagement & Nurturing",
                 items: [
                     "Trigger personalized email sequences, SMS, or social messages.",
                     "Behavior-based workflows adapt automatically as users interact.",
@@ -36,7 +36,7 @@ export const services = [
                 ]
             },
             {
-                title: "4️⃣ Social & Content Automation",
+                title: "Social & Content Automation",
                 items: [
                     "Schedule posts across platforms at optimal times.",
                     "Recycle top-performing content automatically.",
@@ -44,7 +44,7 @@ export const services = [
                 ]
             },
             {
-                title: "5️⃣ Conversion & Customer Journey",
+                title: "Conversion & Customer Journey",
                 items: [
                     "Automation follows leads until business completion (e.g., booking, purchase, or review).",
                     "Sends personalized offers, birthday messages, and loyalty prompts.",
@@ -52,7 +52,7 @@ export const services = [
                 ]
             },
             {
-                title: "6️⃣ Analytics & Optimization",
+                title: "Analytics & Optimization",
                 items: [
                     "Unified dashboard shows campaign performance across channels.",
                     "Real-time alerts if KPIs drop.",
