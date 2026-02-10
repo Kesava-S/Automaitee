@@ -10,10 +10,12 @@ import { useState, useEffect } from 'react'
 import BookingModal from '../components/BookingModal'
 import ChatBot from '../components/ChatBot'
 import FloatingShapes from '../components/FloatingShapes'
+import { Menu, X } from 'lucide-react'
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     useEffect(() => {
         // Check if we should open the modal (e.g. redirected from /book-consultation)
@@ -25,6 +27,11 @@ function MyApp({ Component, pageProps }) {
     const openBookingModal = (e) => {
         e.preventDefault()
         setIsBookingModalOpen(true)
+        setIsMobileMenuOpen(false)
+    }
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen)
     }
 
     return (
@@ -61,10 +68,12 @@ function MyApp({ Component, pageProps }) {
 
             <nav className="navbar">
                 <div className="container nav-content">
-                    <Link href="/" replace={router.pathname === '/'} className="logo" style={{ display: 'flex', alignItems: 'center' }}>
+                    <Link href="/" replace={router.pathname === '/'} className="logo">
                         <img src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" loading="lazy" />
                     </Link>
-                    <div className="nav-links">
+
+                    {/* Desktop Navigation */}
+                    <div className="nav-links desktop-only">
                         <Link href="/" replace={router.pathname === '/'} className={`nav-link ${router.pathname === '/' ? 'active' : ''}`}>
                             Home
                         </Link>
@@ -72,6 +81,26 @@ function MyApp({ Component, pageProps }) {
                             Services
                         </Link>
                         <a href="/book-consultation" onClick={openBookingModal} className={`nav-link ${router.pathname === '/book-consultation' ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
+                            Book Consultation
+                        </a>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle menu">
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+
+                {/* Mobile Navigation Drawer */}
+                <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+                    <div className="mobile-menu-links">
+                        <Link href="/" replace={router.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)} className={`mobile-nav-link ${router.pathname === '/' ? 'active' : ''}`}>
+                            Home
+                        </Link>
+                        <Link href="/services" replace={router.pathname === '/services'} onClick={() => setIsMobileMenuOpen(false)} className={`mobile-nav-link ${router.pathname === '/services' ? 'active' : ''}`}>
+                            Services
+                        </Link>
+                        <a href="/book-consultation" onClick={openBookingModal} className={`mobile-nav-link ${router.pathname === '/book-consultation' ? 'active' : ''}`}>
                             Book Consultation
                         </a>
                     </div>
