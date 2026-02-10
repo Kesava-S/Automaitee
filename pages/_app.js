@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
             <nav className="navbar">
                 <div className="container nav-content">
                     <Link href="/" replace={router.pathname === '/'} className="logo" style={{ display: 'flex', alignItems: 'center' }}>
-                        <img src="/logo.png" alt="Automaitee Digital Logo" style={{ height: '180px', width: 'auto', marginTop: '-10px' }} loading="lazy" />
+                        <img src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" loading="lazy" />
                     </Link>
                     <div className="nav-links">
                         <Link href="/" replace={router.pathname === '/'} className={`nav-link ${router.pathname === '/' ? 'active' : ''}`}>

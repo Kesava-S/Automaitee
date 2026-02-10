@@ -46,9 +46,12 @@ a {
     -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
     border-bottom: 1px solid var(--card-border);
-    height: 90px;
+    height: 64px;
+    /* Base height for mobile */
     display: flex;
     align-items: center;
+    padding: 0.5rem 0;
+    /* Add padding to prevent tight fit */
 }
 
 .nav-content {
@@ -59,11 +62,17 @@ a {
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 1.25rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 80px;
+    /* Default for mobile/small screens */
+    width: auto;
+    border-radius: 4px;
+    /* Optional, just in case */
+    transition: height 0.3s ease;
 }
 
 .nav-links {
@@ -257,6 +266,20 @@ footer {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .navbar {
+        height: 90px;
+    }
+
+    .logo-image {
+        height: 180px;
+        /* Big logo for desktop/TV */
+        margin-top: -10px;
+        /* Slight offset if needed */
     }
 }
 
