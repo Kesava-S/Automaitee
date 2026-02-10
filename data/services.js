@@ -5,7 +5,7 @@ export const services = [
         slug: "marketing-automation",
         description: "End-to-end automation from lead capture to personalized retention.",
 
-        fullDescription: "Intelligent Marketing Automation That Works For You — Engage, Convert, and Grow from One Powerful Platform.",
+        fullDescription: "Intelligent Marketing Automation That Works For Your Business <—> Engage, Convert, and Grow from One Powerful Platform.",
         animatedSubtext: "Improve your team's productivity...",
         featuresTitle: "Key Solutions",
         workflowImage: '/images/Smart-Lead-Automation.jpg',
