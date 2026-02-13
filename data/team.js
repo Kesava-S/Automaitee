@@ -12,7 +12,8 @@ export const team = [
         id: "muthukumar-m",
         name: "Muthukumar M",
         role: "Automation Developer",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        image: "/team/muthu.jpg",
+        objectPosition: "50% 20%",
         bio: "Designing and building intelligent automation systems that streamline processes and meet core business requirements."
     },
     {
