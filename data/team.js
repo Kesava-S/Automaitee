@@ -9,25 +9,29 @@ export const team = [
         linkedin: "https://www.linkedin.com/in/kesavs"
     },
     {
+        id: "maral-saeediniya",
+        name: "Maral Saeediniya",
+        role: "Client Success Manager",
+        image: "/team/maral.jpg",
+        bio: "Dedicated to onboard and engage clients achieve their automation goals and maximize impact, ensuring every solution delivers real value.",
+        linkedin: "https://www.linkedin.com/in/maral-saeediniya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    },
+    {
         id: "muthukumar-m",
         name: "Muthukumar M",
         role: "Automation Developer",
         image: "/team/muthu.jpg",
         objectPosition: "50% 20%",
-        bio: "Designing and building intelligent automation systems that streamline processes and meet core business requirements."
+        bio: "Designing and building intelligent automation systems that streamline processes and meet core business requirements.",
+        linkedin: "https://www.linkedin.com/in/muthukumar29/"
     },
     {
-        id: "david-chen",
-        name: "David Chen",
-        role: "AI Solutions Architect",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-        bio: "Specializes in designing scalable AI systems and integrating complex automation workflows."
-    },
-    {
-        id: "olivia-martinez",
-        name: "Olivia Martinez",
-        role: "Client Success Manager",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=761&q=80",
-        bio: "Dedicated to ensuring our clients achieve their automation goals and maximize ROI."
+        id: "sakthivel-m",
+        name: "Sakthivel M",
+        role: "Automation Developer",
+        image: "/team/sakthivel.jpg",
+        objectPosition: "50% 20%",
+        bio: "Creating seamless automation workflows that simplify operations and drive efficiency across business processes.",
+        linkedin: "https://www.linkedin.com/in/sakthivel-m-a1a49a281"
     }
 ];
