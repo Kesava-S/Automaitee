@@ -5,7 +5,7 @@ export const blogs = [
         excerpt: "Discover how AI marketing automation helps UK SMEs save time, improve efficiency, and drive growth with smarter tools.",
         date: "February 10, 2026",
         author: "Automaitee Team",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+        image: "/blog/ai-marketing-automation.jpg",
         content: `
             <h2>What is AI Marketing Automation?</h2>
             <p>AI marketing automation refers to the use of artificial intelligence to streamline and optimize marketing tasks. It goes beyond simple scheduling tools by using machine learning to analyze data and make decisions. Examples include:</p>
