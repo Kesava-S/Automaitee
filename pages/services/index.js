@@ -17,7 +17,7 @@ export default function Services() {
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                            Fully Customised for your business
+                            Fully Customised For You | Your Business
                         </p>
                     </Reveal>
                 </div>
