@@ -60,7 +60,8 @@ export default function Home() {
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
-                        <p>Empower You, your Business and Your Staffs</p>
+                        <p style={{ marginBottom: '0.5rem' }}>For The Era Of Personal Automation</p>
+                        <p>Empower You, Your Business and Your Staffs</p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
