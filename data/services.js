@@ -35,14 +35,7 @@ export const services = [
                     "Smart reminders, follow-ups, and content delivery happen without manual work."
                 ]
             },
-            {
-                title: "Social & Content Automation",
-                items: [
-                    "Schedule posts across platforms at optimal times.",
-                    "Recycle top-performing content automatically.",
-                    "Multi-channel campaigns adjust messaging per platform with performance tracking."
-                ]
-            },
+
             {
                 title: "Conversion & Customer Journey",
                 items: [
