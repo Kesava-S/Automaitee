@@ -103,7 +103,7 @@ export default function ChatBot() {
                             <X size={12} />
                         </button>
                         <p style={{ margin: 0, fontSize: '0.9rem', color: '#1d1d1f', lineHeight: '1.4' }}>
-                            👋 Hi! Need help automating your business? Chat with us!
+                            👋 Hey! Want to simplify your business or personal tasks with automation? Chat with us!
                         </p>
                         {/* Little triangle pointer */}
                         <div style={{
