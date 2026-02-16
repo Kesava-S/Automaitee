@@ -8,6 +8,7 @@ export default function ChatBot() {
     ]);
     const [inputText, setInputText] = useState("");
     const [isTyping, setIsTyping] = useState(false);
+    const [showWelcomePopup, setShowWelcomePopup] = useState(false);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -17,6 +18,16 @@ export default function ChatBot() {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
+    // Show welcome popup after delay
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (!isOpen) {
+                setShowWelcomePopup(true);
+            }
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [isOpen]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -50,9 +61,71 @@ export default function ChatBot() {
 
     return (
         <>
+            {/* Welcome Popup */}
+            {showWelcomePopup && !isOpen && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        bottom: '7rem',
+                        right: '2rem',
+                        backgroundColor: 'white',
+                        padding: '1rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+                        zIndex: 9998,
+                        maxWidth: '250px',
+                        animation: 'fadeIn 0.5s ease-out',
+                        border: '1px solid #f5f5f7'
+                    }}
+                >
+                    <div style={{ position: 'relative' }}>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setShowWelcomePopup(false);
+                            }}
+                            style={{
+                                position: 'absolute',
+                                top: '-8px',
+                                right: '-8px',
+                                background: '#f5f5f7',
+                                border: 'none',
+                                borderRadius: '50%',
+                                width: '20px',
+                                height: '20px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                color: '#86868b'
+                            }}
+                        >
+                            <X size={12} />
+                        </button>
+                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#1d1d1f', lineHeight: '1.4' }}>
+                            👋 Hi! Need help automating your business? Chat with us!
+                        </p>
+                        {/* Little triangle pointer */}
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '-24px',
+                            right: '20px',
+                            width: 0,
+                            height: 0,
+                            borderLeft: '10px solid transparent',
+                            borderRight: '10px solid transparent',
+                            borderTop: '10px solid white'
+                        }} />
+                    </div>
+                </div>
+            )}
+
             {/* Floating Toggle Button */}
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                    setIsOpen(!isOpen);
+                    setShowWelcomePopup(false);
+                }}
                 style={{
                     position: 'fixed',
                     bottom: '2rem',
