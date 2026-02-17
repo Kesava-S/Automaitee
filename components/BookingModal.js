@@ -15,6 +15,15 @@ export default function BookingModal({ isOpen, onClose }) {
         industry: '',
         goal: ''
     });
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        whatsapp: '',
+        companyName: '',
+        industry: '',
+        goal: '',
+        dateTime: ''
+    });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -24,6 +33,15 @@ export default function BookingModal({ isOpen, onClose }) {
             setStep(1);
             setIsSuccess(false);
             setIsSubmitting(false);
+            setErrors({
+                name: '',
+                email: '',
+                whatsapp: '',
+                companyName: '',
+                industry: '',
+                goal: '',
+                dateTime: ''
+            });
         }
     }, [isOpen]);
 
@@ -41,10 +59,72 @@ export default function BookingModal({ isOpen, onClose }) {
         ];
     };
 
+    const validateField = (name, value) => {
+        let error = '';
+
+        switch (name) {
+            case 'name':
+                if (!value.trim()) {
+                    error = 'Name is required';
+                } else if (value.trim().length < 2) {
+                    error = 'Name must be at least 2 characters';
+                } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+                    error = 'Name should only contain letters';
+                }
+                break;
+
+            case 'email':
+                if (!value.trim()) {
+                    error = 'Email is required';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    error = 'Please enter a valid email address';
+                }
+                break;
+
+            case 'whatsapp':
+                if (!value.trim()) {
+                    error = 'WhatsApp number is required';
+                } else if (!/^[\d\s\-\(\)]+$/.test(value)) {
+                    error = 'Please enter a valid phone number';
+                } else {
+                    const digitsOnly = value.replace(/\D/g, '');
+                    if (digitsOnly.length < 10) {
+                        error = 'Phone number must be at least 10 digits';
+                    } else if (digitsOnly.length > 15) {
+                        error = 'Phone number cannot exceed 15 digits';
+                    }
+                }
+                break;
+
+            case 'companyName':
+                if (value.trim() && value.trim().length < 2) {
+                    error = 'Company name must be at least 2 characters';
+                }
+                break;
+
+            case 'industry':
+                // Optional field, no validation needed
+                break;
+
+            case 'goal':
+                if (value.trim() && value.trim().length < 10) {
+                    error = 'Please provide more details (at least 10 characters)';
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        return error;
+    };
+
     const handleDateClick = (day) => {
         const newDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
         setSelectedDate(newDate);
         setSelectedTime(null); // Reset time when date changes
+        // Clear date/time error when date is selected
+        setErrors(prev => ({ ...prev, dateTime: '' }));
     };
 
     const handlePrevMonth = () => {
@@ -58,29 +138,96 @@ export default function BookingModal({ isOpen, onClose }) {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+
+        // Validate on change
+        const error = validateField(name, value);
+        setErrors(prev => ({ ...prev, [name]: error }));
+    };
+
+    const handleTimeSelect = (time) => {
+        setSelectedTime(time);
+        // Clear date/time error when time is selected
+        setErrors(prev => ({ ...prev, dateTime: '' }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate all fields before submitting
+        const newErrors = {};
+        let hasErrors = false;
+
+        // Validate form fields
+        Object.keys(formData).forEach(key => {
+            if (key !== 'countryCode') { // Skip countryCode validation
+                const error = validateField(key, formData[key]);
+                newErrors[key] = error;
+                if (error) hasErrors = true;
+            }
+        });
+
+        // Validate date and time selection
+        if (!selectedDate || !selectedTime) {
+            newErrors.dateTime = 'Please select both date and time';
+            hasErrors = true;
+        }
+
+        setErrors(prev => ({ ...prev, ...newErrors }));
+
+        if (hasErrors) {
+            return;
+        }
+
         setIsSubmitting(true);
 
+        // Combine country code with phone number
+        const fullWhatsAppNumber = `${formData.countryCode}${formData.whatsapp.replace(/\D/g, '')}`;
+
         const payload = {
-            ...formData,
-            bookingDate: selectedDate ? selectedDate.toLocaleDateString() : '',
+            name: formData.name,
+            email: formData.email,
+            whatsapp: fullWhatsAppNumber,
+            countryCode: formData.countryCode,
+            companyName: formData.companyName,
+            industry: formData.industry,
+            goal: formData.goal,
+            bookingDate: selectedDate ? selectedDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) : '',
             bookingTime: selectedTime,
             timestamp: new Date().toISOString()
         };
 
-        try {
-            // REPLACE THIS URL WITH YOUR N8N WEBHOOK URL
-            const webhookUrl = 'https://primary-production-4335.up.railway.app/webhook/book-consultation';
+        // console.log('Submitting payload:', payload);
 
-            await fetch(webhookUrl, {
+        try {
+            // N8N Webhook URL
+            const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+
+            const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // console.log('Booking submitted successfully');
+            setFormData({
+                name: '',
+                email: '',
+                whatsapp: '',
+                countryCode: '+1',
+                companyName: '',
+                industry: '',
+                goal: '',
+                bookingDate: '',
+                bookingTime: ''
+            })
             setIsSuccess(true);
         } catch (error) {
             console.error('Booking failed:', error);
@@ -120,15 +267,31 @@ export default function BookingModal({ isOpen, onClose }) {
                             </h2>
                             <form onSubmit={handleSubmit} id="bookingForm">
                                 <div className="form-group">
-                                    <label>Name</label>
-                                    <input type="text" name="name" required value={formData.name} onChange={handleInputChange} placeholder="Your Name" />
+                                    <label>Name *</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        placeholder="Your Name"
+                                        className={errors.name ? 'error' : ''}
+                                    />
+                                    {errors.name && <span className="error-message">{errors.name}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" required value={formData.email} onChange={handleInputChange} placeholder="Your Mail ID" />
+                                    <label>Email *</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        placeholder="Your Mail ID"
+                                        className={errors.email ? 'error' : ''}
+                                    />
+                                    {errors.email && <span className="error-message">{errors.email}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label>WhatsApp</label>
+                                    <label>WhatsApp *</label>
                                     <div style={{ display: 'flex', gap: '0.8rem' }}>
                                         <select
                                             name="countryCode"
@@ -152,25 +315,41 @@ export default function BookingModal({ isOpen, onClose }) {
                                             <option value="+33">+33 (FR)</option>
                                             <option value="+49">+49 (DE)</option>
                                         </select>
-                                        <input
-                                            type="tel"
-                                            name="whatsapp"
-                                            required
-                                            value={formData.whatsapp}
-                                            onChange={handleInputChange}
-                                            placeholder="Phone Number"
-                                            style={{ flex: 1 }}
-                                        />
+                                        <div style={{ flex: 1 }}>
+                                            <input
+                                                type="tel"
+                                                name="whatsapp"
+                                                value={formData.whatsapp}
+                                                onChange={handleInputChange}
+                                                placeholder="Phone Number"
+                                                className={errors.whatsapp ? 'error' : ''}
+                                                style={{ width: '100%' }}
+                                            />
+                                        </div>
                                     </div>
+                                    {errors.whatsapp && <span className="error-message">{errors.whatsapp}</span>}
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group">
                                         <label>Company</label>
-                                        <input type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} placeholder="Company Name" />
+                                        <input
+                                            type="text"
+                                            name="companyName"
+                                            value={formData.companyName}
+                                            onChange={handleInputChange}
+                                            placeholder="Company Name"
+                                            className={errors.companyName ? 'error' : ''}
+                                        />
+                                        {errors.companyName && <span className="error-message">{errors.companyName}</span>}
                                     </div>
                                     <div className="form-group">
                                         <label>Industry</label>
-                                        <select name="industry" value={formData.industry} onChange={handleInputChange}>
+                                        <select
+                                            name="industry"
+                                            value={formData.industry}
+                                            onChange={handleInputChange}
+                                            className={errors.industry ? 'error' : ''}
+                                        >
                                             <option value="">Select...</option>
                                             <option value="Education">Education</option>
                                             <option value="Finance">Finance</option>
@@ -182,11 +361,20 @@ export default function BookingModal({ isOpen, onClose }) {
                                             <option value="Healthcare">Healthcare</option>
                                             <option value="Others">Others</option>
                                         </select>
+                                        {errors.industry && <span className="error-message">{errors.industry}</span>}
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label>Goal</label>
-                                    <textarea name="goal" rows="2" value={formData.goal} onChange={handleInputChange} placeholder="What do you want to automate?"></textarea>
+                                    <textarea
+                                        name="goal"
+                                        rows="2"
+                                        value={formData.goal}
+                                        onChange={handleInputChange}
+                                        placeholder="What do you want to automate?"
+                                        className={errors.goal ? 'error' : ''}
+                                    ></textarea>
+                                    {errors.goal && <span className="error-message">{errors.goal}</span>}
                                 </div>
                             </form>
                         </div>
@@ -240,7 +428,7 @@ export default function BookingModal({ isOpen, onClose }) {
                                             <button
                                                 key={time}
                                                 className={`time-slot ${selectedTime === time ? 'selected' : ''}`}
-                                                onClick={() => setSelectedTime(time)}
+                                                onClick={() => handleTimeSelect(time)}
                                                 type="button"
                                             >
                                                 {time}
@@ -250,12 +438,18 @@ export default function BookingModal({ isOpen, onClose }) {
                                 </div>
                             )}
 
+                            {errors.dateTime && (
+                                <div style={{ marginTop: '10px' }}>
+                                    <span className="error-message">{errors.dateTime}</span>
+                                </div>
+                            )}
+                            <br />
                             <div className="modal-footer">
                                 <button
                                     type="submit"
                                     form="bookingForm"
                                     className="submit-btn"
-                                    disabled={!selectedDate || !selectedTime || isSubmitting}
+                                    disabled={isSubmitting}
                                 >
                                     {isSubmitting ? 'Booking...' : 'Confirm Booking'}
                                 </button>
@@ -264,6 +458,29 @@ export default function BookingModal({ isOpen, onClose }) {
                     </div>
                 )}
             </div>
+
+            <style jsx>{`
+                .error-message {
+                    display: block;
+                    color: #ef4444;
+                    font-size: 0.875rem;
+                    margin-top: 0.375rem;
+                    font-weight: 400;
+                }
+
+                .form-group input.error,
+                .form-group select.error,
+                .form-group textarea.error {
+                    border-color: #ef4444;
+                }
+
+                .form-group input.error:focus,
+                .form-group select.error:focus,
+                .form-group textarea.error:focus {
+                    border-color: #ef4444;
+                    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+                }
+            `}</style>
         </div>
     );
 }
