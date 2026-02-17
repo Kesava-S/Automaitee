@@ -224,10 +224,19 @@ export default function BookingModal({ isOpen, onClose }) {
                 countryCode: '+1',
                 companyName: '',
                 industry: '',
-                goal: '',
-                bookingDate: '',
-                bookingTime: ''
+                goal: ''
             })
+            setSelectedDate(null)
+            setSelectedTime(null)
+            setErrors({
+                name: '',
+                email: '',
+                whatsapp: '',
+                companyName: '',
+                industry: '',
+                goal: '',
+                dateTime: ''
+            });
             setIsSuccess(true);
         } catch (error) {
             console.error('Booking failed:', error);
