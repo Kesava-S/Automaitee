@@ -68,15 +68,31 @@ export default function Home() {
                             <Link href="/book-consultation" className="cta-button">
                                 Book Automation Consultation
                             </Link>
-                            <Link href="/services" className="cta-button" style={{ background: 'transparent', color: '#0071e3', border: '1px solid #0071e3', boxShadow: 'none' }}>
-                                View Services
-                            </Link>
                         </div>
                     </Reveal>
                 </div>
             </section>
 
             <IndustryMarquee />
+
+            <section className="services-section" style={{ background: '#fbfbfd' }}>
+                <div className="container">
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>What we automate</h2>
+                            <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem' }}>
+                                We build intelligent AI agents that work alongside your team, automating routine tasks and helping your business operate faster, smarter, and more efficiently.
+                            </p>
+                            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '3rem' }}>
+                                To explore how automation can transform your workflows, visit our Services page to discover the solutions we offer. You can then outline your specific automation requirements and book a consultation by submitting the form. Our automation consultants will review your needs and get back to you promptly with tailored recommendations.
+                            </p>
+                            <Link href="/services" className="cta-button">
+                                View Services
+                            </Link>
+                        </div>
+                    </Reveal>
+                </div>
+            </section>
 
             <section className="services-section">
                 <div className="container">
