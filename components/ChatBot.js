@@ -19,6 +19,22 @@ export default function ChatBot() {
         scrollToBottom();
     }, [messages]);
 
+    const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const dynamicMessages = [
+        "Want to see how AI can handle your daily tasks automatically? Let’s chat!",
+        "Curious how smart automation can save you hours every week? Ask us!",
+        "Let AI handle your workflow while you focus on growth—start chatting!",
+        "Struggling with repetitive tasks? Discover AI automation solutions now!",
+        "Want to simplify your business and boost productivity instantly? Chat here!",
+        "See how AI can make your business run smarter—talk to us today!",
+        "Looking to automate leads, emails, or social posts effortlessly? Let’s discuss!",
+        "Ready to transform your daily operations with AI? We’ll show you how!",
+        "Want more time and less hassle? Let our AI automation do the heavy lifting!",
+        "Ask us how AI can streamline your business—start your free chat now!"
+    ];
+
     // Show welcome popup after delay
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -28,6 +44,21 @@ export default function ChatBot() {
         }, 3000);
         return () => clearTimeout(timer);
     }, [isOpen]);
+
+    // Rotate messages
+    useEffect(() => {
+        if (!showWelcomePopup || isOpen) return;
+
+        const interval = setInterval(() => {
+            setIsAnimating(true);
+            setTimeout(() => {
+                setCurrentMessageIndex((prev) => (prev + 1) % dynamicMessages.length);
+                setIsAnimating(false);
+            }, 500); // 500ms fade out before changing text
+        }, 5000); // Change message every 5 seconds
+
+        return () => clearInterval(interval);
+    }, [showWelcomePopup, isOpen]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -73,9 +104,10 @@ export default function ChatBot() {
                         borderRadius: '16px',
                         boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
                         zIndex: 9998,
-                        maxWidth: '250px',
+                        maxWidth: '280px',
                         animation: 'fadeIn 0.5s ease-out',
-                        border: '1px solid #f5f5f7'
+                        border: '1px solid #f5f5f7',
+                        transition: 'all 0.3s ease'
                     }}
                 >
                     <div style={{ position: 'relative' }}>
@@ -97,13 +129,24 @@ export default function ChatBot() {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 cursor: 'pointer',
-                                color: '#86868b'
+                                color: '#86868b',
+                                zIndex: 2
                             }}
                         >
                             <X size={12} />
                         </button>
-                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#1d1d1f', lineHeight: '1.4' }}>
-                            👋 Hey! Want to simplify your business or personal tasks with automation? Chat with us!
+                        <p
+                            style={{
+                                margin: 0,
+                                fontSize: '0.9rem',
+                                color: '#1d1d1f',
+                                lineHeight: '1.4',
+                                opacity: isAnimating ? 0 : 1,
+                                transition: 'opacity 0.5s ease-in-out',
+                                transform: isAnimating ? 'translateY(5px)' : 'translateY(0)'
+                            }}
+                        >
+                            👋 {dynamicMessages[currentMessageIndex]}
                         </p>
                         {/* Little triangle pointer */}
                         <div style={{
