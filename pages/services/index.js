@@ -195,15 +195,6 @@ export default function Services() {
                     max-height: 3000px; /* High max-height to accommodate grid contents */
                     opacity: 1;
                 }
-                
-                @media (max-width: 768px) {
-                    .accordion-header h2 {
-                        font-size: 1.5rem !important;
-                    }
-                    .accordion-item {
-                        margin-bottom: 1rem;
-                    }
-                }
             `}</style>
         </>
     )
