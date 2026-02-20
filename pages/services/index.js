@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import Link from 'next/link'
 import Head from 'next/head'
 import { services } from '../../data/services'
 import { Reveal } from '../../components/Reveal'
-import { Building, HeartPulse, Dumbbell, Briefcase, Key, Megaphone } from 'lucide-react';
+import { Building, HeartPulse, Dumbbell, Briefcase, Key, Megaphone, ChevronDown } from 'lucide-react';
 
 const industries = [
     { name: "Hospitality & Food Services", icon: <Building size={32} />, desc: "Custom automation solutions for hotels, restaurants, cafes, and boutique hospitality businesses.", link: "/industries/hospitality-food-services" },
@@ -14,6 +15,12 @@ const industries = [
 ];
 
 export default function Services() {
+    const [openSection, setOpenSection] = useState('products');
+
+    const toggleSection = (section) => {
+        setOpenSection(openSection === section ? null : section);
+    };
+
     return (
         <>
             <Head>
@@ -33,82 +40,162 @@ export default function Services() {
                 </div>
             </div>
 
-            <section className="services-section">
-                <div className="container">
-                    <Reveal width="100%">
-                        <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Business Automations</h2>
-                    </Reveal>
-                    <div className="grid">
-                        {industries.map((industry, index) => (
-                            <Reveal key={industry.name} delay={index * 0.1} width="100%">
-                                <Link href={industry.link} className="card" style={{ display: 'block', height: '100%' }}>
-                                    <div style={{ marginBottom: '1rem', color: '#0071e3', background: 'rgba(0, 113, 227, 0.05)', display: 'inline-flex', padding: '12px', borderRadius: '12px' }}>
-                                        {industry.icon}
-                                    </div>
-                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{industry.name}</h2>
-                                    <p style={{ color: 'var(--text-secondary)' }}>{industry.desc}</p>
+            <section className="services-section" style={{ paddingBottom: '100px' }}>
+                <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
 
-                                    <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
-                                        Learn more →
-                                    </div>
-                                </Link>
-                            </Reveal>
-                        ))}
-                    </div>
+                    {/* Products Section */}
+                    <div className="accordion-item">
+                        <button
+                            className={`accordion-header ${openSection === 'products' ? 'active' : ''}`}
+                            onClick={() => toggleSection('products')}
+                        >
+                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Products</h2>
+                            <ChevronDown className="accordion-icon" size={28} />
+                        </button>
+                        <div className={`accordion-content ${openSection === 'products' ? 'open' : ''}`}>
+                            <div className="grid" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
+                                {services.map((service, index) => (
+                                    <Reveal key={service.id} delay={index * 0.1} width="100%">
+                                        <Link href={`/services/${service.slug}`} className="card" style={{ display: 'block', height: '100%' }}>
+                                            <h2>{service.title}</h2>
+                                            <p style={{ marginBottom: service.processSteps ? '1.5rem' : '0' }}>{service.description}</p>
 
-                    <Reveal width="100%">
-                        <h2 style={{ fontSize: '2rem', marginTop: '4rem', marginBottom: '2rem' }}>Products</h2>
-                    </Reveal>
-                    <div className="grid">
-                        {services.map((service, index) => (
-                            <Reveal key={service.id} delay={index * 0.1} width="100%">
-                                <Link href={`/services/${service.slug}`} className="card" style={{ display: 'block', height: '100%' }}>
-                                    <h2>{service.title}</h2>
-                                    <p style={{ marginBottom: service.processSteps ? '1.5rem' : '0' }}>{service.description}</p>
-
-                                    {service.processSteps && (
-                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
-                                            {service.processSteps.map((step, stepIndex) => (
-                                                <div key={stepIndex} style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{
-                                                        background: 'rgba(0, 113, 227, 0.1)',
-                                                        color: '#0071e3',
-                                                        padding: '4px 10px',
-                                                        borderRadius: '20px',
-                                                        fontSize: '0.8rem',
-                                                        fontWeight: '600',
-                                                        whiteSpace: 'nowrap'
-                                                    }}>
-                                                        {step}
-                                                    </span>
-                                                    {stepIndex < service.processSteps.length - 1 && (
-                                                        <span style={{ margin: '0 4px', color: '#86868b', fontSize: '0.9rem' }}>→</span>
-                                                    )}
+                                            {service.processSteps && (
+                                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
+                                                    {service.processSteps.map((step, stepIndex) => (
+                                                        <div key={stepIndex} style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{
+                                                                background: 'rgba(0, 113, 227, 0.1)',
+                                                                color: '#0071e3',
+                                                                padding: '4px 10px',
+                                                                borderRadius: '20px',
+                                                                fontSize: '0.8rem',
+                                                                fontWeight: '600',
+                                                                whiteSpace: 'nowrap'
+                                                            }}>
+                                                                {step}
+                                                            </span>
+                                                            {stepIndex < service.processSteps.length - 1 && (
+                                                                <span style={{ margin: '0 4px', color: '#86868b', fontSize: '0.9rem' }}>→</span>
+                                                            )}
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                    <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
-                                        Learn more →
-                                    </div>
-                                </Link>
-                            </Reveal>
-                        ))}
+                                            )}
+                                            <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
+                                                Learn more →
+                                            </div>
+                                        </Link>
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
-                    <Reveal width="100%">
-                        <h2 style={{ fontSize: '2rem', marginTop: '4rem', marginBottom: '2rem' }}>Personal Automations</h2>
-                    </Reveal>
-                    <div className="grid">
-                        <Reveal delay={0.2} width="100%">
-                            <div className="card">
-                                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Coming Soon</h3>
-                                <p style={{ color: 'var(--text-secondary)' }}>We are working on bringing personal automation services to you.</p>
+                    {/* Business Automations Section */}
+                    <div className="accordion-item">
+                        <button
+                            className={`accordion-header ${openSection === 'business' ? 'active' : ''}`}
+                            onClick={() => toggleSection('business')}
+                        >
+                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Business Automations</h2>
+                            <ChevronDown className="accordion-icon" size={28} />
+                        </button>
+                        <div className={`accordion-content ${openSection === 'business' ? 'open' : ''}`}>
+                            <div className="grid" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
+                                {industries.map((industry, index) => (
+                                    <Reveal key={industry.name} delay={index * 0.1} width="100%">
+                                        <Link href={industry.link} className="card" style={{ display: 'block', height: '100%' }}>
+                                            <div style={{ marginBottom: '1rem', color: '#0071e3', background: 'rgba(0, 113, 227, 0.05)', display: 'inline-flex', padding: '12px', borderRadius: '12px' }}>
+                                                {industry.icon}
+                                            </div>
+                                            <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{industry.name}</h2>
+                                            <p style={{ color: 'var(--text-secondary)' }}>{industry.desc}</p>
+
+                                            <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
+                                                Learn more →
+                                            </div>
+                                        </Link>
+                                    </Reveal>
+                                ))}
                             </div>
-                        </Reveal>
+                        </div>
                     </div>
+
+                    {/* Personal Automations Section */}
+                    <div className="accordion-item">
+                        <button
+                            className={`accordion-header ${openSection === 'personal' ? 'active' : ''}`}
+                            onClick={() => toggleSection('personal')}
+                        >
+                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Personal Automations</h2>
+                            <ChevronDown className="accordion-icon" size={28} />
+                        </button>
+                        <div className={`accordion-content ${openSection === 'personal' ? 'open' : ''}`}>
+                            <div className="grid" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
+                                <Reveal delay={0.2} width="100%">
+                                    <div className="card">
+                                        <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Coming Soon</h3>
+                                        <p style={{ color: 'var(--text-secondary)' }}>We are working on bringing personal automation services to you.</p>
+                                    </div>
+                                </Reveal>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
+
+            <style jsx>{`
+                .accordion-item {
+                    margin-bottom: 2rem;
+                    border-bottom: 1px solid var(--card-border);
+                    padding-bottom: 1rem;
+                }
+                
+                .accordion-header {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    padding: 1rem 0;
+                    text-align: left;
+                    color: var(--foreground);
+                    transition: color 0.3s ease;
+                }
+                
+                .accordion-header:hover {
+                    color: #0071e3;
+                }
+                
+                .accordion-icon {
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    color: inherit;
+                }
+                
+                .accordion-header.active .accordion-icon {
+                    transform: rotate(180deg);
+                }
+                
+                .accordion-header.active {
+                    color: #0071e3;
+                }
+                
+                .accordion-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+                    opacity: 0;
+                }
+                
+                .accordion-content.open {
+                    max-height: 3000px; /* High max-height to accommodate grid contents */
+                    opacity: 1;
+                }
+            `}</style>
         </>
     )
 }
