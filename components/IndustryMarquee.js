@@ -13,8 +13,8 @@ const industries = [
     { name: "Service Businesses", icon: <Briefcase size={20} />, desc: "Enhance quotes, invoicing, and service dispatching effortlessly.", link: "#" }
 ];
 
-// Duplicate the array to create the seamless loop effect
-const marqueeItems = [...industries, ...industries, ...industries, ...industries];
+// Use the original industries array instead of duplicating it
+const displayItems = industries;
 
 export const IndustryMarquee = () => {
     const [activeIndustry, setActiveIndustry] = useState(null);
@@ -25,9 +25,9 @@ export const IndustryMarquee = () => {
                 <h2 className="section-title" style={{ marginBottom: '2rem' }}>Industries We Work With</h2>
             </div>
 
-            <div className="marquee-container" style={{ overflow: 'hidden', paddingBottom: '30px', paddingTop: '10px' }}>
-                <div className={`marquee-track ${activeIndustry ? 'paused' : ''}`}>
-                    {marqueeItems.map((item, index) => {
+            <div className="industries-grid" style={{ paddingBottom: '30px', paddingTop: '10px' }}>
+                <div className="industries-wrap">
+                    {displayItems.map((item, index) => {
                         const isActive = activeIndustry?.name === item.name;
                         return (
                             <div
@@ -80,13 +80,15 @@ export const IndustryMarquee = () => {
                     position: relative;
                 }
 
-                .marquee-track.paused {
-                    animation-play-state: paused !important;
+                .industries-wrap {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 1.5rem;
                 }
                 
                 .industry-pill {
                     display: inline-flex;
-                    margin: 0 1rem;
                     background: white;
                     border: 1px solid #e5e5e5;
                     border-radius: 50px;
