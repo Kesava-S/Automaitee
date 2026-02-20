@@ -9,8 +9,7 @@ const industries = [
     { name: "Education & Training", icon: <Briefcase size={20} />, desc: "Automate enrolment, fee processing, attendance, and student engagement.", link: "/industries/education-training" },
     { name: "Real Estate Agencies", icon: <Home size={20} />, desc: "Manage leads, schedule viewings, and automate follow-ups for higher conversions.", link: "#" },
     { name: "Rental & Property Businesses", icon: <Key size={20} />, desc: "Automate rent collection reminders, maintenance requests, and tenant onboarding.", link: "/industries/rental-property-businesses" },
-    { name: "Marketing & Advertising", icon: <Megaphone size={20} />, desc: "Automate social media, email campaigns, analytics, and customer segmentation.", link: "/industries/marketing-advertising" },
-    { name: "Service Businesses", icon: <Briefcase size={20} />, desc: "Enhance quotes, invoicing, and service dispatching effortlessly.", link: "#" }
+    { name: "Marketing & Advertising", icon: <Megaphone size={20} />, desc: "Automate social media, email campaigns, analytics, and customer segmentation.", link: "/industries/marketing-advertising" }
 ];
 
 // Use the original industries array instead of duplicating it
