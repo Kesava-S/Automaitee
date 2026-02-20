@@ -2,6 +2,16 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { services } from '../../data/services'
 import { Reveal } from '../../components/Reveal'
+import { Building, HeartPulse, Dumbbell, Briefcase, Key, Megaphone } from 'lucide-react';
+
+const industries = [
+    { name: "Hospitality & Food Services", icon: <Building size={32} />, desc: "Custom automation solutions for hotels, restaurants, cafes, and boutique hospitality businesses.", link: "/industries/hospitality-food-services" },
+    { name: "Healthcare & Wellness", icon: <HeartPulse size={32} />, desc: "Streamline patient scheduling, automated reminders, and seamless EHR data entry.", link: "/industries/healthcare-wellness" },
+    { name: "Gyms & Fitness Studios", icon: <Dumbbell size={32} />, desc: "Automate memberships, class bookings, and targeted client engagement.", link: "/industries/gyms-fitness-studios" },
+    { name: "Education & Training", icon: <Briefcase size={32} />, desc: "Automate enrolment, fee processing, attendance, and student engagement.", link: "/industries/education-training" },
+    { name: "Rental & Property Businesses", icon: <Key size={32} />, desc: "Automate rent collection reminders, maintenance requests, and tenant onboarding.", link: "/industries/rental-property-businesses" },
+    { name: "Marketing & Advertising", icon: <Megaphone size={32} />, desc: "Automate social media, email campaigns, analytics, and customer segmentation.", link: "/industries/marketing-advertising" }
+];
 
 export default function Services() {
     return (
@@ -27,6 +37,27 @@ export default function Services() {
                 <div className="container">
                     <Reveal width="100%">
                         <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Business Automations</h2>
+                    </Reveal>
+                    <div className="grid">
+                        {industries.map((industry, index) => (
+                            <Reveal key={industry.name} delay={index * 0.1} width="100%">
+                                <Link href={industry.link} className="card" style={{ display: 'block', height: '100%' }}>
+                                    <div style={{ marginBottom: '1rem', color: '#0071e3', background: 'rgba(0, 113, 227, 0.05)', display: 'inline-flex', padding: '12px', borderRadius: '12px' }}>
+                                        {industry.icon}
+                                    </div>
+                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{industry.name}</h2>
+                                    <p style={{ color: 'var(--text-secondary)' }}>{industry.desc}</p>
+
+                                    <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
+                                        Learn more →
+                                    </div>
+                                </Link>
+                            </Reveal>
+                        ))}
+                    </div>
+
+                    <Reveal width="100%">
+                        <h2 style={{ fontSize: '2rem', marginTop: '4rem', marginBottom: '2rem' }}>Products</h2>
                     </Reveal>
                     <div className="grid">
                         {services.map((service, index) => (
