@@ -7,7 +7,6 @@ const industries = [
     { name: "Healthcare & Wellness", icon: <HeartPulse size={20} />, desc: "Streamline patient scheduling, automated reminders, and seamless EHR data entry.", link: "/industries/healthcare-wellness" },
     { name: "Gyms & Fitness Studios", icon: <Dumbbell size={20} />, desc: "Automate memberships, class bookings, and targeted client engagement.", link: "/industries/gyms-fitness-studios" },
     { name: "Education & Training", icon: <Briefcase size={20} />, desc: "Automate enrolment, fee processing, attendance, and student engagement.", link: "/industries/education-training" },
-    { name: "Real Estate Agencies", icon: <Home size={20} />, desc: "Manage leads, schedule viewings, and automate follow-ups for higher conversions.", link: "#" },
     { name: "Rental & Property Businesses", icon: <Key size={20} />, desc: "Automate rent collection reminders, maintenance requests, and tenant onboarding.", link: "/industries/rental-property-businesses" },
     { name: "Marketing & Advertising", icon: <Megaphone size={20} />, desc: "Automate social media, email campaigns, analytics, and customer segmentation.", link: "/industries/marketing-advertising" }
 ];
