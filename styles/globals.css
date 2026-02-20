@@ -743,3 +743,72 @@ footer {
         transform: translateX(-50%);
     }
 }
+
+/* Comprehensive Mobile Refinements */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 120px 0 60px !important;
+    }
+
+    .services-section {
+        padding: 60px 0 !important;
+    }
+
+    .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card h3 {
+        font-size: 1.25rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    /* Override inline styles that are too large on mobile */
+    div[style*="padding-top: 120px"] {
+        padding-top: 80px !important;
+    }
+
+    div[style*="padding-bottom: 80px"] {
+        padding-bottom: 40px !important;
+    }
+
+    div[style*="padding-bottom: 60px"] {
+        padding-bottom: 30px !important;
+    }
+
+    div[style*="padding-top: 180px"] {
+        padding-top: 100px !important;
+    }
+
+    div[style*="padding-bottom: 100px"] {
+        padding-bottom: 60px !important;
+    }
+
+    /* Typography adjustments */
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    p {
+        font-size: 1rem !important;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+    }
+}

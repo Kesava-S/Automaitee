@@ -206,6 +206,31 @@ export const IndustryMarquee = () => {
                         transform: translateY(0);
                     }
                 }
+
+                @media (max-width: 768px) {
+                    .industry-marquee-wrapper {
+                        padding: 3rem 0 1rem 0;
+                    }
+                    .industries-wrap {
+                        gap: 1rem;
+                    }
+                    .industry-pill {
+                        padding: 10px 16px;
+                    }
+                    .pill-name {
+                        font-size: 0.95rem;
+                    }
+                    .industry-dropdown {
+                        padding: 2rem 1.5rem;
+                    }
+                    .dropdown-title {
+                        font-size: 1.5rem;
+                    }
+                    .dropdown-desc {
+                        font-size: 1rem;
+                        margin-bottom: 1.5rem;
+                    }
+                }
             `}</style>
         </div>
     );
