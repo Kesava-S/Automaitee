@@ -29,7 +29,7 @@ export default function Home() {
 
                 <meta property="og:title" content="Automaitee | AI & Business Automation" />
                 <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
-                <meta property="og:url" content="https://kondamaal.com/" />
+                <meta property="og:url" content="https://automaitee.com/" />
 
                 <meta name="twitter:title" content="Automaitee | AI & Business Automation" />
                 <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
@@ -60,7 +60,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.5}>
                         <p style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                            We build custom automation systems — so your business runs smarter, not harder.
+                            We build custom AI Agents — so your business runs smarter, not harder.
                         </p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">

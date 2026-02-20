@@ -44,11 +44,11 @@ function MyApp({ Component, pageProps }) {
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Automaitee AI Digital Automation" />
-                <meta property="og:image" content="https://kondamaal.com/logo.png" />
+                <meta property="og:image" content="https://automaitee.com/logo.png" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary" />
-                <meta name="twitter:image" content="https://kondamaal.com/logo.png" />
+                <meta name="twitter:image" content="https://automaitee.com/logo.png" />
             </Head>
 
             {/* Google Tag (gtag.js) */}
