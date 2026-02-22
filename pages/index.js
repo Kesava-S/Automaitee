@@ -54,7 +54,7 @@ export default function Home() {
             <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
-                        <h1 style={{ maxWidth: '900px', margin: '0 auto', lineHeight: '1.2' }}>
+                        <h1>
                             <AnimatedText text="Automation Designed For Your Business" />
                         </h1>
                     </Reveal>
