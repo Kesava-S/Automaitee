@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, User, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 
 export default function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +10,7 @@ export default function ChatBot() {
     const [isTyping, setIsTyping] = useState(false);
     const [showWelcomePopup, setShowWelcomePopup] = useState(false);
     const messagesEndRef = useRef(null);
+    const inputRef = useRef(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,32 +32,77 @@ export default function ChatBot() {
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
-        if (!inputText.trim()) return;
+        if (!inputText.trim() || isTyping) return;
 
         const userMessage = { id: Date.now(), text: inputText, sender: 'user' };
         setMessages(prev => [...prev, userMessage]);
+        const currentInput = inputText;
         setInputText("");
         setIsTyping(true);
 
-        // Simulate AI response delay
-        setTimeout(() => {
-            const botResponses = [
-                "That's a great question about automation!",
-                "We can certainly help you streamline that process.",
-                "Automaitee specializes in exactly that kind of workflow.",
-                "Would you like to book a consultation to discuss this further?",
-                "Our AI agents can handle that task 24/7."
-            ];
-            const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+        // Check if sessionId already exists
+        let sessionId = localStorage.getItem("automaitee_session");
 
-            const botMessage = {
+        if (!sessionId) {
+            sessionId = "user_" + Date.now();
+            localStorage.setItem("automaitee_session", sessionId);
+        }
+
+        try {
+            // ✅ Calls local Next.js API proxy — no CORS issues
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    message: currentInput,
+                    sessionId: sessionId,
+                    timestamp: new Date().toISOString(),
+                    // Include conversation history for context (optional)
+                    history: messages.map(m => ({ role: m.sender === 'user' ? 'user' : 'assistant', content: m.text }))
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Webhook responded with status ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // n8n typically returns data in various shapes — handle common ones:
+            // { output: "..." } | { message: "..." } | { text: "..." } | { response: "..." } | plain string
+            let replyText =
+                data?.output ||
+                data?.message ||
+                data?.text ||
+                data?.response ||
+                data?.reply ||
+                (typeof data === 'string' ? data : null) ||
+                "Sorry, I couldn't parse the response. Please check your n8n workflow output.";
+
+            // If the value is an object (e.g. nested), stringify it as a fallback
+            if (typeof replyText === 'object') {
+                replyText = JSON.stringify(replyText);
+            }
+
+            setMessages(prev => [...prev, {
                 id: Date.now() + 1,
-                text: randomResponse,
+                text: replyText,
                 sender: 'bot'
-            };
-            setMessages(prev => [...prev, botMessage]);
+            }]);
+        } catch (error) {
+            console.error("n8n webhook error:", error);
+            setMessages(prev => [...prev, {
+                id: Date.now() + 1,
+                text: `⚠️ Failed to reach the automation server. ${error.message}`,
+                sender: 'bot',
+                isError: true
+            }]);
+        } finally {
             setIsTyping(false);
-        }, 1500);
+            setTimeout(() => inputRef.current?.focus(), 50);
+        }
     };
 
     return (
@@ -105,7 +151,6 @@ export default function ChatBot() {
                         <p style={{ margin: 0, fontSize: '0.9rem', color: '#1d1d1f', lineHeight: '1.4' }}>
                             👋 Hey! Want to simplify your business or personal tasks with automation? Chat with us!
                         </p>
-                        {/* Little triangle pointer */}
                         <div style={{
                             position: 'absolute',
                             bottom: '-24px',
@@ -133,7 +178,7 @@ export default function ChatBot() {
                     width: '60px',
                     height: '60px',
                     borderRadius: '50%',
-                    backgroundColor: '#0071e3', // Apple/Tech Blue
+                    backgroundColor: '#0071e3',
                     color: 'white',
                     border: 'none',
                     boxShadow: '0 4px 12px rgba(0,113,227,0.3)',
@@ -223,11 +268,20 @@ export default function ChatBot() {
                                 <div style={{
                                     padding: '12px 16px',
                                     borderRadius: msg.sender === 'user' ? '20px 20px 4px 20px' : '20px 20px 20px 4px',
-                                    backgroundColor: msg.sender === 'user' ? '#0071e3' : 'white',
-                                    color: msg.sender === 'user' ? 'white' : '#1d1d1f',
+                                    backgroundColor: msg.isError
+                                        ? '#fff3f3'
+                                        : msg.sender === 'user'
+                                            ? '#0071e3'
+                                            : 'white',
+                                    color: msg.isError
+                                        ? '#cc0000'
+                                        : msg.sender === 'user'
+                                            ? 'white'
+                                            : '#1d1d1f',
                                     boxShadow: msg.sender === 'bot' ? '0 2px 8px rgba(0,0,0,0.05)' : 'none',
                                     fontSize: '0.95rem',
-                                    lineHeight: '1.5'
+                                    lineHeight: '1.5',
+                                    border: msg.isError ? '1px solid #ffcccc' : 'none'
                                 }}>
                                     {msg.text}
                                 </div>
@@ -242,19 +296,21 @@ export default function ChatBot() {
                                 </span>
                             </div>
                         ))}
+
                         {isTyping && (
-                            <div style={{ alignSelf: 'flex-start', marginLeft: '1rem' }}>
+                            <div style={{ alignSelf: 'flex-start', marginLeft: '0' }}>
                                 <div style={{
                                     padding: '12px 16px',
                                     borderRadius: '20px 20px 20px 4px',
                                     backgroundColor: 'white',
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                                     display: 'flex',
-                                    gap: '4px'
+                                    gap: '4px',
+                                    alignItems: 'center'
                                 }}>
-                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', animationDelay: '0s' }}></span>
-                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', animationDelay: '0.2s' }}></span>
-                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', animationDelay: '0.4s' }}></span>
+                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', display: 'inline-block', animationDelay: '0s' }}></span>
+                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', display: 'inline-block', animationDelay: '0.2s' }}></span>
+                                    <span className="dot-animate" style={{ width: '6px', height: '6px', background: '#86868b', borderRadius: '50%', display: 'inline-block', animationDelay: '0.4s' }}></span>
                                 </div>
                             </div>
                         )}
@@ -271,10 +327,12 @@ export default function ChatBot() {
                         alignItems: 'center'
                     }}>
                         <input
+                            ref={inputRef}
                             type="text"
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                             placeholder="Type a message..."
+                            disabled={isTyping}
                             style={{
                                 flex: 1,
                                 padding: '12px 16px',
@@ -282,7 +340,8 @@ export default function ChatBot() {
                                 border: '1px solid #e5e5e5',
                                 fontSize: '0.95rem',
                                 outline: 'none',
-                                transition: 'border-color 0.2s'
+                                transition: 'border-color 0.2s',
+                                backgroundColor: isTyping ? '#f9f9f9' : 'white'
                             }}
                             onFocus={(e) => e.target.style.borderColor = '#0071e3'}
                             onBlur={(e) => e.target.style.borderColor = '#e5e5e5'}
@@ -294,13 +353,13 @@ export default function ChatBot() {
                                 width: '40px',
                                 height: '40px',
                                 borderRadius: '50%',
-                                backgroundColor: inputText.trim() ? '#0071e3' : '#f5f5f7',
-                                color: inputText.trim() ? 'white' : '#86868b',
+                                backgroundColor: inputText.trim() && !isTyping ? '#0071e3' : '#f5f5f7',
+                                color: inputText.trim() && !isTyping ? 'white' : '#86868b',
                                 border: 'none',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                cursor: inputText.trim() ? 'pointer' : 'default',
+                                cursor: inputText.trim() && !isTyping ? 'pointer' : 'default',
                                 transition: 'all 0.2s'
                             }}
                         >
@@ -309,10 +368,15 @@ export default function ChatBot() {
                     </form>
                 </div>
             )}
-            <style jsx global>{`
+
+            <style>{`
                 @keyframes slideUp {
                     from { transform: translateY(20px); opacity: 0; }
                     to { transform: translateY(0); opacity: 1; }
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(8px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
                 .dot-animate {
                     animation: bounce 1.4s infinite ease-in-out both;

@@ -204,7 +204,7 @@ export default function BookingModal({ isOpen, onClose }) {
 
         try {
             // N8N Webhook URL
-            const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+            const webhookUrl = `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/book-consultation`;
 
             const response = await fetch(webhookUrl, {
                 method: 'POST',
