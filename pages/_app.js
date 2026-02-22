@@ -44,11 +44,11 @@ function MyApp({ Component, pageProps }) {
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Automaitee AI Digital Automation" />
-                <meta property="og:image" content="https://kondamaal.com/logo.png" />
+                <meta property="og:image" content="https://automaitee.com/logo.png" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary" />
-                <meta name="twitter:image" content="https://kondamaal.com/logo.png" />
+                <meta name="twitter:image" content="https://automaitee.com/logo.png" />
             </Head>
 
             {/* Google Tag (gtag.js) */}
@@ -128,7 +128,7 @@ function MyApp({ Component, pageProps }) {
             <footer>
                 <div className="container">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-                        <p>&copy; {new Date().getFullYear()} Automaitee Digital. All rights reserved.</p>
+                        <p>&copy; 2025 Automaitee Digital. All rights reserved.</p>
                         <div style={{ display: 'flex', gap: '1.5rem' }}>
                             <Link href="/privacy-policy" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Privacy Policy</Link>
                             <Link href="/terms-of-service" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Terms of Service</Link>

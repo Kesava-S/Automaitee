@@ -9,15 +9,21 @@ export default function BookingModal({ isOpen, onClose }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        jobRole: '',
+        duration: '30 - 45 mins',
         whatsapp: '',
         countryCode: '+1',
         companyName: '',
         industry: '',
+        businessOverview: '',
+        currentTools: '',
+        painPoints: '',
         goal: ''
     });
     const [errors, setErrors] = useState({
         name: '',
         email: '',
+        jobRole: '',
         whatsapp: '',
         companyName: '',
         industry: '',
@@ -36,6 +42,7 @@ export default function BookingModal({ isOpen, onClose }) {
             setErrors({
                 name: '',
                 email: '',
+                jobRole: '',
                 whatsapp: '',
                 companyName: '',
                 industry: '',
@@ -186,10 +193,15 @@ export default function BookingModal({ isOpen, onClose }) {
         const payload = {
             name: formData.name,
             email: formData.email,
+            jobRole: formData.jobRole,
+            duration: formData.duration,
             whatsapp: fullWhatsAppNumber,
             countryCode: formData.countryCode,
             companyName: formData.companyName,
             industry: formData.industry,
+            businessOverview: formData.businessOverview,
+            currentTools: formData.currentTools,
+            painPoints: formData.painPoints,
             goal: formData.goal,
             bookingDate: selectedDate ? selectedDate.toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -220,10 +232,15 @@ export default function BookingModal({ isOpen, onClose }) {
             setFormData({
                 name: '',
                 email: '',
+                jobRole: '',
+                duration: '30 - 45 mins',
                 whatsapp: '',
                 countryCode: '+1',
                 companyName: '',
                 industry: '',
+                businessOverview: '',
+                currentTools: '',
+                painPoints: '',
                 goal: ''
             })
             setSelectedDate(null)
@@ -231,6 +248,7 @@ export default function BookingModal({ isOpen, onClose }) {
             setErrors({
                 name: '',
                 email: '',
+                jobRole: '',
                 whatsapp: '',
                 companyName: '',
                 industry: '',
@@ -298,6 +316,30 @@ export default function BookingModal({ isOpen, onClose }) {
                                         className={errors.email ? 'error' : ''}
                                     />
                                     {errors.email && <span className="error-message">{errors.email}</span>}
+                                </div>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label>Job Role</label>
+                                        <input
+                                            type="text"
+                                            name="jobRole"
+                                            value={formData.jobRole}
+                                            onChange={handleInputChange}
+                                            placeholder="Your Role in the business"
+                                            className={errors.jobRole ? 'error' : ''}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Duration</label>
+                                        <select
+                                            name="duration"
+                                            value={formData.duration}
+                                            onChange={handleInputChange}
+                                        >
+                                            <option value="30 - 45 mins">30 - 45 mins</option>
+                                            <option value="45 mins to 1 hr">45 mins to 1 hr</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <label>WhatsApp *</label>
@@ -372,6 +414,36 @@ export default function BookingModal({ isOpen, onClose }) {
                                         </select>
                                         {errors.industry && <span className="error-message">{errors.industry}</span>}
                                     </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>One line overview of your business:</label>
+                                    <input
+                                        type="text"
+                                        name="businessOverview"
+                                        value={formData.businessOverview}
+                                        onChange={handleInputChange}
+                                        placeholder=""
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Current tools and processses:</label>
+                                    <textarea
+                                        name="currentTools"
+                                        rows="2"
+                                        value={formData.currentTools}
+                                        onChange={handleInputChange}
+                                        placeholder=""
+                                    ></textarea>
+                                </div>
+                                <div className="form-group">
+                                    <label>Pain Points and Repetitive Tasks:</label>
+                                    <textarea
+                                        name="painPoints"
+                                        rows="2"
+                                        value={formData.painPoints}
+                                        onChange={handleInputChange}
+                                        placeholder=""
+                                    ></textarea>
                                 </div>
                                 <div className="form-group">
                                     <label>Goal</label>

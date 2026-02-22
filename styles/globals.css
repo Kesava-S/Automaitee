@@ -696,3 +696,50 @@ footer {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* Marquee Animation */
+.marquee-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    padding: 0 4rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.marquee-item:hover {
+    color: #0071e3;
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

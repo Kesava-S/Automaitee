@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { faqs } from '../data/faqs'
 import { Reveal } from '../components/Reveal'
+import { IndustryMarquee } from '../components/IndustryMarquee'
 
 
 const AnimatedText = ({ text, delayOffset = 0 }) => {
@@ -28,7 +29,7 @@ export default function Home() {
 
                 <meta property="og:title" content="Automaitee | AI & Business Automation" />
                 <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
-                <meta property="og:url" content="https://kondamaal.com/" />
+                <meta property="og:url" content="https://automaitee.com/" />
 
                 <meta name="twitter:title" content="Automaitee | AI & Business Automation" />
                 <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
@@ -53,22 +54,39 @@ export default function Home() {
             <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
-                        <h1>
-                            <AnimatedText text="Automaitee" />
-                            <br />
-                            <AnimatedText text="AI Digital Automation" delayOffset={0.3} />
+                        <h1 style={{ maxWidth: '900px', margin: '0 auto', lineHeight: '1.2' }}>
+                            <AnimatedText text="Automation Designed For Your Business" />
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
-                        <p style={{ marginBottom: '0.5rem' }}>For The Era Of Personal Automation</p>
-                        <p>Empower You, Your Business and Your Staffs</p>
+                        <p style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                            We build custom AI Agents — so your business runs smarter, not harder.
+                        </p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <Link href="/book-consultation" className="cta-button">
-                                Book Free Consultation
+                                Book Automation Consultation
                             </Link>
-                            <Link href="/services" className="cta-button" style={{ background: 'transparent', color: '#0071e3', border: '1px solid #0071e3', boxShadow: 'none' }}>
+                        </div>
+                    </Reveal>
+                </div>
+            </section>
+
+            <IndustryMarquee />
+
+            <section className="services-section" style={{ background: '#fbfbfd' }}>
+                <div className="container">
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>What we automate</h2>
+                            <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem' }}>
+                                We build intelligent AI agents that work alongside your team, automating routine tasks and helping your business operate faster, smarter, and more efficiently.
+                            </p>
+                            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '3rem' }}>
+                                To explore how automation can transform your workflows, visit our Services page to discover the solutions we offer. You can then outline your specific automation requirements and book a consultation by submitting the form. Our automation consultants will review your needs and get back to you promptly with tailored recommendations.
+                            </p>
+                            <Link href="/services" className="cta-button">
                                 View Services
                             </Link>
                         </div>
