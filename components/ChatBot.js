@@ -40,6 +40,12 @@ export default function ChatBot() {
     setInputText("");
     setIsTyping(true);
 
+
+    let sessionId = localStorage.getItem("automaitee_session");
+  if (!sessionId) {
+    sessionId = "user_" + Date.now();
+    localStorage.setItem("automaitee_session", sessionId);
+  }
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -47,6 +53,7 @@ export default function ChatBot() {
         body: JSON.stringify({
           message: currentInput,
           timestamp: new Date().toISOString(),
+          sessionId: sessionId,
           history: messages.map(m => ({ role: m.sender === 'user' ? 'user' : 'assistant', content: m.text }))
         }),
       });
