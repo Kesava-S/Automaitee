@@ -39,7 +39,11 @@ export default function ChatBot() {
     const currentInput = inputText;
     setInputText("");
     setIsTyping(true);
-
+    let sessionId = localStorage.getItem("automaitee_session");
+    if (!sessionId) {
+      sessionId = "user_" + Date.now();
+      localStorage.setItem("automaitee_session", sessionId);
+    }
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -47,6 +51,7 @@ export default function ChatBot() {
         body: JSON.stringify({
           message: currentInput,
           timestamp: new Date().toISOString(),
+          sessionId: sessionId,
           history: messages.map(m => ({ role: m.sender === 'user' ? 'user' : 'assistant', content: m.text }))
         }),
       });
@@ -264,46 +269,51 @@ export default function ChatBot() {
                   fontSize: '0.95rem',
                   lineHeight: '1.6',
                   border: msg.isError ? '1px solid #ffcccc' : 'none',
-                  whiteSpace: 'pre-wrap'
+                  whiteSpace: 'normal'
                 }}>
                   {msg.sender === 'bot' ? (
-  <ReactMarkdown
-    remarkPlugins={[remarkGfm]}
-    components={{
-      p: ({ children }) => (
-        <p style={{ margin: '2px 0', padding: 0, lineHeight: '1.4' }}>
-          {children}
-        </p>
-      ),
-      ul: ({ children }) => (
-        <ul style={{ margin: '2px 0', paddingLeft: '16px', lineHeight: '1.4' }}>
-          {children}
-        </ul>
-      ),
-      li: ({ children }) => (
-        <li style={{ margin: '2px 0', padding: 0, lineHeight: '1.4' }}>
-          {children}
-        </li>
-      ),
-      strong: ({ children }) => (
-        <strong style={{ fontWeight: 600 }}>{children}</strong>
-      ),
-      h1: ({ children }) => (
-        <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
-      ),
-      h2: ({ children }) => (
-        <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
-      ),
-      h3: ({ children }) => (
-        <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
-      ),
-    }}
-  >
-    {msg.text}
-  </ReactMarkdown>
-) : (
-  msg.text
-)}
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        p: ({ children }) => (
+                          <p style={{ margin: '0', marginBottom: '4px', padding: 0, lineHeight: '1.4' }}>
+                            {children}
+                          </p>
+                        ),
+                        ul: ({ children }) => (
+                          <ul style={{ margin: '0', marginTop: '2px', paddingLeft: '16px', lineHeight: '1.4' }}>
+                            {children}
+                          </ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol style={{ margin: '0', marginTop: '2px', paddingLeft: '16px', lineHeight: '1.4' }}>
+                            {children}
+                          </ol>
+                        ),
+                        li: ({ children }) => (
+                          <li style={{ margin: '0', padding: 0, lineHeight: '1.4' }}>
+                            {children}
+                          </li>
+                        ),
+                        strong: ({ children }) => (
+                          <strong style={{ fontWeight: 600 }}>{children}</strong>
+                        ),
+                        h1: ({ children }) => (
+                          <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
+                        ),
+                        h2: ({ children }) => (
+                          <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
+                        ),
+                        h3: ({ children }) => (
+                          <div style={{ margin: '4px 0', fontWeight: 600 }}>{children}</div>
+                        ),
+                      }}
+                    >
+                      {msg.text}
+                    </ReactMarkdown>
+                  ) : (
+                    msg.text
+                  )}
                 </div>
                 <span style={{
                   fontSize: '0.7rem',
