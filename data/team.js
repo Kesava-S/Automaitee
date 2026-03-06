@@ -5,7 +5,7 @@ export const team = [
         role: "Originator & Automation Architect",
         image: "/team/kesav.jpg",
         objectPosition: "20% 20%",
-        bio: "In this AI era, every business and individual deserves a personal automation to enhance daily and business processes. We create intelligent, personalized systems that make this possible, so you can focus on what truly matters.",
+        bio: "In the AI era, every business and individual deserves smart automation. We build personalized systems that streamline work and life, so you can focus on what truly matters.",
         linkedin: "https://www.linkedin.com/in/kesavs"
     },
     {

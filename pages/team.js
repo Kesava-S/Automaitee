@@ -52,8 +52,7 @@ export default function Team() {
                                     animate={{
                                         scale: isHovered ? 1.05 : isDimmed ? 0.95 : 1,
                                         opacity: isDimmed ? 0.5 : 1,
-                                        zIndex: isHovered ? 10 : 1,
-                                        filter: isDimmed ? 'blur(2px)' : 'none'
+                                        zIndex: isHovered ? 10 : 1
                                     }}
                                     style={{
                                         display: 'flex',
@@ -93,36 +92,30 @@ export default function Team() {
                                         {member.bio}
                                     </p>
 
-                                    {/* LinkedIn Button - Only visible on hover */}
-                                    <AnimatePresence>
-                                        {isHovered && member.linkedin && (
-                                            <motion.a
-                                                href={member.linkedin}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: 10 }}
-                                                transition={{ duration: 0.2 }}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '1rem',
-                                                    right: '1rem',
-                                                    background: '#0a66c2', // LinkedIn blue
-                                                    color: 'white',
-                                                    padding: '8px',
-                                                    borderRadius: '50%',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                                                    cursor: 'pointer'
-                                                }}
-                                            >
-                                                <Linkedin size={20} />
-                                            </motion.a>
-                                        )}
-                                    </AnimatePresence>
+                                    {/* LinkedIn Button */}
+                                    {member.linkedin && (
+                                        <a
+                                            href={member.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '1rem',
+                                                right: '1rem',
+                                                background: '#0a66c2', // LinkedIn blue
+                                                color: 'white',
+                                                padding: '8px',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            <Linkedin size={20} />
+                                        </a>
+                                    )}
                                 </motion.div>
                             )
                         })}
