@@ -67,7 +67,7 @@ export default function WorkWithUs() {
                                 </div>
 
                                 <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                    <a href="mailto:careers@automaitee.com?subject=Application%20for%20Automation%20in%20Revenue%20Operations%20Intern" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
+                                    <Link href="/apply?role=Automation+in+Revenue+Operations+Intern" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</Link>
                                 </div>
                             </div>
                         </Reveal>
