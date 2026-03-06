@@ -48,7 +48,7 @@ export default function WorkWithUs() {
                                 <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                                     Design and develop tailored automation workflows and conversational AI agents. Work alongside clients to streamline business processes.
                                 </p>
-                                <a href="mailto:career@automaitee.com?subject=Application%20for%20AI%20Automation%20Engineer" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
+                                <a href="mailto:careers@automaitee.com?subject=Application%20for%20AI%20Automation%20Engineer" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
                             </div>
                         </Reveal>
 
@@ -61,7 +61,7 @@ export default function WorkWithUs() {
                                 <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                                     Guide businesses through their digital transformation. You will assess operational bottlenecks and architect AI-first solutions.
                                 </p>
-                                <a href="mailto:career@automaitee.com?subject=Application%20for%20Automation%20Consultant" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
+                                <a href="mailto:careers@automaitee.com?subject=Application%20for%20Automation%20Consultant" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
                             </div>
                         </Reveal>
                     </div>
@@ -72,8 +72,8 @@ export default function WorkWithUs() {
                             <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
                                 We are always looking for driven individuals. Send us your resume and a quick overview of how you can contribute to our vision.
                             </p>
-                            <a href="mailto:career@automaitee.com" className="cta-button">
-                                Email Us: career@automaitee.com
+                            <a href="mailto:careers@automaitee.com" className="cta-button">
+                                Email Us: careers@automaitee.com
                             </a>
                         </div>
                     </Reveal>
