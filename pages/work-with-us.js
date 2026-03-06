@@ -38,30 +38,37 @@ export default function WorkWithUs() {
                     </Reveal>
 
                     <div className="grid">
-                        {/* Placeholder for Roles - Can be mapped if they expand */}
                         <Reveal>
                             <div className="card" style={{ height: '100%', padding: '2rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>AI Automation Engineer</h3>
-                                    <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Full-time</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
+                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>Automation in Revenue Operations Intern</h3>
+                                    <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Internship</span>
                                 </div>
-                                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                                    Design and develop tailored automation workflows and conversational AI agents. Work alongside clients to streamline business processes.
-                                </p>
-                                <a href="mailto:careers@automaitee.com?subject=Application%20for%20AI%20Automation%20Engineer" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
-                            </div>
-                        </Reveal>
 
-                        <Reveal delay={0.2}>
-                            <div className="card" style={{ height: '100%', padding: '2rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>Automation Consultant</h3>
-                                    <span style={{ background: '#e8eefd', color: '#0047c3', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Part-time / Remote</span>
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+                                    <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Responsibilities:</h4>
+                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>Manage and track customer data pipelines in CRMs like HubSpot CRM.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Build and maintain automation workflows in n8n for CRM, payments, and analytics.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Automate payment processes on platforms like Stripe, PayPal, and Wise.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Generate automated analytics and performance reports for clients and internal teams.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Coordinate with marketing, sales, and finance teams to optimize revenue operations.</li>
+                                    </ul>
+
+                                    <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Requirements:</h4>
+                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science, Finance, or related field with strong analytical skills.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Basic knowledge of CRMs, especially HubSpot.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Understanding of APIs, JSON, and backend processes for automation.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Familiarity with international payment platforms.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Basic analytics skills (Google Data Analytics concepts, Excel, dashboards).</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Logical thinking and strong attention to detail.</li>
+                                    </ul>
                                 </div>
-                                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                                    Guide businesses through their digital transformation. You will assess operational bottlenecks and architect AI-first solutions.
-                                </p>
-                                <a href="mailto:careers@automaitee.com?subject=Application%20for%20Automation%20Consultant" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
+
+                                <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                                    <a href="mailto:careers@automaitee.com?subject=Application%20for%20Automation%20in%20Revenue%20Operations%20Intern" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</a>
+                                </div>
                             </div>
                         </Reveal>
                     </div>
