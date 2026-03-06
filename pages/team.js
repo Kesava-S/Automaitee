@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { team } from '../data/team'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion' // Make sure you have framer-motion installed
@@ -120,6 +121,14 @@ export default function Team() {
                             )
                         })}
                     </div>
+
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+                            <Link href="/work-with-us" className="cta-button">
+                                Work with Us
+                            </Link>
+                        </div>
+                    </Reveal>
                 </div>
             </section>
         </>
