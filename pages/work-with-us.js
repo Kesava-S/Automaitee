@@ -57,7 +57,7 @@ export default function WorkWithUs() {
 
                                     <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Requirements:</h4>
                                     <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science, Finance, or related field with strong analytical skills.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science or related field with strong analytical skills.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Basic knowledge of CRMs, especially HubSpot.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Understanding of APIs, JSON, and backend processes for automation.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Familiarity with international payment platforms.</li>
