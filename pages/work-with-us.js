@@ -40,9 +40,13 @@ export default function WorkWithUs() {
                     <div className="grid">
                         <Reveal>
                             <div className="card" style={{ height: '100%', padding: '2rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>Automation in Revenue Operations Intern</h3>
                                     <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Internship</span>
+                                </div>
+
+                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                                    <strong>Time frame:</strong> 6th April to October 30th
                                 </div>
 
                                 <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
