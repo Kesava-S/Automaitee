@@ -48,7 +48,7 @@ export default function WorkWithUs() {
                                 <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Responsibilities:</h4>
                                     <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Manage and track customer data pipelines in CRMs like HubSpot CRM.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Manage and track customer data pipelines in CRMs like HubSpot.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Build and maintain automation workflows in n8n for CRM, payments, and analytics.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Automate payment processes on platforms like Stripe, PayPal, and Wise.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Generate automated analytics and performance reports for clients and internal teams.</li>
