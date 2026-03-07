@@ -362,7 +362,7 @@ export default function Apply() {
                                     </div>
 
                                     {/* ── Education Section ── */}
-                                    <h3 style={{ fontSize: '1.4rem', marginTop: '2rem', marginBottom: '1.2rem', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #eee' }}>Education</h3>
+                                    <h3 style={{ fontSize: '1.4rem', marginTop: '2rem', marginBottom: '1.2rem', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #eee' }}>Most Recent Education</h3>
 
                                     <div style={{ marginBottom: '1.5rem' }}>
                                         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>University / Institution</label>
@@ -463,7 +463,7 @@ export default function Apply() {
                                             missing={!formData.resume} />
 
                                         <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed #d2d2d7' }}>
-                                            <div style={{ fontWeight: '600', fontSize: '0.85rem', color: '#86868b', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Education</div>
+                                            <div style={{ fontWeight: '600', fontSize: '0.85rem', color: '#86868b', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Most Recent Education</div>
                                             <ReviewRow label="University" value={formData.university || null} />
                                             <ReviewRow label="Major" value={formData.major || null} />
                                             <ReviewRow label="Degree" value={formData.degree || null} />
