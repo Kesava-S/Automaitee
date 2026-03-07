@@ -59,6 +59,25 @@ export default function WorkWithUs() {
                                         <li style={{ marginBottom: '0.5rem' }}>Basic analytics skills (Google Data Analytics concepts, Excel, dashboards).</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Logical thinking and strong attention to detail.</li>
                                     </ul>
+
+                                    <h4 style={{ fontWeight: '600', marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.1rem' }}>What You’ll Learn:</h4>
+                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem' }}>
+                                        During this internship, you will gain practical exposure to how modern companies use automation and data systems to run their marketing and sales operations.
+                                    </p>
+                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '0.5rem' }}>
+                                        You will learn:
+                                    </p>
+                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>What is a CRM with analytics and how can it be automated.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to understand website performance using Google Analytics and automate them with reports.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to build integrated automation workflows using n8n.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to connect different business tools and automate repetitive tasks.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to collect data from different platforms and generate automated reports.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How AI and automation are transforming modern business operations.</li>
+                                    </ul>
+                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                                        These skills are becoming very important in today’s AI-driven world. People who understand automation systems and data-driven workflows will have a strong advantage in future careers.
+                                    </p>
                                 </div>
 
                                 <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
