@@ -40,21 +40,16 @@ export default function WorkWithUs() {
                     <div className="grid">
                         <Reveal>
                             <div className="card" style={{ height: '100%', padding: '2rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>Automation in Revenue Operations Intern</h3>
                                     <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Internship</span>
                                 </div>
 
-                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-                                    <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Responsibilities:</h4>
-                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Manage and track customer data pipelines in CRMs like HubSpot.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Build and maintain automation workflows in n8n for CRM, payments, and analytics.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Automate payment processes on platforms like Stripe, PayPal, and Wise.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Generate automated analytics and performance reports for clients and internal teams.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Coordinate with marketing, sales, and finance teams to optimize revenue operations.</li>
-                                    </ul>
+                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                                    <strong>Details:</strong> 3 months unpaid (Starts May)
+                                </div>
 
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Requirements:</h4>
                                     <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
                                         <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science or related field with strong analytical skills.</li>
