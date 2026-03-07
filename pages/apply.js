@@ -89,18 +89,20 @@ export default function Apply() {
     const { role } = router.query
     const defaultRole = "Automation in Revenue Operations Intern"
 
-    const [currentStep,  setCurrentStep]  = useState(1)
-    const [isParsing,    setIsParsing]    = useState(false)
-    const [resumeError,  setResumeError]  = useState(false)
+    const [currentStep, setCurrentStep] = useState(1)
+    const [isParsing, setIsParsing] = useState(false)
+    const [resumeError, setResumeError] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitError,  setSubmitError]  = useState('')
-    const [parseStatus,  setParseStatus]  = useState('')
+    const [submitError, setSubmitError] = useState('')
+    const [parseStatus, setParseStatus] = useState('')
     const [formData, setFormData] = useState({
         resume: null,
         firstName: '', lastName: '',
         email: '', phone: '',
         coverLetter: '', linkedin: '', portfolio: '',
-        gender: '', race: '', veteran: ''
+        gender: '', race: '', veteran: '',
+        university: '', major: '', degree: '',
+        startDate: '', endDate: '', gpa: ''
     })
     const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -128,11 +130,17 @@ export default function Apply() {
                     setFormData(prev => ({
                         ...prev,
                         firstName: result.firstName || prev.firstName,
-                        lastName:  result.lastName  || prev.lastName,
-                        email:     result.email     || prev.email,
-                        phone:     result.phone     || prev.phone,
-                        linkedin:  result.linkedin  || prev.linkedin,
+                        lastName: result.lastName || prev.lastName,
+                        email: result.email || prev.email,
+                        phone: result.phone || prev.phone,
+                        linkedin: result.linkedin || prev.linkedin,
                         portfolio: result.portfolio || prev.portfolio,
+                        university: result.university || prev.university,
+                        major: result.major || prev.major,
+                        degree: result.degree || prev.degree,
+                        startDate: result.startDate || prev.startDate,
+                        endDate: result.endDate || prev.endDate,
+                        gpa: result.gpa || prev.gpa,
                     }))
                     setParseStatus('success')
                 } catch (err) {
@@ -170,19 +178,25 @@ export default function Apply() {
             }
 
             // ── All other fields as text ──
-            payload.append('role',        role || defaultRole)
+            payload.append('role', role || defaultRole)
             payload.append('submittedAt', new Date().toISOString())
-            payload.append('firstName',   formData.firstName)
-            payload.append('lastName',    formData.lastName)
-            payload.append('email',       formData.email)
-            payload.append('phone',       formData.phone)
-            payload.append('linkedin',    formData.linkedin)
-            payload.append('portfolio',   formData.portfolio   || '')
+            payload.append('firstName', formData.firstName)
+            payload.append('lastName', formData.lastName)
+            payload.append('email', formData.email)
+            payload.append('phone', formData.phone)
+            payload.append('linkedin', formData.linkedin)
+            payload.append('portfolio', formData.portfolio || '')
             payload.append('coverLetter', formData.coverLetter || '')
-            payload.append('gender',      formData.gender      || '')
-            payload.append('race',        formData.race        || '')
-            payload.append('veteran',     formData.veteran     || '')
-            payload.append('fileName',    formData.resume ? formData.resume.name : '')
+            payload.append('gender', formData.gender || '')
+            payload.append('race', formData.race || '')
+            payload.append('veteran', formData.veteran || '')
+            payload.append('university', formData.university || '')
+            payload.append('major', formData.major || '')
+            payload.append('degree', formData.degree || '')
+            payload.append('startDate', formData.startDate || '')
+            payload.append('endDate', formData.endDate || '')
+            payload.append('gpa', formData.gpa || '')
+            payload.append('fileName', formData.resume ? formData.resume.name : '')
 
             // ── DO NOT set Content-Type — browser sets multipart boundary automatically ──
             const res = await fetch(
@@ -251,7 +265,7 @@ export default function Apply() {
                         <div style={{ position: 'sticky', top: '120px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                 {steps.map((step, index) => {
-                                    const isActive    = currentStep === step.id
+                                    const isActive = currentStep === step.id
                                     const isCompleted = currentStep > step.id
                                     return (
                                         <li key={step.id} style={{ display: 'flex', alignItems: 'center', marginBottom: index !== steps.length - 1 ? '1.5rem' : '0', color: isActive ? '#000' : isCompleted ? '#116c4c' : 'var(--text-secondary)', fontWeight: isActive ? '600' : '400', transition: 'all 0.3s ease' }}>
@@ -346,6 +360,41 @@ export default function Apply() {
                                             <input type="tel" name="phone" value={formData.phone} onChange={handleChange} style={inputStyle} />
                                         </div>
                                     </div>
+
+                                    {/* ── Education Section ── */}
+                                    <h3 style={{ fontSize: '1.4rem', marginTop: '2rem', marginBottom: '1.2rem', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #eee' }}>Education</h3>
+
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>University / Institution</label>
+                                        <input type="text" name="university" value={formData.university} onChange={handleChange} style={inputStyle} />
+                                    </div>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                        <div>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Major / Field of Study</label>
+                                            <input type="text" name="major" value={formData.major} onChange={handleChange} style={inputStyle} />
+                                        </div>
+                                        <div>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Degree</label>
+                                            <input type="text" name="degree" value={formData.degree} onChange={handleChange} style={inputStyle} />
+                                        </div>
+                                    </div>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                        <div>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Start Date</label>
+                                            <input type="text" name="startDate" placeholder="e.g. Sep 2019" value={formData.startDate} onChange={handleChange} style={inputStyle} />
+                                        </div>
+                                        <div>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Expected End Date</label>
+                                            <input type="text" name="endDate" placeholder="e.g. May 2023" value={formData.endDate} onChange={handleChange} style={inputStyle} />
+                                        </div>
+                                    </div>
+
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>GPA (optional)</label>
+                                        <input type="text" name="gpa" value={formData.gpa} onChange={handleChange} style={{ ...inputStyle, width: '100%', maxWidth: '300px' }} />
+                                    </div>
                                 </motion.div>
                             )}
 
@@ -377,9 +426,9 @@ export default function Apply() {
                                         We are an equal opportunity employer. This information is voluntary, kept confidential, and not used in hiring decisions.
                                     </p>
                                     {[
-                                        { name: 'gender',  label: 'Gender',        options: ['Male','Female','Non-binary','Prefer not to say'] },
-                                        { name: 'race',    label: 'Race/Ethnicity', options: ['Hispanic/Latino','White','Black/African American','Asian','Other','Prefer not to say'] },
-                                        { name: 'veteran', label: 'Veteran Status', options: ['I am a protected veteran','I am not a protected veteran','Prefer not to say'] },
+                                        { name: 'gender', label: 'Gender', options: ['Male', 'Female', 'Non-binary', 'Prefer not to say'] },
+                                        { name: 'race', label: 'Race/Ethnicity', options: ['Hispanic/Latino', 'White', 'Black/African American', 'Asian', 'Other', 'Prefer not to say'] },
+                                        { name: 'veteran', label: 'Veteran Status', options: ['I am a protected veteran', 'I am not a protected veteran', 'Prefer not to say'] },
                                     ].map(f => (
                                         <div key={f.name} style={{ marginBottom: '1.5rem' }}>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{f.label}</label>
@@ -403,26 +452,35 @@ export default function Apply() {
 
                                     <ReviewSection icon={<User size={15} color="#0071e3" />} title="Careers Profile" onEdit={() => setCurrentStep(1)}>
                                         <ReviewRow label="Full Name" value={`${formData.firstName} ${formData.lastName}`.trim() || null} missing={!formData.firstName} />
-                                        <ReviewRow label="Email"     value={formData.email}  missing={!formData.email} />
-                                        <ReviewRow label="Phone"     value={formData.phone}  missing={!formData.phone} />
+                                        <ReviewRow label="Email" value={formData.email} missing={!formData.email} />
+                                        <ReviewRow label="Phone" value={formData.phone} missing={!formData.phone} />
                                         <ReviewRow label="Resume"
                                             value={formData.resume
-                                                ? <span style={{ display:'inline-flex', alignItems:'center', gap:'0.35rem' }}>
+                                                ? <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                                                     <FileText size={13} color="#0071e3" />{formData.resume.name}
-                                                  </span>
+                                                </span>
                                                 : null}
                                             missing={!formData.resume} />
+
+                                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed #d2d2d7' }}>
+                                            <div style={{ fontWeight: '600', fontSize: '0.85rem', color: '#86868b', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Education</div>
+                                            <ReviewRow label="University" value={formData.university || null} />
+                                            <ReviewRow label="Major" value={formData.major || null} />
+                                            <ReviewRow label="Degree" value={formData.degree || null} />
+                                            <ReviewRow label="Timeline" value={(formData.startDate || formData.endDate) ? `${formData.startDate || '?'} - ${formData.endDate || '?'}` : null} />
+                                            <ReviewRow label="GPA" value={formData.gpa || null} />
+                                        </div>
                                     </ReviewSection>
 
                                     <ReviewSection icon={<Briefcase size={15} color="#0071e3" />} title="Role Information" onEdit={() => setCurrentStep(2)}>
-                                        <ReviewRow label="LinkedIn"     value={formData.linkedin}  missing={!formData.linkedin} />
-                                        <ReviewRow label="Portfolio"    value={formData.portfolio || null} />
+                                        <ReviewRow label="LinkedIn" value={formData.linkedin} missing={!formData.linkedin} />
+                                        <ReviewRow label="Portfolio" value={formData.portfolio || null} />
                                         <ReviewRow label="Cover Letter" value={formData.coverLetter ? 'Provided ✓' : null} />
                                     </ReviewSection>
 
                                     <ReviewSection icon={<Shield size={15} color="#0071e3" />} title="Voluntary Self-Identification" onEdit={() => setCurrentStep(3)}>
-                                        <ReviewRow label="Gender"         value={formData.gender  || null} />
-                                        <ReviewRow label="Race/Ethnicity" value={formData.race    || null} />
+                                        <ReviewRow label="Gender" value={formData.gender || null} />
+                                        <ReviewRow label="Race/Ethnicity" value={formData.race || null} />
                                         <ReviewRow label="Veteran Status" value={formData.veteran || null} />
                                     </ReviewSection>
 
@@ -448,7 +506,7 @@ export default function Apply() {
                                     ? <button type="button" onClick={handleBack}
                                         style={{ padding: '0.8rem 1.5rem', border: '1px solid #d2d2d7', background: 'white', borderRadius: '0.5rem', fontSize: '1rem', fontWeight: '500', cursor: 'pointer' }}>
                                         Back
-                                      </button>
+                                    </button>
                                     : <div />
                                 }
 
