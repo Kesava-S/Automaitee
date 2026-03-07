@@ -46,7 +46,7 @@ export default function WorkWithUs() {
                                 </div>
 
                                 <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                                    <strong>Details:</strong> 3 months unpaid (Starts May)
+                                    3 months unpaid (Starts May)
                                 </div>
 
                                 <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
