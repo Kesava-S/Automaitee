@@ -231,8 +231,12 @@ export default function Apply() {
                             <Check size={40} />
                         </div>
                         <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>Application Submitted!</h1>
-                        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
                             Thank you for applying for the <strong>{role || defaultRole}</strong> role. Our team will review your application and get back to you soon.
+                        </p>
+                        <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.6' }}>
+                            Our team is engaging in lots of projects, including reviewing your application.<br />
+                            Given these circumstances, we can’t share any individual feedback to candidates that don’t move beyond the initial application review phase.
                         </p>
                         <Link href="/" className="cta-button">Return to Home</Link>
                     </motion.div>
