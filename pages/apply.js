@@ -200,7 +200,7 @@ export default function Apply() {
 
             // ── DO NOT set Content-Type — browser sets multipart boundary automatically ──
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/career-form`,
+                `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}-test/career-form`,
                 { method: 'POST', body: payload }
             )
 
