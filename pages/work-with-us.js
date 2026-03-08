@@ -53,25 +53,25 @@ export default function WorkWithUs() {
                                     <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Requirements:</h4>
                                     <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
                                         <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science or related field with strong analytical skills.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Basic knowledge of CRMs, especially HubSpot.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Basic knowledge of CRMs, HubSpot preferred.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Understanding of APIs, JSON, and backend processes for automation.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Familiarity with international payment platforms.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Familiarity with international payment platforms like stripe, paypal and wise.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Basic analytics skills (Google Data Analytics concepts, Excel, dashboards).</li>
                                         <li style={{ marginBottom: '0.5rem' }}>Logical thinking and strong attention to detail.</li>
                                     </ul>
 
                                     <h4 style={{ fontWeight: '600', marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.1rem' }}>What You’ll Learn:</h4>
                                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem' }}>
-                                        During this internship, you will gain practical exposure to how modern companies use automation and data systems to run their marketing and sales operations.
+                                        During this internship, you will gain practical exposure to modern revenue operation automation and data tools and to automate visualizations.
                                     </p>
                                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '0.5rem' }}>
                                         You will learn:
                                     </p>
                                     <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1rem' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>What is a CRM with analytics and how can it be automated.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to understand website performance using Google Analytics and automate them with reports.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>What is CRM and its analytics and how can it be automated.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to understand website performance using Google Analytics and automate visualization of reports.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>How to build integrated automation workflows using n8n.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to connect different business tools and automate repetitive tasks.</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>How to connect different business tools with API and automate repetitive tasks.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>How to collect data from different platforms and generate automated reports.</li>
                                         <li style={{ marginBottom: '0.5rem' }}>How AI and automation are transforming modern business operations.</li>
                                     </ul>
