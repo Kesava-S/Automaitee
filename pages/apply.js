@@ -14,6 +14,8 @@ const steps = [
 
 const requiredStar = { color: '#d93025', marginLeft: '3px', fontWeight: '700' }
 const inputStyle = { width: '100%', padding: '0.8rem', borderRadius: '0.5rem', border: '1px solid #d2d2d7', fontSize: '1rem' }
+const inputErrorStyle = { width: '100%', padding: '0.8rem', borderRadius: '0.5rem', border: '1px solid #d93025', fontSize: '1rem', background: '#fff8f8' }
+const fieldErrorMsg = { margin: '0.3rem 0 0', fontSize: '0.78rem', color: '#d93025', fontWeight: '500' }
 
 /* ── Resume Preloader ── */
 function ResumePreloader() {
@@ -84,6 +86,20 @@ function ReviewSection({ icon, title, onEdit, children }) {
     )
 }
 
+/* ── Inline field error component ── */
+function FieldError({ show, message }) {
+    return (
+        <AnimatePresence>
+            {show && (
+                <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                    style={fieldErrorMsg}>
+                    ⚠ {message}
+                </motion.p>
+            )}
+        </AnimatePresence>
+    )
+}
+
 export default function Apply() {
     const router = useRouter()
     const { role } = router.query
@@ -95,6 +111,7 @@ export default function Apply() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitError, setSubmitError] = useState('')
     const [parseStatus, setParseStatus] = useState('')
+    const [errors, setErrors] = useState({})
     const [formData, setFormData] = useState({
         resume: null,
         firstName: '', lastName: '',
@@ -114,6 +131,7 @@ export default function Apply() {
             setFormData(prev => ({ ...prev, [name]: file }))
             if (name === 'resume' && file) {
                 setResumeError(false)
+                setErrors(prev => { const e = { ...prev }; delete e.resume; return e })
                 setIsParsing(true)
                 setParseStatus('')
                 try {
@@ -129,18 +147,18 @@ export default function Apply() {
                     const result = await res.json()
                     setFormData(prev => ({
                         ...prev,
-                        firstName: result.firstName || prev.firstName,
-                        lastName: result.lastName || prev.lastName,
-                        email: result.email || prev.email,
-                        phone: result.phone || prev.phone,
-                        linkedin: result.linkedin || prev.linkedin,
-                        portfolio: result.portfolio || prev.portfolio,
+                        firstName:  result.firstName  || prev.firstName,
+                        lastName:   result.lastName   || prev.lastName,
+                        email:      result.email      || prev.email,
+                        phone:      result.phone      || prev.phone,
+                        linkedin:   result.linkedin   || prev.linkedin,
+                        portfolio:  result.portfolio  || prev.portfolio,
                         university: result.university || prev.university,
-                        major: result.major || prev.major,
-                        degree: result.degree || prev.degree,
-                        startDate: result.startDate || prev.startDate,
-                        endDate: result.endDate || prev.endDate,
-                        gpa: result.gpa || prev.gpa,
+                        major:      result.major      || prev.major,
+                        degree:     result.degree     || prev.degree,
+                        startDate:  result.startDate  || prev.startDate,
+                        endDate:    result.endDate    || prev.endDate,
+                        gpa:        result.gpa        || prev.gpa,
                     }))
                     setParseStatus('success')
                 } catch (err) {
@@ -152,18 +170,56 @@ export default function Apply() {
             }
         } else {
             setFormData(prev => ({ ...prev, [name]: value }))
+            // Clear error for this field as soon as user types
+            if (value.trim()) {
+                setErrors(prev => { const e = { ...prev }; delete e[name]; return e })
+            }
         }
     }
 
+    /* ── Step 1 validation ── */
+    const validateStep1 = () => {
+        const e = {}
+        if (!formData.resume)              e.resume     = 'Please upload your resume to continue.'
+        if (!formData.firstName.trim())    e.firstName  = 'First name is required.'
+        if (!formData.lastName.trim())     e.lastName   = 'Last name is required.'
+        if (!formData.email.trim())        e.email      = 'Email address is required.'
+        if (!formData.phone.trim())        e.phone      = 'Phone number is required.'
+        if (!formData.university.trim())   e.university = 'University / Institution is required.'
+        if (!formData.major.trim())        e.major      = 'Major / Field of study is required.'
+        if (!formData.degree.trim())       e.degree     = 'Degree is required.'
+        if (!formData.startDate.trim())    e.startDate  = 'Start date is required.'
+        if (!formData.endDate.trim())      e.endDate    = 'Expected end date is required.'
+        setErrors(e)
+        return Object.keys(e).length === 0
+    }
+
+    /* ── Step 2 validation ── */
+    const validateStep2 = () => {
+        const e = {}
+        if (!formData.linkedin.trim()) e.linkedin = 'LinkedIn profile URL is required.'
+        setErrors(e)
+        return Object.keys(e).length === 0
+    }
+
     const handleNext = () => {
-        if (currentStep === 1 && !formData.resume) {
-            setResumeError(true)
-            return
+        if (currentStep === 1) {
+            const valid = validateStep1()
+            setResumeError(!formData.resume)
+            if (!valid) return
         }
+        if (currentStep === 2) {
+            if (!validateStep2()) return
+        }
+        setErrors({})
         setResumeError(false)
         setCurrentStep(prev => Math.min(prev + 1, steps.length))
     }
-    const handleBack = () => setCurrentStep(prev => Math.max(prev - 1, 1))
+
+    const handleBack = () => {
+        setErrors({})
+        setCurrentStep(prev => Math.max(prev - 1, 1))
+    }
 
     /* ── Final submit → career-form webhook as multipart/form-data (binary) ── */
     const handleSubmit = async () => {
@@ -171,44 +227,35 @@ export default function Apply() {
         setSubmitError('')
         try {
             const payload = new FormData()
-
-            // ── Binary resume file — key must be "resume" so n8n gets it as binary ──
             if (formData.resume) {
                 payload.append('resume', formData.resume, formData.resume.name)
             }
-
-            // ── All other fields as text ──
-            payload.append('role', role || defaultRole)
+            payload.append('role',        role || defaultRole)
             payload.append('submittedAt', new Date().toISOString())
-            payload.append('firstName', formData.firstName)
-            payload.append('lastName', formData.lastName)
-            payload.append('email', formData.email)
-            payload.append('phone', formData.phone)
-            payload.append('linkedin', formData.linkedin)
-            payload.append('portfolio', formData.portfolio || '')
+            payload.append('firstName',   formData.firstName)
+            payload.append('lastName',    formData.lastName)
+            payload.append('email',       formData.email)
+            payload.append('phone',       formData.phone)
+            payload.append('linkedin',    formData.linkedin)
+            payload.append('portfolio',   formData.portfolio   || '')
             payload.append('coverLetter', formData.coverLetter || '')
-            payload.append('gender', formData.gender || '')
-            payload.append('race', formData.race || '')
-            payload.append('veteran', formData.veteran || '')
-            payload.append('university', formData.university || '')
-            payload.append('major', formData.major || '')
-            payload.append('degree', formData.degree || '')
-            payload.append('startDate', formData.startDate || '')
-            payload.append('endDate', formData.endDate || '')
-            payload.append('gpa', formData.gpa || '')
-            payload.append('fileName', formData.resume ? formData.resume.name : '')
+            payload.append('gender',      formData.gender      || '')
+            payload.append('race',        formData.race        || '')
+            payload.append('veteran',     formData.veteran     || '')
+            payload.append('university',  formData.university  || '')
+            payload.append('major',       formData.major       || '')
+            payload.append('degree',      formData.degree      || '')
+            payload.append('startDate',   formData.startDate   || '')
+            payload.append('endDate',     formData.endDate     || '')
+            payload.append('gpa',         formData.gpa         || '')
+            payload.append('fileName',    formData.resume ? formData.resume.name : '')
 
-            // ── DO NOT set Content-Type — browser sets multipart boundary automatically ──
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}-test/career-form`,
+                `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/career-form`,
                 { method: 'POST', body: payload }
             )
-
             if (!res.ok) throw new Error(`Webhook failed: ${res.status}`)
-
-            console.log('Application submitted successfully')
             setIsSubmitted(true)
-
         } catch (err) {
             console.error('Submit error:', err)
             setSubmitError('Submission failed. Please try again.')
@@ -217,7 +264,9 @@ export default function Apply() {
         }
     }
 
+    const errStyle = { fontSize: '0.78rem', color: '#d93025', marginTop: '0.3rem', display: 'block' }
     const Req = () => <span style={requiredStar}>*</span>
+    const iErr = (f) => errors[f] ? inputErrorStyle : inputStyle
 
     /* ── Success screen ── */
     if (isSubmitted) {
@@ -236,7 +285,7 @@ export default function Apply() {
                         </p>
                         <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.6' }}>
                             Our team is engaging in lots of projects, including reviewing your application.<br />
-                            Given these circumstances, we can’t share any individual feedback to candidates that don’t move beyond the initial application review phase.
+                            Given these circumstances, we can't share any individual feedback to candidates that don't move beyond the initial application review phase.
                         </p>
                         <Link href="/" className="cta-button">Return to Home</Link>
                     </motion.div>
@@ -291,9 +340,10 @@ export default function Apply() {
                                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                                     <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', fontWeight: '600' }}>{steps[0].title}</h2>
 
+                                    {/* Resume upload */}
                                     <div style={{ marginBottom: '2rem' }}>
                                         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Resume / CV <Req /></label>
-                                        <div style={{ border: `2px dashed ${resumeError ? '#d93025' : '#d2d2d7'}`, borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', background: '#fbfbfd', cursor: 'pointer', position: 'relative' }}>
+                                        <div style={{ border: `2px dashed ${errors.resume || resumeError ? '#d93025' : '#d2d2d7'}`, borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', background: errors.resume ? '#fff8f8' : '#fbfbfd', cursor: 'pointer', position: 'relative' }}>
                                             <input type="file" name="resume" accept=".pdf,.docx" onChange={handleChange} disabled={isParsing}
                                                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: isParsing ? 'wait' : 'pointer' }} />
                                             <AnimatePresence>
@@ -335,33 +385,35 @@ export default function Apply() {
                                                     ⚠ Could not auto-fill — please fill in manually.
                                                 </motion.p>
                                             )}
-                                            {resumeError && (
-                                                <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                                                    style={{ margin: '0.5rem 0 0', fontSize: '0.85rem', color: '#d93025', fontWeight: '500' }}>
-                                                    ⚠ Please upload your resume to continue.
-                                                </motion.p>
-                                            )}
                                         </AnimatePresence>
+                                        <FieldError show={!!errors.resume} message={errors.resume} />
                                     </div>
 
+                                    {/* Name */}
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                                         <div>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>First Name <Req /></label>
-                                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} style={inputStyle} />
+                                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} style={iErr('firstName')} />
+                                            <FieldError show={!!errors.firstName} message={errors.firstName} />
                                         </div>
                                         <div>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Last Name <Req /></label>
-                                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} style={inputStyle} />
+                                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} style={iErr('lastName')} />
+                                            <FieldError show={!!errors.lastName} message={errors.lastName} />
                                         </div>
                                     </div>
+
+                                    {/* Email / Phone */}
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                                         <div>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Email Address <Req /></label>
-                                            <input type="email" name="email" value={formData.email} onChange={handleChange} style={inputStyle} />
+                                            <input type="email" name="email" value={formData.email} onChange={handleChange} style={iErr('email')} />
+                                            <FieldError show={!!errors.email} message={errors.email} />
                                         </div>
                                         <div>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Phone Number <Req /></label>
-                                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} style={inputStyle} />
+                                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} style={iErr('phone')} />
+                                            <FieldError show={!!errors.phone} message={errors.phone} />
                                         </div>
                                     </div>
 
@@ -369,35 +421,43 @@ export default function Apply() {
                                     <h3 style={{ fontSize: '1.4rem', marginTop: '2rem', marginBottom: '1.2rem', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #eee' }}>Most Recent Education</h3>
 
                                     <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>University / Institution</label>
-                                        <input type="text" name="university" value={formData.university} onChange={handleChange} style={inputStyle} />
+                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>University / Institution <Req /></label>
+                                        <input type="text" name="university" value={formData.university} onChange={handleChange} style={iErr('university')} />
+                                        <FieldError show={!!errors.university} message={errors.university} />
                                     </div>
 
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Major / Field of Study</label>
-                                            <input type="text" name="major" value={formData.major} onChange={handleChange} style={inputStyle} />
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Major / Field of Study <Req /></label>
+                                            <input type="text" name="major" value={formData.major} onChange={handleChange} style={iErr('major')} />
+                                            <FieldError show={!!errors.major} message={errors.major} />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Degree</label>
-                                            <input type="text" name="degree" value={formData.degree} onChange={handleChange} style={inputStyle} />
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Degree <Req /></label>
+                                            <input type="text" name="degree" value={formData.degree} onChange={handleChange} style={iErr('degree')} />
+                                            <FieldError show={!!errors.degree} message={errors.degree} />
                                         </div>
                                     </div>
 
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Start Date</label>
-                                            <input type="text" name="startDate" placeholder="e.g. Sep 2019" value={formData.startDate} onChange={handleChange} style={inputStyle} />
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Start Date <Req /></label>
+                                            <input type="text" name="startDate" placeholder="e.g. Sep 2019" value={formData.startDate} onChange={handleChange} style={iErr('startDate')} />
+                                            <FieldError show={!!errors.startDate} message={errors.startDate} />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Expected End Date</label>
-                                            <input type="text" name="endDate" placeholder="e.g. May 2023" value={formData.endDate} onChange={handleChange} style={inputStyle} />
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Expected End Date <Req /></label>
+                                            <input type="text" name="endDate" placeholder="e.g. May 2023" value={formData.endDate} onChange={handleChange} style={iErr('endDate')} />
+                                            <FieldError show={!!errors.endDate} message={errors.endDate} />
                                         </div>
                                     </div>
 
                                     <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>GPA (optional)</label>
-                                        <input type="text" name="gpa" value={formData.gpa} onChange={handleChange} style={{ ...inputStyle, width: '100%', maxWidth: '300px' }} />
+                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
+                                            GPA <span style={{ color: '#86868b', fontWeight: '400', fontSize: '0.88rem' }}>(optional)</span>
+                                        </label>
+                                        <input type="text" name="gpa" value={formData.gpa} onChange={handleChange}
+                                            style={{ ...inputStyle, maxWidth: '300px' }} />
                                     </div>
                                 </motion.div>
                             )}
@@ -413,11 +473,14 @@ export default function Apply() {
                                     </div>
                                     <div style={{ marginBottom: '1.5rem' }}>
                                         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>LinkedIn Profile <Req /></label>
-                                        <input type="url" name="linkedin" value={formData.linkedin} onChange={handleChange} style={inputStyle} placeholder="https://linkedin.com/in/..." />
+                                        <input type="url" name="linkedin" value={formData.linkedin} onChange={handleChange}
+                                            style={iErr('linkedin')} placeholder="https://linkedin.com/in/..." />
+                                        <FieldError show={!!errors.linkedin} message={errors.linkedin} />
                                     </div>
                                     <div style={{ marginBottom: '1.5rem' }}>
                                         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Portfolio / Personal Website</label>
-                                        <input type="url" name="portfolio" value={formData.portfolio} onChange={handleChange} style={inputStyle} placeholder="https://" />
+                                        <input type="url" name="portfolio" value={formData.portfolio} onChange={handleChange}
+                                            style={inputStyle} placeholder="https://" />
                                     </div>
                                 </motion.div>
                             )}
@@ -465,26 +528,25 @@ export default function Apply() {
                                                 </span>
                                                 : null}
                                             missing={!formData.resume} />
-
                                         <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed #d2d2d7' }}>
                                             <div style={{ fontWeight: '600', fontSize: '0.85rem', color: '#86868b', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Most Recent Education</div>
-                                            <ReviewRow label="University" value={formData.university || null} />
-                                            <ReviewRow label="Major" value={formData.major || null} />
-                                            <ReviewRow label="Degree" value={formData.degree || null} />
-                                            <ReviewRow label="Timeline" value={(formData.startDate || formData.endDate) ? `${formData.startDate || '?'} - ${formData.endDate || '?'}` : null} />
-                                            <ReviewRow label="GPA" value={formData.gpa || null} />
+                                            <ReviewRow label="University" value={formData.university || null} missing={!formData.university} />
+                                            <ReviewRow label="Major"      value={formData.major      || null} missing={!formData.major} />
+                                            <ReviewRow label="Degree"     value={formData.degree     || null} missing={!formData.degree} />
+                                            <ReviewRow label="Timeline"   value={(formData.startDate || formData.endDate) ? `${formData.startDate || '?'} - ${formData.endDate || '?'}` : null} missing={!formData.startDate && !formData.endDate} />
+                                            <ReviewRow label="GPA"        value={formData.gpa        || null} />
                                         </div>
                                     </ReviewSection>
 
                                     <ReviewSection icon={<Briefcase size={15} color="#0071e3" />} title="Role Information" onEdit={() => setCurrentStep(2)}>
-                                        <ReviewRow label="LinkedIn" value={formData.linkedin} missing={!formData.linkedin} />
-                                        <ReviewRow label="Portfolio" value={formData.portfolio || null} />
+                                        <ReviewRow label="LinkedIn"     value={formData.linkedin}  missing={!formData.linkedin} />
+                                        <ReviewRow label="Portfolio"    value={formData.portfolio  || null} />
                                         <ReviewRow label="Cover Letter" value={formData.coverLetter ? 'Provided ✓' : null} />
                                     </ReviewSection>
 
                                     <ReviewSection icon={<Shield size={15} color="#0071e3" />} title="Voluntary Self-Identification" onEdit={() => setCurrentStep(3)}>
-                                        <ReviewRow label="Gender" value={formData.gender || null} />
-                                        <ReviewRow label="Race/Ethnicity" value={formData.race || null} />
+                                        <ReviewRow label="Gender"         value={formData.gender  || null} />
+                                        <ReviewRow label="Race/Ethnicity" value={formData.race    || null} />
                                         <ReviewRow label="Veteran Status" value={formData.veteran || null} />
                                     </ReviewSection>
 
