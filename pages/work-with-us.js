@@ -19,8 +19,8 @@ export default function WorkWithUs() {
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', lineHeight: '1.6' }}>
-                            We are team of passionate automation engineers, designers, and innovators focused on simplifying the complex.
-                            At Automaitee Digital, we value a transparent, proactive, and collaborative work environment. We believe in building personalized solutions that empower businesses to work smarter, not harder. Join us in shaping the future of meaningful AI automation!
+                            We are a team of passionate automation engineers, designers, and innovators focused on simplifying work and empowering people with AI.
+                            At Automaitee Digital, we value a transparent, proactive, and collaborative work environment where people can do the best work of their careers. You’ll get to work on exciting projects, innovate across industries, and help build personalized automation solutions that empower businesses to work smarter, not harder. Join us in shaping the future of meaningful AI automation.
                         </p>
                     </Reveal>
                 </div>
