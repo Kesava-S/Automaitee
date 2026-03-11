@@ -71,6 +71,9 @@ export default function Home() {
                             <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
                                 Explore - Kondamaal Freelancers
                             </Link>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem' }}>
+                                A new initiative by Automaitee
+                            </p>
                         </div>
                     </Reveal>
                 </div>
