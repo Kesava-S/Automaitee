@@ -19,7 +19,7 @@ export const team = [
     {
         id: "muthukumar-m",
         name: "Muthukumar M",
-        role: "Automation Developer",
+        role: "Automation Developer | Team 1 Lead",
         image: "/team/muthu.jpg",
         objectPosition: "50% 20%",
         bio: "Designing and building intelligent automation systems that streamline processes and meet core business requirements.",
@@ -28,7 +28,7 @@ export const team = [
     {
         id: "sakthivel-m",
         name: "Sakthivel M",
-        role: "Automation Developer",
+        role: "Automation Developer | Team 2 Lead",
         image: "/team/sakthivel.jpg",
         objectPosition: "50% 20%",
         bio: "Creating seamless automation workflows that simplify operations and drive efficiency across business processes.",
