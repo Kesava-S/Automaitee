@@ -21,7 +21,7 @@ export const team = [
         name: "Luca Sedda",
         role: "Marketing Manager",
         image: "/team/Luca.png",
-        bio: "Driving brand awareness and communicating the value of AI automation to businesses worldwide.",
+        bio: "Driving brand awareness and communicating the value of AI automation to Micro and Small businesses worldwide.",
         linkedin: ""
     },
     {
