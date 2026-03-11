@@ -46,7 +46,7 @@ export const team = [
         id: "ajay",
         name: "Ajay",
         role: "Project Manager",
-        image: "/team/ajay.jpg",
+        image: "/team/ajay.svg",
         bio: "Managing automation projects from start to finish, ensuring timely delivery and successful outcomes.",
         linkedin: ""
     },
@@ -54,7 +54,7 @@ export const team = [
         id: "sriram-sankar",
         name: "Sriram Sankar",
         role: "Sales Rep",
-        image: "/team/sriram.jpg",
+        image: "/team/sriram.svg",
         bio: "Helping Micro Businesses discover how automation can accelerate their growth and streamline their processes.",
         linkedin: ""
     }
