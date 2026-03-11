@@ -20,7 +20,7 @@ export const team = [
         id: "luca-sedda",
         name: "Luca Sedda",
         role: "Marketing Manager",
-        image: "/team/luca.jpg",
+        image: "/team/luca.png",
         bio: "Driving brand awareness and communicating the value of AI automation to businesses worldwide.",
         linkedin: ""
     },
