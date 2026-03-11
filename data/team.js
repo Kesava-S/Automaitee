@@ -55,7 +55,7 @@ export const team = [
         name: "Sriram Sankar",
         role: "Sales Rep",
         image: "/team/sriram.jpg",
-        bio: "Helping businesses discover how automation can accelerate their growth and streamline their processes.",
+        bio: "Helping Micro Businesses discover how automation can accelerate their growth and streamline their processes.",
         linkedin: ""
     }
 ];
