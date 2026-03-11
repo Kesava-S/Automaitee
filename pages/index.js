@@ -64,9 +64,12 @@ export default function Home() {
                         </p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
-                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
                             <Link href="/book-consultation" className="cta-button">
                                 Book Automation Consultation
+                            </Link>
+                            <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
+                                Explore - Kondamaal Freelancers
                             </Link>
                         </div>
                     </Reveal>
