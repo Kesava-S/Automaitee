@@ -17,6 +17,14 @@ export const team = [
         linkedin: "https://www.linkedin.com/in/maral-saeediniya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
+        id: "luca-sedda",
+        name: "Luca Sedda",
+        role: "Marketing Manager",
+        image: "/team/luca.jpg",
+        bio: "Driving brand awareness and communicating the value of AI automation to businesses worldwide.",
+        linkedin: ""
+    },
+    {
         id: "muthukumar-m",
         name: "Muthukumar M",
         role: "Automation Developer | Team 1 Lead",
@@ -48,14 +56,6 @@ export const team = [
         role: "Sales Rep",
         image: "/team/sriram.jpg",
         bio: "Helping businesses discover how automation can accelerate their growth and streamline their processes.",
-        linkedin: ""
-    },
-    {
-        id: "luca-sedda",
-        name: "Luca Sedda",
-        role: "Marketing Manager",
-        image: "/team/luca.jpg",
-        bio: "Driving brand awareness and communicating the value of AI automation to businesses worldwide.",
         linkedin: ""
     }
 ];
