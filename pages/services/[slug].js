@@ -21,7 +21,7 @@ export default function ServicePage({ service }) {
             <Head>
                 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245523565.js"></script>
 
-                
+
                 <title>{service.title} | Automaitee AI</title>
                 <meta name="description" content={service.description} />
 
