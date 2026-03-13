@@ -24,6 +24,8 @@ export default function Home() {
     return (
         <>
             <Head>
+                <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245523565.js"></script>
+                
                 <title>Automaitee | Digital AI Automation</title>
                 <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 

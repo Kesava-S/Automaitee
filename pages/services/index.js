@@ -24,8 +24,6 @@ export default function Services() {
     return (
         <>
             <Head>
-                <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245523565.js"></script>
-                
                 <title>Automaitee Services | AI & Business Automation</title>
             </Head>
 
