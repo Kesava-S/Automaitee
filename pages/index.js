@@ -103,23 +103,7 @@ export default function Home() {
                     <Reveal width="100%">
                         <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>Our Sustainability Approach</h2>
                     </Reveal>
-                    <div style={{
-                        display: 'flex',
-                        overflowX: 'auto',
-                        gap: '2rem',
-                        paddingBottom: '2rem',
-                        scrollSnapType: 'x mandatory',
-                        WebkitOverflowScrolling: 'touch',
-                    }} className="sustainability-scroll">
-                        <style>{`
-                            .sustainability-scroll::-webkit-scrollbar {
-                                display: none;
-                            }
-                            .sustainability-scroll {
-                                scrollbar-width: none;
-                                -ms-overflow-style: none;
-                            }
-                        `}</style>
+                    <div className="grid">
                         {[
                             {
                                 title: "Sustainable Digital Marketing Automation",
@@ -146,16 +130,8 @@ export default function Home() {
                                 desc: "Our AI-powered marketing automation workflows help businesses retain customers through automated email nurturing, loyalty campaigns, and personalized engagement. Focusing on customer retention reduces the need for constant lead acquisition, enabling businesses to grow sustainably while optimizing marketing resources."
                             }
                         ].map((item, index) => (
-                            <Reveal key={index} delay={index * 0.1} width="auto">
-                                <div className="card" style={{
-                                    height: '100%',
-                                    minWidth: '350px',
-                                    maxWidth: '350px',
-                                    scrollSnapAlign: 'start',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'flex-start'
-                                }}>
+                            <Reveal key={index} delay={index * 0.1}>
+                                <div className="card" style={{ height: '100%' }}>
                                     <h3>{item.title}</h3>
                                     <p>{item.desc}</p>
                                 </div>
