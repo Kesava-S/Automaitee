@@ -101,7 +101,10 @@ export default function Home() {
             <section className="sustainability-section" style={{ background: '#ffffff', padding: '5rem 0' }}>
                 <div className="container">
                     <Reveal width="100%">
-                        <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>Our Sustainability Approach</h2>
+                        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                            <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Our Sustainability Approach</h2>
+                            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>In Marketing Automation</p>
+                        </div>
                     </Reveal>
                     <div className="grid">
                         {[
