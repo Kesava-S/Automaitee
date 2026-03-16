@@ -1,5 +1,377 @@
 export const blogs = [
     {
+        id: "uk-sme-ai-adoption-stats-2026",
+        title: "UK SME AI Adoption: The Visual Data (2023–2026)",
+        metaTitle: "UK SME AI Adoption Stats 2026 | Visual Report | Automaitee Digital",
+        metaDescription: "A visual breakdown of AI adoption among UK small businesses, including sector trends, usage cases, and ROI metrics.",
+        excerpt: "Hard numbers, visualised. Discover the current state and future of AI adoption across UK small businesses.",
+        date: "March 16, 2026",
+        author: "Automaitee Data Team",
+        image: "/blog/ai-stats-uk.png",
+        content: `
+            <style>
+                .stats-container {
+                    padding: 2rem 0;
+                    color: #1d1d1f;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                }
+                .visual-section {
+                    margin-bottom: 4rem;
+                    background: #ffffff;
+                    padding: 2.5rem;
+                    border-radius: 24px;
+                    box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+                    border: 1px solid #f0f0f5;
+                }
+                .section-header {
+                    margin-bottom: 2rem;
+                    border-left: 4px solid #0071e3;
+                    padding-left: 1rem;
+                }
+                .section-header h2 {
+                    font-size: 1.5rem;
+                    margin: 0;
+                    color: #1d1d1f;
+                }
+                .section-header p {
+                    font-size: 0.9rem;
+                    color: #86868b;
+                    margin: 0.25rem 0 0 0;
+                }
+
+                /* Timeline Styles */
+                .timeline {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    padding: 2rem 0;
+                    position: relative;
+                }
+                .timeline::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 40px;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: #f5f5f7;
+                    z-index: 1;
+                }
+                .timeline-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                    z-index: 2;
+                    flex: 1;
+                }
+                .timeline-bar {
+                    width: 40px;
+                    background: linear-gradient(180deg, #0071e3 0%, #00c6ff 100%);
+                    border-radius: 8px 8px 0 0;
+                    transition: height 1s ease;
+                    position: relative;
+                }
+                .timeline-value {
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                }
+                .timeline-year {
+                    padding-top: 15px;
+                    font-size: 0.85rem;
+                    color: #86868b;
+                    font-weight: 500;
+                }
+
+                /* Bar Chart Styles */
+                .bar-chart {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.25rem;
+                }
+                .bar-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .bar-label-group {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                }
+                .bar-track {
+                    height: 12px;
+                    background: #f5f5f7;
+                    border-radius: 6px;
+                    overflow: hidden;
+                }
+                .bar-fill {
+                    height: 100%;
+                    background: linear-gradient(90deg, #5e5ce6 0%, #aa99ff 100%);
+                    border-radius: 6px;
+                }
+
+                /* Ring Charts */
+                .rings-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                    gap: 2rem;
+                    text-align: center;
+                }
+                .ring-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                }
+                .ring-svg {
+                    width: 100px;
+                    height: 100px;
+                    transform: rotate(-90deg);
+                }
+                .ring-bg {
+                    fill: none;
+                    stroke: #f5f5f7;
+                    stroke-width: 8;
+                }
+                .ring-progress {
+                    fill: none;
+                    stroke: #0071e3;
+                    stroke-width: 8;
+                    stroke-linecap: round;
+                    stroke-dasharray: 251.2;
+                    transition: stroke-dashoffset 1s ease;
+                }
+                .ring-text {
+                    font-size: 0.8rem;
+                    color: #1d1d1f;
+                    font-weight: 600;
+                }
+
+                /* KPI Cards */
+                .kpi-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 1.5rem;
+                }
+                .kpi-card {
+                    padding: 1.5rem;
+                    background: #fbfbfd;
+                    border-radius: 20px;
+                    text-align: center;
+                }
+                .kpi-val {
+                    display: block;
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    color: #0071e3;
+                    line-height: 1;
+                    margin-bottom: 0.5rem;
+                }
+                .kpi-label {
+                    font-size: 0.85rem;
+                    color: #86868b;
+                    font-weight: 500;
+                }
+
+                /* Barrier Blocks */
+                .barriers-list {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                }
+                .barrier-box {
+                    padding: 1.25rem;
+                    border-radius: 16px;
+                    background: #fff;
+                    border: 1px solid #f0f0f5;
+                }
+                .barrier-percentage {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: #ff3b30;
+                    margin-bottom: 0.25rem;
+                }
+                .barrier-text {
+                    font-size: 0.85rem;
+                    color: #424245;
+                }
+
+                @media (max-width: 600px) {
+                    .barriers-list { grid-template-columns: 1fr; }
+                    .visual-section { padding: 1.5rem; }
+                }
+            </style>
+
+            <div class="stats-container">
+                <p style="color: #86868b; margin-bottom: 3rem;">British small businesses are shifting. From routine tasks to deep analytics, the adoption of AI is accelerating. This report visualises the hard data driving the UK SME landscape from 2023 to 2026.</p>
+
+                <!-- Section 1: Adoption Growth -->
+                <div class="visual-section">
+                    <div class="section-header">
+                        <h2>SME AI Adoption Curve</h2>
+                        <p>Percentage of UK SMEs actively integrated with AI</p>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-bar" style="height: 100px;"><span class="timeline-value">23%</span></div>
+                            <span class="timeline-year">2023</span>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-bar" style="height: 110px;"><span class="timeline-value">25%</span></div>
+                            <span class="timeline-year">2024</span>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-bar" style="height: 154px;"><span class="timeline-value">35%</span></div>
+                            <span class="timeline-year">2025</span>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-bar" style="height: 172px; background: linear-gradient(180deg, #5e5ce6 0%, #aa99ff 100%);"><span class="timeline-value">39%*</span></div>
+                            <span class="timeline-year">2026 (Est)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Sector Landscape -->
+                <div class="visual-section">
+                    <div class="section-header">
+                        <h2>Adoption by Sector</h2>
+                        <p>Tech-forward industries lead the transition</p>
+                    </div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label-group"><span>IT & Telecoms</span><span>56%</span></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 56%;"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label-group"><span>Media & Marketing</span><span>53%</span></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 53%;"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label-group"><span>Professional Services</span><span>46%</span></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 46%;"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label-group"><span>Hospitality & Leisure</span><span>18%</span></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 18%; background: #ff9500;"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label-group"><span>Real Estate</span><span>11%</span></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 11%; background: #ff3b30;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Usage Functions -->
+                <div class="visual-section">
+                    <div class="section-header">
+                        <h2>Top AI Use Cases</h2>
+                        <p>Where businesses are deploying AI daily</p>
+                    </div>
+                    <div class="rings-grid">
+                        <div class="ring-container">
+                            <svg class="ring-svg">
+                                <circle class="ring-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 115.5;"></circle>
+                            </svg>
+                            <span class="ring-text">54% Routine Tasks</span>
+                        </div>
+                        <div class="ring-container">
+                            <svg class="ring-svg">
+                                <circle class="ring-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 138.1; stroke: #5e5ce6;"></circle>
+                            </svg>
+                            <span class="ring-text">45% Marketing</span>
+                        </div>
+                        <div class="ring-container">
+                            <svg class="ring-svg">
+                                <circle class="ring-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 173.3; stroke: #ff9500;"></circle>
+                            </svg>
+                            <span class="ring-text">31% Customer Support</span>
+                        </div>
+                        <div class="ring-container">
+                            <svg class="ring-svg">
+                                <circle class="ring-bg" cx="50" cy="50" r="40"></circle>
+                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 180.8; stroke: #ff3b30;"></circle>
+                            </svg>
+                            <span class="ring-text">28% Operations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Measurable Impact -->
+                <div class="visual-section">
+                    <div class="section-header">
+                        <h2>Measurable ROI & Outcomes</h2>
+                        <p>Quantitative gains from AI integration</p>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <span class="kpi-val">+42.5%</span>
+                            <span class="kpi-label">Financial Performance</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-val">+50%</span>
+                            <span class="kpi-label">Customer Engagement</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-val">78%</span>
+                            <span class="kpi-label">SMEs See Productivity Gains</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Barriers -->
+                <div class="visual-section">
+                    <div class="section-header">
+                        <h2>Barriers to Adoption</h2>
+                        <p>Primary friction points for SMEs</p>
+                    </div>
+                    <div class="barriers-list">
+                        <div class="barrier-box">
+                            <div class="barrier-percentage">50%</div>
+                            <div class="barrier-text">Trust Humans more than AI</div>
+                        </div>
+                        <div class="barrier-box">
+                            <div class="barrier-percentage">49%</div>
+                            <div class="barrier-text">Privacy & Security Concerns</div>
+                        </div>
+                        <div class="barrier-box">
+                            <div class="barrier-percentage">35%</div>
+                            <div class="barrier-text">Significant Skills Gap</div>
+                        </div>
+                        <div class="barrier-box">
+                            <div class="barrier-percentage">25%</div>
+                            <div class="barrier-text">Uncertainty about ROI</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Forecast -->
+                <div class="visual-section" style="background: linear-gradient(135deg, #0071e3 0%, #5e5ce6 100%); color: #fff;">
+                    <h2 style="color: #fff; margin-bottom: 0.5rem;">The AI Market Surge</h2>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Forecasted global AI marketing revenue (2024–2028)</p>
+                    <div style="display: flex; align-items: baseline; gap: 1rem;">
+                        <span style="font-size: 3.5rem; font-weight: 800;">$107.4B</span>
+                        <span style="font-size: 1.2rem; opacity: 0.8;">by 2028</span>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; opacity: 0.9;">The UK contributes ~$1.01B annually to this sector, with 68% year-on-year revenue growth in AI firms.</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <p style="color: #86868b; font-size: 0.9rem;">Source: UK SME Survey Leaders, YouGov, Moneypenny, and ONS Insights (2023–2026).</p>
+                    <a href="/book-consultation" class="nav-link" style="display: inline-block; padding: 1rem 2rem; background: #0071e3; color: #fff; border-radius: 99px; text-decoration: none; font-weight: 600; margin-top: 1rem;">Start Your AI Journey →</a>
+                </div>
+            </div>
+        `
+    },
+    {
         id: "ai-marketing-automation-uk-small-businesses",
         title: "How AI Marketing Automation Can Transform Your Local Service Business in London",
         metaTitle: "AI Marketing Automation for Local Service Businesses in London | Automaitee Digital",
