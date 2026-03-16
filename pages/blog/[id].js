@@ -13,8 +13,8 @@ export default function BlogPost({ blog }) {
     return (
         <>
             <Head>
-                <title>{blog.title} | Automaitee Blog</title>
-                <meta name="description" content={blog.excerpt} />
+                <title>{blog.metaTitle || `${blog.title} | Automaitee Blog`}</title>
+                <meta name="description" content={blog.metaDescription || blog.excerpt} />
             </Head>
 
             <article style={{ paddingTop: '120px', paddingBottom: '100px' }}>
