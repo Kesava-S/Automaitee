@@ -63,6 +63,7 @@ export const services = [
         ],
         ctaTitle: "Ready to grow?",
         ctaDescription: "Automate your marketing and save time.",
-        ctaButtonText: "Book Your Free Consultation"
+        ctaButtonText: "Book Your Free Consultation",
+        additionalInsight: "Every marketing campaign analysed, every customer interaction recorded, and every insight used for decision-making helps build a smarter marketing system. Over time, businesses that continuously improve their marketing using data and AI will gain a stronger advantage compared to businesses that still rely mainly on intuition or traditional methods."
     }
 ];

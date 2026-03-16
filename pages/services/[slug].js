@@ -143,6 +143,14 @@ export default function ServicePage({ service }) {
                         </div>
                     )}
 
+                    {service.additionalInsight && (
+                        <div style={{ marginTop: '6rem', padding: '3rem', background: '#f8f9fa', borderRadius: '24px', borderLeft: '4px solid #0071e3' }}>
+                            <p style={{ fontSize: '1.25rem', lineHeight: '1.6', color: '#1d1d1f', fontStyle: 'italic', margin: 0 }}>
+                                "{service.additionalInsight}"
+                            </p>
+                        </div>
+                    )}
+
                     <div style={{ marginTop: '6rem', padding: '3rem', background: 'var(--gray-50)', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>{service.ctaTitle || 'Ready to get started?'}</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>{service.ctaDescription || `Transform your business with our ${service.title.toLowerCase()} solutions.`}</p>
