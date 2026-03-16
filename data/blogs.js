@@ -18,13 +18,13 @@ export const blogs = [
 
             <p>Here’s how AI can directly benefit UK SMEs:</p>
             <ul>
-                <li><strong>Customer Service Automation:</strong> 56% of businesses use AI to respond to inquiries instantly, helping small businesses capture leads and improve service (Haan, 2023).</li>
+                <li><strong>Customer Service Automation:</strong> 56% of businesses use AI to respond to inquiries instantly, helping small businesses capture leads and improve service.</li>
                 <li><strong>Cybersecurity & Fraud Protection:</strong> 51% of businesses implement AI to secure data, addressing customer privacy concerns.</li>
                 <li><strong>Email & CRM Automation:</strong> 46% of companies rely on AI for customer relationship management and 35% for content creation, reducing manual workload.</li>
                 <li><strong>Marketing & Sales Insights:</strong> AI can analyze data from campaigns to inform better marketing decisions, improving targeting and ROI.</li>
             </ul>
 
-            <p>Globally, AI marketing revenue is projected to grow from $47 billion to $107 billion by 2028 (Guttmann, 2026), reflecting the growing adoption of AI-driven marketing strategies.</p>
+            <p>Globally, AI marketing revenue is projected to grow from $47 billion to $107 billion by 2028, reflecting the growing adoption of AI-driven marketing strategies.</p>
 
             <h2>Challenges UK Small Businesses Face</h2>
             <p>Even though AI tools are widely available, many small business owners hesitate to adopt them. Research with over 8,000 UK SMEs found:</p>
@@ -33,7 +33,7 @@ export const blogs = [
                 <li>20% struggle with limited time and resources.</li>
                 <li>60% of older businesses are hesitant due to perceived barriers.</li>
                 <li>38% worry AI may not improve competitiveness.</li>
-                <li>50% of SMEs trust humans more than AI for customer interactions (Mitchell, 2025).</li>
+                <li>50% of SMEs trust humans more than AI for customer interactions.</li>
             </ul>
 
             <p>At Automaitee Digital, we help businesses overcome these challenges by providing simple, guided AI solutions that integrate seamlessly with existing workflows.</p>
@@ -51,9 +51,9 @@ export const blogs = [
             <p>Research shows UK SMEs that adopt AI marketing automation experience significant improvements:</p>
             <ul>
                 <li><strong>Time Savings:</strong> Routine marketing tasks are automated, freeing owners to focus on core business activities.</li>
-                <li><strong>Customer Engagement:</strong> AI chatbots and automated emails increase interactions, with studies showing 50% higher engagement in businesses using AI (Al-Hakim et al., 2024).</li>
+                <li><strong>Customer Engagement:</strong> AI chatbots and automated emails increase interactions, with studies showing 50% higher engagement in businesses using AI.</li>
                 <li><strong>Data-Driven Decisions:</strong> Businesses see a 76% improvement in decision-making using insights from AI analytics.</li>
-                <li><strong>Revenue & Growth:</strong> SMEs that adopt AI marketing see an average 42.5% improvement in sustainable financial performance (Al-Hakim et al., 2024).</li>
+                <li><strong>Revenue & Growth:</strong> SMEs that adopt AI marketing see an average 42.5% improvement in sustainable financial performance.</li>
                 <li><strong>Consistent Customer Experience:</strong> AI ensures timely follow-ups, review management, and lead nurturing, improving trust and retention.</li>
             </ul>
 
