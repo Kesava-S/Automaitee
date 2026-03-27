@@ -55,7 +55,7 @@ export default function Home() {
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
                         <h1>
-                            <AnimatedText text="Automation Designed For Your Business" />
+                            <AnimatedText text="Automation Personalised  For Micro and SMEs" />
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
