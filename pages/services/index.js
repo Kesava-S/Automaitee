@@ -22,7 +22,7 @@ export default function Services() {
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>
                 <div className="container">
                     <Reveal width="100%">
-                        <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>AI Automations</h1>
+                        <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>AI Automation for London & UK SMEs</h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
