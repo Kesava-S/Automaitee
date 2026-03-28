@@ -60,7 +60,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.5}>
                         <p style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                            We build custom AI Agents — so your business runs smarter, not harder.
+                            We build custom AI Agents - so your business runs smarter, not harder.
                         </p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">

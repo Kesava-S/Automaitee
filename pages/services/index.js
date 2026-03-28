@@ -35,13 +35,13 @@ export default function Services() {
             <section className="services-section" style={{ paddingBottom: '100px' }}>
                 <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
 
-                    {/* Marketing Automation Section */}
+                    {/* Basic Automation Section */}
                     <div className="accordion-item">
                         <button
                             className={`accordion-header ${openSection === 'marketing' ? 'active' : ''}`}
                             onClick={() => toggleSection('marketing')}
                         >
-                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Marketing Automation</h2>
+                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Basic Automation</h2>
                             <ChevronDown className="accordion-icon" size={28} />
                         </button>
                         <div className={`accordion-content ${openSection === 'marketing' ? 'open' : ''}`}>
