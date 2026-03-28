@@ -65,14 +65,14 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-                            <Link href="/book-consultation" className="cta-button">
-                                Book Automation Consultation
+                            <Link href="/services" className="cta-button">
+                                View Services
                             </Link>
                             <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
-                                Explore - Kondamaal Freelancers
+                                explore our talents
                             </Link>
                             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem' }}>
-                                A new initiative by Automaitee
+                                Support Venture by Automaitee
                             </p>
                         </div>
                     </Reveal>
