@@ -52,9 +52,9 @@ export const services = [
     },
     {
         id: "advanced-automation",
-        title: "Advanced Automation - Multi Platform Lead Capture to Smart Alerts",
+        title: "Advanced Automation",
         slug: "advanced-marketing-automation",
-        description: "Best for: London SMEs with a steady flow of leads who want to scale revenue without taking on more staff.",
+        description: "Multi Platform Lead Capture to Smart Alerts",
         fullDescription: "Advanced Automation - Multi Platform Lead Capture to Smart Alerts",
         featuresTitle: "What's Included",
         processSteps: [
