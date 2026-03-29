@@ -57,7 +57,56 @@ export default function Services() {
                         </button>
                         <div className={`accordion-content ${openSection === 'marketing' ? 'open' : ''}`}>
                             <div className="grid" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
-                                {services.map((service, index) => (
+                                {services.filter(s => s.category !== 'marketing-2').map((service, index) => (
+                                    <Reveal key={service.id} delay={index * 0.1} width="100%">
+                                        <Link href={`/services/${service.slug}`} className="card" style={{ display: 'block', height: '100%' }}>
+                                            <h2>{service.title}</h2>
+                                            <p style={{ marginBottom: service.processSteps ? '1.5rem' : '0' }}>{service.description}</p>
+
+                                            {service.processSteps && (
+                                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginTop: '1rem', marginBottom: '1rem' }}>
+                                                    {service.processSteps.map((step, stepIndex) => (
+                                                        <div key={stepIndex} style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{
+                                                                background: 'rgba(0, 113, 227, 0.1)',
+                                                                color: '#0071e3',
+                                                                padding: '4px 10px',
+                                                                borderRadius: '20px',
+                                                                fontSize: '0.8rem',
+                                                                fontWeight: '600',
+                                                                whiteSpace: 'nowrap'
+                                                            }}>
+                                                                {step}
+                                                            </span>
+                                                            {stepIndex < service.processSteps.length - 1 && (
+                                                                <span style={{ margin: '0 4px', color: '#86868b', fontSize: '0.9rem' }}>→</span>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                            <div style={{ marginTop: '1.5rem', color: '#0071e3', fontWeight: '500', fontSize: '0.9rem' }}>
+                                                Learn more →
+                                            </div>
+                                        </Link>
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Marketing Automation 2 Section */}
+                    <div className="accordion-item">
+                        <button
+                            className={`accordion-header ${openSection === 'marketing2' ? 'active' : ''}`}
+                            onClick={() => toggleSection('marketing2')}
+                        >
+                            <h2 style={{ fontSize: '2rem', margin: 0 }}>Marketing Automation 2</h2>
+                            <ChevronDown className="accordion-icon" size={28} />
+                        </button>
+                        <div className={`accordion-content ${openSection === 'marketing2' ? 'open' : ''}`}>
+                            <div className="grid" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
+                                {services.filter(s => s.category === 'marketing-2').map((service, index) => (
                                     <Reveal key={service.id} delay={index * 0.1} width="100%">
                                         <Link href={`/services/${service.slug}`} className="card" style={{ display: 'block', height: '100%' }}>
                                             <h2>{service.title}</h2>
