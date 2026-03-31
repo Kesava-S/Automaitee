@@ -43,8 +43,8 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
-    /* Light gradient background */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 100%);
+    /* Slightly darker gradient background */
+    background: linear-gradient(180deg, rgba(242, 242, 247, 0.95) 0%, rgba(225, 235, 245, 0.95) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
@@ -104,7 +104,7 @@ a {
     /* Height of mobile navbar */
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(246, 246, 250, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--card-border);
