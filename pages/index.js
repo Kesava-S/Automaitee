@@ -4,20 +4,48 @@ import { faqs } from '../data/faqs'
 import { Reveal } from '../components/Reveal'
 import { IndustryMarquee } from '../components/IndustryMarquee'
 import { SparklesCore } from '../components/ui/sparkles'
+import AnimatedTextCycle from '../components/ui/animated-text-cycle'
 
+
+import { motion } from 'framer-motion';
 
 const AnimatedText = ({ text, delayOffset = 0 }) => {
+    const wordVariants = {
+        hidden: { 
+            y: -20,
+            opacity: 0,
+            filter: "blur(8px)"
+        },
+        visible: (i) => ({
+            y: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            transition: {
+                delay: delayOffset + i * 0.1,
+                duration: 0.4,
+                ease: "easeOut"
+            }
+        })
+    };
+
     return text.split(" ").map((word, i) => (
-        <span
+        <motion.span
             key={i}
-            className="animated-word"
+            custom={i}
+            initial="hidden"
+            animate="visible"
+            variants={wordVariants}
             style={{
-                animationDelay: `${delayOffset + i * 0.1}s`,
-                marginRight: "0.25em"
+                display: "inline-block",
+                marginRight: "0.25em",
+                background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent"
             }}
         >
             {word}
-        </span>
+        </motion.span>
     ));
 };
 
@@ -72,9 +100,25 @@ export default function Home() {
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
-                        <p style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                            We build custom AI Agents - so your business runs smarter, not harder.
-                        </p>
+                        <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
+                            The Automations are <AnimatedTextCycle 
+                                words={[
+                                    "flawless.",
+                                    "secure and GDPR-compliant.",
+                                    "transparent and easy-to-use.",
+                                    "smart and value-driven.",
+                                    "UK-focused and market-savvy."
+                                ]} 
+                                interval={3000} 
+                                style={{ 
+                                    fontWeight: '600',
+                                    background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)",
+                                    WebkitBackgroundClip: "text",
+                                    backgroundClip: "text",
+                                    WebkitTextFillColor: "transparent"
+                                }}
+                            />
+                        </div>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
