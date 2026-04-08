@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { faqs } from '../data/faqs'
 import { Reveal } from '../components/Reveal'
 import { IndustryMarquee } from '../components/IndustryMarquee'
+import { SparklesCore } from '../components/ui/sparkles'
 
 
 const AnimatedText = ({ text, delayOffset = 0 }) => {
@@ -52,6 +53,18 @@ export default function Home() {
             </Head>
 
             <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+                    <SparklesCore
+                        id="tsparticleshero"
+                        background="transparent"
+                        minSize={0.4}
+                        maxSize={1.5}
+                        particleDensity={150}
+                        className="w-full h-full"
+                        particleColor="#0071e3"
+                    />
+                    <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', background: 'radial-gradient(circle at top, transparent 10%, #fbfbfd 90%)' }}></div>
+                </div>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
                         <h1>

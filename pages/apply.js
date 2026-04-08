@@ -301,7 +301,7 @@ export default function Apply() {
                 <meta name="robots" content="noindex" />
             </Head>
 
-            <div style={{ paddingTop: '120px', paddingBottom: '60px', background: '#fbfbfd', minHeight: '100vh' }}>
+            <div style={{ paddingTop: '120px', paddingBottom: '60px', background: 'transparent', minHeight: '100vh' }}>
                 <div className="container" style={{ maxWidth: '1000px' }}>
 
                     <div style={{ marginBottom: '2rem' }}>

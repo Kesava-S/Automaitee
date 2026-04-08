@@ -10,8 +10,12 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@tsparticles/engine": "^3.9.1",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.9.1",
+        "clsx": "^2.1.1",
         "dotenv": "^17.3.1",
-        "framer-motion": "^12.34.0",
+        "framer-motion": "^12.38.0",
         "lucide-react": "^0.378.0",
         "next": "^14.2.3",
         "next-image-export-optimizer": "^1.19.0",
@@ -19,6 +23,7 @@
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-markdown": "^10.1.0",
-        "remark-gfm": "^4.0.1"
+        "remark-gfm": "^4.0.1",
+        "tailwind-merge": "^3.5.0"
     }
 }

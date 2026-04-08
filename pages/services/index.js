@@ -25,9 +25,6 @@ export default function Services() {
                         <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>AI Automation for London & UK SMEs</h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
-                        <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
-                            Built using n8n + Lang Chain + Google Sheets + minimal tools
-                        </p>
                         <p style={{ 
                             fontSize: '1.25rem', 
                             maxWidth: '600px', 

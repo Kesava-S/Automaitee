@@ -11,6 +11,7 @@ import BookingModal from '../components/BookingModal'
 import ChatBot from '../components/ChatBot'
 import FloatingShapes from '../components/FloatingShapes'
 import { Menu, X } from 'lucide-react'
+import { SparklesCore } from '../components/ui/sparkles'
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
@@ -127,6 +128,21 @@ function MyApp({ Component, pageProps }) {
 
             <FloatingShapes />
 
+            <div style={{ position: 'relative', zIndex: 0 }}>
+                {router.pathname !== '/' && (
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '450px', zIndex: -1, overflow: 'hidden' }}>
+                        <SparklesCore
+                            id="global-header-sparkles"
+                            background="transparent"
+                            minSize={0.4}
+                            maxSize={1.5}
+                            particleDensity={150}
+                            particleColor="#0071e3"
+                        />
+                        <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', background: 'radial-gradient(circle at top, transparent 10%, #fbfbfd 80%)' }}></div>
+                    </div>
+                )}
+
             <main>
                 <Component {...pageProps} openBookingModal={() => setIsBookingModalOpen(true)} />
             </main>
@@ -144,8 +160,9 @@ function MyApp({ Component, pageProps }) {
                 </div>
             </footer>
 
-            <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
-            <ChatBot />
+                <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+                <ChatBot />
+            </div>
         </>
     )
 }

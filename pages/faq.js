@@ -10,7 +10,7 @@ export default function FAQ() {
                 <meta name="description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
             </Head>
 
-            <div style={{ paddingTop: '120px', paddingBottom: '80px', background: '#fbfbfd' }}>
+            <div style={{ paddingTop: '120px', paddingBottom: '80px', background: 'transparent' }}>
                 <div className="container" style={{ maxWidth: '800px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                         <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem' }}>Frequently Asked Questions</h1>
