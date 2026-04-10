@@ -103,7 +103,7 @@ function FieldError({ show, message }) {
 export default function Apply() {
     const router = useRouter()
     const { role } = router.query
-    const defaultRole = "Automation in Revenue Operations Intern"
+    const defaultRole = "General Application"
 
     const [currentStep, setCurrentStep] = useState(1)
     const [isParsing, setIsParsing] = useState(false)

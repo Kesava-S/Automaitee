@@ -39,50 +39,10 @@ export default function WorkWithUs() {
 
                     <div className="grid">
                         <Reveal>
-                            <div className="card" style={{ height: '100%', padding: '2rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600' }}>Automation in Revenue Operations Intern</h3>
-                                    <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.25rem 0.75rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Internship</span>
-                                </div>
-
-                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                                    3 months unpaid (Starts May)
-                                </div>
-
-                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-                                    <h4 style={{ fontWeight: '600', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Requirements:</h4>
-                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Bachelor’s degree in Computer Science or related field with strong analytical skills.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Basic knowledge of CRMs, HubSpot preferred.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Understanding of APIs, JSON, and backend processes for automation.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Familiarity with international payment platforms like stripe, paypal and wise.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Basic analytics skills (Google Data Analytics concepts, Excel, dashboards).</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Logical thinking and strong attention to detail.</li>
-                                    </ul>
-
-                                    <h4 style={{ fontWeight: '600', marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.1rem' }}>What You’ll Learn:</h4>
-                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem' }}>
-                                        During this internship, you will gain practical exposure to modern revenue operation automation and data tools and to automate visualizations.
-                                    </p>
-                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '0.5rem' }}>
-                                        You will learn:
-                                    </p>
-                                    <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', lineHeight: '1.6', marginBottom: '1rem' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>What is CRM and its analytics and how can it be automated.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to understand website performance using Google Analytics and automate visualization of reports.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to build integrated automation workflows using n8n.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to connect different business tools with API and automate repetitive tasks.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How to collect data from different platforms and generate automated reports.</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>How AI and automation are transforming modern business operations.</li>
-                                    </ul>
-                                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                                        These skills are becoming very important in today’s AI-driven world. People who understand automation systems and data-driven workflows will have a strong advantage in future careers.
-                                    </p>
-                                </div>
-
-                                <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                    <Link href="/apply?role=Automation+in+Revenue+Operations+Intern" style={{ color: '#0071e3', fontWeight: 'bold' }}>Apply Now →</Link>
-                                </div>
+                            <div className="card" style={{ padding: '3rem 2rem', textAlign: 'center' }}>
+                                <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)' }}>
+                                    There are currently no open roles available. Please check back later!
+                                </p>
                             </div>
                         </Reveal>
                     </div>

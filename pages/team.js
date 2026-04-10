@@ -20,10 +20,10 @@ export default function Team() {
                 <div className="container">
                     <Reveal width="100%">
                         <h2 style={{ fontSize: '1.5rem', fontWeight: '500', marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>
-                            Hey, Micro and Small businesses...
+                            Hey, London's SMBs...
                         </h2>
                         <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            Meet the Young Energies
+                            We are here to make an Impact
                         </h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
