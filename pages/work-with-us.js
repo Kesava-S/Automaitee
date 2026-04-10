@@ -41,17 +41,32 @@ export default function WorkWithUs() {
                         <Reveal>
                             <div className="card" style={{ padding: '2.5rem', textAlign: 'left', background: 'white', borderRadius: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
-                                    <h3 style={{ fontSize: '1.75rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
-                                        Paid Internship Selection Program
-                                    </h3>
+                                    <div>
+                                        <h3 style={{ fontSize: '1.75rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
+                                            Paid Internship Selection Program
+                                        </h3>
+                                        <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
+                                            AI Marketing Automation Intern
+                                        </h4>
+                                    </div>
                                     <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
                                 </div>
-                                <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginBottom: '1.5rem' }}>
-                                    AI Marketing Automation Intern
-                                </h4>
+                                
+                                <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem', maxWidth: '800px' }}>
+                                    A structured 3-stage programme to select, train, and place the best CS students as paid AI Marketing Automation Interns at Automaitee Digital.
+                                </p>
+
+                                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+                                    <Link href="/apply?role=AI+Marketing+Automation+Intern" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600' }}>
+                                        Check Eligibility & Apply
+                                    </Link>
+                                    <Link href="#workflow" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600', background: 'transparent', color: 'var(--text-primary)', border: '1px solid #c7c7cc' }}>
+                                        How It Works
+                                    </Link>
+                                </div>
 
                                 {/* Application Process Flow */}
-                                <div style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+                                <div id="workflow" style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
                                     <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
                                     
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
