@@ -39,10 +39,86 @@ export default function WorkWithUs() {
 
                     <div className="grid">
                         <Reveal>
-                            <div className="card" style={{ padding: '3rem 2rem', textAlign: 'center' }}>
-                                <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)' }}>
-                                    There are currently no open roles available. Please check back later!
+                            <div className="card" style={{ padding: '2.5rem', textAlign: 'left', background: 'white', borderRadius: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
+                                    <h3 style={{ fontSize: '1.75rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
+                                        Paid Internship Selection Program
+                                    </h3>
+                                    <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
+                                </div>
+                                <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginBottom: '2rem' }}>
+                                    AI Marketing Automation Intern
+                                </h4>
+
+                                {/* Eligibility Criteria */}
+                                <div style={{ marginBottom: '2rem' }}>
+                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--foreground)' }}>Eligibility Criteria (Required)</h5>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>Applicants must meet all of the following requirements:</p>
+                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>Currently enrolled in Computer Science, IT, BCA, MCA, or a related degree programme</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Middle-year undergraduate students or first-year master’s students only <br/><span style={{ fontSize: '0.85rem', fontStyle: 'italic' }}>(Final-semester students are not eligible, as the program requires sufficient time and commitment)</span></li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Minimum 65% aggregate in current academic performance</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Minimum 70% attendance in current college</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Must have a personal laptop (shared or lab computers are not acceptable)</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Must have a stable internet connection at home for live online sessions</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Basic understanding of at least one programming language, APIs, or JSON</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Must be available for 8 hours per week throughout the 1-month course</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Must attend all live sessions</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Maximum 1 absence allowed with prior notice before the session starts</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Missing a session without prior notice will result in immediate disqualification</li>
+                                    </ul>
+                                </div>
+
+                                {/* Preferred Qualifications */}
+                                <div style={{ marginBottom: '2rem', padding: '1.5rem', background: '#fbfbfd', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
+                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--foreground)' }}>Preferred Qualifications (Not Mandatory)</h5>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>These will increase selection chances:</p>
+                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>Active GitHub profile with personal or academic projects</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Basic exposure to digital marketing tools (Meta Ads Manager, Google Ads, etc.)</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Knowledge of JavaScript, APIs, or JSON</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Experience using AI tools independently (Claude Code, Claude Cowork, Claude Skills, etc.)</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Any freelance work or side projects showing initiative and self-driven learning</li>
+                                    </ul>
+                                </div>
+
+                                {/* May Reduce Selection Chances */}
+                                <div style={{ marginBottom: '2rem' }}>
+                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: '#f5a623' }}>May Reduce Selection Chances</h5>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>These do not disqualify, but may reduce selection chances if competition is high:</p>
+                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>No coding exposure</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>No GitHub or personal portfolio</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Academic performance below 65%</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>College attendance below 75% (may indicate lower commitment)</li>
+                                    </ul>
+                                </div>
+
+                                {/* Automatic Disqualification */}
+                                <div style={{ marginBottom: '2rem', padding: '1.5rem', background: '#fffcfc', borderRadius: '0.75rem', border: '1px solid #fee2e2' }}>
+                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: '#d93025' }}>Automatic Disqualification (No Exceptions)</h5>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>Applicants will be automatically rejected if any of the following apply:</p>
+                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                        <li style={{ marginBottom: '0.5rem' }}>Not from CS, IT, BCA, MCA, or related field</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Final-semester student with less than 6 months remaining</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Academic aggregate below 65%</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>College attendance below 70%</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>No personal laptop</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>No stable home internet connection</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>No basic coding knowledge</li>
+                                        <li style={{ marginBottom: '0.5rem' }}>Missing a live session without prior notice during the course</li>
+                                    </ul>
+                                </div>
+
+                                <p style={{ color: 'var(--foreground)', fontWeight: '500', fontSize: '1rem', marginBottom: '2.5rem', padding: '1rem', background: '#f5f5f7', borderRadius: '0.5rem' }}>
+                                    This opportunity is designed for committed students who are willing to learn quickly and actively participate throughout the program.
                                 </p>
+
+                                <div style={{ textAlign: 'center' }}>
+                                    <Link href="/apply?role=AI+Marketing+Automation+Intern" className="cta-button">
+                                        Apply Now
+                                    </Link>
+                                </div>
                             </div>
                         </Reveal>
                     </div>
