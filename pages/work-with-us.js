@@ -57,8 +57,8 @@ export default function WorkWithUs() {
                                 </p>
 
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-                                    <Link href="/apply?role=AI+Marketing+Automation+Intern" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600' }}>
-                                        Check Eligibility & Apply
+                                    <Link href="#eligibility" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600' }}>
+                                        Eligibility Criteria
                                     </Link>
                                     <Link href="#workflow" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600', background: 'transparent', color: 'var(--text-primary)', border: '1px solid #c7c7cc' }}>
                                         How It Works
@@ -97,7 +97,7 @@ export default function WorkWithUs() {
                                 </div>
 
                                 {/* Eligibility Criteria */}
-                                <div style={{ marginBottom: '2rem' }}>
+                                <div id="eligibility" style={{ marginBottom: '2rem' }}>
                                     <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--foreground)' }}>Eligibility Criteria (Required)</h5>
                                     <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>Applicants must meet all of the following requirements:</p>
                                     <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
