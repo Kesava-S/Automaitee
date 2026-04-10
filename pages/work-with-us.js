@@ -50,15 +50,6 @@ export default function WorkWithUs() {
                                     AI Marketing Automation Intern
                                 </h4>
 
-                                <details style={{ marginBottom: '2.5rem', padding: '1rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', cursor: 'pointer' }}>
-                                    <summary style={{ fontWeight: '600', color: '#166534', outline: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        Important Program Information
-                                    </summary>
-                                    <p style={{ marginTop: '0.75rem', color: '#15803d', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                                        This is a paid course, and high-performing participants will be selected for a paid internship opportunity.
-                                    </p>
-                                </details>
-
                                 {/* Application Process Flow */}
                                 <div style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
                                     <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
@@ -68,13 +59,14 @@ export default function WorkWithUs() {
                                         <div style={{ position: 'absolute', left: '15px', top: '10px', bottom: '10px', width: '2px', background: '#cbd5e1', zIndex: 0 }}></div>
                                         
                                         {[
-                                            { title: "Application Entry", desc: "Students submit the form on the website" },
+                                            { title: "Submit Form", desc: "Students submit the form on the website" },
                                             { title: "Eligibility Screen", desc: "Eligibility is automatically screened" },
                                             { title: "Acknowledgement", desc: "Acknowledgement email is sent" },
-                                            { title: "Application Review", desc: "Applications are reviewed within 3–5 days" },
-                                            { title: "Payment Processing", desc: "Shortlisted candidates receive a payment link (valid for 48 hours)" },
-                                            { title: "Seat Secured", desc: "Upon payment confirmation, the seat is secured" },
-                                            { title: "Program Onboarding", desc: "Onboarding email is shared" }
+                                            { title: "Program Fee", desc: "Pay ₹1000" },
+                                            { title: "Course", desc: "1 month course with real time tasks" },
+                                            { title: "Live Evaluation", desc: "Best performers called for live evaluation" },
+                                            { title: "Training", desc: "Selected students enter 2 month unpaid Training" },
+                                            { title: "Internship Selection", desc: "Top performers confirmed for paid Internship up to ₹4,000/month based on performance" }
                                         ].map((step, idx) => (
                                             <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
                                                 <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
