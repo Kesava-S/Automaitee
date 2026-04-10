@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import { Reveal } from '../components/Reveal'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function WorkWithUs() {
+    const [showWorkflow, setShowWorkflow] = useState(false)
     return (
         <>
             <Head>
@@ -57,44 +59,47 @@ export default function WorkWithUs() {
                                 </p>
 
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-                                    <Link href="#eligibility" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600' }}>
-                                        Eligibility Criteria
-                                    </Link>
-                                    <Link href="#workflow" className="cta-button" style={{ padding: '0.75rem 1.5rem', fontWeight: '600', background: 'transparent', color: 'var(--text-primary)', border: '1px solid #c7c7cc' }}>
+                                    <button 
+                                        onClick={() => setShowWorkflow(!showWorkflow)} 
+                                        className="cta-button" 
+                                        style={{ padding: '0.75rem 1.5rem', fontWeight: '600', background: showWorkflow ? '#f8fafc' : 'transparent', color: showWorkflow ? '#64748b' : 'var(--text-primary)', border: showWorkflow ? '1px solid #cbd5e1' : '1px solid #c7c7cc', cursor: 'pointer' }}
+                                    >
                                         How It Works
-                                    </Link>
+                                    </button>
                                 </div>
 
                                 {/* Application Process Flow */}
-                                <div id="workflow" style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
-                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
-                                    
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
-                                        {/* Vertical line connecting parts */}
-                                        <div style={{ position: 'absolute', left: '15px', top: '10px', bottom: '10px', width: '2px', background: '#cbd5e1', zIndex: 0 }}></div>
+                                {showWorkflow && (
+                                    <div id="workflow" style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+                                        <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
                                         
-                                        {[
-                                            { title: "Submit Form", desc: "Students submit the form on the website" },
-                                            { title: "Eligibility Screen", desc: "Eligibility is automatically screened" },
-                                            { title: "Acknowledgement", desc: "Acknowledgement email is sent" },
-                                            { title: "Program Fee", desc: "Pay ₹1000" },
-                                            { title: "Course", desc: "1 month course with real time tasks" },
-                                            { title: "Live Evaluation", desc: "Best performers called for live evaluation" },
-                                            { title: "Training", desc: "Selected students enter 2 month unpaid Training" },
-                                            { title: "Internship Selection", desc: "Top performers confirmed for paid Internship up to ₹4,000/month based on performance" }
-                                        ].map((step, idx) => (
-                                            <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-                                                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
-                                                    {idx + 1}
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
+                                            {/* Vertical line connecting parts */}
+                                            <div style={{ position: 'absolute', left: '15px', top: '10px', bottom: '10px', width: '2px', background: '#cbd5e1', zIndex: 0 }}></div>
+                                            
+                                            {[
+                                                { title: "Submit Form", desc: "Students submit the form on the website" },
+                                                { title: "Eligibility Screen", desc: "Eligibility is automatically screened" },
+                                                { title: "Acknowledgement", desc: "Acknowledgement email is sent" },
+                                                { title: "Program Fee", desc: "Pay ₹1000" },
+                                                { title: "Course", desc: "1 month course with real time tasks" },
+                                                { title: "Live Evaluation", desc: "Best performers called for live evaluation" },
+                                                { title: "Training", desc: "Selected students enter 2 month unpaid Training" },
+                                                { title: "Internship Selection", desc: "Top performers confirmed for paid Internship up to ₹4,000/month based on performance" }
+                                            ].map((step, idx) => (
+                                                <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+                                                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
+                                                        {idx + 1}
+                                                    </div>
+                                                    <div style={{ paddingTop: '5px' }}>
+                                                        <div style={{ fontWeight: '600', fontSize: '1rem', color: 'var(--foreground)', lineHeight: '1.2' }}>{step.title}</div>
+                                                        <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.35rem' }}>{step.desc}</div>
+                                                    </div>
                                                 </div>
-                                                <div style={{ paddingTop: '5px' }}>
-                                                    <div style={{ fontWeight: '600', fontSize: '1rem', color: 'var(--foreground)', lineHeight: '1.2' }}>{step.title}</div>
-                                                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.35rem' }}>{step.desc}</div>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 {/* Eligibility Criteria */}
                                 <div id="eligibility" style={{ marginBottom: '2rem' }}>
