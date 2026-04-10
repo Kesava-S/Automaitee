@@ -46,9 +46,48 @@ export default function WorkWithUs() {
                                     </h3>
                                     <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
                                 </div>
-                                <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginBottom: '2rem' }}>
+                                <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginBottom: '1.5rem' }}>
                                     AI Marketing Automation Intern
                                 </h4>
+
+                                <details style={{ marginBottom: '2.5rem', padding: '1rem', background: '#f0fdf4', borderRadius: '0.75rem', border: '1px solid #bbf7d0', cursor: 'pointer' }}>
+                                    <summary style={{ fontWeight: '600', color: '#166534', outline: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        Important Program Information
+                                    </summary>
+                                    <p style={{ marginTop: '0.75rem', color: '#15803d', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                                        This is a paid course, and high-performing participants will be selected for a paid internship opportunity.
+                                    </p>
+                                </details>
+
+                                {/* Application Process Flow */}
+                                <div style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
+                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
+                                    
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
+                                        {/* Vertical line connecting parts */}
+                                        <div style={{ position: 'absolute', left: '15px', top: '10px', bottom: '10px', width: '2px', background: '#cbd5e1', zIndex: 0 }}></div>
+                                        
+                                        {[
+                                            { title: "Application Entry", desc: "Students submit the form on the website" },
+                                            { title: "Eligibility Screen", desc: "Eligibility is automatically screened" },
+                                            { title: "Acknowledgement", desc: "Acknowledgement email is sent" },
+                                            { title: "Application Review", desc: "Applications are reviewed within 3–5 days" },
+                                            { title: "Payment Processing", desc: "Shortlisted candidates receive a payment link (valid for 48 hours)" },
+                                            { title: "Seat Secured", desc: "Upon payment confirmation, the seat is secured" },
+                                            { title: "Program Onboarding", desc: "Onboarding email is shared" }
+                                        ].map((step, idx) => (
+                                            <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+                                                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
+                                                    {idx + 1}
+                                                </div>
+                                                <div style={{ paddingTop: '5px' }}>
+                                                    <div style={{ fontWeight: '600', fontSize: '1rem', color: 'var(--foreground)', lineHeight: '1.2' }}>{step.title}</div>
+                                                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.35rem' }}>{step.desc}</div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
 
                                 {/* Eligibility Criteria */}
                                 <div style={{ marginBottom: '2rem' }}>
