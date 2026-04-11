@@ -3,606 +3,335 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, ChevronRight, UploadCloud, FileText, User, Briefcase, Shield } from 'lucide-react'
-
-const steps = [
-    { id: 1, title: 'Careers Profile' },
-    { id: 2, title: 'Role Information' },
-    { id: 3, title: 'Voluntary Self-Identification' },
-    { id: 4, title: 'Review & Apply' }
-]
-
-const requiredStar = { color: '#d93025', marginLeft: '3px', fontWeight: '700' }
-const inputStyle = { width: '100%', padding: '0.8rem', borderRadius: '0.5rem', border: '1px solid #d2d2d7', fontSize: '1rem' }
-const inputErrorStyle = { width: '100%', padding: '0.8rem', borderRadius: '0.5rem', border: '1px solid #d93025', fontSize: '1rem', background: '#fff8f8' }
-const fieldErrorMsg = { margin: '0.3rem 0 0', fontSize: '0.78rem', color: '#d93025', fontWeight: '500' }
-
-/* ── Resume Preloader ── */
-function ResumePreloader() {
-    return (
-        <div style={{
-            position: 'absolute', inset: 0,
-            background: 'rgba(255,255,255,0.93)',
-            borderRadius: '0.4rem',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center',
-            gap: '0.75rem', zIndex: 10,
-            backdropFilter: 'blur(4px)',
-        }}>
-            <style>{`
-                @keyframes spin { to { transform: rotate(360deg); } }
-                @keyframes pdot { 0%,80%,100%{transform:scale(0);opacity:.3} 40%{transform:scale(1);opacity:1} }
-            `}</style>
-            <div style={{ position: 'relative', width: 56, height: 56 }}>
-                <svg viewBox="0 0 56 56" width="56" height="56"
-                    style={{ animation: 'spin 1.1s linear infinite', position: 'absolute', top: 0, left: 0 }}>
-                    <circle cx="28" cy="28" r="24" fill="none" stroke="#e8f0fe" strokeWidth="4" />
-                    <circle cx="28" cy="28" r="24" fill="none" stroke="#0071e3" strokeWidth="4"
-                        strokeDasharray="150" strokeDashoffset="110" strokeLinecap="round" />
-                </svg>
-                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
-                    <FileText size={20} color="#0071e3" />
-                </div>
-            </div>
-            <p style={{ margin: 0, fontWeight: '600', fontSize: '0.95rem', color: '#1d1d1f' }}>Parsing your resume…</p>
-            <div style={{ display: 'flex', gap: '5px' }}>
-                {[0, 1, 2].map(i => (
-                    <div key={i} style={{
-                        width: 7, height: 7, borderRadius: '50%', background: '#0071e3',
-                        animation: `pdot 1.2s ease-in-out ${i * 0.2}s infinite`
-                    }} />
-                ))}
-            </div>
-            <p style={{ margin: 0, fontSize: '0.78rem', color: '#86868b' }}>Auto-filling your details</p>
-        </div>
-    )
-}
-
-/* ── Review helpers ── */
-function ReviewRow({ label, value, missing }) {
-    return (
-        <div style={{ display: 'flex', alignItems: 'flex-start', padding: '0.45rem 0', borderBottom: '1px solid #ebebeb' }}>
-            <span style={{ minWidth: 140, fontSize: '0.88rem', color: '#86868b', flexShrink: 0 }}>{label}</span>
-            <span style={{ fontSize: '0.92rem', color: missing ? '#d93025' : '#1d1d1f', fontStyle: (!value && !missing) ? 'italic' : 'normal' }}>
-                {value || (missing ? '⚠ Required – missing' : <span style={{ color: '#aeaeb2' }}>Not specified</span>)}
-            </span>
-        </div>
-    )
-}
-
-function ReviewSection({ icon, title, onEdit, children }) {
-    return (
-        <div style={{ background: '#f5f5f7', borderRadius: '0.75rem', overflow: 'hidden', marginBottom: '1.2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.85rem 1.4rem', background: '#ececec', borderBottom: '1px solid #d2d2d7' }}>
-                {icon}
-                <span style={{ fontWeight: '600', fontSize: '0.95rem' }}>{title}</span>
-                <button type="button" onClick={onEdit}
-                    style={{ marginLeft: 'auto', fontSize: '0.82rem', color: '#0071e3', background: 'none', border: 'none', cursor: 'pointer', fontWeight: '500' }}>
-                    Edit
-                </button>
-            </div>
-            <div style={{ padding: '0.6rem 1.4rem 0.9rem' }}>{children}</div>
-        </div>
-    )
-}
-
-/* ── Inline field error component ── */
-function FieldError({ show, message }) {
-    return (
-        <AnimatePresence>
-            {show && (
-                <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                    style={fieldErrorMsg}>
-                    ⚠ {message}
-                </motion.p>
-            )}
-        </AnimatePresence>
-    )
-}
 
 export default function Apply() {
     const router = useRouter()
     const { role } = router.query
-    const defaultRole = "General Application"
+    const displayedRole = role || "AI Marketing Automation Intern"
 
-    const [currentStep, setCurrentStep] = useState(1)
-    const [isParsing, setIsParsing] = useState(false)
-    const [resumeError, setResumeError] = useState(false)
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitError, setSubmitError] = useState('')
-    const [parseStatus, setParseStatus] = useState('')
-    const [errors, setErrors] = useState({})
-    const [formData, setFormData] = useState({
-        resume: null,
-        firstName: '', lastName: '',
-        email: '', phone: '',
-        coverLetter: '', linkedin: '', portfolio: '',
-        gender: '', race: '', veteran: '',
-        university: '', major: '', degree: '',
-        startDate: '', endDate: '', gpa: ''
+    const [step, setStep] = useState(1) // 1: popup 1, 2: popup 2, 3: popup 3, 4: form, 5: success
+
+    const [popups, setPopups] = useState({
+        agreeToExpectations: false,
+        understoodFee: false,
+        clearFAQ: false,
     })
-    const [isSubmitted, setIsSubmitted] = useState(false)
 
-    /* ── Resume upload + parse ── */
-    const handleChange = async (e) => {
-        const { name, value, type, files } = e.target
-        if (type === 'file') {
-            const file = files[0]
-            setFormData(prev => ({ ...prev, [name]: file }))
-            if (name === 'resume' && file) {
-                setResumeError(false)
-                setErrors(prev => { const e = { ...prev }; delete e.resume; return e })
-                setIsParsing(true)
-                setParseStatus('')
-                try {
-                    const payload = new FormData()
-                    payload.append('resume', file, file.name)
-                    payload.append('role', role || defaultRole)
-                    payload.append('uploadedAt', new Date().toISOString())
-                    const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/resume-parse`,
-                        { method: 'POST', body: payload }
-                    )
-                    if (!res.ok) throw new Error(`${res.status}`)
-                    const result = await res.json()
-                    setFormData(prev => ({
-                        ...prev,
-                        firstName:  result.firstName  || prev.firstName,
-                        lastName:   result.lastName   || prev.lastName,
-                        email:      result.email      || prev.email,
-                        phone:      result.phone      || prev.phone,
-                        linkedin:   result.linkedin   || prev.linkedin,
-                        portfolio:  result.portfolio  || prev.portfolio,
-                        university: result.university || prev.university,
-                        major:      result.major      || prev.major,
-                        degree:     result.degree     || prev.degree,
-                        startDate:  result.startDate  || prev.startDate,
-                        endDate:    result.endDate    || prev.endDate,
-                        gpa:        result.gpa        || prev.gpa,
-                    }))
-                    setParseStatus('success')
-                } catch (err) {
-                    console.error('Resume webhook error:', err)
-                    setParseStatus('error')
-                } finally {
-                    setIsParsing(false)
-                }
-            }
-        } else {
-            setFormData(prev => ({ ...prev, [name]: value }))
-            // Clear error for this field as soon as user types
-            if (value.trim()) {
-                setErrors(prev => { const e = { ...prev }; delete e[name]; return e })
-            }
+    const [formData, setFormData] = useState({
+        degree: '',
+        relatedCourseName: '',
+        
+        currentYear: '',
+        monthsRemaining: false,
+        aggregate65: false,
+        attendance70: false,
+        hasLaptop: false,
+
+        codingLanguages: '',
+        linkedin: '',
+        github: '',
+        aiTools: '',
+        marketingTools: '',
+        whyJoin: '',
+    })
+
+    const [formErrors, setFormErrors] = useState({})
+    const [submitStatus, setSubmitStatus] = useState('')
+
+    const handlePopupChange = (e) => {
+        setPopups({ ...popups, [e.target.name]: e.target.checked })
+    }
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }))
+        if (formErrors[name]) {
+            setFormErrors(prev => ({ ...prev, [name]: undefined }))
         }
     }
 
-    /* ── Step 1 validation ── */
-    const validateStep1 = () => {
-        const e = {}
-        if (!formData.resume)              e.resume     = 'Please upload your resume to continue.'
-        if (!formData.firstName.trim())    e.firstName  = 'First name is required.'
-        if (!formData.lastName.trim())     e.lastName   = 'Last name is required.'
-        if (!formData.email.trim())        e.email      = 'Email address is required.'
-        if (!formData.phone.trim())        e.phone      = 'Phone number is required.'
-        if (!formData.university.trim())   e.university = 'University / Institution is required.'
-        if (!formData.major.trim())        e.major      = 'Major / Field of study is required.'
-        if (!formData.degree.trim())       e.degree     = 'Degree is required.'
-        if (!formData.startDate.trim())    e.startDate  = 'Start date is required.'
-        if (!formData.endDate.trim())      e.endDate    = 'Expected end date is required.'
-        setErrors(e)
-        return Object.keys(e).length === 0
-    }
-
-    /* ── Step 2 validation ── */
-    const validateStep2 = () => {
-        const e = {}
-        if (!formData.linkedin.trim()) e.linkedin = 'LinkedIn profile URL is required.'
-        setErrors(e)
-        return Object.keys(e).length === 0
-    }
-
-    const handleNext = () => {
-        if (currentStep === 1) {
-            const valid = validateStep1()
-            setResumeError(!formData.resume)
-            if (!valid) return
+    const handlePopupNext = (requiredField, nextStep) => {
+        if (!popups[requiredField]) {
+            alert('You must check the agreement box to continue.')
+            return
         }
-        if (currentStep === 2) {
-            if (!validateStep2()) return
+        setStep(nextStep)
+    }
+
+    const validateForm = () => {
+        const errors = {}
+        if (!formData.degree) errors.degree = "Degree selection is required."
+        if (formData.degree === 'related' && !formData.relatedCourseName.trim()) {
+            errors.relatedCourseName = "Course name is required."
         }
-        setErrors({})
-        setResumeError(false)
-        setCurrentStep(prev => Math.min(prev + 1, steps.length))
+        if (!formData.currentYear) errors.currentYear = "Current year is required."
+        if (!formData.monthsRemaining) errors.monthsRemaining = "Required"
+        if (!formData.aggregate65) errors.aggregate65 = "Required"
+        if (!formData.attendance70) errors.attendance70 = "Required"
+        if (!formData.hasLaptop) errors.hasLaptop = "Required"
+
+        setFormErrors(errors)
+        return Object.keys(errors).length === 0
     }
 
-    const handleBack = () => {
-        setErrors({})
-        setCurrentStep(prev => Math.max(prev - 1, 1))
-    }
-
-    /* ── Final submit → career-form webhook as multipart/form-data (binary) ── */
-    const handleSubmit = async () => {
-        setIsSubmitting(true)
-        setSubmitError('')
-        try {
-            const payload = new FormData()
-            if (formData.resume) {
-                payload.append('resume', formData.resume, formData.resume.name)
-            }
-            payload.append('role',        role || defaultRole)
-            payload.append('submittedAt', new Date().toISOString())
-            payload.append('firstName',   formData.firstName)
-            payload.append('lastName',    formData.lastName)
-            payload.append('email',       formData.email)
-            payload.append('phone',       formData.phone)
-            payload.append('linkedin',    formData.linkedin)
-            payload.append('portfolio',   formData.portfolio   || '')
-            payload.append('coverLetter', formData.coverLetter || '')
-            payload.append('gender',      formData.gender      || '')
-            payload.append('race',        formData.race        || '')
-            payload.append('veteran',     formData.veteran     || '')
-            payload.append('university',  formData.university  || '')
-            payload.append('major',       formData.major       || '')
-            payload.append('degree',      formData.degree      || '')
-            payload.append('startDate',   formData.startDate   || '')
-            payload.append('endDate',     formData.endDate     || '')
-            payload.append('gpa',         formData.gpa         || '')
-            payload.append('fileName',    formData.resume ? formData.resume.name : '')
-
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/career-form`,
-                { method: 'POST', body: payload }
-            )
-            if (!res.ok) throw new Error(`Webhook failed: ${res.status}`)
-            setIsSubmitted(true)
-        } catch (err) {
-            console.error('Submit error:', err)
-            setSubmitError('Submission failed. Please try again.')
-        } finally {
-            setIsSubmitting(false)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (!validateForm()) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            return
         }
+        setSubmitStatus('submitting')
+        
+        // Simulating submission delay
+        setTimeout(() => {
+            setSubmitStatus('success')
+            setStep(5)
+        }, 1500)
     }
 
-    const errStyle = { fontSize: '0.78rem', color: '#d93025', marginTop: '0.3rem', display: 'block' }
-    const Req = () => <span style={requiredStar}>*</span>
-    const iErr = (f) => errors[f] ? inputErrorStyle : inputStyle
-
-    /* ── Success screen ── */
-    if (isSubmitted) {
-        return (
-            <div style={{ paddingTop: '150px', paddingBottom: '100px', textAlign: 'center', minHeight: '80vh' }}>
-                <Head><title>Application Submitted | Automaitee</title></Head>
-                <div className="container">
-                    <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                        style={{ background: 'white', padding: '4rem', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', maxWidth: '600px', margin: '0 auto' }}>
-                        <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: '#e0ece0', color: '#116c4c', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem auto' }}>
-                            <Check size={40} />
-                        </div>
-                        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>Application Submitted!</h1>
-                        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-                            Thank you for applying for the <strong>{role || defaultRole}</strong> role. Our team will review your application and get back to you soon.
-                        </p>
-                        <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.6' }}>
-                            Our team is engaging in lots of projects, including reviewing your application.<br />
-                            Given these circumstances, we can't share any individual feedback to candidates that don't move beyond the initial application review phase.
-                        </p>
-                        <Link href="/" className="cta-button">Return to Home</Link>
-                    </motion.div>
-                </div>
-            </div>
-        )
+    // Styles
+    const modalStyle = {
+        background: 'white',
+        maxWidth: '600px',
+        width: '90%',
+        margin: '100px auto',
+        padding: '2.5rem',
+        borderRadius: '1rem',
+        boxShadow: '0 10px 40px rgba(0,0,0,0.1)'
     }
+    const h2Style = { fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.25rem', color: '#1d1d1f' }
+    const pStyle = { fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1.5rem' }
+    const checkRow = { display: 'flex', alignItems: 'center', gap: '0.75rem', background: '#f5f5f7', padding: '1.25rem', borderRadius: '0.5rem', cursor: 'pointer' }
+    const inputStyle = { width: '100%', padding: '0.8rem', borderRadius: '0.5rem', border: '1px solid #d2d2d7', fontSize: '1rem' }
+    const fieldHeader = { fontWeight: '600', marginBottom: '0.5rem', display: 'block' }
 
     return (
         <>
             <Head>
-                <title>Apply for {role || defaultRole} | Automaitee</title>
+                <title>Apply for {displayedRole} | Automaitee</title>
                 <meta name="robots" content="noindex" />
             </Head>
 
-            <div style={{ paddingTop: '120px', paddingBottom: '60px', background: 'transparent', minHeight: '100vh' }}>
-                <div className="container" style={{ maxWidth: '1000px' }}>
+            <div style={{ minHeight: '100vh', background: '#fbfbfd', paddingBottom: '60px' }}>
+                <AnimatePresence mode="wait">
+                    
+                    {/* POPUP 1 */}
+                    {step === 1 && (
+                        <motion.div key="p1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
+                            <h2 style={h2Style}>What we expect from you</h2>
+                            <p style={pStyle}>
+                                This programme demands genuine commitment. Live sessions are mandatory. You are allowed a maximum of one absence during the course, and only if you inform us before the session begins. Missing a session without prior notice results in immediate removal from the programme — no exceptions and no refund.
+                            </p>
+                            <p style={pStyle}>
+                                We are not strict for the sake of being strict. We are strict because you will be working with real clients and real money. Professional discipline starts here.
+                            </p>
+                            <label style={checkRow}>
+                                <input type="checkbox" name="agreeToExpectations" checked={popups.agreeToExpectations} onChange={handlePopupChange} style={{ transform: 'scale(1.2)' }} />
+                                <span style={{ fontWeight: '500', color: '#1d1d1f' }}>I Agree</span>
+                            </label>
+                            <div style={{ marginTop: '2rem', textAlign: 'right' }}>
+                                <button className="cta-button" onClick={() => handlePopupNext('agreeToExpectations', 2)} style={{ padding: '0.8rem 2rem' }}>Next →</button>
+                            </div>
+                        </motion.div>
+                    )}
 
-                    <div style={{ marginBottom: '2rem' }}>
-                        <Link href="/work-with-us" style={{ color: '#0071e3', fontSize: '1rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
-                            &larr; Back to Open Roles
-                        </Link>
-                        <h1 style={{ fontSize: '2.5rem', marginTop: '1rem', fontWeight: '700' }}>{role || defaultRole}</h1>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Application Form</p>
-                    </div>
+                    {/* POPUP 2 */}
+                    {step === 2 && (
+                        <motion.div key="p2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
+                            <h2 style={h2Style}>Course fee</h2>
+                            <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#f0fdf4', color: '#166534', borderRadius: '0.5rem', fontWeight: '600', fontSize: '1.1rem' }}>
+                                ₹1,000 — one-time, non-refundable
+                            </div>
+                            <p style={pStyle}>
+                                This covers your access to live sessions, real ad platform accounts, course materials, and task evaluations throughout the 1-month course. The fee is intentionally kept low to make this accessible. It is non-refundable because you are receiving real tool access and expert instruction from day one.
+                            </p>
+                            <p style={pStyle}>
+                                There are no hidden fees. Stage 2 Training and Stage 3 Internship have no additional charges.
+                            </p>
+                            <label style={checkRow}>
+                                <input type="checkbox" name="understoodFee" checked={popups.understoodFee} onChange={handlePopupChange} style={{ transform: 'scale(1.2)' }} />
+                                <span style={{ fontWeight: '500', color: '#1d1d1f' }}>I Understood it.</span>
+                            </label>
+                            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
+                                <button onClick={() => setStep(1)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
+                                <button className="cta-button" onClick={() => handlePopupNext('understoodFee', 3)} style={{ padding: '0.8rem 2rem' }}>Next →</button>
+                            </div>
+                        </motion.div>
+                    )}
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) 2fr', gap: '3rem', alignItems: 'start' }}>
-
-                        {/* ── Sidebar ── */}
-                        <div style={{ position: 'sticky', top: '120px', background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                {steps.map((step, index) => {
-                                    const isActive = currentStep === step.id
-                                    const isCompleted = currentStep > step.id
-                                    return (
-                                        <li key={step.id} style={{ display: 'flex', alignItems: 'center', marginBottom: index !== steps.length - 1 ? '1.5rem' : '0', color: isActive ? '#000' : isCompleted ? '#116c4c' : 'var(--text-secondary)', fontWeight: isActive ? '600' : '400', transition: 'all 0.3s ease' }}>
-                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: isActive ? '#0071e3' : isCompleted ? '#e0ece0' : '#f5f5f7', color: isActive ? 'white' : isCompleted ? '#116c4c' : 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '1rem', fontSize: '0.9rem', fontWeight: 'bold', flexShrink: 0 }}>
-                                                {isCompleted ? <Check size={16} /> : step.id}
-                                            </div>
-                                            {step.title}
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </div>
-
-                        {/* ── Main content ── */}
-                        <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-
-                            {/* ════ STEP 1 ════ */}
-                            {currentStep === 1 && (
-                                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                                    <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', fontWeight: '600' }}>{steps[0].title}</h2>
-
-                                    {/* Resume upload */}
-                                    <div style={{ marginBottom: '2rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Resume / CV <Req /></label>
-                                        <div style={{ border: `2px dashed ${errors.resume || resumeError ? '#d93025' : '#d2d2d7'}`, borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', background: errors.resume ? '#fff8f8' : '#fbfbfd', cursor: 'pointer', position: 'relative' }}>
-                                            <input type="file" name="resume" accept=".pdf,.docx" onChange={handleChange} disabled={isParsing}
-                                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: isParsing ? 'wait' : 'pointer' }} />
-                                            <AnimatePresence>
-                                                {isParsing && (
-                                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                                                        style={{ position: 'absolute', inset: 0, borderRadius: '0.4rem', zIndex: 5 }}>
-                                                        <ResumePreloader />
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                            <div style={{ visibility: isParsing ? 'hidden' : 'visible' }}>
-                                                {formData.resume ? (
-                                                    <>
-                                                        <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#e8f5e9', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.5rem auto' }}>
-                                                            <Check size={20} color="#116c4c" />
-                                                        </div>
-                                                        <p style={{ margin: 0, color: '#1d1d1f', fontWeight: '600' }}>{formData.resume.name}</p>
-                                                        <p style={{ fontSize: '0.8rem', color: '#86868b', marginTop: '0.5rem' }}>Click to replace</p>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <UploadCloud size={32} style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }} />
-                                                        <p style={{ margin: 0, color: 'var(--text-secondary)' }}>Drag & drop your resume here or click to upload</p>
-                                                        <p style={{ fontSize: '0.8rem', color: '#86868b', marginTop: '0.5rem' }}>PDF, DOCX up to 5MB</p>
-                                                    </>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <AnimatePresence>
-                                            {parseStatus === 'success' && (
-                                                <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                                                    style={{ margin: '0.5rem 0 0', fontSize: '0.85rem', color: '#116c4c' }}>
-                                                    ✓ Fields auto-filled from your resume
-                                                </motion.p>
-                                            )}
-                                            {parseStatus === 'error' && (
-                                                <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                                                    style={{ margin: '0.5rem 0 0', fontSize: '0.85rem', color: '#d93025' }}>
-                                                    ⚠ Could not auto-fill — please fill in manually.
-                                                </motion.p>
-                                            )}
-                                        </AnimatePresence>
-                                        <FieldError show={!!errors.resume} message={errors.resume} />
-                                    </div>
-
-                                    {/* Name */}
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>First Name <Req /></label>
-                                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} style={iErr('firstName')} />
-                                            <FieldError show={!!errors.firstName} message={errors.firstName} />
-                                        </div>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Last Name <Req /></label>
-                                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} style={iErr('lastName')} />
-                                            <FieldError show={!!errors.lastName} message={errors.lastName} />
-                                        </div>
-                                    </div>
-
-                                    {/* Email / Phone */}
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Email Address <Req /></label>
-                                            <input type="email" name="email" value={formData.email} onChange={handleChange} style={iErr('email')} />
-                                            <FieldError show={!!errors.email} message={errors.email} />
-                                        </div>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Phone Number <Req /></label>
-                                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} style={iErr('phone')} />
-                                            <FieldError show={!!errors.phone} message={errors.phone} />
-                                        </div>
-                                    </div>
-
-                                    {/* ── Education Section ── */}
-                                    <h3 style={{ fontSize: '1.4rem', marginTop: '2rem', marginBottom: '1.2rem', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #eee' }}>Most Recent Education</h3>
-
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>University / Institution <Req /></label>
-                                        <input type="text" name="university" value={formData.university} onChange={handleChange} style={iErr('university')} />
-                                        <FieldError show={!!errors.university} message={errors.university} />
-                                    </div>
-
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Major / Field of Study <Req /></label>
-                                            <input type="text" name="major" value={formData.major} onChange={handleChange} style={iErr('major')} />
-                                            <FieldError show={!!errors.major} message={errors.major} />
-                                        </div>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Degree <Req /></label>
-                                            <input type="text" name="degree" value={formData.degree} onChange={handleChange} style={iErr('degree')} />
-                                            <FieldError show={!!errors.degree} message={errors.degree} />
-                                        </div>
-                                    </div>
-
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Start Date <Req /></label>
-                                            <input type="text" name="startDate" placeholder="e.g. Sep 2019" value={formData.startDate} onChange={handleChange} style={iErr('startDate')} />
-                                            <FieldError show={!!errors.startDate} message={errors.startDate} />
-                                        </div>
-                                        <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Expected End Date <Req /></label>
-                                            <input type="text" name="endDate" placeholder="e.g. May 2023" value={formData.endDate} onChange={handleChange} style={iErr('endDate')} />
-                                            <FieldError show={!!errors.endDate} message={errors.endDate} />
-                                        </div>
-                                    </div>
-
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                                            GPA <span style={{ color: '#86868b', fontWeight: '400', fontSize: '0.88rem' }}>(optional)</span>
-                                        </label>
-                                        <input type="text" name="gpa" value={formData.gpa} onChange={handleChange}
-                                            style={{ ...inputStyle, maxWidth: '300px' }} />
-                                    </div>
-                                </motion.div>
-                            )}
-
-                            {/* ════ STEP 2 ════ */}
-                            {currentStep === 2 && (
-                                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                                    <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', fontWeight: '600' }}>{steps[1].title}</h2>
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Cover Letter / Why this role?</label>
-                                        <textarea name="coverLetter" value={formData.coverLetter} onChange={handleChange} rows="6"
-                                            style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell us why you are a great fit..." />
-                                    </div>
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>LinkedIn Profile <Req /></label>
-                                        <input type="url" name="linkedin" value={formData.linkedin} onChange={handleChange}
-                                            style={iErr('linkedin')} placeholder="https://linkedin.com/in/..." />
-                                        <FieldError show={!!errors.linkedin} message={errors.linkedin} />
-                                    </div>
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Portfolio / Personal Website</label>
-                                        <input type="url" name="portfolio" value={formData.portfolio} onChange={handleChange}
-                                            style={inputStyle} placeholder="https://" />
-                                    </div>
-                                </motion.div>
-                            )}
-
-                            {/* ════ STEP 3 ════ */}
-                            {currentStep === 3 && (
-                                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                                    <h2 style={{ fontSize: '1.8rem', marginBottom: '0.5rem', fontWeight: '600' }}>{steps[2].title}</h2>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-                                        We are an equal opportunity employer. This information is voluntary, kept confidential, and not used in hiring decisions.
-                                    </p>
-                                    {[
-                                        { name: 'gender', label: 'Gender', options: ['Male', 'Female', 'Non-binary', 'Prefer not to say'] },
-                                        { name: 'race', label: 'Race/Ethnicity', options: ['Hispanic/Latino', 'White', 'Black/African American', 'Asian', 'Other', 'Prefer not to say'] },
-                                        { name: 'veteran', label: 'Veteran Status', options: ['I am a protected veteran', 'I am not a protected veteran', 'Prefer not to say'] },
-                                    ].map(f => (
-                                        <div key={f.name} style={{ marginBottom: '1.5rem' }}>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{f.label}</label>
-                                            <select name={f.name} value={formData[f.name]} onChange={handleChange}
-                                                style={{ ...inputStyle, background: 'white' }}>
-                                                <option value="">Select an option</option>
-                                                {f.options.map(o => <option key={o} value={o}>{o}</option>)}
-                                            </select>
-                                        </div>
-                                    ))}
-                                </motion.div>
-                            )}
-
-                            {/* ════ STEP 4 — Review & Apply ════ */}
-                            {currentStep === 4 && (
-                                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-                                    <h2 style={{ fontSize: '1.8rem', marginBottom: '0.4rem', fontWeight: '600' }}>{steps[3].title}</h2>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '1.8rem', fontSize: '0.95rem' }}>
-                                        Review your details below. Click <strong>Edit</strong> in any section to go back and make changes.
-                                    </p>
-
-                                    <ReviewSection icon={<User size={15} color="#0071e3" />} title="Careers Profile" onEdit={() => setCurrentStep(1)}>
-                                        <ReviewRow label="Full Name" value={`${formData.firstName} ${formData.lastName}`.trim() || null} missing={!formData.firstName} />
-                                        <ReviewRow label="Email" value={formData.email} missing={!formData.email} />
-                                        <ReviewRow label="Phone" value={formData.phone} missing={!formData.phone} />
-                                        <ReviewRow label="Resume"
-                                            value={formData.resume
-                                                ? <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                                                    <FileText size={13} color="#0071e3" />{formData.resume.name}
-                                                </span>
-                                                : null}
-                                            missing={!formData.resume} />
-                                        <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed #d2d2d7' }}>
-                                            <div style={{ fontWeight: '600', fontSize: '0.85rem', color: '#86868b', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Most Recent Education</div>
-                                            <ReviewRow label="University" value={formData.university || null} missing={!formData.university} />
-                                            <ReviewRow label="Major"      value={formData.major      || null} missing={!formData.major} />
-                                            <ReviewRow label="Degree"     value={formData.degree     || null} missing={!formData.degree} />
-                                            <ReviewRow label="Timeline"   value={(formData.startDate || formData.endDate) ? `${formData.startDate || '?'} - ${formData.endDate || '?'}` : null} missing={!formData.startDate && !formData.endDate} />
-                                            <ReviewRow label="GPA"        value={formData.gpa        || null} />
-                                        </div>
-                                    </ReviewSection>
-
-                                    <ReviewSection icon={<Briefcase size={15} color="#0071e3" />} title="Role Information" onEdit={() => setCurrentStep(2)}>
-                                        <ReviewRow label="LinkedIn"     value={formData.linkedin}  missing={!formData.linkedin} />
-                                        <ReviewRow label="Portfolio"    value={formData.portfolio  || null} />
-                                        <ReviewRow label="Cover Letter" value={formData.coverLetter ? 'Provided ✓' : null} />
-                                    </ReviewSection>
-
-                                    <ReviewSection icon={<Shield size={15} color="#0071e3" />} title="Voluntary Self-Identification" onEdit={() => setCurrentStep(3)}>
-                                        <ReviewRow label="Gender"         value={formData.gender  || null} />
-                                        <ReviewRow label="Race/Ethnicity" value={formData.race    || null} />
-                                        <ReviewRow label="Veteran Status" value={formData.veteran || null} />
-                                    </ReviewSection>
-
-                                    <AnimatePresence>
-                                        {submitError && (
-                                            <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                                                style={{ margin: '0.5rem 0', fontSize: '0.88rem', color: '#d93025', background: '#fff0f0', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #fcc' }}>
-                                                ⚠ {submitError}
-                                            </motion.p>
-                                        )}
-                                    </AnimatePresence>
-
-                                    <p style={{ fontSize: '0.82rem', color: '#86868b', marginTop: '1.2rem', lineHeight: 1.6 }}>
-                                        By submitting, you confirm all information is accurate. Fields marked
-                                        <span style={requiredStar}> *</span> are required.
-                                    </p>
-                                </motion.div>
-                            )}
-
-                            {/* ── Navigation ── */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #eee' }}>
-                                {currentStep > 1
-                                    ? <button type="button" onClick={handleBack}
-                                        style={{ padding: '0.8rem 1.5rem', border: '1px solid #d2d2d7', background: 'white', borderRadius: '0.5rem', fontSize: '1rem', fontWeight: '500', cursor: 'pointer' }}>
-                                        Back
-                                    </button>
-                                    : <div />
-                                }
-
-                                {currentStep < steps.length && (
-                                    <button type="button" onClick={handleNext} disabled={isParsing}
-                                        style={{ padding: '0.8rem 1.5rem', background: isParsing ? '#a0c4e8' : '#0071e3', color: 'white', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', fontWeight: '500', cursor: isParsing ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'background 0.2s' }}>
-                                        Save and Continue <ChevronRight size={18} />
-                                    </button>
-                                )}
-
-                                {currentStep === 4 && (
-                                    <button type="button" onClick={handleSubmit} disabled={isSubmitting}
-                                        style={{ padding: '0.8rem 2rem', background: isSubmitting ? '#6aab8a' : '#116c4c', color: 'white', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', fontWeight: 'bold', cursor: isSubmitting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem', transition: 'background 0.2s' }}>
-                                        {isSubmitting ? (
-                                            <>
-                                                <svg width="18" height="18" viewBox="0 0 56 56" style={{ animation: 'spin 1s linear infinite', flexShrink: 0 }}>
-                                                    <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="5" />
-                                                    <circle cx="28" cy="28" r="24" fill="none" stroke="white" strokeWidth="5"
-                                                        strokeDasharray="150" strokeDashoffset="110" strokeLinecap="round" />
-                                                </svg>
-                                                Submitting…
-                                            </>
-                                        ) : 'Submit Application'}
-                                    </button>
-                                )}
+                    {/* POPUP 3 */}
+                    {step === 3 && (
+                        <motion.div key="p3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={{ ...modalStyle, maxWidth: '750px' }}>
+                            <h2 style={h2Style}>Frequently asked questions</h2>
+                            
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Is this a certificate course?</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>No. This is a selection programme for a paid internship. You do not receive a certificate. You receive real skills, real experience, and if you perform well, a paid role on our team.</p>
+                            </div>
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>What happens if I am not selected after the course?</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>You will receive a personalised email explaining why and what to work on. The ₹1,000 fee is non-refundable — you received a full month of live training on real platforms regardless of selection outcome.</p>
+                            </div>
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Can I attend if I am from a college not mentioned on the form?</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>Yes. The programme is open to eligible students from any college as long as you meet the eligibility criteria.</p>
+                            </div>
+                            <div style={{ marginBottom: '1.5rem' }}>
+                                <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Will sessions be recorded?</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>Yes. All live sessions are recorded and shared with enrolled participants only. However attendance to live sessions is still mandatory — recordings are for revision only, not a substitute for being present.</p>
+                            </div>
+                            <div style={{ marginBottom: '2rem' }}>
+                                <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>When does the programme start?</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>Applications are open until seats are filled. Once the batch is confirmed, selected students will receive the schedule by email.</p>
                             </div>
 
-                        </div>
-                    </div>
-                </div>
+                            <label style={checkRow}>
+                                <input type="checkbox" name="clearFAQ" checked={popups.clearFAQ} onChange={handlePopupChange} style={{ transform: 'scale(1.2)' }} />
+                                <span style={{ fontWeight: '500', color: '#1d1d1f' }}>I am clear</span>
+                            </label>
+                            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
+                                <button onClick={() => setStep(2)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
+                                <button className="cta-button" onClick={() => handlePopupNext('clearFAQ', 4)} style={{ padding: '0.8rem 2rem' }}>Proceed to Application</button>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* FORM APPLICATION */}
+                    {step === 4 && (
+                        <motion.div key="p4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={{ maxWidth: '800px', margin: '80px auto', padding: '0 20px' }}>
+                            <Link href="/work-with-us" style={{ color: '#0071e3', fontWeight: '600', display: 'inline-block', marginBottom: '1.5rem' }}>← Cancel Application</Link>
+                            
+                            <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
+                                <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '0.5rem' }}>Application Form</h1>
+                                <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem' }}>{displayedRole}</p>
+
+                                <form onSubmit={handleSubmit}>
+                                    
+                                    {/* GENERAL INFO */}
+                                    <div style={{ marginBottom: '3rem' }}>
+                                        <label style={fieldHeader}>Degree</label>
+                                        <select name="degree" value={formData.degree} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.degree ? '#d93025' : '#d2d2d7' }}>
+                                            <option value="">Select Degree...</option>
+                                            <option value="CS">Computer Science (CS)</option>
+                                            <option value="IT">Information Technology (IT)</option>
+                                            <option value="BCA">BCA</option>
+                                            <option value="MCA">MCA</option>
+                                            <option value="related">Related field</option>
+                                        </select>
+                                        {formErrors.degree && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.degree}</div>}
+                                        
+                                        {formData.degree === 'related' && (
+                                            <div style={{ marginTop: '1rem' }}>
+                                                <label style={fieldHeader}>Course Name</label>
+                                                <input type="text" name="relatedCourseName" value={formData.relatedCourseName} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.relatedCourseName ? '#d93025' : '#d2d2d7' }} placeholder="Please specify your course name" />
+                                                {formErrors.relatedCourseName && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.relatedCourseName}</div>}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* SECTION 1 */}
+                                    <div style={{ marginBottom: '3rem' }}>
+                                        <h3 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 1: Academic Eligibility</h3>
+                                        
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>Current Year</label>
+                                            <select name="currentYear" value={formData.currentYear} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.currentYear ? '#d93025' : '#d2d2d7' }}>
+                                                <option value="">Select Current Year...</option>
+                                                <option value="3rd Year (4-year course)">3rd year of 4-year course</option>
+                                                <option value="2nd Year (3-year course)">2nd year of 3-year course</option>
+                                                <option value="1st Year Masters">Masters 1st year</option>
+                                            </select>
+                                            {formErrors.currentYear && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.currentYear}</div>}
+                                        </div>
+
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
+                                                <input type="checkbox" name="monthsRemaining" checked={formData.monthsRemaining} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
+                                                <span style={{ color: formErrors.monthsRemaining ? '#d93025' : '#1d1d1f' }}>6+ months academic year remaining</span>
+                                            </label>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
+                                                <input type="checkbox" name="aggregate65" checked={formData.aggregate65} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
+                                                <span style={{ color: formErrors.aggregate65 ? '#d93025' : '#1d1d1f' }}>Aggregate 65% or above</span>
+                                            </label>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
+                                                <input type="checkbox" name="attendance70" checked={formData.attendance70} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
+                                                <span style={{ color: formErrors.attendance70 ? '#d93025' : '#1d1d1f' }}>Attendance 70% or above</span>
+                                            </label>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
+                                                <input type="checkbox" name="hasLaptop" checked={formData.hasLaptop} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
+                                                <span style={{ color: formErrors.hasLaptop ? '#d93025' : '#1d1d1f' }}>I have a personal laptop and stable internet</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    {/* SECTION 2 */}
+                                    <div style={{ marginBottom: '3rem' }}>
+                                        <h3 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 2: Skills & Background</h3>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>Coding languages known (JS / API / JSON etc.) <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
+                                            <input type="text" name="codingLanguages" value={formData.codingLanguages} onChange={handleChange} style={inputStyle} placeholder="e.g. JavaScript, Python" />
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>LinkedIn Profile <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
+                                            <input type="url" name="linkedin" value={formData.linkedin} onChange={handleChange} style={inputStyle} placeholder="https://linkedin.com/in/..." />
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>GitHub Profile <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
+                                            <input type="url" name="github" value={formData.github} onChange={handleChange} style={inputStyle} placeholder="https://github.com/..." />
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>AI tools used independently <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
+                                            <input type="text" name="aiTools" value={formData.aiTools} onChange={handleChange} style={inputStyle} placeholder="e.g. ChatGPT, Claude, Midjourney" />
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>Prior Online business marketing tool exposure <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
+                                            <input type="text" name="marketingTools" value={formData.marketingTools} onChange={handleChange} style={inputStyle} placeholder="e.g. Google Ads, Meta Ads" />
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <label style={fieldHeader}>Why do you want to join this program? <span style={{ color: '#d93025' }}>*</span></label>
+                                            <textarea name="whyJoin" value={formData.whyJoin} onChange={handleChange} style={{ ...inputStyle, minHeight: '120px', resize: 'vertical' }} placeholder="Short answer (max 80 words)..." />
+                                            {/* Note: In a production app, strict word count validation can be added here */}
+                                        </div>
+                                    </div>
+
+                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
+                                        <button type="submit" disabled={submitStatus === 'submitting'} className="cta-button" style={{ padding: '1rem 3rem', opacity: submitStatus === 'submitting' ? 0.7 : 1 }}>
+                                            {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Application'}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* SUCCESS SCREEN */}
+                    {step === 5 && (
+                        <motion.div key="p5" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: '600px', margin: '120px auto', background: 'white', padding: '4rem 3rem', borderRadius: '1rem', textAlign: 'center', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
+                            <div style={{ width: '80px', height: '80px', background: '#e0ece0', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem auto' }}>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#116c4c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1rem' }}>Application Submitted!</h2>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: '1.6' }}>
+                                Thank you for applying to the {displayedRole} programme. Our team will review your application and be in touch soon.
+                            </p>
+                            <Link href="/" className="cta-button" style={{ display: 'inline-block' }}>
+                                Return to Homepage
+                            </Link>
+                        </motion.div>
+                    )}
+
+                </AnimatePresence>
             </div>
         </>
     )
