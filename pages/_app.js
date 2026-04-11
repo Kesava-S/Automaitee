@@ -143,22 +143,25 @@ function MyApp({ Component, pageProps }) {
                     </div>
                 )}
 
-            <main>
+            <main style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', minHeight: '100vh', paddingBottom: '40px', borderBottomLeftRadius: '2rem', borderBottomRightRadius: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
                 <Component {...pageProps} openBookingModal={() => setIsBookingModalOpen(true)} />
             </main>
 
-            <footer>
-                <div className="container">
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-                        <p>&copy; 2025 Automaitee Digital. All rights reserved.</p>
-                        <div style={{ display: 'flex', gap: '1.5rem' }}>
-                            <Link href="/privacy-policy" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Privacy Policy</Link>
-                            <Link href="/terms-of-service" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Terms of Service</Link>
-                            <a href="/book-consultation" onClick={openBookingModal} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', cursor: 'pointer' }}>Book Consultation</a>
+            {/* Curtain Reveal Footer Wrapper */}
+            <div style={{ position: 'relative', height: '200px', width: '100%', clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
+                <footer style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111111', color: 'white', zIndex: 0 }}>
+                    <div className="container">
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
+                            <p style={{ color: '#a1a1aa' }}>&copy; 2026 Automaitee Digital. All rights reserved.</p>
+                            <div style={{ display: 'flex', gap: '2rem' }}>
+                                <Link href="/privacy-policy" style={{ fontSize: '0.9rem', color: '#e4e4e7', textDecoration: 'none' }}>Privacy Policy</Link>
+                                <Link href="/terms-of-service" style={{ fontSize: '0.9rem', color: '#e4e4e7', textDecoration: 'none' }}>Terms of Service</Link>
+                                <a href="/book-consultation" onClick={openBookingModal} style={{ fontSize: '0.9rem', color: '#e4e4e7', cursor: 'pointer', textDecoration: 'none' }}>Book Consultation</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </footer>
+                </footer>
+            </div>
 
                 <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
                 <ChatBot />
