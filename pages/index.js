@@ -95,8 +95,13 @@ export default function Home() {
                 </div>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
-                        <h1>
-                            <AnimatedText text="Automation Personalised For Micro and SMEs In London" />
+                        <h1 style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '0.2em' }}>
+                            <AnimatedText text="Automation Personalised For" />
+                            <AnimatedTextCycle 
+                                words={['Small', 'Micro', 'Owner-Led']} 
+                                style={{ background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                            />
+                            <AnimatedText text="Businesses in London" delayOffset={0.3} />
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
