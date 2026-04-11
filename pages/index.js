@@ -80,7 +80,7 @@ export default function Home() {
                 />
             </Head>
 
-            <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
+            <section className="hero" style={{ position: 'sticky', top: 0, zIndex: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
                     <SparklesCore
                         id="tsparticleshero"
@@ -141,8 +141,10 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="services-section" style={{ background: '#fbfbfd' }}>
-                <div className="container">
+            {/* The Rest of the Page acts as a curtain raising over the Hero */}
+            <div style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', boxShadow: '0 -20px 40px rgba(0,0,0,0.05)' }}>
+                <section className="services-section" style={{ paddingTop: '6rem' }}>
+                    <div className="container">
                     <Reveal width="100%">
                         <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
                             <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>What we automate</h2>
@@ -217,6 +219,7 @@ export default function Home() {
             </section>
 
             <IndustryMarquee />
+            </div>
         </>
     )
 }
