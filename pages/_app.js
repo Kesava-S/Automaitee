@@ -126,6 +126,9 @@ function MyApp({ Component, pageProps }) {
                 </div>
             </nav>
 
+            <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+            <ChatBot />
+
             <FloatingShapes />
 
             <div style={{ position: 'relative', zIndex: 0 }}>
@@ -162,9 +165,6 @@ function MyApp({ Component, pageProps }) {
                     </div>
                 </footer>
             </div>
-            
-            <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
-            <ChatBot />
         </>
     )
 }

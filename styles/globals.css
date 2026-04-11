@@ -377,9 +377,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 9999;
     padding: 2rem 1rem;
-    padding-top: 5rem; /* Ensure clearance from the fixed header */
+    padding-top: 80px; /* Explicitly more than header height (64px) */
+    align-items: flex-start; /* Start from top to ensure spacing is respected */
+    overflow-y: auto;
     animation: fadeIn 0.2s ease-out;
 }
 
@@ -391,8 +393,8 @@ footer {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    max-height: 90vh;
-    overflow-y: auto;
+    margin: 2rem auto; /* Give space from the top of the overlay */
+    max-height: calc(100vh - 4rem);
     animation: slideUp 0.3s ease-out;
 }
 
