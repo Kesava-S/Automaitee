@@ -378,7 +378,8 @@ footer {
     justify-content: center;
     align-items: center;
     z-index: 2000;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    padding-top: 5rem; /* Ensure clearance from the fixed header */
     animation: fadeIn 0.2s ease-out;
 }
 
@@ -629,6 +630,11 @@ footer {
     margin-bottom: 2rem;
 }
 
+section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -652,19 +658,74 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    h1 {
+        font-size: 2.25rem !important;
+        line-height: 1.15 !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .hero {
+        padding: 6rem 0 !important;
+        min-height: auto !important;
+        height: auto !important;
+        position: relative !important; /* Disable sticky/fixed on mobile for better performance */
+    }
+
+    .hero-reveal-container {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .responsive-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+    }
+
     .booking-grid {
         grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+        border-radius: 16px;
+        margin: 0.5rem;
     }
 
     .form-column {
         border-right: none;
         border-bottom: 1px solid #e5e5e5;
-        padding: 2rem;
+        padding: 1.25rem;
     }
 
     .calendar-column {
-        padding: 2rem;
+        padding: 1.25rem;
     }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 1.5rem !important;
+        justify-content: center;
+    }
+}
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 /* Text Reveal Animation */

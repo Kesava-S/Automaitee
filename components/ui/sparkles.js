@@ -36,7 +36,17 @@ export const SparklesCore = (props) => {
     }
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const generatedId = useId();
+  const adjustedDensity = isMobile ? Math.floor((particleDensity || 120) / 2) : (particleDensity || 120);
+
   return (
     <motion.div animate={controls} className={className} style={{ opacity: 0, width: "100%", height: "100%" }}>
       {init && (
@@ -109,7 +119,7 @@ export const SparklesCore = (props) => {
                   width: 400,
                   height: 400,
                 },
-                value: particleDensity || 120,
+                value: adjustedDensity,
               },
               opacity: {
                 value: {

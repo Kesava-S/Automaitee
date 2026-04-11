@@ -335,8 +335,8 @@ export default function Apply() {
                                         </div>
                                     </div>
 
-                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
-                                        <button type="button" onClick={() => setStep(3)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
+                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                                        <button type="button" onClick={() => setStep(3)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer', padding: '1rem' }}>← Back</button>
                                         <button type="submit" className="cta-button" style={{ padding: '1rem 3rem' }}>
                                             Next →
                                         </button>
@@ -356,7 +356,7 @@ export default function Apply() {
                                 <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem' }}>Just a few more things before you submit.</p>
 
                                 <form onSubmit={handleSubmit}>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                    <div className="responsive-grid" style={{ marginBottom: '1.5rem' }}>
                                         <div>
                                             <label style={{ ...fieldHeader, color: formErrors.fullName ? '#d93025' : '#1d1d1f' }}>Full Name <span style={{ color: '#d93025' }}>*</span></label>
                                             <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.fullName ? '#d93025' : '#d2d2d7' }} />
@@ -369,7 +369,7 @@ export default function Apply() {
                                         </div>
                                     </div>
 
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                    <div className="responsive-grid" style={{ marginBottom: '1.5rem' }}>
                                         <div>
                                             <label style={{ ...fieldHeader, color: formErrors.whatsapp ? '#d93025' : '#1d1d1f' }}>WhatsApp Number <span style={{ color: '#d93025' }}>*</span></label>
                                             <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.whatsapp ? '#d93025' : '#d2d2d7' }} />
@@ -410,8 +410,8 @@ export default function Apply() {
                                         </div>
                                     </div>
 
-                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
-                                        <button type="button" onClick={() => setStep(4)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
+                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                                        <button type="button" onClick={() => setStep(4)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer', padding: '1rem' }}>← Back</button>
                                         <button type="submit" disabled={submitStatus === 'submitting'} className="cta-button" style={{ padding: '1rem 3rem', opacity: submitStatus === 'submitting' ? 0.7 : 1 }}>
                                             {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Application'}
                                         </button>

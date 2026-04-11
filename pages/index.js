@@ -142,7 +142,7 @@ export default function Home() {
             </section>
 
             {/* The Rest of the Page acts as a curtain raising over the Hero */}
-            <div style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', boxShadow: '0 -20px 40px rgba(0,0,0,0.05)' }}>
+            <div className="hero-reveal-container" style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', boxShadow: '0 -20px 40px rgba(0,0,0,0.05)' }}>
                 <section className="services-section" style={{ paddingTop: '6rem' }}>
                     <div className="container">
                     <Reveal width="100%">

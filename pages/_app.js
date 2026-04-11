@@ -162,10 +162,9 @@ function MyApp({ Component, pageProps }) {
                     </div>
                 </footer>
             </div>
-
-                <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
-                <ChatBot />
-            </div>
+            
+            <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+            <ChatBot />
         </>
     )
 }
