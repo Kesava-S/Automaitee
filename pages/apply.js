@@ -9,7 +9,7 @@ export default function Apply() {
     const { role } = router.query
     const displayedRole = role || "AI Marketing Automation Intern"
 
-    const [step, setStep] = useState(1) // 1: popup 1, 2: popup 2, 3: popup 3, 4: form, 5: success
+    const [step, setStep] = useState(1) // 1: popup 1, 2: popup 2, 3: popup 3, 4: form 1, 5: form 2, 6: success
 
     const [popups, setPopups] = useState({
         agreeToExpectations: false,
@@ -32,7 +32,15 @@ export default function Apply() {
         github: '',
         aiTools: '',
         marketingTools: '',
-        whyJoin: '',
+        
+        // Step 5 fields
+        fullName: '',
+        email: '',
+        whatsapp: '',
+        location: '',
+        whyInternship: '',
+        whatToLearn: '',
+        paidTraining: '',
     })
 
     const [formErrors, setFormErrors] = useState({})
@@ -61,7 +69,7 @@ export default function Apply() {
         setStep(nextStep)
     }
 
-    const validateForm = () => {
+    const validateStep4 = () => {
         const errors = {}
         if (!formData.degree) errors.degree = "Degree selection is required."
         if (formData.degree === 'related' && !formData.relatedCourseName.trim()) {
@@ -78,9 +86,31 @@ export default function Apply() {
         return Object.keys(errors).length === 0
     }
 
+    const handleStep4Submit = (e) => {
+        e.preventDefault()
+        if (validateStep4()) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            setStep(5)
+        }
+    }
+
+    const validateStep5 = () => {
+        const errors = {}
+        if (!formData.fullName.trim()) errors.fullName = "Required"
+        if (!formData.email.trim()) errors.email = "Required"
+        if (!formData.whatsapp.trim()) errors.whatsapp = "Required"
+        if (!formData.location.trim()) errors.location = "Required"
+        if (!formData.whyInternship.trim()) errors.whyInternship = "Required"
+        if (!formData.whatToLearn.trim()) errors.whatToLearn = "Required"
+        if (!formData.paidTraining) errors.paidTraining = "Required"
+
+        setFormErrors(errors)
+        return Object.keys(errors).length === 0
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!validateForm()) {
+        if (!validateStep5()) {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             return
         }
@@ -89,7 +119,7 @@ export default function Apply() {
         // Simulating submission delay
         setTimeout(() => {
             setSubmitStatus('success')
-            setStep(5)
+            setStep(6)
         }, 1500)
     }
 
@@ -200,7 +230,7 @@ export default function Apply() {
                         </motion.div>
                     )}
 
-                    {/* FORM APPLICATION */}
+                    {/* FORM APPLICATION - STAGE 1 */}
                     {step === 4 && (
                         <motion.div key="p4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={{ maxWidth: '800px', margin: '80px auto', padding: '0 20px' }}>
                             <Link href="/work-with-us" style={{ color: '#0071e3', fontWeight: '600', display: 'inline-block', marginBottom: '1.5rem' }}>← Cancel Application</Link>
@@ -209,7 +239,7 @@ export default function Apply() {
                                 <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '0.5rem' }}>Application Form</h1>
                                 <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem' }}>{displayedRole}</p>
 
-                                <form onSubmit={handleSubmit}>
+                                <form onSubmit={handleStep4Submit}>
                                     
                                     {/* GENERAL INFO */}
                                     <div style={{ marginBottom: '3rem' }}>
@@ -303,15 +333,85 @@ export default function Apply() {
                                             <label style={fieldHeader}>Prior Online business marketing tool exposure <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
                                             <input type="text" name="marketingTools" value={formData.marketingTools} onChange={handleChange} style={inputStyle} placeholder="e.g. Google Ads, Meta Ads" />
                                         </div>
+                                    </div>
 
-                                        <div style={{ marginBottom: '1.5rem' }}>
-                                            <label style={fieldHeader}>Why do you want to join this program? <span style={{ color: '#d93025' }}>*</span></label>
-                                            <textarea name="whyJoin" value={formData.whyJoin} onChange={handleChange} style={{ ...inputStyle, minHeight: '120px', resize: 'vertical' }} placeholder="Short answer (max 80 words)..." />
-                                            {/* Note: In a production app, strict word count validation can be added here */}
+                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
+                                        <button type="button" onClick={() => setStep(3)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
+                                        <button type="submit" className="cta-button" style={{ padding: '1rem 3rem' }}>
+                                            Next →
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* FORM APPLICATION - STAGE 2 */}
+                    {step === 5 && (
+                        <motion.div key="p5" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={{ maxWidth: '800px', margin: '80px auto', padding: '0 20px' }}>
+                            <Link href="/work-with-us" style={{ color: '#0071e3', fontWeight: '600', display: 'inline-block', marginBottom: '1.5rem' }}>← Cancel Application</Link>
+                            
+                            <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
+                                <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '0.5rem' }}>Final Details</h1>
+                                <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem' }}>Just a few more things before you submit.</p>
+
+                                <form onSubmit={handleSubmit}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                        <div>
+                                            <label style={{ ...fieldHeader, color: formErrors.fullName ? '#d93025' : '#1d1d1f' }}>Full Name <span style={{ color: '#d93025' }}>*</span></label>
+                                            <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.fullName ? '#d93025' : '#d2d2d7' }} />
+                                            {formErrors.fullName && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.fullName}</div>}
+                                        </div>
+                                        <div>
+                                            <label style={{ ...fieldHeader, color: formErrors.email ? '#d93025' : '#1d1d1f' }}>Email <span style={{ color: '#d93025' }}>*</span></label>
+                                            <input type="email" name="email" value={formData.email} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.email ? '#d93025' : '#d2d2d7' }} />
+                                            {formErrors.email && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.email}</div>}
                                         </div>
                                     </div>
 
-                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                                        <div>
+                                            <label style={{ ...fieldHeader, color: formErrors.whatsapp ? '#d93025' : '#1d1d1f' }}>WhatsApp Number <span style={{ color: '#d93025' }}>*</span></label>
+                                            <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.whatsapp ? '#d93025' : '#d2d2d7' }} />
+                                            {formErrors.whatsapp && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.whatsapp}</div>}
+                                        </div>
+                                        <div>
+                                            <label style={{ ...fieldHeader, color: formErrors.location ? '#d93025' : '#1d1d1f' }}>Location (City) <span style={{ color: '#d93025' }}>*</span></label>
+                                            <input type="text" name="location" value={formData.location} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.location ? '#d93025' : '#d2d2d7' }} />
+                                            {formErrors.location && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.location}</div>}
+                                        </div>
+                                    </div>
+
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <label style={{ ...fieldHeader, color: formErrors.whyInternship ? '#d93025' : '#1d1d1f' }}>Why do you want this internship? <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Max 150 words)</span> <span style={{ color: '#d93025' }}>*</span></label>
+                                        <textarea name="whyInternship" value={formData.whyInternship} onChange={handleChange} style={{ ...inputStyle, minHeight: '100px', resize: 'vertical', borderColor: formErrors.whyInternship ? '#d93025' : '#d2d2d7' }} />
+                                        {formErrors.whyInternship && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.whyInternship}</div>}
+                                    </div>
+
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <label style={{ ...fieldHeader, color: formErrors.whatToLearn ? '#d93025' : '#1d1d1f' }}>What do you expect to learn? <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Max 150 words)</span> <span style={{ color: '#d93025' }}>*</span></label>
+                                        <textarea name="whatToLearn" value={formData.whatToLearn} onChange={handleChange} style={{ ...inputStyle, minHeight: '100px', resize: 'vertical', borderColor: formErrors.whatToLearn ? '#d93025' : '#d2d2d7' }} />
+                                        {formErrors.whatToLearn && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.whatToLearn}</div>}
+                                    </div>
+
+                                    <div style={{ marginBottom: '2rem' }}>
+                                        <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors.paidTraining ? '#d93025' : '#1d1d1f' }}>
+                                            Willing to take paid training before internship <span style={{ color: '#d93025' }}>*</span> {formErrors.paidTraining && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}>* {formErrors.paidTraining}</span>}
+                                        </label>
+                                        <div style={{ display: 'flex', gap: '1.5rem' }}>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                                                <input type="radio" name="paidTraining" value="Yes" checked={formData.paidTraining === 'Yes'} onChange={handleChange} />
+                                                Yes
+                                            </label>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                                                <input type="radio" name="paidTraining" value="No" checked={formData.paidTraining === 'No'} onChange={handleChange} />
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div style={{ borderTop: '1px solid #eee', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between' }}>
+                                        <button type="button" onClick={() => setStep(4)} style={{ background: 'none', border: 'none', color: '#0071e3', fontWeight: '600', cursor: 'pointer' }}>← Back</button>
                                         <button type="submit" disabled={submitStatus === 'submitting'} className="cta-button" style={{ padding: '1rem 3rem', opacity: submitStatus === 'submitting' ? 0.7 : 1 }}>
                                             {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Application'}
                                         </button>
@@ -322,8 +422,8 @@ export default function Apply() {
                     )}
 
                     {/* SUCCESS SCREEN */}
-                    {step === 5 && (
-                        <motion.div key="p5" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: '600px', margin: '120px auto', background: 'white', padding: '4rem 3rem', borderRadius: '1rem', textAlign: 'center', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
+                    {step === 6 && (
+                        <motion.div key="p6" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: '600px', margin: '120px auto', background: 'white', padding: '4rem 3rem', borderRadius: '1rem', textAlign: 'center', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
                             <div style={{ width: '80px', height: '80px', background: '#e0ece0', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem auto' }}>
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#116c4c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="20 6 9 17 4 12"></polyline>
