@@ -22,10 +22,10 @@ export default function Apply() {
         relatedCourseName: '',
         
         currentYear: '',
-        monthsRemaining: false,
-        aggregate65: false,
-        attendance70: false,
-        hasLaptop: false,
+        monthsRemaining: '',
+        aggregate65: '',
+        attendance70: '',
+        hasLaptop: '',
 
         codingLanguages: '',
         linkedin: '',
@@ -72,6 +72,7 @@ export default function Apply() {
         if (!formData.aggregate65) errors.aggregate65 = "Required"
         if (!formData.attendance70) errors.attendance70 = "Required"
         if (!formData.hasLaptop) errors.hasLaptop = "Required"
+        if (!formData.codingLanguages.trim()) errors.codingLanguages = "Required"
 
         setFormErrors(errors)
         return Object.keys(errors).length === 0
@@ -146,10 +147,10 @@ export default function Apply() {
                                 ₹1,000 — one-time, non-refundable
                             </div>
                             <p style={pStyle}>
-                                This covers your access to live sessions, real ad platform accounts, course materials, and task evaluations throughout the 1-month course. The fee is intentionally kept low to make this accessible. It is non-refundable because you are receiving real tool access and expert instruction from day one.
+                                Shortlisted candidates will have to pay 1000 rupees to enroll the course.
                             </p>
                             <p style={pStyle}>
-                                There are no hidden fees. Stage 2 Training and Stage 3 Internship have no additional charges.
+                                This covers your access to live sessions, real ad platform accounts, course materials, and task evaluations throughout the 1-month course. The fee is intentionally kept low to make this accessible. It is non-refundable because you are receiving real tool access and expert instruction from day one.
                             </p>
                             <label style={checkRow}>
                                 <input type="checkbox" name="understoodFee" checked={popups.understoodFee} onChange={handlePopupChange} style={{ transform: 'scale(1.2)' }} />
@@ -247,23 +248,29 @@ export default function Apply() {
                                             {formErrors.currentYear && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.currentYear}</div>}
                                         </div>
 
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
-                                                <input type="checkbox" name="monthsRemaining" checked={formData.monthsRemaining} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
-                                                <span style={{ color: formErrors.monthsRemaining ? '#d93025' : '#1d1d1f' }}>6+ months academic year remaining</span>
-                                            </label>
-                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
-                                                <input type="checkbox" name="aggregate65" checked={formData.aggregate65} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
-                                                <span style={{ color: formErrors.aggregate65 ? '#d93025' : '#1d1d1f' }}>Aggregate 65% or above</span>
-                                            </label>
-                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
-                                                <input type="checkbox" name="attendance70" checked={formData.attendance70} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
-                                                <span style={{ color: formErrors.attendance70 ? '#d93025' : '#1d1d1f' }}>Attendance 70% or above</span>
-                                            </label>
-                                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', padding: '0.5rem 0' }}>
-                                                <input type="checkbox" name="hasLaptop" checked={formData.hasLaptop} onChange={handleChange} style={{ transform: 'scale(1.2)' }} />
-                                                <span style={{ color: formErrors.hasLaptop ? '#d93025' : '#1d1d1f' }}>I have a personal laptop and stable internet</span>
-                                            </label>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                            {[
+                                                { name: 'monthsRemaining', label: '6+ months academic year remaining' },
+                                                { name: 'aggregate65', label: 'Aggregate 65% or above' },
+                                                { name: 'attendance70', label: 'Attendance 70% or above' },
+                                                { name: 'hasLaptop', label: 'I have a personal laptop and stable internet' }
+                                            ].map(field => (
+                                                <div key={field.name}>
+                                                    <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors[field.name] ? '#d93025' : '#1d1d1f' }}>
+                                                        {field.label} {formErrors[field.name] && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}>* {formErrors[field.name]}</span>}
+                                                    </label>
+                                                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                                                            <input type="radio" name={field.name} value="Yes" checked={formData[field.name] === 'Yes'} onChange={handleChange} />
+                                                            Yes
+                                                        </label>
+                                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                                                            <input type="radio" name={field.name} value="No" checked={formData[field.name] === 'No'} onChange={handleChange} />
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
 
@@ -272,8 +279,9 @@ export default function Apply() {
                                         <h3 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 2: Skills & Background</h3>
 
                                         <div style={{ marginBottom: '1.5rem' }}>
-                                            <label style={fieldHeader}>Coding languages known (JS / API / JSON etc.) <span style={{ color: '#86868b', fontWeight: 'normal' }}>(Optional)</span></label>
-                                            <input type="text" name="codingLanguages" value={formData.codingLanguages} onChange={handleChange} style={inputStyle} placeholder="e.g. JavaScript, Python" />
+                                            <label style={{ ...fieldHeader, color: formErrors.codingLanguages ? '#d93025' : '#1d1d1f' }}>Coding languages known (JS / API / JSON etc.) <span style={{ color: '#d93025' }}>*</span></label>
+                                            <input type="text" name="codingLanguages" value={formData.codingLanguages} onChange={handleChange} style={{ ...inputStyle, borderColor: formErrors.codingLanguages ? '#d93025' : '#d2d2d7' }} placeholder="e.g. JavaScript, Python" />
+                                            {formErrors.codingLanguages && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.codingLanguages}</div>}
                                         </div>
 
                                         <div style={{ marginBottom: '1.5rem' }}>
