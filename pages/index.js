@@ -108,9 +108,11 @@ export default function Home() {
                         <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
                             The Automations are <AnimatedTextCycle 
                                 words={[
-                                    "flawless.",
+                                    "Transparent",
+                                    "Personal",
+                                    "Monitored",
+                                    "Continuously Optimized",
                                     "secure and GDPR-compliant.",
-                                    "transparent and easy-to-use.",
                                     "smart and value-driven.",
                                     "UK-focused and market-savvy."
                                 ]} 
