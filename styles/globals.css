@@ -378,10 +378,8 @@ footer {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    padding: 2rem 1rem;
-    padding-top: 80px; /* Explicitly more than header height (64px) */
-    align-items: flex-start; /* Start from top to ensure spacing is respected */
-    overflow-y: auto;
+    padding: 1rem;
+    overflow: hidden;
     animation: fadeIn 0.2s ease-out;
 }
 
@@ -393,8 +391,9 @@ footer {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    margin: 2rem auto; /* Give space from the top of the overlay */
-    max-height: calc(100vh - 4rem);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
     animation: slideUp 0.3s ease-out;
 }
 
@@ -423,17 +422,34 @@ footer {
 .booking-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .form-column {
     padding: 3rem;
     background: #fbfbfd;
     border-right: 1px solid #e5e5e5;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.form-column::-webkit-scrollbar {
+    display: none;
 }
 
 .calendar-column {
     padding: 3rem;
     background: white;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.calendar-column::-webkit-scrollbar {
+    display: none;
 }
 
 /* Form Styles */
@@ -698,22 +714,31 @@ section {
 
     .booking-grid {
         grid-template-columns: 1fr;
+        display: block;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .booking-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .modal-content {
-        max-height: 95vh;
+        max-height: 90vh;
         border-radius: 16px;
-        margin: 0.5rem;
     }
 
     .form-column {
         border-right: none;
         border-bottom: 1px solid #e5e5e5;
         padding: 1.25rem;
+        overflow-y: visible;
     }
 
     .calendar-column {
         padding: 1.25rem;
+        overflow-y: visible;
     }
 
     .cta-button {

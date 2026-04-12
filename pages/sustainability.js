@@ -45,7 +45,7 @@ export default function Sustainability() {
                                     desc: "Our AI-powered marketing automation workflows help businesses retain customers through automated email nurturing, loyalty campaigns, and personalized engagement. Focusing on customer retention reduces the need for constant lead acquisition, enabling businesses to grow sustainably while optimizing marketing resources."
                                 }
                             ].map((item, index) => (
-                                <Reveal key={index} delay={index * 0.1}>
+                                <Reveal key={index} delay={index * 0.1} height="100%">
                                     <div className="card" style={{ height: '100%' }}>
                                         <h3>{item.title}</h3>
                                         <p>{item.desc}</p>
