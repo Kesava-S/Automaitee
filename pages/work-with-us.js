@@ -45,7 +45,7 @@ export default function WorkWithUs() {
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
                                     <div>
                                         <h3 style={{ fontSize: '1.75rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
-                                            Paid Internship Selection Program
+                                            Internship Selection Program
                                         </h3>
                                         <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
                                             AI Marketing Automation Intern
@@ -55,7 +55,7 @@ export default function WorkWithUs() {
                                 </div>
                                 
                                 <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem', maxWidth: '800px' }}>
-                                    A structured 3-stage programme to select, train, and place the best CS students as paid AI Marketing Automation Interns at Automaitee Digital.
+                                    A structured 3-stage programme to select, train, and place the best CS students as AI Marketing Automation Interns at Automaitee Digital.
                                 </p>
 
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
@@ -84,8 +84,8 @@ export default function WorkWithUs() {
                                                 { title: "Program Fee", desc: "Pay ₹1000" },
                                                 { title: "Course", desc: "1 month course with real time tasks" },
                                                 { title: "Live Evaluation", desc: "Best performers called for live evaluation" },
-                                                { title: "Training", desc: "Selected students enter 2 month unpaid Training" },
-                                                { title: "Internship Selection", desc: "Top performers confirmed for paid Internship up to ₹4,000/month based on performance" }
+                                                { title: "Training", desc: "Selected students enter 2 month Training" },
+                                                { title: "Internship Selection", desc: "Top performers confirmed for Internship based on performance" }
                                             ].map((step, idx) => (
                                                 <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
                                                     <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
