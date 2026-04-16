@@ -123,6 +123,7 @@ export default function Apply() {
         setSubmitStatus('submitting')
 
         const payload = {
+            fromMail: 'careers@automaitee.com'
             // Meta
             role: displayedRole,
             submittedAt: new Date().toISOString(),
