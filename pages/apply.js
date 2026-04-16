@@ -40,7 +40,7 @@ export default function Apply() {
         location: '',
         whyInternship: '',
         whatToLearn: '',
-        paidTraining: '',
+        agreesToTraining: '',
     })
 
     const [formErrors, setFormErrors] = useState({})
@@ -107,7 +107,7 @@ export default function Apply() {
         if (!formData.location.trim()) errors.location = "Required"
         if (!formData.whyInternship.trim()) errors.whyInternship = "Required"
         if (!formData.whatToLearn.trim()) errors.whatToLearn = "Required"
-        if (!formData.paidTraining) errors.paidTraining = "Required"
+        if (!formData.agreesToTraining) errors.agreesToTraining = "Required"
 
         setFormErrors(errors)
         return Object.keys(errors).length === 0
@@ -151,7 +151,7 @@ export default function Apply() {
             location: formData.location,
             whyInternship: formData.whyInternship,
             whatToLearn: formData.whatToLearn,
-            paidTraining: formData.paidTraining,
+            agreesToTraining: formData.agreesToTraining,
         }
 
         try {
@@ -249,7 +249,7 @@ export default function Apply() {
                             {[
                                 {
                                     q: 'Is this a certificate course?',
-                                    a: 'No. This is a selection programme for a paid internship. You do not receive a certificate. You receive real skills, real experience, and if you perform well, a paid role on our team.'
+                                    a: 'No. This is a selection programme for an internship. You do not receive a certificate. You receive real skills, real experience, and if you perform well, a role on our team.'
                                 },
                                 {
                                     q: 'What happens if I am not selected after the course?',
@@ -484,17 +484,17 @@ export default function Apply() {
                                     </div>
 
                                     <div style={{ marginBottom: '2rem' }}>
-                                        <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors.paidTraining ? '#d93025' : '#1d1d1f' }}>
-                                            Willing to take paid training before internship <span style={{ color: '#d93025' }}>*</span>
-                                            {formErrors.paidTraining && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}> — {formErrors.paidTraining}</span>}
+                                        <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors.agreesToTraining ? '#d93025' : '#1d1d1f' }}>
+                                            Willing to take training before internship <span style={{ color: '#d93025' }}>*</span>
+                                            {formErrors.agreesToTraining && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}> — {formErrors.agreesToTraining}</span>}
                                         </label>
                                         <div style={{ display: 'flex', gap: '1.5rem' }}>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
-                                                <input type="radio" name="paidTraining" value="Yes" checked={formData.paidTraining === 'Yes'} onChange={handleChange} />
+                                                <input type="radio" name="agreesToTraining" value="Yes" checked={formData.agreesToTraining === 'Yes'} onChange={handleChange} />
                                                 Yes
                                             </label>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
-                                                <input type="radio" name="paidTraining" value="No" checked={formData.paidTraining === 'No'} onChange={handleChange} />
+                                                <input type="radio" name="agreesToTraining" value="No" checked={formData.agreesToTraining === 'No'} onChange={handleChange} />
                                                 No
                                             </label>
                                         </div>
