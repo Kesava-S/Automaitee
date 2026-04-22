@@ -41,7 +41,7 @@ export default function Services() {
                     <Reveal width="100%">
                         <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>The Problem</h2>
                         <p style={{ fontSize: '1.1rem', color: '#1d1d1f', marginBottom: '1.5rem', lineHeight: '1.7' }}>
-                            Running a small business in London means wearing every hat. You are managing the team, serving customers, and somehow supposed to be running ads, replying to enquiries, and tracking what is working — all at the same time.
+                            Running a small business in London means wearing every hat. You are managing the team, serving customers, and somehow supposed to be running ads, replying to enquiries, and tracking what is working, all at the same time.
                         </p>
                         <p style={{ fontSize: '1.1rem', color: '#1d1d1f', marginBottom: '1.5rem', lineHeight: '1.7' }}>
                             Most businesses lose leads simply because nobody replied fast enough. Most waste ad spend because nobody is watching the numbers closely enough. Most have no idea which channel is actually bringing customers in.
@@ -58,7 +58,7 @@ export default function Services() {
                 <div className="container" style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
                     <Reveal width="100%">
                         <h2 style={{ fontSize: '2.5rem', fontWeight: '700', lineHeight: '1.4', background: 'linear-gradient(90deg, #116c4c 0%, #0071e3 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            We build custom marketing automation systems that run your lead generation, customer responses, and performance reporting on autopilot — so you can focus on running your business.
+                            We build custom marketing automation systems that run your lead generation, customer responses, and performance reporting on autopilot, so you can focus on running your business.
                         </h2>
                     </Reveal>
                 </div>
@@ -73,7 +73,7 @@ export default function Services() {
                             <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff' }}>
                                 <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>STARTER</h3>
                                 <p style={{ color: '#86868b', marginBottom: '1rem', flexGrow: 0 }}>Best for businesses just getting started with automation</p>
-                                <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem' }}>Monthly retainer from £X/month</p>
+                                <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem' }}>Monthly retainer from £600/month</p>
                                 
                                 <div style={{ marginBottom: '2rem' }}>
                                     <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>What happens automatically every day:</h4>
@@ -118,7 +118,7 @@ export default function Services() {
                                 <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#0071e3', color: '#fff', padding: '4px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold' }}>POPULAR</div>
                                 <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>PRO</h3>
                                 <p style={{ color: '#86868b', marginBottom: '1rem', flexGrow: 0 }}>Best for businesses ready to scale with a full automated marketing engine</p>
-                                <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem', color: '#0071e3' }}>Monthly retainer from £X/month</p>
+                                <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem', color: '#0071e3' }}>Monthly retainer from £1,200/month</p>
                                 
                                 <div style={{ marginBottom: '2rem' }}>
                                     <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>Everything in Starter, plus:</h4>
@@ -218,7 +218,7 @@ export default function Services() {
                                             ["Invoice reminders", "No", "Automated Day 3, Day 7, Day 14"],
                                             ["Reporting", "Weekly KPI email", "AI-written weekly summary + strategy brief"],
                                             ["Attribution tracking", "Basic", "Full ad-to-conversion chain"],
-                                            ["Monthly retainer", "From £X/month", "From £X/month", true]
+                                            ["Monthly retainer", "From £600/month", "From £1,200/month", true]
                                         ].map((row, i) => (
                                             <tr key={i} style={{ borderBottom: '1px solid #e5e5ea' }}>
                                                 <td style={{ padding: '16px', fontWeight: row[3] ? 'bold' : 'normal', color: '#1d1d1f' }}>{row[0]}</td>
