@@ -234,6 +234,68 @@ export default function Services() {
                 </div>
             </section>
 
+            {/* SECTION: Built lean. Built to last. */}
+            <section style={{ padding: '80px 0', backgroundColor: '#fcfcfd' }}>
+                <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+                    <Reveal width="100%">
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', textAlign: 'center', color: '#1d1d1f' }}>Built lean. Built to last.</h2>
+                        <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '1.5rem', lineHeight: '1.7', textAlign: 'center' }}>
+                            Most marketing agencies stack your business with tools you half-use and fully pay for. A CRM you never open. A scheduling platform that duplicates what your phone already does. A reporting dashboard that takes 20 minutes to understand.
+                        </p>
+                        <p style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1d1d1f', marginBottom: '1.5rem', textAlign: 'center' }}>
+                            We deliberately build without them.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '1.5rem', lineHeight: '1.7' }}>
+                            Every automation we build uses tools you already have like Google, Gmail, WhatsApp, connected by custom workflows we build specifically for your business. No unnecessary subscriptions. No software you pay for but never master. No digital clutter.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '1.5rem', lineHeight: '1.7' }}>
+                            This is not just about saving you money — though you will save between £300 and £800 per month compared to a typical agency tech stack. It is about building systems that are lightweight, transparent, and genuinely useful rather than impressive on paper.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '3rem', lineHeight: '1.7' }}>
+                            Fewer tools means fewer things to break. Fewer logins means less confusion. And a business running on lean, purposeful automation is a business that scales cleanly.
+                        </p>
+                    </Reveal>
+
+                    <Reveal width="100%">
+                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: '#1d1d1f' }}>What we replace and what you save:</h3>
+                        <div style={{ overflowX: 'auto', marginBottom: '3rem' }}>
+                            <table className="comparison-table" style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                                <thead>
+                                    <tr style={{ background: '#f5f5f7' }}>
+                                        <th style={{ padding: '16px', textAlign: 'left', borderBottom: '2px solid #e5e5ea', width: '33%' }}>What most agencies add</th>
+                                        <th style={{ padding: '16px', textAlign: 'left', borderBottom: '2px solid #e5e5ea', width: '33%' }}>What we use instead</th>
+                                        <th style={{ padding: '16px', textAlign: 'left', borderBottom: '2px solid #e5e5ea', width: '33%', color: '#116c4c' }}>Typical monthly saving</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {[
+                                        ["CRM software", "Google Sheets", "£50 – £300"],
+                                        ["Email marketing platform", "Gmail via automation", "£30 – £150"],
+                                        ["Social scheduling tool", "Direct platform publishing", "£50 – £100"],
+                                        ["Ad reporting dashboard", "Weekly Drive report", "£100 – £800"],
+                                        ["Chatbot platform", "Custom AI chatbot", "£50 – £300"],
+                                        ["Booking tool", "Google Calendar automation", "£20 – £80"],
+                                        ["Review management tool", "Google Business Profile API", "£50 – £200"]
+                                    ].map((row, i) => (
+                                        <tr key={i} style={{ borderBottom: '1px solid #e5e5ea' }}>
+                                            <td style={{ padding: '16px', color: '#515154' }}>{row[0]}</td>
+                                            <td style={{ padding: '16px', color: '#1d1d1f', fontWeight: '500' }}>{row[1]}</td>
+                                            <td style={{ padding: '16px', color: '#116c4c', fontWeight: 'bold' }}>{row[2]}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </Reveal>
+
+                    <Reveal width="100%">
+                        <p style={{ fontSize: '1.1rem', color: '#1d1d1f', lineHeight: '1.7', textAlign: 'center', fontWeight: '500', backgroundColor: '#f5f5f7', padding: '24px', borderRadius: '12px' }}>
+                            Every Monday morning, a plain English performance report lands in your Google Drive. No dashboard to log into. No charts to decode. Just open it, read it in three minutes, and know exactly what your marketing did last week and what to do next.
+                        </p>
+                    </Reveal>
+                </div>
+            </section>
+
             {/* SECTION 6 - CTA */}
             <section style={{ padding: '100px 0', backgroundColor: '#0071e3', color: '#fff', textAlign: 'center' }}>
                 <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
