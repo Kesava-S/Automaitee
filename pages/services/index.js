@@ -29,7 +29,7 @@ export default function Services() {
                             color: '#515154',
                             lineHeight: '1.6'
                         }}>
-                            We build automated marketing systems that generate leads, respond instantly, and report results — without you lifting a finger.
+                            We build automated marketing systems that generate leads, respond instantly, and report results, without you lifting a finger.
                         </p>
                     </Reveal>
                 </div>
