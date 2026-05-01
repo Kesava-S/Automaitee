@@ -5,7 +5,7 @@ export const blogs = [
         metaTitle: "UK SME AI Adoption Stats 2026 | Visual Report | Automaitee Digital",
         metaDescription: "A visual breakdown of AI adoption among UK small businesses, including sector trends, usage cases, and ROI metrics.",
         excerpt: "Hard numbers, visualised. Discover the current state and future of AI adoption across UK small businesses.",
-        date: "March 16, 2026",
+        date: "April 21, 2026",
         author: "Automaitee Data Team",
         image: "/blog/ai-stats-uk.png",
         content: `

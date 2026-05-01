@@ -62,14 +62,6 @@ export const teamCategories = [
                 image: "/team/Luca.png",
                 bio: "Driving brand awareness and communicating the value of AI automation to Micro and Small businesses worldwide.",
                 linkedin: ""
-            },
-            {
-                id: "sriram-sankar",
-                name: "Sriram Sankar",
-                role: "Sales Rep",
-                image: "/team/sriram.svg",
-                bio: "Helping Micro Businesses discover how automation can accelerate their growth and streamline their processes.",
-                linkedin: ""
             }
         ]
     }
