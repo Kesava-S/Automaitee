@@ -1,10 +1,71 @@
 import Head from 'next/head'
 import { Reveal } from '../components/Reveal'
-import Link from 'next/link'
-import { useState } from 'react'
 
 export default function WorkWithUs() {
-    const [showWorkflow, setShowWorkflow] = useState(false)
+    const openings = [
+        {
+            title: "Growth Automation Intern",
+            team: "Growth Automation",
+            description: "Learn to pull data from campaigns via APIs of Ad Platforms, GMB, GA4 and LinkedIn. Build automation workflows.",
+            qualifications: [
+                "Pre-final year CS / IT / BCA / MCA student",
+                "Knowledge of JSON and APIs",
+                "Comfortable in learning new tools and AI"
+            ]
+        },
+        {
+            title: "Funnel Automation Intern",
+            team: "Platform and Funnel Team",
+            description: "Learn to build Automation in chatbots, websites, landing pages, email sequences, and CRM workflows and integrate them seamlessly. Manage SEO and social media automation.",
+            qualifications: [
+                "Pre Final year CS / IT / BCA / MCA student",
+                "Basic coding knowledge — JS or APIs is a plus",
+                "Interest in chatbots and AI tools"
+            ]
+        },
+        {
+            title: "Analytics & Reporting Intern",
+            team: "Analytics & Reporting",
+            description: "Learn and work with analytics like GA4 and Google Sheets. Build dashboards and weekly performance reports.",
+            qualifications: [
+                "Pre-final year Maths/ CS / IT / BCA / MCA student",
+                "Strong with numbers and data",
+                "Curious about analytics and AI"
+            ]
+        },
+        {
+            title: "R&D Intern",
+            team: "Research & Development",
+            positions: "2 positions",
+            description: "Track AI updates daily on AI tools, Data Scraping tools, Marketing tools, ad platforms, and new tools. Test new AI features. Document the findings.",
+            qualifications: [
+                "Graduate Student",
+                "Genuine interest in AI and proficient in English",
+                "Self-driven learner"
+            ]
+        },
+        {
+            title: "Prompt Engineering Intern",
+            team: "Floats across all teams",
+            description: "Write and refine AI prompts for chatbots, reports, and workflows. Build a prompt library for the team.",
+            qualifications: [
+                "Strong English — linguistics or English background preferred",
+                "Basic AI tool knowledge (ChatGPT or Claude)",
+                "Any year — degree not strictly required if skills are strong"
+            ]
+        },
+        {
+            title: "Lead Research & Outreach Intern",
+            team: "Outreach",
+            description: "Research businesses. Data Scrapping, and Business Pitch preparation, Run cold email outreach.",
+            qualifications: [
+                "Pre-final year student - any stream",
+                "Good written English",
+                "Comfortable with research tools"
+            ]
+        }
+    ];
+
     return (
         <>
             <Head>
@@ -39,139 +100,63 @@ export default function WorkWithUs() {
                         </div>
                     </Reveal>
 
-                    <div className="grid">
-                        <Reveal>
-                            <div className="card" style={{ padding: '2.5rem', textAlign: 'left', background: 'white', borderRadius: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
-                                    <div>
-                                        <h3 style={{ fontSize: '1.75rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
-                                            Internship Selection Program
-                                        </h3>
-                                        <h4 style={{ fontSize: '1.25rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
-                                            AI Marketing Automation Intern
-                                        </h4>
+
+
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', marginTop: '5rem', marginBottom: '3rem' }}>
+                            <h3 style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--foreground)' }}>Direct Internship Openings</h3>
+                            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
+                                Apply directly for specific internship roles available at our Rajapalayam office.
+                            </p>
+                        </div>
+                    </Reveal>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                        {openings.map((job, index) => (
+                            <Reveal key={index} delay={index * 0.1}>
+                                <div className="card" style={{ padding: '2.5rem', textAlign: 'left', background: 'white', borderRadius: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
+                                        <div>
+                                            <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
+                                                {job.title} {job.positions && <span style={{ fontSize: '1rem', fontWeight: 'normal', color: 'var(--text-secondary)' }}>({job.positions})</span>}
+                                            </h3>
+                                            <h4 style={{ fontSize: '1.1rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
+                                                {job.team}
+                                            </h4>
+                                        </div>
+                                        <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
                                     </div>
-                                    <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
-                                </div>
-                                
-                                <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem', maxWidth: '800px' }}>
-                                    A structured 3-stage programme to select, train, and place the best CS students as AI Marketing Automation Interns at Automaitee Digital.
-                                </p>
+                                    
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <h5 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)' }}>What you will do:</h5>
+                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                                            {job.description}
+                                        </p>
+                                    </div>
 
-                                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-                                    <button 
-                                        onClick={() => setShowWorkflow(!showWorkflow)} 
-                                        className="cta-button" 
-                                        style={{ padding: '0.75rem 1.5rem', fontWeight: '600', background: showWorkflow ? '#f8fafc' : 'transparent', color: showWorkflow ? '#64748b' : 'var(--text-primary)', border: showWorkflow ? '1px solid #cbd5e1' : '1px solid #c7c7cc', cursor: 'pointer' }}
-                                    >
-                                        How It Works
-                                    </button>
-                                </div>
-
-                                {/* Application Process Flow */}
-                                {showWorkflow && (
-                                    <div id="workflow" style={{ marginBottom: '2.5rem', padding: '1.75rem', background: '#f8fafc', borderRadius: '0.75rem', border: '1px solid #e2e8f0' }}>
-                                        <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--foreground)' }}>Application Workflow</h5>
-                                        
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', position: 'relative' }}>
-                                            {/* Vertical line connecting parts */}
-                                            <div style={{ position: 'absolute', left: '15px', top: '10px', bottom: '10px', width: '2px', background: '#cbd5e1', zIndex: 0 }}></div>
-                                            
-                                            {[
-                                                { title: "Submit Form", desc: "Students submit the form on the website" },
-                                                { title: "Eligibility Screen", desc: "Eligibility is automatically screened" },
-                                                { title: "Acknowledgement", desc: "Acknowledgement email is sent" },
-                                                { title: "Program Fee", desc: "Pay ₹1000" },
-                                                { title: "Course", desc: "1 month course with real time tasks" },
-                                                { title: "Live Evaluation", desc: "Best performers called for live evaluation" },
-                                                { title: "Training", desc: "Selected students enter 2 month Training" },
-                                                { title: "Internship Selection", desc: "Top performers confirmed for Internship based on performance" }
-                                            ].map((step, idx) => (
-                                                <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-                                                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0071e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', flexShrink: 0, fontSize: '0.9rem', boxShadow: '0 0 0 4px #f8fafc' }}>
-                                                        {idx + 1}
-                                                    </div>
-                                                    <div style={{ paddingTop: '5px' }}>
-                                                        <div style={{ fontWeight: '600', fontSize: '1rem', color: 'var(--foreground)', lineHeight: '1.2' }}>{step.title}</div>
-                                                        <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.35rem' }}>{step.desc}</div>
-                                                    </div>
-                                                </div>
+                                    <div style={{ marginBottom: '2rem', flexGrow: 1 }}>
+                                        <h5 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)' }}>Qualifications:</h5>
+                                        <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                            {job.qualifications.map((q, i) => (
+                                                <li key={i} style={{ marginBottom: '0.25rem' }}>{q}</li>
                                             ))}
+                                        </ul>
+                                    </div>
+
+                                    <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid #eee' }}>
+                                        <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.5' }}>
+                                            <strong>Location:</strong> Office in Rajapalayam (Daily commute required)<br/>
+                                            <strong>Deadline:</strong> 15th May 2026
+                                        </div>
+                                        <div style={{ textAlign: 'center' }}>
+                                            <a href={`mailto:careers@automaitee.com?subject=Application for ${job.title}`} className="cta-button" style={{ display: 'inline-block', width: '100%', boxSizing: 'border-box' }}>
+                                                Apply via Email
+                                            </a>
                                         </div>
                                     </div>
-                                )}
-
-                                {/* Eligibility Criteria */}
-                                <div id="eligibility" style={{ marginBottom: '2rem' }}>
-                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--foreground)' }}>Eligibility Criteria (Required)</h5>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>Applicants must meet all of the following requirements:</p>
-                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Currently enrolled in Computer Science, IT, BCA, MCA, or a related degree programme</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Middle-year undergraduate students or first-year master’s students only <br/><span style={{ fontSize: '0.85rem', fontStyle: 'italic' }}>(Final-semester students are not eligible, as the program requires sufficient time and commitment)</span></li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Minimum 65% aggregate in current academic performance</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Minimum 70% attendance in current college</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Must have a personal laptop (shared or lab computers are not acceptable)</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Must have a stable internet connection at home for live online sessions</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Basic understanding of at least one programming language, APIs, or JSON</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Must be available for 8 hours per week throughout the 1-month course</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Must attend all live sessions</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Maximum 1 absence allowed with prior notice before the session starts</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Missing a session without prior notice will result in immediate disqualification</li>
-                                    </ul>
                                 </div>
-
-                                {/* Preferred Qualifications */}
-                                <div style={{ marginBottom: '2rem', padding: '1.5rem', background: '#fbfbfd', borderRadius: '0.75rem', border: '1px solid var(--card-border)' }}>
-                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--foreground)' }}>Preferred Qualifications (Not Mandatory)</h5>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>These will increase selection chances:</p>
-                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Active GitHub profile with personal or academic projects</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Basic exposure to digital marketing tools (Meta Ads Manager, Google Ads, etc.)</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Knowledge of JavaScript, APIs, or JSON</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Experience using AI tools independently (Claude Code, Claude Cowork, Claude Skills, etc.)</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Any freelance work or side projects showing initiative and self-driven learning</li>
-                                    </ul>
-                                </div>
-
-                                {/* May Reduce Selection Chances */}
-                                <div style={{ marginBottom: '2rem' }}>
-                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: '#f5a623' }}>May Reduce Selection Chances</h5>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>These do not disqualify, but may reduce selection chances if competition is high:</p>
-                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>No coding exposure</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>No GitHub or personal portfolio</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Academic performance below 65%</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>College attendance below 75% (may indicate lower commitment)</li>
-                                    </ul>
-                                </div>
-
-                                {/* Automatic Disqualification */}
-                                <div style={{ marginBottom: '2rem', padding: '1.5rem', background: '#fffcfc', borderRadius: '0.75rem', border: '1px solid #fee2e2' }}>
-                                    <h5 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '1rem', color: '#d93025' }}>Automatic Disqualification (No Exceptions)</h5>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', fontSize: '0.95rem' }}>Applicants will be automatically rejected if any of the following apply:</p>
-                                    <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                        <li style={{ marginBottom: '0.5rem' }}>Not from CS, IT, BCA, MCA, or related field</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Final-semester student with less than 6 months remaining</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Academic aggregate below 65%</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>College attendance below 70%</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>No personal laptop</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>No stable home internet connection</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>No basic coding knowledge</li>
-                                        <li style={{ marginBottom: '0.5rem' }}>Missing a live session without prior notice during the course</li>
-                                    </ul>
-                                </div>
-
-                                <p style={{ color: 'var(--foreground)', fontWeight: '500', fontSize: '1rem', marginBottom: '2.5rem', padding: '1rem', background: '#f5f5f7', borderRadius: '0.5rem' }}>
-                                    This opportunity is designed for committed students who are willing to learn quickly and actively participate throughout the program.
-                                </p>
-
-                                <div style={{ textAlign: 'center' }}>
-                                    <Link href="/apply?role=AI+Marketing+Automation+Intern" className="cta-button">
-                                        Apply Now
-                                    </Link>
-                                </div>
-                            </div>
-                        </Reveal>
+                            </Reveal>
+                        ))}
                     </div>
 
                     <Reveal width="100%">

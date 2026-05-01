@@ -22,7 +22,6 @@ export default function Apply() {
         relatedCourseName: '',
 
         currentYear: '',
-        monthsRemaining: '',
         aggregate65: '',
         attendance70: '',
         hasLaptop: '',
@@ -77,7 +76,6 @@ export default function Apply() {
             errors.relatedCourseName = "Course name is required."
         }
         if (!formData.currentYear) errors.currentYear = "Current year is required."
-        if (!formData.monthsRemaining) errors.monthsRemaining = "Required"
         if (!formData.aggregate65) errors.aggregate65 = "Required"
         if (!formData.attendance70) errors.attendance70 = "Required"
         if (!formData.hasLaptop) errors.hasLaptop = "Required"
@@ -132,7 +130,6 @@ export default function Apply() {
             degree: formData.degree,
             relatedCourseName: formData.relatedCourseName || null,
             currentYear: formData.currentYear,
-            monthsRemaining: formData.monthsRemaining,
             aggregate65: formData.aggregate65,
             attendance70: formData.attendance70,
             hasLaptop: formData.hasLaptop,
@@ -334,14 +331,16 @@ export default function Apply() {
                                                 <option value="">Select Current Year...</option>
                                                 <option value="3rd Year (4-year course)">3rd year of 4-year course</option>
                                                 <option value="2nd Year (3-year course)">2nd year of 3-year course</option>
+                                                <option value="Final year of (4 years)">Final year of (4 years)</option>
+                                                <option value="Final year of (3 years)">Final year of (3 years)</option>
                                                 <option value="1st Year Masters">Masters 1st year</option>
+                                                <option value="Masters final year">Masters final year</option>
                                             </select>
                                             {formErrors.currentYear && <div style={{ color: '#d93025', fontSize: '0.85rem', marginTop: '0.35rem' }}>{formErrors.currentYear}</div>}
                                         </div>
 
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                             {[
-                                                { name: 'monthsRemaining', label: '6+ months academic year remaining' },
                                                 { name: 'aggregate65', label: 'Aggregate 65% or above' },
                                                 { name: 'attendance70', label: 'Attendance 70% or above' },
                                                 { name: 'hasLaptop', label: 'I have a personal laptop and stable internet' }
