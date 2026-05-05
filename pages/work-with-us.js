@@ -38,6 +38,7 @@ export default function WorkWithUs() {
             team: "Research & Development",
             positions: "2 positions",
             description: "Track AI updates daily on AI tools, Data Scraping tools, Marketing tools, ad platforms, and new tools. Test new AI features. Document the findings.",
+            stipend: "Students who perform well can get a stipend upto 1000.",
             qualifications: [
                 "Graduate Student",
                 "Genuine interest in AI and proficient in English",
@@ -48,16 +49,18 @@ export default function WorkWithUs() {
             title: "Prompt Engineering Intern",
             team: "Floats across all teams",
             description: "Write and refine AI prompts for chatbots, reports, and workflows. Build a prompt library for the team.",
+            stipend: "Students who perform well can get a stipend upto 1000.",
             qualifications: [
-                "Strong English — linguistics or English background preferred",
-                "Basic AI tool knowledge (ChatGPT or Claude)",
-                "Any year — degree not strictly required if skills are strong"
+                "Strong English: linguistics or English background preferred",
+                "Basic AI tool knowledge (Anthropic Skills)",
+                "Any year:  degree not strictly required if skills are strong"
             ]
         },
         {
             title: "Lead Research & Outreach Intern",
             team: "Outreach",
             description: "Research businesses. Data Scrapping, and Business Pitch preparation, Run cold email outreach.",
+            stipend: "Students who perform well can get a stipend upto 1000.",
             qualifications: [
                 "Pre-final year student - any stream",
                 "Good written English",
@@ -147,6 +150,7 @@ export default function WorkWithUs() {
                                         <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.5' }}>
                                             <strong>Location:</strong> Office in Rajapalayam (Daily commute required)<br/>
                                             <strong>Deadline:</strong> 15th May 2026
+                                            {job.stipend && <><br/><strong>Stipend:</strong> {job.stipend}</>}
                                         </div>
                                         <div style={{ textAlign: 'center' }}>
                                             <a href={`mailto:careers@automaitee.com?subject=Application for ${job.title}`} className="cta-button" style={{ display: 'inline-block', width: '100%', boxSizing: 'border-box' }}>
