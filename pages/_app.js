@@ -147,21 +147,60 @@ function MyApp({ Component, pageProps }) {
                     <Component {...pageProps} openBookingModal={() => setIsBookingModalOpen(true)} />
                 </main>
 
-                {/* Curtain Reveal Footer Wrapper */}
-                <div style={{ position: 'relative', height: '200px', width: '100%', clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
-                    <footer style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111111', color: 'white', zIndex: 0 }}>
-                        <div className="container">
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
-                                <p style={{ color: '#a1a1aa' }}>&copy; 2026 Automaitee Digital. All rights reserved.</p>
-                                <div style={{ display: 'flex', gap: '2rem' }}>
-                                    <Link href="/privacy-policy" style={{ fontSize: '0.9rem', color: '#e4e4e7', textDecoration: 'none' }}>Privacy Policy</Link>
-                                    <Link href="/terms-of-service" style={{ fontSize: '0.9rem', color: '#e4e4e7', textDecoration: 'none' }}>Terms of Service</Link>
-                                    <a href="/book-consultation" onClick={openBookingModal} style={{ fontSize: '0.9rem', color: '#e4e4e7', cursor: 'pointer', textDecoration: 'none' }}>Book Consultation</a>
+                <footer style={{ background: '#111111', color: 'white', padding: '6rem 0 2rem 0', position: 'relative', zIndex: 0 }}>
+                    <div className="container">
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
+                            {/* Brand */}
+                            <div>
+                                <Link href="/" replace={router.pathname === '/'}>
+                                    <img src="/logo.png" alt="Automaitee" style={{ height: '40px', marginBottom: '1.5rem', filter: 'brightness(0) invert(1)' }} />
+                                </Link>
+                                <p style={{ color: '#a1a1aa', lineHeight: '1.6', fontSize: '0.95rem' }}>Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.</p>
+                            </div>
+                            
+                            {/* Pages */}
+                            <div>
+                                <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Company</h4>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                                    <Link href="/" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Home</Link>
+                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Services</Link>
+                                    <Link href="/blog" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Blog</Link>
+                                    <Link href="/team" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Team</Link>
+                                    <Link href="/sustainability" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Sustainability</Link>
+                                </div>
+                            </div>
+
+                            {/* Services */}
+                            <div>
+                                <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Services</h4>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Full Funnel Systems</Link>
+                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Starter Package</Link>
+                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Pro Package</Link>
+                                    <Link href="/industries/beauty-salons" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>SilentChurn for Salons</Link>
+                                </div>
+                            </div>
+
+                            {/* Contact */}
+                            <div>
+                                <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Contact</h4>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#a1a1aa', fontSize: '0.95rem' }}>
+                                    <a href="mailto:support@automaitee.com" style={{ color: '#a1a1aa', textDecoration: 'none' }}>support@automaitee.com</a>
+                                    <p style={{ margin: 0, lineHeight: '1.6' }}>London<br />United Kingdom</p>
+                                    <a href="/book-consultation" onClick={openBookingModal} style={{ color: '#0071e3', textDecoration: 'none', marginTop: '0.5rem', display: 'inline-block', fontWeight: '500' }}>Book a Consultation &rarr;</a>
                                 </div>
                             </div>
                         </div>
-                    </footer>
-                </div>
+
+                        <div style={{ borderTop: '1px solid #333', paddingTop: '2rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+                            <p style={{ color: '#a1a1aa', margin: 0, fontSize: '0.9rem' }}>&copy; 2026 Automaitee Digital. All rights reserved.</p>
+                            <div style={{ display: 'flex', gap: '2rem' }}>
+                                <Link href="/privacy-policy" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Privacy Policy</Link>
+                                <Link href="/terms-of-service" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Terms of Service</Link>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
 
             <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
