@@ -1,13 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Reveal } from '../../components/Reveal';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function Services() {
+    const router = useRouter();
     const [showComparison, setShowComparison] = useState(false);
     const [showMicro, setShowMicro] = useState(false);
     const [showFullFunnel, setShowFullFunnel] = useState(false);
+
+    useEffect(() => {
+        if (router.isReady && router.query.openMicro === 'true') {
+            setShowMicro(true);
+            setTimeout(() => {
+                const element = document.getElementById('our-solutions');
+                if (element) {
+                    const offset = 100;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    }, [router.isReady, router.query]);
 
     return (
         <>
@@ -56,7 +79,7 @@ export default function Services() {
             </section>
 
             {/* SECTION 2 - Our Solutions */}
-            <section style={{ padding: '80px 0', backgroundColor: '#fbfbfd' }}>
+            <section id="our-solutions" style={{ padding: '80px 0', backgroundColor: '#fbfbfd' }}>
                 <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
                     <Reveal width="100%">
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>

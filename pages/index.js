@@ -130,7 +130,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-                            <Link href="/services" style={{
+                            <Link href="/services?openMicro=true" style={{
                                 display: 'inline-block',
                                 background: '#e8f2fc',
                                 color: '#0071e3',
