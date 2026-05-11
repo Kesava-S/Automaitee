@@ -130,7 +130,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-                            <span style={{
+                            <Link href="/services" style={{
                                 display: 'inline-block',
                                 background: '#e8f2fc',
                                 color: '#0071e3',
@@ -138,10 +138,11 @@ export default function Home() {
                                 borderRadius: '20px',
                                 fontSize: '0.9rem',
                                 fontWeight: '600',
-                                letterSpacing: '0.5px'
+                                letterSpacing: '0.5px',
+                                textDecoration: 'none'
                             }}>
                                 Automation starts from just £79
-                            </span>
+                            </Link>
                             <Link href="/services" className="cta-button">
                                 View Services
                             </Link>
