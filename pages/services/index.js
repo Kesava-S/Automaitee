@@ -64,10 +64,19 @@ export default function Services() {
                 </div>
             </section>
 
-            {/* SECTION 3 - Packages */}
+            {/* SECTION 3 - Services Breakdown */}
             <section style={{ padding: '60px 0', backgroundColor: '#fbfbfd' }}>
                 <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-                    <div className="grid">
+                    
+                    {/* Full Funnel Section */}
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#1d1d1f' }}>Full Funnel Systems</h2>
+                            <p style={{ fontSize: '1.1rem', color: '#515154', maxWidth: '600px', margin: '0.5rem auto 0' }}>Comprehensive automation for lead generation, response, and reporting.</p>
+                        </div>
+                    </Reveal>
+
+                    <div className="grid" style={{ marginBottom: '5rem' }}>
                         {/* Starter Package */}
                         <Reveal delay={0.1}>
                             <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff' }}>
@@ -140,6 +149,34 @@ export default function Services() {
                                     </ul>
                                 </div>
                             </div>
+                        </Reveal>
+                    </div>
+
+                    {/* Micro SaaS Section */}
+                    <Reveal width="100%">
+                        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#1d1d1f' }}>Micro SaaS</h2>
+                            <p style={{ fontSize: '1.1rem', color: '#515154', maxWidth: '600px', margin: '0.5rem auto 0' }}>Targeted, specific automation tools that solve one problem perfectly.</p>
+                        </div>
+                    </Reveal>
+
+                    <div className="grid">
+                        {/* Beauty Salons Option */}
+                        <Reveal delay={0.1}>
+                            <Link href="/industries/beauty-salons" style={{ textDecoration: 'none' }}>
+                                <div className="card micro-saas-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
+                                    <div style={{ background: '#f5f5f7', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                                        <span role="img" aria-label="scissors" style={{ fontSize: '1.5rem' }}>✂️</span>
+                                    </div>
+                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h3>
+                                    <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
+                                        Your regulars are quietly leaving. We bring them back — automatically. A simple, zero-management tool to recover lost revenue.
+                                    </p>
+                                    <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        View Details <span>→</span>
+                                    </div>
+                                </div>
+                            </Link>
                         </Reveal>
                     </div>
                 </div>
@@ -339,6 +376,11 @@ export default function Services() {
                     .comparison-table th, .comparison-table td {
                         font-size: 1.05rem;
                     }
+                }
+                .micro-saas-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 12px 24px rgba(0, 113, 227, 0.1) !important;
+                    border-color: #0071e3 !important;
                 }
             `}</style>
         </>
