@@ -4,9 +4,12 @@ import Link from 'next/link';
 import { Reveal } from '../../components/Reveal';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 
+export default function Services() {
     const [showComparison, setShowComparison] = useState(false);
     const [showMicro, setShowMicro] = useState(false);
     const [showFullFunnel, setShowFullFunnel] = useState(false);
+
+    return (
         <>
             <Head>
                 <title>Done-For-You Marketing Automation | Automaitee</title>
@@ -143,7 +146,8 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react';
                             </button>
 
                             {showFullFunnel && (
-                                <div className="grid" style={{ padding: '2rem 0' }}>
+                                <>
+                                    <div className="grid" style={{ padding: '2rem 0' }}>
                                     {/* Starter Package */}
                                     <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff' }}>
                                         <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>STARTER</h3>
@@ -301,8 +305,9 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react';
                                         )}
                                     </div>
                                 </div>
-                            </div>
-                        )}
+                                </>
+                            )}
+                        </div>
                     </Reveal>
                 </div>
             </section>
