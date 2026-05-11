@@ -1,13 +1,15 @@
 import React from 'react';
-import { Building, HeartPulse, Dumbbell, Home, Briefcase, Key, Megaphone } from 'lucide-react';
+import Link from 'next/link';
+import { Building, HeartPulse, Dumbbell, Home, Briefcase, Key, Megaphone, Scissors } from 'lucide-react';
 
 const industries = [
-    { name: "Hospitality & Food Services", icon: <Building size={20} /> },
-    { name: "Healthcare & Wellness", icon: <HeartPulse size={20} /> },
-    { name: "Gyms & Fitness Studios", icon: <Dumbbell size={20} /> },
-    { name: "Education & Training", icon: <Briefcase size={20} /> },
-    { name: "Rental & Property Businesses", icon: <Key size={20} /> },
-    { name: "Marketing & Advertising", icon: <Megaphone size={20} /> }
+    { name: "Beauty Salons", icon: <Scissors size={20} />, slug: "beauty-salons" },
+    { name: "Hospitality & Food Services", icon: <Building size={20} />, slug: "hospitality-food-services" },
+    { name: "Healthcare & Wellness", icon: <HeartPulse size={20} />, slug: "healthcare-wellness" },
+    { name: "Gyms & Fitness Studios", icon: <Dumbbell size={20} />, slug: "gyms-fitness-studios" },
+    { name: "Education & Training", icon: <Briefcase size={20} />, slug: "education-training" },
+    { name: "Rental & Property Businesses", icon: <Key size={20} />, slug: "rental-property-businesses" },
+    { name: "Marketing & Advertising", icon: <Megaphone size={20} />, slug: "marketing-advertising" }
 ];
 
 export const IndustryMarquee = () => {
@@ -20,16 +22,21 @@ export const IndustryMarquee = () => {
             <div className="industries-grid" style={{ paddingBottom: '30px', paddingTop: '10px' }}>
                 <div className="industries-wrap">
                     {industries.map((item, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="industry-pill"
-                            >
+                        const pillContent = (
+                            <div className="industry-pill">
                                 <div className="pill-content">
                                     <span className="pill-icon">{item.icon}</span>
                                     <span className="pill-name">{item.name}</span>
                                 </div>
                             </div>
+                        );
+                        
+                        return item.slug ? (
+                            <Link key={index} href={`/industries/${item.slug}`} style={{ textDecoration: 'none' }}>
+                                {pillContent}
+                            </Link>
+                        ) : (
+                            <div key={index}>{pillContent}</div>
                         );
                     })}
                 </div>
@@ -60,6 +67,8 @@ export const IndustryMarquee = () => {
                     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
                     box-shadow: 0 4px 12px rgba(0,0,0,0.03);
                     user-select: none;
+                    cursor: pointer;
+                    color: #1d1d1f;
                 }
                 
                 .industry-pill:hover {
