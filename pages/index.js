@@ -95,6 +95,20 @@ export default function Home() {
                 </div>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
+                        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                            <span style={{
+                                display: 'inline-block',
+                                background: '#e8f2fc',
+                                color: '#0071e3',
+                                padding: '6px 16px',
+                                borderRadius: '20px',
+                                fontSize: '0.9rem',
+                                fontWeight: '600',
+                                letterSpacing: '0.5px'
+                            }}>
+                                Automation starts from just £79
+                            </span>
+                        </div>
                         <h1 style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '0.2em' }}>
                             <AnimatedText text="Automation Personalised For" />
                             <AnimatedTextCycle 
