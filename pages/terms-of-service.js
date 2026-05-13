@@ -6,6 +6,12 @@ export default function TermsOfService() {
         <>
             <Head>
                 <title>Terms of Service | Automaitee AI</title>
+                <meta name="description" content="Review Automaitee's terms of service covering your rights, our obligations, and the conditions of using our AI automation services." />
+                <meta property="og:title" content="Terms of Service | Automaitee AI" />
+                <meta property="og:description" content="Review Automaitee's terms of service covering your rights, our obligations, and the conditions of using our AI automation services." />
+                <meta property="og:url" content="https://www.automaitee.com/terms-of-service" />
+                <meta name="twitter:title" content="Terms of Service | Automaitee AI" />
+                <meta name="twitter:description" content="Review Automaitee's terms of service covering your rights, our obligations, and the conditions of using our AI automation services." />
             </Head>
 
             <div className="container" style={{ paddingTop: '120px', paddingBottom: '60px' }}>

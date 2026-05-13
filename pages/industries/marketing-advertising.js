@@ -6,7 +6,39 @@ export default function MarketingAdvertisingAutomation() {
         <>
             <Head>
                 <title>Marketing & Advertising Automation Solutions | Automaitee</title>
-                <meta name="description" content="Automate social media, email campaigns, analytics, customer segmentation, and ad spend optimization for marketing agencies, freelancers, and SMBs with Automaitee." />
+                <meta name="description" content="Automate social media, email campaigns, analytics, and ad spend optimisation for marketing agencies and SMBs. AI-powered automation by Automaitee." />
+                <meta property="og:title" content="Marketing & Advertising Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Automate social media, email campaigns, analytics, and ad spend optimisation for marketing agencies and SMBs. AI-powered automation by Automaitee." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/marketing-advertising" />
+                <meta name="twitter:title" content="Marketing & Advertising Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Automate social media, email campaigns, analytics, and ad spend optimisation for marketing agencies and SMBs. AI-powered automation by Automaitee." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Marketing & Advertising Automation",
+                            "description": "Automate social media, email campaigns, analytics, and ad spend optimisation for marketing agencies and SMBs. AI-powered automation by Automaitee.",
+                            "serviceType": "AI Marketing Automation",
+                            "url": "https://www.automaitee.com/industries/marketing-advertising",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

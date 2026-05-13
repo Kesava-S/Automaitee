@@ -42,14 +42,20 @@ function MyApp({ Component, pageProps }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/logo.png" />
 
+                {/* Canonical Tag */}
+                <link 
+                    rel="canonical" 
+                    href={`https://www.automaitee.com${router.asPath.split('?')[0] === '/' ? '/' : router.asPath.split('?')[0].replace(/\/$/, '')}`} 
+                />
+
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Automaitee AI Digital Automation" />
-                <meta property="og:image" content="https://automaitee.com/logo.png" />
+                <meta property="og:image" content="https://www.automaitee.com/og-image.png" />
 
                 {/* Twitter */}
-                <meta name="twitter:card" content="summary" />
-                <meta name="twitter:image" content="https://automaitee.com/logo.png" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://www.automaitee.com/og-image.png" />
             </Head>
 
             {/* Google Tag (gtag.js) */}
@@ -175,8 +181,8 @@ function MyApp({ Component, pageProps }) {
                                 <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Services</h4>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                                     <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Full Funnel Systems</Link>
-                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Starter Package</Link>
-                                    <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Pro Package</Link>
+                                    <Link href="https://www.automaitee.com/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Starter Package</Link>
+                                    <Link href="https://www.automaitee.com/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Pro Package</Link>
                                     <Link href="/industries/beauty-salons" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>SilentChurn for Salons</Link>
                                 </div>
                             </div>

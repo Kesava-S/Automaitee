@@ -6,8 +6,40 @@ export default function EducationTrainingAutomation() {
         <>
             <Head>
                 <title>Education & Training Automation Solutions | Automaitee</title>
-                <meta name="description" content="Automate enrolment, fee processing, attendance, online course delivery, and student engagement for tutoring centres, coaching institutes, and language schools with Automaitee." />
+                <meta name="description" content="Automate enrolment, attendance, fee processing, and student engagement for tutoring centres and coaching institutes. Education automation by Automaitee." />
                 <meta name="keywords" content="Education automation solutions, Tutoring centre workflow automation, LMS automation, Online course delivery automation, Student enrolment automation, Attendance tracking automation, Automated notifications for students" />
+                <meta property="og:title" content="Education & Training Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Automate enrolment, attendance, fee processing, and student engagement for tutoring centres and coaching institutes. Education automation by Automaitee." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/education-training" />
+                <meta name="twitter:title" content="Education & Training Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Automate enrolment, attendance, fee processing, and student engagement for tutoring centres and coaching institutes. Education automation by Automaitee." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Education & Training Automation",
+                            "description": "Automate enrolment, attendance, fee processing, and student engagement for tutoring centres and coaching institutes. Education automation by Automaitee.",
+                            "serviceType": "AI Business Automation",
+                            "url": "https://www.automaitee.com/industries/education-training",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

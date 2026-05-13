@@ -6,7 +6,39 @@ export default function RentalPropertyBusinessAutomation() {
         <>
             <Head>
                 <title>Rental & Property Business Automation Solutions | Automaitee</title>
-                <meta name="description" content="Automate lead management, tenant onboarding, property listings, bookings, and payments for real estate agencies, rental businesses, and property managers with Automaitee." />
+                <meta name="description" content="Automate lead management, tenant onboarding, property listings, and payments for estate agencies and property managers. Built by Automaitee." />
+                <meta property="og:title" content="Rental & Property Business Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Automate lead management, tenant onboarding, property listings, and payments for estate agencies and property managers. Built by Automaitee." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/rental-property-businesses" />
+                <meta name="twitter:title" content="Rental & Property Business Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Automate lead management, tenant onboarding, property listings, and payments for estate agencies and property managers. Built by Automaitee." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Rental & Property Business Automation",
+                            "description": "Automate lead management, tenant onboarding, property listings, and payments for estate agencies and property managers. Built by Automaitee.",
+                            "serviceType": "AI Business Automation",
+                            "url": "https://www.automaitee.com/industries/rental-property-businesses",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

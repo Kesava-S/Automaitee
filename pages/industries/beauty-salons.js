@@ -9,6 +9,38 @@ export default function BeautySalons() {
             <Head>
                 <title>SilentChurn for Beauty Salons | Automaitee</title>
                 <meta name="description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <meta property="og:title" content="SilentChurn for Beauty Salons | Automaitee" />
+                <meta property="og:description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/beauty-salons" />
+                <meta name="twitter:title" content="SilentChurn for Beauty Salons | Automaitee" />
+                <meta name="twitter:description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Customer Retention Automation for Beauty Salons",
+                            "description": "We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet.",
+                            "serviceType": "AI Marketing Automation",
+                            "url": "https://www.automaitee.com/industries/beauty-salons",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             {/* HERO / RO SECTION */}

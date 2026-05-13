@@ -6,7 +6,39 @@ export default function HospitalityAutomation() {
         <>
             <Head>
                 <title>Hospitality & Food Services Automation Solutions | Automaitee</title>
-                <meta name="description" content="Custom automation solutions for hotels, restaurants, cafes, and boutique hospitality businesses. Streamline bookings, staff schedules, POS, and guest communication with Automaitee." />
+                <meta name="description" content="Custom automation for hotels, restaurants, and cafes in London. Streamline bookings, staff schedules, POS, and guest communication with Automaitee." />
+                <meta property="og:title" content="Hospitality & Food Services Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Custom automation for hotels, restaurants, and cafes in London. Streamline bookings, staff schedules, POS, and guest communication with Automaitee." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/hospitality-food-services" />
+                <meta name="twitter:title" content="Hospitality & Food Services Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Custom automation for hotels, restaurants, and cafes in London. Streamline bookings, staff schedules, POS, and guest communication with Automaitee." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Hospitality & Food Services Automation",
+                            "description": "Custom automation for hotels, restaurants, and cafes in London. Streamline bookings, staff schedules, POS, and guest communication with Automaitee.",
+                            "serviceType": "AI Business Automation",
+                            "url": "https://www.automaitee.com/industries/hospitality-food-services",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

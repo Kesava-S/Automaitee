@@ -24,7 +24,7 @@ export default function ServicePage({ service }) {
 
                 <meta property="og:title" content={`${service.title} | Automaitee AI`} />
                 <meta property="og:description" content={service.description} />
-                <meta property="og:url" content={`https://automaitee.com/services/${service.slug}`} />
+                <meta property="og:url" content={`https://www.automaitee.com/services/${service.slug}`} />
 
                 <meta name="twitter:title" content={`${service.title} | Automaitee AI`} />
                 <meta name="twitter:description" content={service.description} />
@@ -40,7 +40,7 @@ export default function ServicePage({ service }) {
                             "provider": {
                                 "@type": "Organization",
                                 "name": "Automaitee AI",
-                                "url": "https://automaitee.com"
+                                "url": "https://www.automaitee.com"
                             },
                             "areaServed": "Global",
                             "hasOfferCatalog": {

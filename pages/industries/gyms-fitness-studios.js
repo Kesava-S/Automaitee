@@ -6,7 +6,39 @@ export default function GymFitnessStudioAutomation() {
         <>
             <Head>
                 <title>Gym & Fitness Studio Automation Solutions | Automaitee</title>
-                <meta name="description" content="Streamline memberships, class bookings, trainer schedules, and client communication with Automaitee’s custom automation solutions for gyms and fitness studios." />
+                <meta name="description" content="Streamline memberships, class bookings, and client communication for gyms and fitness studios. Custom automation solutions by Automaitee, London." />
+                <meta property="og:title" content="Gym & Fitness Studio Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Streamline memberships, class bookings, and client communication for gyms and fitness studios. Custom automation solutions by Automaitee, London." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/gyms-fitness-studios" />
+                <meta name="twitter:title" content="Gym & Fitness Studio Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Streamline memberships, class bookings, and client communication for gyms and fitness studios. Custom automation solutions by Automaitee, London." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Gym & Fitness Studio Automation",
+                            "description": "Streamline memberships, class bookings, and client communication for gyms and fitness studios. Custom automation solutions by Automaitee, London.",
+                            "serviceType": "AI Business Automation",
+                            "url": "https://www.automaitee.com/industries/gyms-fitness-studios",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

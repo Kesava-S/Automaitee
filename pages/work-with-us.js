@@ -74,6 +74,11 @@ export default function WorkWithUs() {
             <Head>
                 <title>Work With Us | Automaitee Digital</title>
                 <meta name="description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
+                <meta property="og:title" content="Work With Us | Automaitee Digital" />
+                <meta property="og:description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
+                <meta property="og:url" content="https://www.automaitee.com/work-with-us" />
+                <meta name="twitter:title" content="Work With Us | Automaitee Digital" />
+                <meta name="twitter:description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>

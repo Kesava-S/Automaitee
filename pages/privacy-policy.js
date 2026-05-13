@@ -5,6 +5,12 @@ export default function PrivacyPolicy() {
         <>
             <Head>
                 <title>Privacy Policy | Automaitee AI</title>
+                <meta name="description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
+                <meta property="og:title" content="Privacy Policy | Automaitee AI" />
+                <meta property="og:description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
+                <meta property="og:url" content="https://www.automaitee.com/privacy-policy" />
+                <meta name="twitter:title" content="Privacy Policy | Automaitee AI" />
+                <meta name="twitter:description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
             </Head>
 
             <div className="container" style={{ paddingTop: '120px', paddingBottom: '60px' }}>

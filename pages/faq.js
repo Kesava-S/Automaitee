@@ -8,6 +8,28 @@ export default function FAQ() {
             <Head>
                 <title>Frequently Asked Questions | Automaitee AI</title>
                 <meta name="description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
+                <meta property="og:title" content="Frequently Asked Questions | Automaitee AI" />
+                <meta property="og:description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
+                <meta property="og:url" content="https://www.automaitee.com/faq" />
+                <meta name="twitter:title" content="Frequently Asked Questions | Automaitee AI" />
+                <meta name="twitter:description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": faqs.map(faq => ({
+                                "@type": "Question",
+                                "name": faq.question,
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": faq.answer
+                                }
+                            }))
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px', background: 'transparent' }}>

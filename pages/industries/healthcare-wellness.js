@@ -6,7 +6,39 @@ export default function HealthcareWellnessAutomation() {
         <>
             <Head>
                 <title>Healthcare & Wellness Automation Solutions | Automaitee</title>
-                <meta name="description" content="Streamline clinic, dental, physiotherapy, and wellness operations with custom automation. Automate appointments, EHR, billing, inventory, and telehealth workflows with Automaitee." />
+                <meta name="description" content="Automate appointments, billing, and patient communication for clinics, dental practices, and wellness centres. Custom healthcare automation by Automaitee." />
+                <meta property="og:title" content="Healthcare & Wellness Automation Solutions | Automaitee" />
+                <meta property="og:description" content="Automate appointments, billing, and patient communication for clinics, dental practices, and wellness centres. Custom healthcare automation by Automaitee." />
+                <meta property="og:url" content="https://www.automaitee.com/industries/healthcare-wellness" />
+                <meta name="twitter:title" content="Healthcare & Wellness Automation Solutions | Automaitee" />
+                <meta name="twitter:description" content="Automate appointments, billing, and patient communication for clinics, dental practices, and wellness centres. Custom healthcare automation by Automaitee." />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": "Healthcare & Wellness Automation",
+                            "description": "Automate appointments, billing, and patient communication for clinics, dental practices, and wellness centres. Custom healthcare automation by Automaitee.",
+                            "serviceType": "AI Healthcare Automation",
+                            "url": "https://www.automaitee.com/industries/healthcare-wellness",
+                            "provider": {
+                                "@type": "LocalBusiness",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "London",
+                                    "addressCountry": "GB"
+                                }
+                            },
+                            "areaServed": {
+                                "@type": "City",
+                                "name": "London"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

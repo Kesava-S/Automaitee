@@ -7,47 +7,7 @@ import { SparklesCore } from '../components/ui/sparkles'
 import AnimatedTextCycle from '../components/ui/animated-text-cycle'
 
 
-import { motion } from 'framer-motion';
 
-const AnimatedText = ({ text, delayOffset = 0 }) => {
-    const wordVariants = {
-        hidden: { 
-            y: -20,
-            opacity: 0,
-            filter: "blur(8px)"
-        },
-        visible: (i) => ({
-            y: 0,
-            opacity: 1,
-            filter: "blur(0px)",
-            transition: {
-                delay: delayOffset + i * 0.1,
-                duration: 0.4,
-                ease: "easeOut"
-            }
-        })
-    };
-
-    return text.split(" ").map((word, i) => (
-        <motion.span
-            key={i}
-            custom={i}
-            initial="hidden"
-            animate="visible"
-            variants={wordVariants}
-            style={{
-                display: "inline-block",
-                marginRight: "0.25em",
-                background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent"
-            }}
-        >
-            {word}
-        </motion.span>
-    ));
-};
 
 export default function Home() {
     return (
@@ -58,7 +18,7 @@ export default function Home() {
 
                 <meta property="og:title" content="Automaitee | AI & Business Automation" />
                 <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
-                <meta property="og:url" content="https://automaitee.com/" />
+                <meta property="og:url" content="https://www.automaitee.com/" />
 
                 <meta name="twitter:title" content="Automaitee | AI & Business Automation" />
                 <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
@@ -70,11 +30,14 @@ export default function Home() {
                             "@context": "https://schema.org",
                             "@type": "Organization",
                             "name": "Automaitee AI Digital Automation",
-                            "url": "https://automaitee.com",
-                            "logo": "https://automaitee.com/logo.png",
+                            "url": "https://www.automaitee.com",
+                            "logo": "https://www.automaitee.com/og-image.png",
                             "description": "Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.",
                             "email": "support@automaitee.com",
-                            "sameAs": []
+                            "sameAs": [
+                                    "https://www.facebook.com/profile.php?id=61588731975851",
+                                    "https://www.instagram.com/automaitee_digital/"
+                                ]
                         })
                     }}
                 />
@@ -96,13 +59,15 @@ export default function Home() {
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Reveal>
 
-                        <h1 style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '0.2em' }}>
-                            <AnimatedText text="Automation Personalised For" />
-                            <AnimatedTextCycle 
-                                words={['Small', 'Micro', 'Owner-Led']} 
-                                style={{ background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-                            />
-                            <AnimatedText text="Businesses in London" delayOffset={0.3} />
+                        <h1 style={{ 
+                            background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", 
+                            WebkitBackgroundClip: "text", 
+                            backgroundClip: "text", 
+                            WebkitTextFillColor: "transparent",
+                            maxWidth: "1000px",
+                            margin: "0 auto"
+                        }}>
+                            Automation Personalised For Small Businesses in London
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>

@@ -36,6 +36,7 @@ export default function Services() {
         <>
             <Head>
                 <title>Done-For-You Marketing Automation | Automaitee</title>
+                <meta name="description" content="Done-for-you AI marketing automation for London small businesses. Generate leads, respond instantly, and track results automatically — starts from £79/month." />
             </Head>
 
             {/* HERO SECTION */}

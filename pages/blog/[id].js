@@ -15,6 +15,44 @@ export default function BlogPost({ blog }) {
             <Head>
                 <title>{blog.metaTitle || `${blog.title} | Automaitee Blog`}</title>
                 <meta name="description" content={blog.metaDescription || blog.excerpt} />
+                <meta property="og:title" content={blog.metaTitle || `${blog.title} | Automaitee Blog`} />
+                <meta property="og:description" content={blog.metaDescription || blog.excerpt} />
+                <meta property="og:url" content={`https://www.automaitee.com/blog/${blog.id}`} />
+                <meta property="og:image" content={blog.image} />
+                <meta name="twitter:title" content={blog.metaTitle || `${blog.title} | Automaitee Blog`} />
+                <meta name="twitter:description" content={blog.metaDescription || blog.excerpt} />
+                <meta name="twitter:image" content={blog.image} />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Article",
+                            "headline": blog.title,
+                            "description": blog.metaDescription || blog.excerpt,
+                            "image": `https://www.automaitee.com${blog.image}`,
+                            "datePublished": blog.date,
+                            "author": {
+                                "@type": "Organization",
+                                "name": blog.author,
+                                "url": "https://www.automaitee.com"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Automaitee",
+                                "url": "https://www.automaitee.com",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "https://www.automaitee.com/logo.png"
+                                }
+                            },
+                            "mainEntityOfPage": {
+                                "@type": "WebPage",
+                                "@id": `https://www.automaitee.com/blog/${blog.id}`
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <article style={{ paddingTop: '120px', paddingBottom: '100px' }}>
