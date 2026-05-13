@@ -451,7 +451,7 @@ export const blogs = [
     },
     {
         id: "ai-for-small-businesses",
-        title: "AI for Small Businesses: Know using It Across Your Business with your staffs",
+        title: "AI for Small Businesses: How to Use It Across Every Area of Your Business",
         excerpt: "Discover a practical method to identify where to incorporate AI in your work, providing an overview of AI applications in common business areas.",
         date: "March 3, 2026",
         author: "Automaitee Team",

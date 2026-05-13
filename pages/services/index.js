@@ -44,7 +44,7 @@ export default function Services() {
                 <div className="container">
                     <Reveal width="100%">
                         <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1.5rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-                            Done-For-You
+                            Done-For-You AI Marketing Automation for London Small Businesses
                         </h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
@@ -352,7 +352,7 @@ export default function Services() {
                             Every automation we build uses tools you already have like Google, Gmail, WhatsApp, connected by custom workflows we build specifically for your business. No unnecessary subscriptions. No software you pay for but never master. No digital clutter.
                         </p>
                         <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '1.5rem', lineHeight: '1.7' }}>
-                            This is not just about saving you money — though you will save between £300 and £800 per month compared to a typical agency tech stack. It is about building systems that are lightweight, transparent, and genuinely useful rather than impressive on paper.
+                            This is not just about saving you money — though you will save between £300 and £800 per month compared to a typical agency and SaaS tool stack. It is about building systems that are lightweight, transparent, and genuinely useful rather than impressive on paper.
                         </p>
                         <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '3rem', lineHeight: '1.7' }}>
                             Fewer tools means fewer things to break. Fewer logins means less confusion. And a business running on lean, purposeful automation is a business that scales cleanly.

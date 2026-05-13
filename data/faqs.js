@@ -12,7 +12,7 @@ export const faqs = [
     {
         id: 3,
         question: "What is your pricing structure?",
-        answer: "We offer purely custom quotes tailored to each business’s unique needs. Our focus is on supporting SMEs, so we work closely with you to create a solution that’s both effective and affordable."
+        answer: "We offer transparent, affordable pricing starting from £79/month for our Micro Automation services. Full Funnel Systems start from £600/month. All plans are tailored to your business — book a free consultation and we’ll recommend exactly what you need."
     },
     {
         id: 4,

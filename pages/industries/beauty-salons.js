@@ -51,7 +51,7 @@ export default function BeautySalons() {
                             For UK beauty salons — nails, hair, lashes & brows
                         </p>
                         <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '800', marginBottom: '1.5rem', lineHeight: '1.1', color: '#1d1d1f' }}>
-                            Your regulars are quietly leaving.<br/>We bring them back — automatically.
+                            Beauty Salon Customer Retention — Automated WhatsApp Win-Back
                         </h1>
                         <p style={{ fontSize: '1.25rem', color: '#515154', maxWidth: '800px', margin: '0 auto 3rem', lineHeight: '1.6' }}>
                             SilentChurn watches your customer visit patterns around the clock. The moment a regular goes quiet, it sends them a warm, personalised WhatsApp message — written by AI, sent automatically, timed perfectly. No apps to manage. No chasing. No extra work for you.
@@ -135,7 +135,7 @@ export default function BeautySalons() {
                 <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
                     <Reveal width="100%">
                         <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '4rem', textAlign: 'center' }}>
-                            Set it up once. It runs forever.
+                            Set it up once. We monitor it for you.
                         </h2>
                     </Reveal>
 

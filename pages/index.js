@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Automaitee | Digital AI Automation</title>
+                <title>AI Marketing Automation for London Small Businesses | Automaitee</title>
                 <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
                 <meta property="og:title" content="Automaitee | AI & Business Automation" />
@@ -93,6 +93,11 @@ export default function Home() {
                             />
                         </div>
                     </Reveal>
+                    <Reveal delay={0.6}>
+                        <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem' }}>
+                            Save 10+ hours a week on marketing operations — without hiring a team.
+                        </p>
+                    </Reveal>
                     <Reveal delay={0.7} width="100%">
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
                             <Link href="/services?openMicro=true" style={{
@@ -112,10 +117,10 @@ export default function Home() {
                                 View Services
                             </Link>
                             <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
-                                explore our talents
+                                Hire AI Automation Talent
                             </Link>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem' }}>
-                                Support Venture by Automaitee
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem', maxWidth: '400px', textAlign: 'center', lineHeight: '1.5' }}>
+                                Kondamaal — hire monitored remote freelancers for your AI automation, quality-assured by an expert mentor.
                             </p>
                         </div>
                     </Reveal>
@@ -133,7 +138,7 @@ export default function Home() {
                                 We build intelligent AI agents that work alongside your team, automating routine tasks and helping your business operate faster, smarter, and more efficiently.
                             </p>
                             <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '3rem' }}>
-                                To explore how automation can transform your workflows, visit our Services page to discover the solutions we offer. You can then outline your specific automation requirements and book a consultation by submitting the form. Our automation consultants will review your needs and get back to you promptly with tailored recommendations.
+                                To explore how automation can transform your workflows, visit our Services page to discover the solutions we offer. You can then outline your specific automation requirements and book a consultation by submitting the form. Our automation engineers will review your needs and get back to you promptly with tailored recommendations.
                             </p>
                             <Link href="/services" className="cta-button">
                                 View Services
@@ -149,7 +154,7 @@ export default function Home() {
                     <Reveal width="100%">
                         <div style={{ textAlign: 'center' }}>
                             <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Why Automaitee</h2>
-                            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '4rem' }}>AI Automation partner for your business</p>
+                            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '4rem' }}>AI Marketing Automation Technology for London Small Businesses</p>
                         </div>
                     </Reveal>
                     <div className="grid">
@@ -169,6 +174,12 @@ export default function Home() {
                             <div className="card" style={{ height: '100%' }}>
                                 <h3>Transparent</h3>
                                 <p>Workflows are transparent and personalized for your business.</p>
+                            </div>
+                        </Reveal>
+                        <Reveal delay={0.6}>
+                            <div className="card" style={{ height: '100%' }}>
+                                <h3>60-Second Lead Response</h3>
+                                <p>Every lead gets a personalised reply within 60 seconds — automatically by email and WhatsApp. No more losing customers to a slow reply.</p>
                             </div>
                         </Reveal>
                     </div>
