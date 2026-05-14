@@ -74,7 +74,7 @@ export default function BeautySalons() {
                             </div>
                         </div>
 
-                        <Link href="https://wa.me/447700900000?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ fontSize: '1.1rem', padding: '16px 32px' }}>
+                        <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ fontSize: '1.1rem', padding: '16px 32px' }}>
                             WhatsApp us to get started →
                         </Link>
                     </Reveal>
@@ -224,7 +224,7 @@ export default function BeautySalons() {
                                 For a salon charging £60 per appointment, recovering just one client per month more than pays for itself. Most salons recover 4 to 6 per month.
                             </div>
 
-                            <Link href="https://wa.me/447700900000?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ display: 'block', width: '100%', fontSize: '1.1rem', padding: '18px' }}>
+                            <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ display: 'block', width: '100%', fontSize: '1.1rem', padding: '18px' }}>
                                 WhatsApp us to get started →
                             </Link>
                         </div>
@@ -315,7 +315,7 @@ export default function BeautySalons() {
                         <p style={{ fontSize: '1.2rem', marginBottom: '3rem', opacity: 0.9, lineHeight: '1.6' }}>
                             Join beauty salons across the UK who are quietly winning back customers every single week — without lifting a finger.
                         </p>
-                        <Link href="https://wa.me/447700900000?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" style={{ 
+                        <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" style={{ 
                             display: 'inline-block',
                             background: '#fff', 
                             color: '#0071e3', 

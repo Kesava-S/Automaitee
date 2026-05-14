@@ -203,6 +203,7 @@ function MyApp({ Component, pageProps }) {
                             <div style={{ display: 'flex', gap: '2rem' }}>
                                 <Link href="/privacy-policy" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Privacy Policy</Link>
                                 <Link href="/terms-of-service" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Terms of Service</Link>
+                                <Link href="/refund-policy" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Refund Policy</Link>
                             </div>
                         </div>
                     </div>
