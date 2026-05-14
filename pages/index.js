@@ -5,6 +5,7 @@ import { Reveal } from '../components/Reveal'
 import { IndustryMarquee } from '../components/IndustryMarquee'
 import { SparklesCore } from '../components/ui/sparkles'
 import AnimatedTextCycle from '../components/ui/animated-text-cycle'
+import AIMascotSection from '../components/AIMascotSection'
 
 
 
@@ -129,24 +130,7 @@ export default function Home() {
 
             {/* The Rest of the Page acts as a curtain raising over the Hero */}
             <div className="hero-reveal-container" style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', boxShadow: '0 -20px 40px rgba(0,0,0,0.05)' }}>
-                <section className="services-section" style={{ paddingTop: '6rem' }}>
-                    <div className="container">
-                    <Reveal width="100%">
-                        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-                            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>What we automate</h2>
-                            <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem' }}>
-                                We build intelligent AI agents that work alongside your team, automating routine tasks and helping your business operate faster, smarter, and more efficiently.
-                            </p>
-                            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '3rem' }}>
-                                To explore how automation can transform your workflows, visit our Services page to discover the solutions we offer. You can then outline your specific automation requirements and book a consultation by submitting the form. Our automation engineers will review your needs and get back to you promptly with tailored recommendations.
-                            </p>
-                            <Link href="/services" className="cta-button">
-                                View Services
-                            </Link>
-                        </div>
-                    </Reveal>
-                </div>
-            </section>
+                <AIMascotSection />
 
 
             <section className="services-section">
