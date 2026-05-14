@@ -27,7 +27,8 @@ export default function TermsOfService() {
 
                     <section style={{ marginBottom: '2rem' }}>
                         <h2 style={{ fontSize: '1.5rem', color: 'var(--foreground)', marginBottom: '1rem' }}>2. Services</h2>
-                        <p>Automaitee AI provides digital automation services, including marketing and workflow automation tools. Some services are offered on a recurring monthly subscription basis. Clients agree to automatic renewal unless cancelled in accordance with our <Link href="/refund-policy" style={{ color: '#0071e3' }}>Refund &amp; Cancellation Policy</Link>.</p>
+                        <p>Automaitee AI provides digital automation services, including marketing and workflow automation tools.</p>
+                        <p style={{ marginTop: '1rem' }}>Some services are provided on a recurring monthly subscription basis. By purchasing a subscription, clients authorise automatic renewal and billing each month until cancelled in accordance with our <Link href="/refund-policy" style={{ color: '#0071e3' }}>Refund &amp; Cancellation Policy</Link>.</p>
                     </section>
 
                     <section style={{ marginBottom: '2rem' }}>
