@@ -192,7 +192,7 @@ function MyApp({ Component, pageProps }) {
                                 <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Contact</h4>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#a1a1aa', fontSize: '0.95rem' }}>
                                     <a href="mailto:support@automaitee.com" style={{ color: '#a1a1aa', textDecoration: 'none' }}>support@automaitee.com</a>
-                                    <p style={{ margin: 0, lineHeight: '1.6' }}>Serving businesses in London, United Kingdom<br />India-based · <a href="mailto:support@automaitee.com" style={{ color: '#a1a1aa', textDecoration: 'none' }}>support@automaitee.com</a></p>
+                                    <p style={{ margin: 0, lineHeight: '1.6' }}>Serving businesses in London, United Kingdom<br />India-based</p>
                                     <a href="/book-consultation" onClick={openBookingModal} style={{ color: '#0071e3', textDecoration: 'none', marginTop: '0.5rem', display: 'inline-block', fontWeight: '500' }}>Book a Consultation &rarr;</a>
                                 </div>
                             </div>
