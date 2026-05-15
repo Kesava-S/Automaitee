@@ -413,6 +413,16 @@ function ActivationPhase() {
 }
 
 /* ─── Phase 3: AUTO-RUN ────────────────────────────────────────────────── */
+// Tasks completed silently by one system — no individual tool branding
+const AUTORUN_TASKS = [
+  { task: 'Customer inquiry',   done: 'Replied in 45 seconds',   left: '60%', top:  '8%', delay: 0.0  },
+  { task: 'Missed call',        done: 'Follow-up sent',           left:  '5%', top: '13%', delay: 0.7  },
+  { task: 'New lead captured',  done: 'Added to pipeline',        left: '68%', top: '46%', delay: 1.4  },
+  { task: 'Loyalty offer due',  done: 'Campaign triggered',       left:  '3%', top: '50%', delay: 2.1  },
+  { task: 'Appointment missed', done: 'Rescheduled automatically',left: '54%', top: '68%', delay: 2.8  },
+  { task: 'Weekly report',      done: 'Generated & delivered',    left:  '5%', top: '72%', delay: 3.5  },
+]
+
 function AutorunPhase() {
   return (
     <motion.div
@@ -420,65 +430,46 @@ function AutorunPhase() {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
-      {/* Organised platform badges in ring */}
-      {AUTO_POS.map((pos, i) => {
-        const p = PLATFORMS[i % PLATFORMS.length]
-        return (
-          <motion.div key={i}
-            initial={{ opacity: 0, scale: 0.7, y: 12 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -4, 0] }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.5, delay: i * 0.1, ease: EASE,
-              y: { duration: 2.6 + i * 0.25, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 },
-            }}
-            style={{
-              position: 'absolute', left: pos.left, top: pos.top, zIndex: 15,
-              display: 'flex', alignItems: 'center', gap: '5px',
-              background: 'white',
-              border: `1px solid ${p.color}28`,
-              borderLeft: `3px solid ${p.color}`,
-              borderRadius: '9px', padding: '5px 8px',
-              boxShadow: `0 2px 10px ${p.color}18`,
-              minWidth: '72px',
-            }}
-          >
-            <span style={{ fontSize: '12px' }}>{p.icon}</span>
-            <div>
-              <div style={{ fontSize: '8.5px', fontWeight: 700, color: '#1d1d1f', lineHeight: 1.2 }}>{p.name}</div>
-              <div style={{ fontSize: '7.5px', color: '#34c759', fontWeight: 600, marginTop: '1px' }}>✓ Auto-handled</div>
-            </div>
-          </motion.div>
-        )
-      })}
+      {/* Ambient pulse — one unified system heartbeat */}
+      {[0, 1.1, 2.2].map(delay => (
+        <motion.div key={delay}
+          animate={{ scale: [1, 1.6, 1], opacity: [0.12, 0, 0.12] }}
+          transition={{ duration: 3.3, delay, repeat: Infinity, ease: 'easeOut' }}
+          style={{
+            position: 'absolute', left: '50%', top: '50%',
+            transform: 'translate(-50%,-50%)',
+            width: '200px', height: '200px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,113,227,0.22) 0%, transparent 70%)',
+            zIndex: 7,
+          }}
+        />
+      ))}
 
-      {/* Smooth workflow connection lines (SVG overlay) */}
-      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 10, pointerEvents: 'none' }}
-        viewBox="0 0 100 100" preserveAspectRatio="none"
-      >
-        {AUTO_POS.map((pos, i) => {
-          const lx = parseFloat(pos.left)
-          const ly = parseFloat(pos.top)
-          return (
-            <motion.line key={i}
-              x1="50" y1="50" x2={lx + 5} y2={ly + 5}
-              stroke={PLATFORMS[i % PLATFORMS.length].color}
-              strokeWidth="0.35"
-              strokeOpacity="0.35"
-              strokeDasharray="2 3"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.08, ease: EASE }}
-            />
-          )
-        })}
-      </svg>
+      {/* Floating task-completion chips — no tool logos, just outcomes */}
+      {AUTORUN_TASKS.map((t, i) => (
+        <motion.div key={i}
+          animate={{ opacity: [0, 1, 1, 0], y: [8, 0, -5, -14], scale: [0.88, 1, 1, 0.93] }}
+          transition={{ duration: 3.4, delay: t.delay, repeat: Infinity, repeatDelay: 0.5, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute', left: t.left, top: t.top, zIndex: 15,
+            background: 'white', borderRadius: '10px',
+            border: '1px solid rgba(0,113,227,0.13)',
+            borderLeft: '3px solid #0071e3',
+            padding: '6px 10px',
+            boxShadow: '0 2px 12px rgba(0,113,227,0.1)',
+            minWidth: '116px',
+          }}
+        >
+          <div style={{ fontSize: '7.5px', color: '#6e6e73', fontWeight: 500, marginBottom: '2px' }}>{t.task}</div>
+          <div style={{ fontSize: '8.5px', color: '#34c759', fontWeight: 700 }}>✓ {t.done}</div>
+        </motion.div>
+      ))}
 
-      {/* "All automated" status */}
+      {/* "24/7" status chip */}
       <motion.div
         initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.4, delay: 1.0 }}
+        transition={{ duration: 0.4, delay: 0.8 }}
         style={{
           position: 'absolute', left: '50%', top: '68%',
           transform: 'translateX(-50%)', zIndex: 25,
@@ -489,7 +480,7 @@ function AutorunPhase() {
         }}
       >
         <span style={{ fontSize: '10px', color: '#16a34a', fontWeight: 600 }}>
-          ✓ All workflows running
+          ✓ One system · zero missed tasks
         </span>
       </motion.div>
     </motion.div>
@@ -497,12 +488,6 @@ function AutorunPhase() {
 }
 
 /* ─── Phase 4: PEACE ───────────────────────────────────────────────────── */
-const PEACE_BADGES = [
-  { p: PLATFORMS[0], left: '72%', top: '18%', dy: 5 },
-  { p: PLATFORMS[2], left: '12%', top: '20%', dy: 6 },
-  { p: PLATFORMS[6], left: '72%', top: '62%', dy: 4 },
-]
-
 function PeacePhase() {
   return (
     <motion.div
@@ -512,74 +497,76 @@ function PeacePhase() {
     >
       {/* Gentle ambient glow */}
       <motion.div
-        animate={{ opacity: [0.18, 0.38, 0.18] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ opacity: [0.15, 0.32, 0.15] }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
         style={{
           position: 'absolute', left: '50%', top: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '260px', height: '260px', borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0,113,227,0.14) 0%, transparent 70%)',
+          width: '270px', height: '270px', borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,113,227,0.13) 0%, transparent 70%)',
           zIndex: 7,
         }}
       />
 
-      {/* Three calm platform badges */}
-      {PEACE_BADGES.map(({ p, left, top, dy }, i) => (
-        <motion.div key={i}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -dy, 0] }}
-          exit={{ opacity: 0 }}
-          transition={{
-            duration: 0.55, delay: i * 0.2, ease: EASE,
-            y: { duration: 3.2 + i * 0.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.3 },
-          }}
-          style={{
-            position: 'absolute', left, top, zIndex: 15,
-            display: 'flex', alignItems: 'center', gap: '5px',
-            background: 'white',
-            border: `1px solid ${p.color}28`,
-            borderLeft: `3px solid ${p.color}`,
-            borderRadius: '9px', padding: '6px 10px',
-            boxShadow: `0 2px 12px ${p.color}15`,
-            minWidth: '80px',
-          }}
-        >
-          <span style={{ fontSize: '13px' }}>{p.icon}</span>
-          <div>
-            <div style={{ fontSize: '8.5px', fontWeight: 700, color: '#1d1d1f', lineHeight: 1.2 }}>{p.name}</div>
-            <div style={{ fontSize: '7.5px', color: '#34c759', fontWeight: 600, marginTop: '1px' }}>✓ Running</div>
-          </div>
-        </motion.div>
-      ))}
-
-      {/* Outcome stat cards */}
+      {/* Outcome stats — pure results, zero tool branding */}
       {[
-        { val: '10+ hrs', label: 'saved weekly',   left: '6%',  top: '54%', color: '#0071e3', delay: 0.6 },
-        { val: '+35%',    label: 'conversions',     left: '70%', top: '44%', color: '#af52de', delay: 0.9 },
+        { val: '10+ hrs', label: 'freed every week',   left:  '5%', top:  '8%', color: '#0071e3', delay: 0.3 },
+        { val: '+35%',    label: 'more conversions',   left: '66%', top:  '8%', color: '#34c759', delay: 0.55 },
+        { val: '0',       label: 'missed leads',       left:  '5%', top: '55%', color: '#af52de', delay: 0.8 },
       ].map(s => (
         <motion.div key={s.label}
-          initial={{ opacity: 0, y: 12, scale: 0.85 }}
+          initial={{ opacity: 0, y: 14, scale: 0.85 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, delay: s.delay, ease: EASE }}
+          transition={{ duration: 0.52, delay: s.delay, ease: EASE }}
           style={{
             position: 'absolute', left: s.left, top: s.top, zIndex: 15,
-            background: 'white', borderRadius: '12px',
+            background: 'white', borderRadius: '13px',
             border: '1px solid rgba(0,0,0,0.055)',
-            boxShadow: `0 4px 20px ${s.color}1a`,
-            padding: '9px 13px', minWidth: '100px',
+            boxShadow: `0 4px 20px ${s.color}18`,
+            padding: '10px 13px', minWidth: '100px',
           }}
         >
-          <div style={{ fontSize: '20px', fontWeight: 800, color: s.color, lineHeight: 1, letterSpacing: '-0.5px' }}>{s.val}</div>
+          <div style={{ fontSize: '22px', fontWeight: 800, color: s.color, lineHeight: 1, letterSpacing: '-0.5px' }}>{s.val}</div>
           <div style={{ fontSize: '9px', color: '#6e6e73', marginTop: '3px', fontWeight: 500 }}>{s.label}</div>
         </motion.div>
       ))}
 
-      {/* Peace status chip */}
+      {/* "Your focus today" card — what the human does now without the tool chaos */}
+      <motion.div
+        initial={{ opacity: 0, x: 16, scale: 0.9 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.55, delay: 1.1, ease: EASE }}
+        style={{
+          position: 'absolute', right: '4%', top: '42%', zIndex: 15,
+          background: 'white', borderRadius: '13px',
+          border: '1px solid rgba(0,113,227,0.12)',
+          boxShadow: '0 4px 20px rgba(0,113,227,0.1)',
+          padding: '10px 12px', minWidth: '118px',
+        }}
+      >
+        <div style={{ fontSize: '8px', color: '#0071e3', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '7px' }}>
+          Your focus today
+        </div>
+        {['Business strategy', 'Client relationships', 'Team growth'].map((item, i) => (
+          <motion.div key={item}
+            initial={{ opacity: 0, x: 6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35, delay: 1.4 + i * 0.18, ease: EASE }}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: i < 2 ? '5px' : 0 }}
+          >
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0071e3', flexShrink: 0 }} />
+            <span style={{ fontSize: '8.5px', color: '#1d1d1f', fontWeight: 500 }}>{item}</span>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Status chip */}
       <motion.div
         initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.45, delay: 1.1 }}
+        transition={{ duration: 0.45, delay: 1.3 }}
         style={{
           position: 'absolute', left: '50%', top: '72%',
           transform: 'translateX(-50%)', zIndex: 25,
@@ -590,7 +577,7 @@ function PeacePhase() {
         }}
       >
         <span style={{ fontSize: '10px', color: '#0071e3', fontWeight: 600 }}>
-          ✦ Automaitee is handling everything
+          ✦ You handle growth. We handle the rest.
         </span>
       </motion.div>
     </motion.div>
