@@ -154,7 +154,7 @@ export default function WorkWithUs() {
                                     <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid #eee' }}>
                                         <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.5' }}>
                                             <strong>Location:</strong> Office in Rajapalayam (Daily commute required)<br/>
-                                            <strong>Deadline:</strong> 15th May 2026
+                                            <strong>Deadline:</strong> 19th May 2026
                                             {job.stipend && <><br/><strong>Stipend:</strong> {job.stipend}</>}
                                         </div>
                                         <div style={{ textAlign: 'center' }}>
