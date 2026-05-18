@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Reveal } from '../../components/Reveal'
 import { Check } from 'lucide-react'
 
-export default function BeautySalons() {
+export default function BeautySalons({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -208,10 +208,13 @@ export default function BeautySalons() {
             <section style={{ padding: '80px 0', backgroundColor: '#fcfcfd' }}>
                 <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
                     <Reveal width="100%">
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '3rem' }}>
-                            Simple, honest pricing.
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.75rem' }}>
+                            Pricing
                         </h2>
-                        
+                        <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '3rem', lineHeight: '1.6' }}>
+                            Own your own customer database in just 3 months.
+                        </p>
+
                         <div style={{ background: '#fff', border: '2px solid #0071e3', borderRadius: '24px', padding: '4rem 2rem', boxShadow: '0 15px 40px rgba(0,113,227,0.1)', maxWidth: '500px', margin: '0 auto' }}>
                             <div style={{ fontSize: '4rem', fontWeight: '800', color: '#1d1d1f', marginBottom: '1rem', lineHeight: '1' }}>
                                 £79<span style={{ fontSize: '1.25rem', color: '#86868b', fontWeight: '500' }}> / month</span>
@@ -219,14 +222,25 @@ export default function BeautySalons() {
                             <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '2rem', lineHeight: '1.6' }}>
                                 Everything included. No setup fee. No long-term contract. Cancel any time.
                             </p>
-                            
+
                             <div style={{ padding: '1.5rem', background: '#f5f5f7', borderRadius: '12px', marginBottom: '2.5rem', fontSize: '0.95rem', color: '#1d1d1f', lineHeight: '1.6' }}>
                                 For a salon charging £60 per appointment, recovering just one client per month more than pays for itself. Most salons recover 4 to 6 per month.
                             </div>
 
-                            <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ display: 'block', width: '100%', fontSize: '1.1rem', padding: '18px' }}>
+                            <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ display: 'block', width: '100%', fontSize: '1.1rem', padding: '18px', marginBottom: '1rem' }}>
                                 WhatsApp us to get started →
                             </Link>
+                            <button
+                                onClick={openBookingModal}
+                                style={{
+                                    display: 'block', width: '100%', fontSize: '1rem', padding: '16px',
+                                    background: 'transparent', color: '#0071e3',
+                                    border: '1.5px solid #0071e3', borderRadius: '980px',
+                                    fontWeight: '600', cursor: 'pointer', letterSpacing: '0.01em',
+                                }}
+                            >
+                                Book a Free Consultation →
+                            </button>
                         </div>
                     </Reveal>
                 </div>
