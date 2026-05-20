@@ -69,7 +69,7 @@ export default function RefundPolicy() {
                 <Reveal>
                     <section style={{ marginBottom: '2.5rem' }}>
                         <h2 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '1rem', color: 'var(--text-primary)' }}>
-                            3. SilentChurn (£79/month)
+                            3. SilentChurn (£49/month)
                         </h2>
                         <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
                             SilentChurn is our entry-level automated retention product for beauty salons. Once the automation has been activated and connected to your systems, <strong>no refund is available for that month's payment</strong>. You may cancel anytime; the service will stop at the beginning of the next billing cycle. There is no lock-in period.

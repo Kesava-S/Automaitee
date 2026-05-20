@@ -112,7 +112,7 @@ export default function Home() {
                                 letterSpacing: '0.5px',
                                 textDecoration: 'none'
                             }}>
-                                Automation starts from just £79
+                                Automation starts from just £49
                             </Link>
                             <Link href="/services" className="cta-button">
                                 View Services
