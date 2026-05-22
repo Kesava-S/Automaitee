@@ -7,8 +7,10 @@ import AdminLayout from '../../components/admin/AdminLayout'
 
 const SERVICES = [
   { label: 'Full Funnel Automation', value: 'book-consultation' },
-  { label: 'Micro Services – SilentChurn', value: 'book-silentchurn' },
+  { label: 'Micro Service - SilentChurn', value: 'book-silentchurn' },
 ]
+
+const SERVICE_LABEL = Object.fromEntries(SERVICES.map(s => [s.value, s.label]))
 
 const STATUSES = ['enquiry', 'confirmed', 'pending', 'cancelled']
 
@@ -121,7 +123,7 @@ export default function AdminConsultations() {
           companyName: modal.row.companyName || '',
           exp: Date.now() + (48 * 60 * 60 * 1000),
           status: modal.status,
-          service: modal.service,
+          service: SERVICE_LABEL[modal.service] || modal.service,
         }),
       })
       if (res.status === 401) {

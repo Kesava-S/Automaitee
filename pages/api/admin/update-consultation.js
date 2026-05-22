@@ -1,8 +1,3 @@
-const SERVICE_ENDPOINTS = {
-  'book-consultation': 'book-consultation',
-  'book-silentchurn': 'book-silentchurn',
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
@@ -18,17 +13,12 @@ export default async function handler(req, res) {
 
   const { rowNumber, name, email, phone, company, bookingDate, bookingTime, duration, companyName, exp, status, service } = req.body || {}
 
-  if (!rowNumber || !status || !service) {
-    return res.status(400).json({ error: 'rowNumber, status and service are required' })
-  }
-
-  const endpoint = SERVICE_ENDPOINTS[service]
-  if (!endpoint) {
-    return res.status(400).json({ error: `Unknown service: ${service}` })
+  if (!rowNumber || !status) {
+    return res.status(400).json({ error: 'rowNumber and status are required' })
   }
 
   try {
-    const response = await fetch(`${webhookBase}/${endpoint}`, {
+    const response = await fetch(`${webhookBase}/book-silentchurn`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +39,7 @@ export default async function handler(req, res) {
     const data = await response.json()
     return res.status(200).json(data)
   } catch (err) {
-    console.error(`[admin/update-consultation] ${endpoint} failed:`, err.message)
+    console.error('[admin/update-consultation] book-silentchurn failed:', err.message)
     return res.status(500).json({ error: 'Failed to update consultation', details: err.message })
   }
 }
