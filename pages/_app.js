@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/admin.css'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
     const router = useRouter()
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [bookingSource, setBookingSource] = useState('')
 
     useEffect(() => {
         // Check if we should open the modal (e.g. redirected from /book-consultation)
@@ -33,6 +35,21 @@ function MyApp({ Component, pageProps }) {
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen)
+    }
+
+    // Admin routes use their own self-contained layout
+    if (router.pathname.startsWith('/admin')) {
+        return (
+            <>
+                <Head>
+                    <title>Admin — Automaitee</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" href="/logo.png" />
+                    <meta name="robots" content="noindex, nofollow" />
+                </Head>
+                <Component {...pageProps} />
+            </>
+        )
     }
 
     return (
@@ -150,7 +167,7 @@ function MyApp({ Component, pageProps }) {
                 )}
 
                 <main style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', minHeight: '100vh', paddingBottom: '40px', borderBottomLeftRadius: '2rem', borderBottomRightRadius: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
-                    <Component {...pageProps} openBookingModal={() => setIsBookingModalOpen(true)} />
+                    <Component {...pageProps} openBookingModal={(source) => { setBookingSource(source || ''); setIsBookingModalOpen(true); }} />
                 </main>
 
                 <footer style={{ background: '#111111', color: 'white', padding: '6rem 0 2rem 0', position: 'relative', zIndex: 0 }}>
@@ -159,7 +176,7 @@ function MyApp({ Component, pageProps }) {
                             {/* Brand */}
                             <div>
                                 <Link href="/" replace={router.pathname === '/'}>
-                                    <img src="/logo.png" alt="Automaitee" style={{ height: '40px', marginBottom: '1.5rem', filter: 'brightness(0) invert(1)' }} />
+                                    <img src="/logo.png" alt="Automaitee" className="logo-image" style={{ marginBottom: '1.5rem', marginLeft: 'auto', marginRight: 'auto' }} />
                                 </Link>
                                 <p style={{ color: '#a1a1aa', lineHeight: '1.6', fontSize: '0.95rem' }}>Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.</p>
                             </div>
@@ -210,7 +227,7 @@ function MyApp({ Component, pageProps }) {
                 </footer>
             </div>
 
-            <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+            <BookingModal isOpen={isBookingModalOpen} onClose={() => { setIsBookingModalOpen(false); setBookingSource(''); }} source={bookingSource} />
             <ChatBot />
         </>
     )
