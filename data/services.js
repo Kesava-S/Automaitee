@@ -1,163 +1,143 @@
 export const services = [
     {
-        id: "basic-marketing-automation",
+        id: "starter",
         category: "marketing",
-        title: "BASIC AUTOMATION",
-        slug: "basic-marketing-automation",
-        description: "Semi-Automated Workflow",
-        fullDescription: "BASIC AUTOMATION — Semi-Automated Workflow",
+        title: "STARTER AUTOMATION",
+        slug: "starter",
+        price: "£600 / month",
+        priceVal: 600,
+        description: "Core Marketing Automation",
+        fullDescription: "STARTER AUTOMATION — Core automated workflows including lead capture, instant response, and performance monitoring.",
         featuresTitle: "What's Included",
         processSteps: [
-            "Enquiry",
-            "Service Automation",
-            "CRM Entry",
-            "Digital Assistant",
-            "Manual Follow-up",
-            "Status Updated",
-            "Accounting Auto",
-            "Basic Reporting"
+            "Lead Capture",
+            "60s Lead Reply",
+            "Budget Guard",
+            "Local SEO Sync",
+            "Review Alert",
+            "Weekly Report"
         ],
         detailedFeatures: [
             {
-                title: "End-to-End Workflow",
+                title: "Automated Daily Operations",
                 items: [
-                    "Lead Comes In (Website / Email / WhatsApp / Form)",
-                    "Customer Service Automation (Auto acknowledgement reply, Notification to business owner)",
-                    "Google Sheets CRM Entry (Lead added automatically, Status: New Lead)",
-                    "Digital Personal Assistant (Follow-up reminder created, Daily leads summary email)",
-                    "Manual Follow-up by Business",
-                    "Customer Status Updated (Contacted / Interested / Closed)",
-                    "Accounting Automation (If converted → Add to invoice tracker, Payment reminder automation)",
-                    "Basic Reporting (Weekly lead summary, Conversion tracking)"
+                    "2 ad platforms connected (Google Ads + Meta Ads)",
+                    "Ad budget guardrails (instant alerts if spend goes over budget)",
+                    "Google Business Profile weekly posting automation",
+                    "New reviews flagged immediately for reputational protection"
                 ]
             },
             {
-                title: "Basic Workflow Characteristics",
+                title: "Lead Response & Communication",
                 items: [
-                    "Semi-automated",
-                    "Manual follow-ups",
-                    "Simple CRM",
-                    "Basic reminders",
-                    "Basic reporting"
+                    "Personalised lead response within 60 seconds (WhatsApp & Email)",
+                    "Automated keyword-based chatbot on Facebook, Instagram, and WhatsApp"
+                ]
+            },
+            {
+                title: "Analytics & Reporting",
+                items: [
+                    "Clean performance report delivered to your inbox every Monday",
+                    "Core conversion rate and lead volume tracking"
                 ]
             },
             {
                 title: "Best For",
                 items: [
-                    "Micro businesses",
-                    "Solo founders",
-                    "Small London service businesses"
-                ]
-            },
-            {
-                title: "Simple Technical Difference vs Advanced",
-                items: [
-                    "Manual Follow-ups",
-                    "Basic CRM",
-                    "Basic Reporting"
+                    "SMEs starting with marketing automation",
+                    "Businesses looking to guarantee 60s reply times",
+                    "London service providers managing Meta/Google ads"
                 ]
             },
             {
                 title: "Sustainability Approach",
                 items: [
-                    "No expensive CRMs",
-                    "Google Sheets based",
-                    "Minimal tools",
-                    "Low automation cost",
-                    "Easy maintenance"
+                    "No bloated software subscriptions",
+                    "Lightweight custom connections using tools you already own",
+                    "Minimal server footprint and clean, efficient execution"
                 ]
             }
         ],
         benefits: [
-            "End-to-End Workflow support",
-            "Perfect for Micro businesses, Solo founders, Small London service businesses",
-            "Simple, easy-to-use semi-automated tracking"
+            "Personalized instant response on WhatsApp & Email within 60 seconds",
+            "Total control over Google and Meta ad spend with automated budget alerts",
+            "Steady local SEO footprint without manual post writing"
         ],
-        ctaTitle: "Ready to start small?",
-        ctaDescription: "Set up a semi-automated workflow today.",
+        ctaTitle: "Ready to start lean?",
+        ctaDescription: "Set up a core marketing automation system today.",
         ctaButtonText: "Book Your Free Consultation",
-        additionalInsight: "Best For: Micro businesses, Solo founders, Small London service businesses"
+        additionalInsight: "Best For: Micro businesses, Solo founders, and local service providers in London."
     },
     {
-        id: "advanced-marketing-automation",
+        id: "pro",
         category: "marketing",
-        title: "ADVANCED AUTOMATION",
-        slug: "advanced-marketing-automation",
-        description: "Fully Automated Smart Workflow",
-        fullDescription: "ADVANCED AUTOMATION — Fully Automated Smart Workflow",
+        title: "PRO AUTOMATION",
+        slug: "pro",
+        price: "£1,200 / month",
+        priceVal: 1200,
+        description: "Fully Automated Smart Engine",
+        fullDescription: "PRO AUTOMATION — Comprehensive automated pipeline linking lead gen, smart conversational AI, bookings, invoicing, and full attribution.",
         featuresTitle: "What's Included",
         processSteps: [
-            "Enquiry",
-            "Smart Service Automation",
-            "Smart Sheets CRM",
-            "Digital Assistant Auto",
-            "Conversion",
-            "Accounting Auto",
-            "Retention Auto",
-            "Smart Reporting"
+            "Omnichannel Lead Gen",
+            "Conversational AI Chat",
+            "Dynamic Booking Calendar",
+            "Attribution Tracker",
+            "Billing Auto-Reminders",
+            "AI Strategy Summary"
         ],
         detailedFeatures: [
             {
-                title: "End-to-End Workflow",
+                title: "Omnichannel & Ad Automation",
                 items: [
-                    "Lead Comes In (Website / Ads / Email / WhatsApp)",
-                    "Smart Customer Service Automation (Instant personalised reply, Lead qualification questions, Smart routing (Hot / Warm / Cold))",
-                    "Smart Google Sheets CRM (Lead automatically categorised, Priority scoring)",
-                    "Digital Personal Assistant Automation (Smart follow-ups, Appointment scheduling automation, Lead priority reminders)",
-                    "Customer Conversion",
-                    "Accounting Automation (Auto invoice creation tracking, Payment reminders, Revenue tracking)",
-                    "Retention Automation (Follow-up after service, Repeat customer reminders)",
-                    "Smart Reporting (Daily performance summary, Lead conversion rate, Revenue tracking)"
+                    "4 ad platforms connected (Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads)",
+                    "Full ad-to-conversion attribution tracking (know exactly which ad made a sale)"
                 ]
             },
             {
-                title: "Advanced Workflow Characteristics",
+                title: "Conversational AI",
                 items: [
-                    "Fully automated",
-                    "Smart lead qualification",
-                    "Automated follow-ups",
-                    "Smart reminders",
-                    "Business performance insights"
+                    "AI-powered chatbot capable of natural conversation across all channels",
+                    "Qualifies leads, answers FAQs dynamically, and schedules calls 24/7"
                 ]
             },
             {
-                title: "Best For",
+                title: "Booking & Operations",
                 items: [
-                    "Growing SMEs",
-                    "Agencies",
-                    "Service businesses",
-                    "London SMEs handling many enquiries"
+                    "Fully automated booking calendar integration",
+                    "Instant confirmations and automated reminders to virtually eliminate no-shows",
+                    "Auto-generated review requests post-completion"
                 ]
             },
             {
-                title: "Simple Technical Difference vs Basic",
+                title: "Billing & Finance",
                 items: [
-                    "Smart Follow-ups",
-                    "Automated CRM",
-                    "Smart Reporting",
-                    "Lead Scoring"
+                    "Overdue invoice reminder automation (sent automatically on Day 3, 7, and 14)"
+                ]
+            },
+            {
+                title: "Advanced Analytics",
+                items: [
+                    "AI-written weekly performance report (plain English summaries of wins and action points)"
                 ]
             },
             {
                 title: "Sustainability Approach",
                 items: [
-                    "No expensive CRMs",
-                    "Google Sheets based",
-                    "Minimal tools",
-                    "Low automation cost",
-                    "Easy maintenance"
+                    "Replaces expensive third-party CRM and booking SaaS platforms",
+                    "Google Workspace/Drive cloud storage backbone",
+                    "Highly optimized workflow loops to reduce compute cycles"
                 ]
             }
         ],
         benefits: [
-            "Handle high enquiry volume with smart qualification",
-            "Fully automated lead-to-conversion and retention flows",
-            "Extensive retention and follow-up loops",
-            "Advanced smart reporting for better decisions"
+            "Hands-off customer booking, confirmation, and reminder flows",
+            "Omnichannel conversational AI that converts leads into booked appointments",
+            "Complete clarity on marketing return-on-investment with full attribution tracking"
         ],
         ctaTitle: "Automate and Scale",
-        ctaDescription: "Scale your smart workflows without adding more staff.",
+        ctaDescription: "Deploy the ultimate done-for-you automation engine for your business.",
         ctaButtonText: "Book Your Free Consultation",
-        additionalInsight: "Best For: Growing SMEs, Agencies, Service businesses, London SMEs handling many enquiries"
+        additionalInsight: "Best For: Growing SMEs, service agencies, and London businesses managing high enquiry volumes."
     }
 ];

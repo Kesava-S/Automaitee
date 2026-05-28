@@ -127,10 +127,11 @@ export default function Services() {
                                             <div style={{ background: '#f5f5f7', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="scissors" style={{ fontSize: '1.5rem' }}>✂️</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h3>
+                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h3>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Your regulars are quietly leaving. We bring them back — automatically. A simple, zero-management tool to recover lost revenue.
-                                            </p>
+                                             </p>
                                             <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 View Details <span>→</span>
                                             </div>
@@ -143,7 +144,8 @@ export default function Services() {
                                             <div style={{ background: '#fff8e1', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="star" style={{ fontSize: '1.5rem' }}>⭐</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h3>
+                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h3>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Turn every meal into a return visit. Automatically collect feedback and route happy customers to Google Reviews — while catching unhappy ones before they post publicly.
                                             </p>
@@ -159,7 +161,8 @@ export default function Services() {
                                             <div style={{ background: '#fff3e0', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="warning" style={{ fontSize: '1.5rem' }}>⚠️</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h3>
+                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h3>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Automatically verify every menu item against the 14 major allergens. Catch non-compliant items the moment your menu changes — before they become a legal liability. <em style={{ color: '#86868b', fontStyle: 'normal' }}>Natasha's Law compliant.</em>
                                             </p>
@@ -175,7 +178,8 @@ export default function Services() {
                                             <div style={{ background: '#e8f5e9', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="calendar" style={{ fontSize: '1.5rem' }}>📅</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h3>
+                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h3>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 When a reservation is cancelled, the bot contacts your waitlist, matches party size, and fills the table — all within 15 minutes, with zero manual effort.
                                             </p>
@@ -260,6 +264,12 @@ export default function Services() {
                                                 ))}
                                             </ul>
                                         </div>
+                                        
+                                        <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e5ea', textAlign: 'center' }}>
+                                            <Link href="/services/starter" style={{ color: '#0071e3', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                                                Learn More &amp; View Details <span>→</span>
+                                            </Link>
+                                        </div>
                                     </div>
 
                                     {/* Pro Package */}
@@ -287,6 +297,12 @@ export default function Services() {
                                                     </li>
                                                 ))}
                                             </ul>
+                                        </div>
+
+                                        <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid #e5e5ea', textAlign: 'center' }}>
+                                            <Link href="/services/pro" style={{ color: '#0071e3', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                                                Learn More &amp; View Details <span>→</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

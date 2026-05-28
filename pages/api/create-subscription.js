@@ -2,9 +2,9 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
-console.log(req);
+  const { email, name, consultationId, service } = req.body || {}
 
-  const { email, name, consultationId } = req.body || {}
+  console.log('[create-subscription] Request:', { email, name, service, consultationId });
 
   if (!email) {
     return res.status(400).json({ error: 'email is required' })
@@ -12,7 +12,13 @@ console.log(req);
 
   const keyId = process.env.RAZORPAY_KEY_ID
   const keySecret = process.env.RAZORPAY_KEY_SECRET
-  const resolvedPlanId = process.env.RAZORPAY_PLAN_ID
+  
+  let resolvedPlanId = process.env.RAZORPAY_PLAN_ID
+  if (service === 'book-starter' || service === 'starter') {
+    resolvedPlanId = process.env.RAZORPAY_PLAN_ID_STARTER || resolvedPlanId
+  } else if (service === 'book-pro' || service === 'pro') {
+    resolvedPlanId = process.env.RAZORPAY_PLAN_ID_PRO || resolvedPlanId
+  }
 
   if (!keyId || !keySecret) {
     return res.status(500).json({ error: 'Razorpay credentials not configured' })

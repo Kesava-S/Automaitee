@@ -7,6 +7,39 @@ const SECRET = 'ai_automaitee'
 const SERVICE_NAMES = {
   'book-consultation': 'Full Funnel Automation',
   'book-silentchurn': 'Micro Services – SilentChurn',
+  'book-starter': 'Full Funnel – Starter Package',
+  'book-pro': 'Full Funnel – Pro Package',
+  'starter': 'Full Funnel – Starter Package',
+  'pro': 'Full Funnel – Pro Package',
+}
+
+function getPriceDetails(service, customPrice) {
+  if (customPrice) {
+    const formatted = customPrice.startsWith('£') ? customPrice : `£${customPrice}`;
+    return {
+      priceDisplay: formatted,
+      recurringDisplay: `${formatted}.00/month`
+    };
+  }
+
+  if (service === 'book-starter' || service === 'starter') {
+    return {
+      priceDisplay: '£600',
+      recurringDisplay: '£600.00/month'
+    };
+  }
+
+  if (service === 'book-pro' || service === 'pro') {
+    return {
+      priceDisplay: '£1,200',
+      recurringDisplay: '£1,200.00/month'
+    };
+  }
+
+  return {
+    priceDisplay: '£49',
+    recurringDisplay: '£49.00/month'
+  };
 }
 
 function verifyToken(token) {
@@ -96,6 +129,7 @@ export default function PayPage() {
           email: payload.email,
           name: payload.name,
           consultationId: payload.consultationId,
+          service: payload.service,
         }),
       })
       if (!subRes.ok) {
@@ -246,7 +280,7 @@ export default function PayPage() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: '1.5rem', color: '#0f172a', letterSpacing: '-0.02em' }}>
-                      £49
+                      {getPriceDetails(payload.service, payload.price).priceDisplay}
                       <span style={{ fontWeight: 400, fontSize: '0.875rem', color: '#64748b' }}>/month</span>
                     </div>
                     <div style={{ color: '#475569', fontSize: '0.85rem', marginTop: '0.25rem' }}>
@@ -272,7 +306,7 @@ export default function PayPage() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#64748b', marginTop: '0.375rem' }}>
                   <span>After free week</span>
-                  <span style={{ fontWeight: 600, color: '#0f172a' }}>£49.00/month</span>
+                  <span style={{ fontWeight: 600, color: '#0f172a' }}>{getPriceDetails(payload.service, payload.price).recurringDisplay}</span>
                 </div>
               </div>
 
