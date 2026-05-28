@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://automaitee.com',
+    siteUrl: 'https://www.automaitee.com',
     generateRobotsTxt: true,
     outDir: 'public',
     sitemapSize: 7000,

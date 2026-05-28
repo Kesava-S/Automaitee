@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://automaitee.com
+Host: https://www.automaitee.com
 
 # Sitemaps
-Sitemap: https://automaitee.com/sitemap.xml
+Sitemap: https://www.automaitee.com/sitemap.xml
