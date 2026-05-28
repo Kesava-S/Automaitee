@@ -10,6 +10,7 @@ export default function Services() {
     const [showComparison, setShowComparison] = useState(false);
     const [showMicro, setShowMicro] = useState(false);
     const [showFullFunnel, setShowFullFunnel] = useState(false);
+    const [openWorkflow, setOpenWorkflow] = useState(null);
 
     useEffect(() => {
         if (router.isReady && router.query.openMicro === 'true') {
@@ -136,6 +137,155 @@ export default function Services() {
                                             </div>
                                         </div>
                                     </Link>
+
+                                    {/* Card 2: Post-Visit Loyalty & Feedback Loop */}
+                                    <div className="card micro-saas-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
+                                        <div style={{ background: '#fff8e1', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                                            <span role="img" aria-label="star" style={{ fontSize: '1.5rem' }}>⭐</span>
+                                        </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
+                                            <span style={{ background: '#e6f4ea', color: '#116c4c', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Highest ROI</span>
+                                            <span style={{ background: '#e8f0fe', color: '#1a56db', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Easiest First Sale</span>
+                                        </div>
+                                        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h3>
+                                        <p style={{ color: '#515154', marginBottom: '1.25rem', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                                            Turn every meal into a return visit. Automatically collect feedback and route happy customers to Google Reviews — while catching unhappy ones before they post publicly.
+                                        </p>
+
+                                        <button
+                                            onClick={() => setOpenWorkflow(openWorkflow === 'loyalty' ? null : 'loyalty')}
+                                            style={{ background: 'none', border: '1px solid #e5e5ea', borderRadius: '8px', padding: '8px 14px', fontSize: '0.85rem', fontWeight: '600', color: '#515154', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '1rem', width: 'fit-content' }}
+                                        >
+                                            {openWorkflow === 'loyalty' ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                                            How it works
+                                        </button>
+
+                                        {openWorkflow === 'loyalty' && (
+                                            <div style={{ background: '#f9f9fb', borderRadius: '10px', padding: '1.25rem', marginBottom: '1.25rem', fontSize: '0.875rem' }}>
+                                                {[
+                                                    { node: 'Trigger', label: 'POS / booking webhook', desc: 'Visit confirmed in your system' },
+                                                    { node: 'Action', label: 'SMS sent 2 hrs after visit', desc: '"How was your experience today?"' },
+                                                    { node: 'Branch', label: '4–5 stars', desc: 'Google Review link sent automatically' },
+                                                    { node: 'Branch', label: '1–3 stars', desc: 'Private alert sent to manager' },
+                                                    { node: 'Log', label: 'Google Sheets', desc: 'Every response recorded with timestamp' },
+                                                ].map((step, i) => (
+                                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: i < 4 ? '0.75rem' : 0 }}>
+                                                        <span style={{ background: '#0071e3', color: '#fff', fontSize: '0.7rem', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', whiteSpace: 'nowrap', marginTop: '2px' }}>{step.node}</span>
+                                                        <div>
+                                                            <span style={{ fontWeight: '600', color: '#1d1d1f' }}>{step.label}</span>
+                                                            <span style={{ color: '#515154' }}> — {step.desc}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <Link href="/book-consultation" style={{ display: 'block', textAlign: 'center', background: '#0071e3', color: '#fff', padding: '12px 20px', borderRadius: '980px', fontWeight: '600', fontSize: '0.95rem', textDecoration: 'none' }}>
+                                                Book a Free Consultation →
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* Card 3: Allergen Compliance Checker */}
+                                    <div className="card micro-saas-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
+                                        <div style={{ background: '#fff3e0', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                                            <span role="img" aria-label="warning" style={{ fontSize: '1.5rem' }}>⚠️</span>
+                                        </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
+                                            <span style={{ background: '#fdecea', color: '#c0392b', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Legal Requirement</span>
+                                            <span style={{ background: '#f3e8ff', color: '#6d28d9', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>£99/mo</span>
+                                        </div>
+                                        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h3>
+                                        <p style={{ color: '#86868b', marginBottom: '0.4rem', lineHeight: '1.5', fontSize: '0.85rem', fontWeight: '600' }}>Natasha's Law Automation</p>
+                                        <p style={{ color: '#515154', marginBottom: '1.25rem', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                                            Automatically verify every menu item against the 14 major allergens. Catch non-compliant items the moment your menu changes — before they become a legal liability.
+                                        </p>
+
+                                        <button
+                                            onClick={() => setOpenWorkflow(openWorkflow === 'allergen' ? null : 'allergen')}
+                                            style={{ background: 'none', border: '1px solid #e5e5ea', borderRadius: '8px', padding: '8px 14px', fontSize: '0.85rem', fontWeight: '600', color: '#515154', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '1rem', width: 'fit-content' }}
+                                        >
+                                            {openWorkflow === 'allergen' ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                                            How it works
+                                        </button>
+
+                                        {openWorkflow === 'allergen' && (
+                                            <div style={{ background: '#f9f9fb', borderRadius: '10px', padding: '1.25rem', marginBottom: '1.25rem', fontSize: '0.875rem' }}>
+                                                {[
+                                                    { node: 'Trigger', label: 'Menu change webhook', desc: 'Daily scheduled check or on-save event' },
+                                                    { node: 'Action', label: 'OpenAI allergen analysis', desc: 'Each item checked against 14 EU/UK allergens' },
+                                                    { node: 'Parse', label: 'Response parsed', desc: 'Compliant vs non-compliant items identified' },
+                                                    { node: 'Alert', label: 'Non-compliant item found', desc: 'Gmail alert sent to manager and head chef' },
+                                                    { node: 'Log', label: 'Google Sheets', desc: 'Full compliance record with date and item detail' },
+                                                ].map((step, i) => (
+                                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: i < 4 ? '0.75rem' : 0 }}>
+                                                        <span style={{ background: '#e65c00', color: '#fff', fontSize: '0.7rem', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', whiteSpace: 'nowrap', marginTop: '2px' }}>{step.node}</span>
+                                                        <div>
+                                                            <span style={{ fontWeight: '600', color: '#1d1d1f' }}>{step.label}</span>
+                                                            <span style={{ color: '#515154' }}> — {step.desc}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <Link href="/book-consultation" style={{ display: 'block', textAlign: 'center', background: '#0071e3', color: '#fff', padding: '12px 20px', borderRadius: '980px', fontWeight: '600', fontSize: '0.95rem', textDecoration: 'none' }}>
+                                                Book a Free Consultation →
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* Card 4: No-Show & Reservation Recovery Bot */}
+                                    <div className="card micro-saas-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
+                                        <div style={{ background: '#e8f5e9', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                                            <span role="img" aria-label="calendar" style={{ fontSize: '1.5rem' }}>📅</span>
+                                        </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
+                                            <span style={{ background: '#e6f4ea', color: '#116c4c', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Direct Revenue Recovery</span>
+                                            <span style={{ background: '#fff8e1', color: '#92400e', fontSize: '0.75rem', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Pays for Itself in One Table</span>
+                                        </div>
+                                        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h3>
+                                        <p style={{ color: '#515154', marginBottom: '1.25rem', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                                            When a reservation is cancelled, the bot instantly contacts your waitlist, matches party size, and fills the table — all within 15 minutes, with zero manual effort.
+                                        </p>
+
+                                        <button
+                                            onClick={() => setOpenWorkflow(openWorkflow === 'noshow' ? null : 'noshow')}
+                                            style={{ background: 'none', border: '1px solid #e5e5ea', borderRadius: '8px', padding: '8px 14px', fontSize: '0.85rem', fontWeight: '600', color: '#515154', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '1rem', width: 'fit-content' }}
+                                        >
+                                            {openWorkflow === 'noshow' ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                                            How it works
+                                        </button>
+
+                                        {openWorkflow === 'noshow' && (
+                                            <div style={{ background: '#f9f9fb', borderRadius: '10px', padding: '1.25rem', marginBottom: '1.25rem', fontSize: '0.875rem' }}>
+                                                {[
+                                                    { node: 'Trigger', label: 'Booking cancelled webhook', desc: 'Table slot becomes available' },
+                                                    { node: 'Lookup', label: 'Google Sheets waitlist', desc: 'Next matching party size retrieved' },
+                                                    { node: 'Action', label: 'Twilio SMS sent', desc: '"A table for X just opened — want it?"' },
+                                                    { node: 'Wait', label: '15-minute window', desc: 'Bot waits for customer reply' },
+                                                    { node: 'Branch', label: 'Confirmed', desc: 'Reservation transferred, manager notified via Gmail' },
+                                                    { node: 'Branch', label: 'No response', desc: 'Next person on waitlist contacted automatically' },
+                                                ].map((step, i) => (
+                                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: i < 5 ? '0.75rem' : 0 }}>
+                                                        <span style={{ background: '#116c4c', color: '#fff', fontSize: '0.7rem', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', whiteSpace: 'nowrap', marginTop: '2px' }}>{step.node}</span>
+                                                        <div>
+                                                            <span style={{ fontWeight: '600', color: '#1d1d1f' }}>{step.label}</span>
+                                                            <span style={{ color: '#515154' }}> — {step.desc}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <Link href="/book-consultation" style={{ display: 'block', textAlign: 'center', background: '#0071e3', color: '#fff', padding: '12px 20px', borderRadius: '980px', fontWeight: '600', fontSize: '0.95rem', textDecoration: 'none' }}>
+                                                Book a Free Consultation →
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
                         </div>
