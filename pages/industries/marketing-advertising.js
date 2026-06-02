@@ -52,7 +52,7 @@ export default function MarketingAdvertisingAutomation() {
                     </h1>
 
                     <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '900px', lineHeight: '1.6', marginBottom: '2rem' }}>
-                        Marketing and advertising businesses often juggle campaigns, analytics, and client reporting — tasks that are repetitive, time-consuming, and prone to errors. Automaitee helps agencies and freelancers automate workflows, optimize campaigns, and generate insights, allowing you to focus on strategy and growth.
+                        Marketing and advertising businesses often juggle campaigns, analytics, and client reporting, which are repetitive, time-consuming, and prone to errors. Automaitee helps agencies and freelancers automate workflows, optimize campaigns, and generate insights, allowing you to focus on strategy and growth.
                     </p>
 
                     <div style={{ marginBottom: '4rem', padding: '2rem', background: '#f8f9fa', borderRadius: '16px' }}>
@@ -182,7 +182,7 @@ export default function MarketingAdvertisingAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored to your marketing campaigns and client needs</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Optimized for scheduling, email sequences, and ad performance</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner, from strategy to reporting</li>
                                 </ul>
@@ -193,7 +193,7 @@ export default function MarketingAdvertisingAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Automate Your Marketing & Advertising Operations?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate social media, email campaigns, analytics, customer segmentation, and ad spend optimization — all customized for your agency or freelance business.
+                            Automate social media, email campaigns, analytics, customer segmentation, and ad spend optimization, all customized for your agency or freelance business.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

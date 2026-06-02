@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
         return (
             <>
                 <Head>
-                    <title>Admin — Automaitee</title>
+                    <title>Admin | Automaitee</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link rel="icon" href="/logo.png" />
                     <meta name="robots" content="noindex, nofollow" />

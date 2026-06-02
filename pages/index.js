@@ -96,7 +96,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal delay={0.6}>
                         <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem' }}>
-                            Save 10+ hours a week on marketing operations — without hiring a team.
+                            Save 10+ hours a week on marketing operations without hiring a team.
                         </p>
                     </Reveal>
                     <Reveal delay={0.7} width="100%">
@@ -121,7 +121,7 @@ export default function Home() {
                                 Hire AI Automation Talent
                             </Link>
                             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem', maxWidth: '400px', textAlign: 'center', lineHeight: '1.5' }}>
-                                Kondamaal — hire monitored remote freelancers for your AI automation, quality-assured by an expert mentor.
+                                Kondamaal helps you hire monitored remote freelancers for your AI automation, quality-assured by an expert mentor.
                             </p>
                         </div>
                     </Reveal>
@@ -163,7 +163,7 @@ export default function Home() {
                         <Reveal delay={0.6}>
                             <div className="card" style={{ height: '100%' }}>
                                 <h3>60-Second Lead Response</h3>
-                                <p>Every lead gets a personalised reply within 60 seconds — automatically by email and WhatsApp. No more losing customers to a slow reply.</p>
+                                <p>Every lead gets a personalised reply within 60 seconds, sent automatically by email and WhatsApp. No more losing customers to a slow reply.</p>
                             </div>
                         </Reveal>
                     </div>

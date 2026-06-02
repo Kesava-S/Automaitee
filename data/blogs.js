@@ -1,7 +1,7 @@
 export const blogs = [
     {
         id: "uk-local-service-sme-ai-adoption-stats",
-        title: "UK Local-Service SME AI Adoption – Key Stats (2023–2026)",
+        title: "UK Local-Service SME AI Adoption: Key Stats (2023–2026)",
         metaTitle: "UK SME AI Adoption Stats 2026 | Visual Report | Automaitee Digital",
         metaDescription: "A visual breakdown of AI adoption among UK small businesses, including sector trends, usage cases, and ROI metrics.",
         excerpt: "Hard numbers, visualised. Discover the current state and future of AI adoption across UK small businesses.",
@@ -381,9 +381,9 @@ export const blogs = [
         author: "Automaitee Team",
         image: "/blog/ai-marketing-automation-uk.png",
         content: `
-            <p>Running a small business in the UK—whether a restaurant, gym, clinic, florist, or real estate agency—comes with exciting opportunities, but also significant challenges. Owners often juggle daily operations alongside marketing, which can make it hard to consistently engage customers, follow up on leads, or grow online.</p>
+            <p>Running a small business in the UK, whether a restaurant, gym, clinic, florist, or real estate agency, comes with exciting opportunities, but also significant challenges. Owners often juggle daily operations alongside marketing, which can make it hard to consistently engage customers, follow up on leads, or grow online.</p>
 
-            <p>AI marketing automation from Automaitee Digital offers a solution that saves time, reduces costs, and improves results—all while being easy to implement and affordable for small businesses.</p>
+            <p>AI marketing automation from Automaitee Digital offers a solution that saves time, reduces costs, and improves results, all while being easy to implement and affordable for small businesses.</p>
 
             <h2>Why AI Marketing is Essential for Small Businesses</h2>
             <p>AI is no longer just for large corporations. Small businesses can now access low-code or no-code AI tools that automate routine tasks, personalize communications, and provide data-driven insights.</p>
@@ -429,7 +429,7 @@ export const blogs = [
                 <li><strong>Consistent Customer Experience:</strong> AI ensures timely follow-ups, review management, and lead nurturing, improving trust and retention.</li>
             </ul>
 
-            <p>These results demonstrate that AI marketing isn’t just a tech trend—it’s a practical way to achieve measurable ROI for small businesses.</p>
+            <p>These results demonstrate that AI marketing isn’t just a tech trend; it’s a practical way to achieve measurable ROI for small businesses.</p>
 
             <h2>Why Choose Automaitee Digital</h2>
             <p>Automaitee Digital specializes in AI marketing automation designed specifically for small UK businesses. Our platform helps SMEs:</p>
@@ -444,7 +444,7 @@ export const blogs = [
             <p>With Automaitee Digital, small business owners can save time, reduce costs, and grow smarter using AI-powered marketing.</p>
 
             <h2>Take the First Step Towards AI Marketing</h2>
-            <p>AI marketing automation is no longer optional—it’s a way for small businesses in the UK to compete, grow, and stay ahead. With Automaitee Digital, you can implement AI gradually, measure real outcomes, and achieve lasting business impact.</p>
+            <p>AI marketing automation is no longer optional; it’s a way for small businesses in the UK to compete, grow, and stay ahead. With Automaitee Digital, you can implement AI gradually, measure real outcomes, and achieve lasting business impact.</p>
 
             <p>Start today and experience how AI marketing automation can improve efficiency, boost customer engagement, and increase profitability for your small business.</p>
         `
@@ -459,7 +459,7 @@ export const blogs = [
         content: `
             <p>Artificial Intelligence has been around since the 1950s. Early systems like Deep Blue and AlphaGo proved that machines could outperform humans in specific, narrow tasks. However, for many years, AI remained out of reach for most businesses and individuals, limiting its presence in mainstream awareness.</p>
 
-            <p>What has changed – making AI feel inevitable today – is the increased accessibility and availability of generative AI tools.</p>
+            <p>What has changed, making AI feel inevitable today, is the increased accessibility and availability of generative AI tools.</p>
 
             <p>For the first time, solopreneurs and small businesses can utilise AI without needing technical skills, large budgets, or expert teams. This shift has brought real opportunities, alongside some understandable uncertainty.</p>
 
@@ -471,14 +471,14 @@ export const blogs = [
             <p>One of the most common mistakes I see is treating AI as a collection of clever tools rather than as support for business functions.</p>
 
             <p>A more helpful question is:<br>
-            Where in my business do I repeatedly spend time, effort, or mental energy that could be supported — without handing over control?</p>
+            Where in my business do I repeatedly spend time, effort, or mental energy that could be supported without handing over control?</p>
 
             <p>When you look at AI through that lens, it naturally maps onto the fundamental areas of a business.</p>
 
             <h2>Marketing: Enhancing Visibility Without Overload</h2>
             <p>Many small businesses are beginning to incorporate AI into their marketing efforts, and it’s a smart move. Creating content, reusing ideas, and staying visible can be both time-consuming and mentally exhausting. AI tools assist with tasks such as drafting blog posts, developing content strategies, generating social media variants, exploring SEO topics, and outlining email campaigns. For example, ChatGPT often helps draft initial versions, while other tools aid in keyword research, headline testing, or visual content creation.</p>
 
-            <p>When used effectively, AI reduces the gap between ideas and execution. When misused, it leads to generic, noisy content—an all-too-common mistake. Remember, AI lacks personal experience, audience insight, and a unique perspective. Nonetheless, it excels at turning your thoughts into actionable content. Always review AI-generated output before posting.</p>
+            <p>When used effectively, AI reduces the gap between ideas and execution. When misused, it leads to generic, noisy content, which is an all-too-common mistake. Remember, AI lacks personal experience, audience insight, and a unique perspective. Nonetheless, it excels at turning your thoughts into actionable content. Always review AI-generated output before posting.</p>
 
             <p>Think of AI as a multiplier, not a replacement, for your efforts.</p>
 
@@ -492,9 +492,9 @@ export const blogs = [
             <p>However, AI cannot build trust, read the room, or adapt emotionally in real time. Therefore, despite the availability of tools that can automate sales calls for small businesses, I strongly recommend handling the conversations personally.</p>
 
             <h2>Operations: Reducing Mental Load and Friction</h2>
-            <p>Operations often benefit most quietly and significantly from AI. Many small businesses tend to keep their process knowledge in their heads – such as workflows, what comes next, and common oversights. AI can help organise this scattered knowledge by aiding in process documentation, checklists, workflows, and prioritisation.</p>
+            <p>Operations often benefit most quietly and significantly from AI. Many small businesses tend to keep their process knowledge in their heads, such as workflows, what comes next, and common oversights. AI can help organise this scattered knowledge by aiding in process documentation, checklists, workflows, and prioritisation.</p>
 
-            <p>Business owners might use AI to create standard operating procedures or onboarding steps, or to organise tasks and summarise data. The goal isn’t automation for its own sake but reducing mental burden — allowing more focus on strategic thinking.</p>
+            <p>Business owners might use AI to create standard operating procedures or onboarding steps, or to organise tasks and summarise data. The goal isn’t automation for its own sake but reducing mental burden, allowing more focus on strategic thinking.</p>
 
             <h2>Finance: Understanding the Numbers</h2>
             <p>AI isn’t a substitute for accountants or financial oversight, but it can be a valuable support for understanding financial matters.</p>
@@ -510,23 +510,23 @@ export const blogs = [
 
             <p>Additionally, AI automating HR tasks can ease the workload for business owners.</p>
 
-            <h2>What AI Cannot Do — and Why That Matters</h2>
+            <h2>What AI Cannot Do, and Why That Matters</h2>
             <p>AI does not have personal experience. It does not fact-check by default. It lacks common sense and ethical judgment. Crucially, it lacks a point of view.</p>
 
-            <p>This is why AI cannot replace thought leadership, lived experience, or strategic judgement — and why it should never be used blindly. AI is based on patterns in what already exists, not on insight into what should or indeed could exist.</p>
+            <p>This is why AI cannot replace thought leadership, lived experience, or strategic judgement, which is why it should never be used blindly. AI is based on patterns in what already exists, not on insight into what should or indeed could exist.</p>
 
-            <h2>What Will Change — and What Won’t</h2>
+            <h2>What Will Change, and What Won’t</h2>
             <p>AI will progressively handle more automatable tasks, leading to increased productivity and a surplus of content.</p>
 
-            <p>Paradoxically, this enhances the value of truly quality content — clear, thoughtful, experience-driven — more than ever. We remain human, complex beings, and trust, creativity, and judgement continue to be fundamentally human qualities.</p>
+            <p>Paradoxically, this enhances the value of truly quality content that is clear, thoughtful, and experience-driven, more than ever. We remain human, complex beings, and trust, creativity, and judgement continue to be fundamentally human qualities.</p>
 
             <h2>Looking Ahead</h2>
-            <p>You may hear more about developments such as agentic AI — systems capable of acting independently towards goals set by humans, for example, AI assistants or marketing managers. These technologies are evolving rapidly, but the principle remains unchanged: humans define direction and values; AI operates within boundaries.</p>
+            <p>You may hear more about developments such as agentic AI, which refers to systems capable of acting independently towards goals set by humans (for example, AI assistants or marketing managers). These technologies are evolving rapidly, but the principle remains unchanged: humans define direction and values; AI operates within boundaries.</p>
 
             <h2>Final Thought</h2>
             <p>AI isn’t something your business has to adopt entirely. Instead, it can be a deliberate and targeted tool to achieve meaningful results.</p>
 
-            <p>You don’t need to implement AI in every aspect mentioned earlier. Begin by focusing on a single area – address a real problem.</p>
+            <p>You don’t need to implement AI in every aspect mentioned earlier. Begin by focusing on a single area to address a real problem.</p>
 
             <p>This approach allows AI to support your small business effectively, rather than overwhelming it.</p>
         `

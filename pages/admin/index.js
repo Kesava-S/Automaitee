@@ -52,7 +52,7 @@ export default function AdminLogin() {
   return (
     <>
       <Head>
-        <title>Admin Login — Automaitee</title>
+        <title>Admin Login | Automaitee</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
@@ -131,7 +131,7 @@ export default function AdminLogin() {
           </form>
 
           <p style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.8rem', color: '#86868b', margin: '2rem 0 0' }}>
-            Automaitee Digital &mdash; Internal use only
+            Automaitee Digital | Internal use only
           </p>
         </div>
       </div>

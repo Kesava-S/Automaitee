@@ -36,7 +36,7 @@ export default function Services() {
         <>
             <Head>
                 <title>Done-For-You Marketing Automation | Automaitee</title>
-                <meta name="description" content="Done-for-you AI marketing automation for London small businesses. Generate leads, respond instantly, and track results automatically — starts from £49/month." />
+                <meta name="description" content="Done-for-you AI marketing automation for London small businesses. Generate leads, respond instantly, and track results automatically, starting from £49/month." />
             </Head>
 
             {/* HERO SECTION */}
@@ -130,7 +130,7 @@ export default function Services() {
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h3>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
-                                                Your regulars are quietly leaving. We bring them back — automatically. A simple, zero-management tool to recover lost revenue.
+                                                Your regulars are quietly leaving. We bring them back automatically. A simple, zero-management tool to recover lost revenue.
                                              </p>
                                             <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 View Details <span>→</span>
@@ -147,7 +147,7 @@ export default function Services() {
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h3>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
-                                                Turn every meal into a return visit. Automatically collect feedback and route happy customers to Google Reviews — while catching unhappy ones before they post publicly.
+                                                Turn every meal into a return visit. Automatically collect feedback and route happy customers to Google Reviews, while catching unhappy ones before they post publicly.
                                             </p>
                                             <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 Book a Free Consultation <span>→</span>
@@ -164,7 +164,7 @@ export default function Services() {
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h3>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
-                                                Automatically verify every menu item against the 14 major allergens. Catch non-compliant items the moment your menu changes — before they become a legal liability. <em style={{ color: '#86868b', fontStyle: 'normal' }}>Natasha's Law compliant.</em>
+                                                Automatically verify every menu item against the 14 major allergens. Catch non-compliant items the moment your menu changes, before they become a legal liability. <em style={{ color: '#86868b', fontStyle: 'normal' }}>Natasha's Law compliant.</em>
                                             </p>
                                             <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 Book a Free Consultation <span>→</span>
@@ -181,7 +181,7 @@ export default function Services() {
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h3>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
-                                                When a reservation is cancelled, the bot contacts your waitlist, matches party size, and fills the table — all within 15 minutes, with zero manual effort.
+                                                When a reservation is cancelled, the bot contacts your waitlist, matches party size, and fills the table, all within 15 minutes, with zero manual effort.
                                             </p>
                                             <div style={{ marginTop: '1rem', color: '#0071e3', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 Book a Free Consultation <span>→</span>
@@ -234,10 +234,10 @@ export default function Services() {
                                             <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>What happens automatically every day:</h4>
                                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                 {[
-                                                    "Your ads on Google and Meta are monitored — you get an instant alert if spend goes over budget",
-                                                    "Every lead that comes in gets a personalised reply within 60 seconds — by email and WhatsApp",
+                                                    "Your ads on Google and Meta are monitored, so you get an instant alert if spend goes over budget",
+                                                    "Every lead that comes in gets a personalised reply within 60 seconds, sent by email and WhatsApp",
                                                     "Your Google Business Profile stays active with weekly posts published for you",
-                                                    "New reviews are flagged the moment they appear — so you can respond before they affect your reputation",
+                                                    "New reviews are flagged the moment they appear, allowing you to respond before they affect your reputation",
                                                     "Every Monday you receive a clean report showing exactly how your marketing performed last week"
                                                 ].map((item, i) => (
                                                     <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '0.8rem', color: '#515154' }}>
@@ -283,13 +283,13 @@ export default function Services() {
                                             <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>Everything in Starter, plus:</h4>
                                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                 {[
-                                                    "All four ad platforms connected — Google, Meta, LinkedIn, and TikTok",
+                                                    "All four ad platforms connected, including Google, Meta, LinkedIn, and TikTok",
                                                     "AI-powered chatbot that handles complex conversations naturally across all channels",
-                                                    "Automated booking system — customers book, get confirmed, and receive reminders without you involved",
+                                                    "Automated booking system where customers book, get confirmed, and receive reminders without you involved",
                                                     "Review requests sent automatically after every completed booking or purchase",
                                                     "Overdue invoice reminders sent automatically",
-                                                    "AI-written weekly report — plain English summary of what worked, what did not, and what to do next week",
-                                                    "Full attribution tracking — see exactly which ad brought which customer"
+                                                    "AI-written weekly report providing a plain English summary of what worked, what did not, and what to do next week",
+                                                    "Full attribution tracking to see exactly which ad brought which customer"
                                                 ].map((item, i) => (
                                                     <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '0.8rem', color: '#515154' }}>
                                                         <Check size={20} color="#0071e3" style={{ marginRight: '10px', marginTop: '2px', flexShrink: 0 }} />
@@ -371,9 +371,9 @@ export default function Services() {
                                                             {[
                                                                 ["Ad platforms", "Google + Meta", "Google + Meta + LinkedIn + TikTok"],
                                                                 ["Instant lead reply", "Email + WhatsApp", "Email + WhatsApp"],
-                                                                ["Chatbot", "Keyword-based", "AI-powered — natural conversation"],
+                                                                ["Chatbot", "Keyword-based", "AI-powered with natural conversation"],
                                                                 ["Channels", "FB + Insta + WhatsApp", "All channels unified"],
-                                                                ["Booking automation", "No", "Yes — Calendar + confirmation + reminder"],
+                                                                ["Booking automation", "No", "Yes: Calendar, confirmation, and reminders"],
                                                                 ["Review requests", "No", "Automated after every booking"],
                                                                 ["Invoice reminders", "No", "Automated Day 3, Day 7, Day 14"],
                                                                 ["Reporting", "Weekly KPI email", "AI-written weekly summary + strategy brief"],
@@ -416,7 +416,7 @@ export default function Services() {
                             Every automation we build uses tools you already have like Google, Gmail, WhatsApp, connected by custom workflows we build specifically for your business. No unnecessary subscriptions. No software you pay for but never master. No digital clutter.
                         </p>
                         <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '1.5rem', lineHeight: '1.7' }}>
-                            This is not just about saving you money — though you will save between £300 and £800 per month compared to a typical agency and SaaS tool stack. It is about building systems that are lightweight, transparent, and genuinely useful rather than impressive on paper.
+                            This is not just about saving you money, though you will save between £300 and £800 per month compared to a typical agency and SaaS tool stack. It is about building systems that are lightweight, transparent, and genuinely useful rather than impressive on paper.
                         </p>
                         <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '3rem', lineHeight: '1.7' }}>
                             Fewer tools means fewer things to break. Fewer logins means less confusion. And a business running on lean, purposeful automation is a business that scales cleanly.

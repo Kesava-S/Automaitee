@@ -171,7 +171,7 @@ export default function AdminConsultations() {
   return (
     <>
       <Head>
-        <title>Manage Consultations — Automaitee Admin</title>
+        <title>Manage Consultations | Automaitee Admin</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 

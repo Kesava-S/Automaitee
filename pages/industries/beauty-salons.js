@@ -8,12 +8,12 @@ export default function BeautySalons({ openBookingModal }) {
         <>
             <Head>
                 <title>SilentChurn for Beauty Salons | Automaitee</title>
-                <meta name="description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <meta name="description" content="We bring your regulars back automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
                 <meta property="og:title" content="SilentChurn for Beauty Salons | Automaitee" />
-                <meta property="og:description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <meta property="og:description" content="We bring your regulars back automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
                 <meta property="og:url" content="https://www.automaitee.com/industries/beauty-salons" />
                 <meta name="twitter:title" content="SilentChurn for Beauty Salons | Automaitee" />
-                <meta name="twitter:description" content="We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
+                <meta name="twitter:description" content="We bring your regulars back automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet." />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -21,7 +21,7 @@ export default function BeautySalons({ openBookingModal }) {
                             "@context": "https://schema.org",
                             "@type": "Service",
                             "name": "Customer Retention Automation for Beauty Salons",
-                            "description": "We bring your regulars back — automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet.",
+                            "description": "We bring your regulars back automatically. SilentChurn sends personalised WhatsApp messages to beauty salon customers when they go quiet.",
                             "serviceType": "AI Marketing Automation",
                             "url": "https://www.automaitee.com/industries/beauty-salons",
                             "provider": {
@@ -48,13 +48,13 @@ export default function BeautySalons({ openBookingModal }) {
                 <div className="container">
                     <Reveal width="100%">
                         <p style={{ fontSize: '1rem', fontWeight: '600', color: '#0071e3', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1rem' }}>
-                            For UK beauty salons — nails, hair, lashes & brows
+                            For UK beauty salons (nails, hair, lashes, and brows)
                         </p>
                         <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '800', marginBottom: '1.5rem', lineHeight: '1.1', color: '#1d1d1f' }}>
-                            Beauty Salon Customer Retention — Automated WhatsApp Win-Back
+                            Beauty Salon Customer Retention: Automated WhatsApp Win-Back
                         </h1>
                         <p style={{ fontSize: '1.25rem', color: '#515154', maxWidth: '800px', margin: '0 auto 3rem', lineHeight: '1.6' }}>
-                            SilentChurn watches your customer visit patterns around the clock. The moment a regular goes quiet, it sends them a warm, personalised WhatsApp message — written by AI, sent automatically, timed perfectly. No apps to manage. No chasing. No extra work for you.
+                            SilentChurn watches your customer visit patterns around the clock. The moment a regular goes quiet, it sends them a warm, personalised WhatsApp message that is written by AI, sent automatically, and timed perfectly. There are no apps to manage, no chasing, and no extra work for you.
                         </p>
                     </Reveal>
 
@@ -106,7 +106,7 @@ export default function BeautySalons({ openBookingModal }) {
                             <div className="card" style={{ height: '100%', padding: '2rem', background: '#f8f9fa', borderRadius: '16px', border: '1px solid #e5e5ea' }}>
                                 <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#1d1d1f' }}>No booking system? No problem.</h3>
                                 <p style={{ color: '#515154', lineHeight: '1.6' }}>
-                                    Most independent beauty salons do not use a booking app — and they do not need one. SilentChurn works with walk-in salons using a simple QR code on the till or a quick WhatsApp tap from the owner after each appointment.
+                                    Most independent beauty salons do not use a booking app, and they do not need one. SilentChurn works with walk-in salons using a simple QR code on the till or a quick WhatsApp tap from the owner after each appointment.
                                 </p>
                             </div>
                         </Reveal>
@@ -122,7 +122,7 @@ export default function BeautySalons({ openBookingModal }) {
                             <div className="card" style={{ height: '100%', padding: '2rem', background: '#f8f9fa', borderRadius: '16px', border: '1px solid #e5e5ea' }}>
                                 <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#1d1d1f' }}>Every message feels personal.</h3>
                                 <p style={{ color: '#515154', lineHeight: '1.6' }}>
-                                    Each win-back message is written fresh by AI using the customer's real name, how long it has been, and their visit history. It reads like a text from the owner — not a mass marketing blast.
+                                    Each win-back message is written fresh by AI using the customer's real name, how long it has been, and their visit history. It reads like a text from the owner rather than a mass marketing blast.
                                 </p>
                             </div>
                         </Reveal>
@@ -141,12 +141,12 @@ export default function BeautySalons({ openBookingModal }) {
 
                     <div className="timeline">
                         {[
-                            { step: "Step 1 — Customers get added to your list", desc: "After each appointment, your customer scans a QR code at the till (10 seconds), or you send a quick WhatsApp message. That is all the input the system ever needs from you." },
-                            { step: "Step 2 — The system learns their visit pattern", desc: "SilentChurn tracks how often each customer usually visits and builds a personal rhythm for every single client. Not a generic 4-week reminder — based on her actual behaviour." },
-                            { step: "Step 3 — It spots when someone goes quiet", desc: "Every night, the system checks every customer. If someone is overdue based on their personal pattern, they are flagged automatically." },
-                            { step: "Step 4 — A personalised WhatsApp goes out", desc: "AI writes a warm, natural message and sends it from your salon's WhatsApp Business number. No action needed from you.", example: `"Hey Priya! It's been a little while since your last visit 😊 We've got some slots this week if you fancy coming in — just reply here and we'll sort you out."` },
-                            { step: "Step 5 — If no reply, one more message with an offer", desc: "Seven days later, if she has not responded, one final message goes out with a small gesture — like 10% off or a free nail art design. After that, the system stops. No spam, ever." },
-                            { step: "Step 6 — Weekly results report to your WhatsApp", desc: "Every week you get a summary: messages sent, customers recovered, and revenue saved." }
+                            { step: "Step 1: Customers get added to your list", desc: "After each appointment, your customer scans a QR code at the till (10 seconds), or you send a quick WhatsApp message. That is all the input the system ever needs from you." },
+                            { step: "Step 2: The system learns their visit pattern", desc: "SilentChurn tracks how often each customer usually visits and builds a personal rhythm for every single client. Not a generic 4-week reminder, but one based on her actual behaviour." },
+                            { step: "Step 3: It spots when someone goes quiet", desc: "Every night, the system checks every customer. If someone is overdue based on their personal pattern, they are flagged automatically." },
+                            { step: "Step 4: A personalised WhatsApp goes out", desc: "AI writes a warm, natural message and sends it from your salon's WhatsApp Business number. No action needed from you.", example: `"Hey Priya! It's been a little while since your last visit 😊 We've got some slots this week if you fancy coming in, just reply here and we'll sort you out."` },
+                            { step: "Step 5: If no reply, one more message with an offer", desc: "Seven days later, if she has not responded, one final message goes out with a small gesture, such as 10% off or a free nail art design. After that, the system stops. No spam, ever." },
+                            { step: "Step 6: Weekly results report to your WhatsApp", desc: "Every week you get a summary: messages sent, customers recovered, and revenue saved." }
                         ].map((item, i) => (
                             <Reveal key={i} delay={i * 0.1}>
                                 <div style={{ display: 'flex', marginBottom: '3rem', alignItems: 'flex-start' }}>
@@ -182,14 +182,14 @@ export default function BeautySalons({ openBookingModal }) {
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                             {[
                                 "Automated nightly churn detection",
-                                "AI-written personalised WhatsApp messages — unique every time, never a template",
+                                "AI-written personalised WhatsApp messages that are unique every time and never use templates",
                                 "Two-message win-back sequence with follow-up offer",
-                                "QR code setup for walk-in salons — no booking software needed",
-                                "Owner WhatsApp visit logging — log a visit in 5 seconds",
-                                "Automatic opt-out handling — STOP is always respected instantly",
+                                "QR code setup for walk-in salons, requiring no booking software",
+                                "Owner WhatsApp visit logging, allowing you to log a visit in 5 seconds",
+                                "Automatic opt-out handling where STOP is always respected instantly",
                                 "Weekly WhatsApp performance report",
                                 "Full setup and onboarding by Automaitee Digital",
-                                "Ongoing support — we are always a WhatsApp away"
+                                "Ongoing support, with our team always a WhatsApp away"
                             ].map((item, i) => (
                                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1.2rem', fontSize: '1.1rem', color: '#1d1d1f' }}>
                                     <Check size={24} color="#0071e3" style={{ marginRight: '15px', flexShrink: 0, marginTop: '2px' }} />
@@ -283,7 +283,7 @@ export default function BeautySalons({ openBookingModal }) {
                                 I had no idea how many regulars I was losing until I saw the weekly report. Within the first month I had 5 customers back who I thought had just moved on. It paid for itself in week one.
                             </p>
                             <div style={{ fontWeight: '600', color: '#a1a1aa' }}>
-                                — Salon owner, East London
+                                - Salon owner, East London
                             </div>
                         </div>
                     </Reveal>
@@ -306,7 +306,7 @@ export default function BeautySalons({ openBookingModal }) {
                             { q: "What if a customer does not want messages?", a: "They simply reply STOP. The system removes them permanently and immediately. No one is ever chased or spammed." },
                             { q: "How long does setup take?", a: "We handle the full setup. Most salons are live within 3 to 5 business days." },
                             { q: "Is there a contract?", a: "No. Month to month. Cancel any time with no penalty." },
-                            { q: "What do I actually have to do?", a: "Just log each visit — either via QR code or a quick WhatsApp message. Everything else is fully automated." }
+                            { q: "What do I actually have to do?", a: "Just log each visit either via a QR code or a quick WhatsApp message. Everything else is fully automated." }
                         ].map((faq, i) => (
                             <Reveal key={i} delay={i * 0.1}>
                                 <div style={{ background: '#fff', padding: '2rem', borderRadius: '16px', border: '1px solid #e5e5ea' }}>
@@ -327,7 +327,7 @@ export default function BeautySalons({ openBookingModal }) {
                             Ready to stop losing your regulars?
                         </h2>
                         <p style={{ fontSize: '1.2rem', marginBottom: '3rem', opacity: 0.9, lineHeight: '1.6' }}>
-                            Join beauty salons across the UK who are quietly winning back customers every single week — without lifting a finger.
+                            Join beauty salons across the UK who are quietly winning back customers every single week without lifting a finger.
                         </p>
                         <Link href="https://wa.me/447570546554?text=Hi,%20I'm%20interested%20in%20SilentChurn%20for%20my%20salon" target="_blank" rel="noopener noreferrer" style={{ 
                             display: 'inline-block',
@@ -341,7 +341,7 @@ export default function BeautySalons({ openBookingModal }) {
                             boxShadow: '0 4px 14px rgba(0,0,0,0.1)',
                             marginBottom: '1.5rem'
                         }}>
-                            WhatsApp us now — £49/mo, no contract →
+                            WhatsApp us now: £49/mo, no contract →
                         </Link>
                         <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>
                             Automaitee Digital · London · automateedigital.com

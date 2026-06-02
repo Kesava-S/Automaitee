@@ -171,7 +171,7 @@ export default function HospitalityAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored to your exact workflow</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Optimized for hospitality operations</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner</li>
                                 </ul>
@@ -182,7 +182,7 @@ export default function HospitalityAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Streamline Your Hospitality Operations?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate bookings, guest communication, staff scheduling, and inventory management — all customized for your business.
+                            Automate bookings, guest communication, staff scheduling, and inventory management, all customized for your business.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

@@ -72,7 +72,7 @@ export default function CustomPage() {
             {
                 title: "8. Brand Positioning for the Future",
                 items: [
-                    "This isn’t just ads — it’s market positioning",
+                    "This isn’t just about ads; it is about market positioning",
                     "You are not “running ads for a builder”",
                     "You are: International marketing & lead partner",
                     "You are: Gateway between NRIs & Indian construction companies"

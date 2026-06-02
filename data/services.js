@@ -7,7 +7,7 @@ export const services = [
         price: "£600 / month",
         priceVal: 600,
         description: "Core Marketing Automation",
-        fullDescription: "STARTER AUTOMATION — Core automated workflows including lead capture, instant response, and performance monitoring.",
+        fullDescription: "STARTER AUTOMATION: Core automated workflows including lead capture, instant response, and performance monitoring.",
         featuresTitle: "What's Included",
         processSteps: [
             "Lead Capture",
@@ -76,7 +76,7 @@ export const services = [
         price: "£1,200 / month",
         priceVal: 1200,
         description: "Fully Automated Smart Engine",
-        fullDescription: "PRO AUTOMATION — Comprehensive automated pipeline linking lead gen, smart conversational AI, bookings, invoicing, and full attribution.",
+        fullDescription: "PRO AUTOMATION: Comprehensive automated pipeline linking lead gen, smart conversational AI, bookings, invoicing, and full attribution.",
         featuresTitle: "What's Included",
         processSteps: [
             "Omnichannel Lead Gen",

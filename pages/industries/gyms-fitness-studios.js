@@ -52,7 +52,7 @@ export default function GymFitnessStudioAutomation() {
                     </h1>
 
                     <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '900px', lineHeight: '1.6', marginBottom: '2rem' }}>
-                        Running a gym or fitness studio involves managing memberships, schedules, payments, and client engagement — often across multiple apps and spreadsheets. Automaitee helps fitness businesses automate administrative tasks, optimize operations, and improve member satisfaction, so your team can focus on training and growth.
+                        Running a gym or fitness studio involves managing memberships, schedules, payments, and client engagement, often across multiple apps and spreadsheets. Automaitee helps fitness businesses automate administrative tasks, optimize operations, and improve member satisfaction, so your team can focus on training and growth.
                     </p>
 
                     <div style={{ marginBottom: '4rem', padding: '2rem', background: '#f8f9fa', borderRadius: '16px' }}>
@@ -180,7 +180,7 @@ export default function GymFitnessStudioAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored to gym operations and member workflows</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Optimized for memberships, scheduling, and billing</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner, from setup to ongoing support</li>
                                 </ul>
@@ -191,7 +191,7 @@ export default function GymFitnessStudioAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Streamline Your Gym Operations?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate memberships, class schedules, trainer assignments, billing, and member communications — all customized for your gym or fitness studio.
+                            Automate memberships, class schedules, trainer assignments, billing, and member communications, all customized for your gym or fitness studio.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

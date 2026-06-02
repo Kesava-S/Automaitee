@@ -7,12 +7,12 @@ export default function Sustainability() {
         <>
             <Head>
                 <title>Sustainable Business Automation & Lean Operations | Automaitee</title>
-                <meta name="description" content="Automaitee builds lean, energy-efficient automation for London businesses — sustainable systems that reduce waste, cut costs, and scale cleanly." />
+                <meta name="description" content="Automaitee builds lean, energy-efficient automation for London businesses, providing sustainable systems that reduce waste, cut costs, and scale cleanly." />
                 <meta property="og:title" content="Sustainable Business Automation & Lean Operations | Automaitee" />
-                <meta property="og:description" content="Automaitee builds lean, energy-efficient automation for London businesses — sustainable systems that reduce waste, cut costs, and scale cleanly." />
+                <meta property="og:description" content="Automaitee builds lean, energy-efficient automation for London businesses, providing sustainable systems that reduce waste, cut costs, and scale cleanly." />
                 <meta property="og:url" content="https://www.automaitee.com/sustainability" />
                 <meta name="twitter:title" content="Sustainable Business Automation & Lean Operations | Automaitee" />
-                <meta name="twitter:description" content="Automaitee builds lean, energy-efficient automation for London businesses — sustainable systems that reduce waste, cut costs, and scale cleanly." />
+                <meta name="twitter:description" content="Automaitee builds lean, energy-efficient automation for London businesses, providing sustainable systems that reduce waste, cut costs, and scale cleanly." />
             </Head>
 
             <div style={{ paddingTop: '120px', paddingBottom: '80px' }}>

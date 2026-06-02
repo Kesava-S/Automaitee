@@ -12,7 +12,7 @@ export const faqs = [
     {
         id: 3,
         question: "What is your pricing structure?",
-        answer: "We offer transparent, affordable pricing starting from £49/month for our Micro Automation services. Full Funnel Systems start from £600/month. All plans are tailored to your business — book a free consultation and we’ll recommend exactly what you need."
+        answer: "We offer transparent, affordable pricing starting from £49/month for our Micro Automation services. Full Funnel Systems start from £600/month. All plans are tailored to your business. Book a free consultation and we’ll recommend exactly what you need."
     },
     {
         id: 4,

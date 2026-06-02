@@ -185,7 +185,7 @@ export default function PayPage() {
   return (
     <>
       <Head>
-        <title>Secure Payment – Automaitee Digital</title>
+        <title>Secure Payment | Automaitee Digital</title>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

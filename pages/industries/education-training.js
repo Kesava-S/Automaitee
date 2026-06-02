@@ -53,7 +53,7 @@ export default function EducationTrainingAutomation() {
                     </h1>
 
                     <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '900px', lineHeight: '1.6', marginBottom: '2rem' }}>
-                        Managing a tutoring centre, private coaching institute, or language school involves administrative tasks, student engagement, and content delivery — often across multiple platforms. Automaitee helps educational businesses automate enrolment, attendance, course management, and notifications, allowing educators to focus on teaching and improving student outcomes.
+                        Managing a tutoring centre, private coaching institute, or language school involves administrative tasks, student engagement, and content delivery, often across multiple platforms. Automaitee helps educational businesses automate enrolment, attendance, course management, and notifications, allowing educators to focus on teaching and improving student outcomes.
                     </p>
 
                     <div style={{ marginBottom: '4rem', padding: '2rem', background: '#f8f9fa', borderRadius: '16px' }}>
@@ -172,7 +172,7 @@ export default function EducationTrainingAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored to education workflows and student engagement</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Optimized for enrolment, attendance, and course delivery</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner, from setup to ongoing support</li>
                                 </ul>
@@ -183,7 +183,7 @@ export default function EducationTrainingAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Automate Your Education Operations?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate enrolments, fees, attendance, LMS workflows, and student notifications — all customized for your training or tutoring centre.
+                            Automate enrolments, fees, attendance, LMS workflows, and student notifications, all customized for your training or tutoring centre.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

@@ -19,7 +19,7 @@ export default function WorkWithUs() {
             description: "Learn to build Automation in chatbots, websites, landing pages, email sequences, and CRM workflows and integrate them seamlessly. Manage SEO and social media automation.",
             qualifications: [
                 "Pre Final year CS / IT / BCA / MCA student",
-                "Basic coding knowledge — JS or APIs is a plus",
+                "Basic coding knowledge of JS or APIs is a plus",
                 "Interest in chatbots and AI tools"
             ]
         },

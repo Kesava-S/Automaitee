@@ -52,7 +52,7 @@ export default function RentalPropertyBusinessAutomation() {
                     </h1>
 
                     <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '900px', lineHeight: '1.6', marginBottom: '2rem' }}>
-                        Managing rental properties and real estate portfolios involves lead tracking, tenant onboarding, bookings, and payments — often across multiple platforms. Automaitee helps property businesses automate repetitive tasks, improve response times, and ensure operational consistency, allowing your team to focus on client relationships and growth.
+                        Managing rental properties and real estate portfolios involves lead tracking, tenant onboarding, bookings, and payments, often across multiple platforms. Automaitee helps property businesses automate repetitive tasks, improve response times, and ensure operational consistency, allowing your team to focus on client relationships and growth.
                     </p>
 
                     <div style={{ marginBottom: '4rem', padding: '2rem', background: '#f8f9fa', borderRadius: '16px' }}>
@@ -180,7 +180,7 @@ export default function RentalPropertyBusinessAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored to rental and property workflows</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Optimized for lead management, payments, and tenant communication</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner, from setup to ongoing support</li>
                                 </ul>
@@ -191,7 +191,7 @@ export default function RentalPropertyBusinessAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Automate Your Rental & Property Business?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate lead capture, tenant onboarding, bookings, payments, and property management workflows — all customized for your business.
+                            Automate lead capture, tenant onboarding, bookings, payments, and property management workflows, all customized for your business.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

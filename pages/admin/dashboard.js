@@ -98,7 +98,7 @@ export default function AdminDashboard() {
   return (
     <>
       <Head>
-        <title>Dashboard — Automaitee Admin</title>
+        <title>Dashboard | Automaitee Admin</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 

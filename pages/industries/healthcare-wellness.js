@@ -172,7 +172,7 @@ export default function HealthcareWellnessAutomation() {
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Done-for-you, fully managed automation</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Custom workflows for clinic and patient processes</li>
-                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing — cost-effective long-term</li>
+                                    <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Fixed/custom pricing, which is cost-effective long-term</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Tailored for healthcare compliance and efficiency</li>
                                     <li style={{ marginBottom: '1rem', fontWeight: '500' }}>✅ Your automation partner, from setup to ongoing support</li>
                                 </ul>
@@ -183,7 +183,7 @@ export default function HealthcareWellnessAutomation() {
                     <div style={{ padding: '4rem 2rem', background: '#f8f9fa', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>Ready to Streamline Your Healthcare Operations?</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Automate appointments, patient records, billing, inventory, and telehealth workflows — all customized for your clinic or wellness business.
+                            Automate appointments, patient records, billing, inventory, and telehealth workflows, all customized for your clinic or wellness business.
                         </p>
                         <Link href="/book-consultation" className="cta-button">
                             Book Your Free Consultation

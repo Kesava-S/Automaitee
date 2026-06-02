@@ -35,7 +35,7 @@ export default function FAQ() {
             <div style={{ paddingTop: '120px', paddingBottom: '80px', background: 'transparent' }}>
                 <div className="container" style={{ maxWidth: '800px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                        <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem' }}>AI Automation FAQ — Common Questions Answered</h1>
+                        <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem' }}>AI Automation FAQ: Common Questions Answered</h1>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>Everything you need to know about our services.</p>
                     </div>
 

@@ -199,7 +199,7 @@ export default function Apply() {
                         <motion.div key="p1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
                             <h2 style={h2Style}>What we expect from you</h2>
                             <p style={pStyle}>
-                                This programme demands genuine commitment. Live sessions are mandatory. You are allowed a maximum of one absence during the course, and only if you inform us before the session begins. Missing a session without prior notice results in immediate removal from the programme — no exceptions and no refund.
+                                This programme demands genuine commitment. Live sessions are mandatory. You are allowed a maximum of one absence during the course, and only if you inform us before the session begins. Missing a session without prior notice results in immediate removal from the programme, with no exceptions and no refund.
                             </p>
                             <p style={pStyle}>
                                 We are not strict for the sake of being strict. We are strict because you will be working with real clients and real money. Professional discipline starts here.
@@ -219,7 +219,7 @@ export default function Apply() {
                         <motion.div key="p2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
                             <h2 style={h2Style}>Course fee</h2>
                             <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#f0fdf4', color: '#166534', borderRadius: '0.5rem', fontWeight: '600', fontSize: '1.1rem' }}>
-                                ₹1,000 — one-time, non-refundable
+                                ₹1,000 (one-time, non-refundable)
                             </div>
                             <p style={pStyle}>
                                 Shortlisted candidates will have to pay 1000 rupees to enroll the course.
@@ -250,7 +250,7 @@ export default function Apply() {
                                 },
                                 {
                                     q: 'What happens if I am not selected after the course?',
-                                    a: 'You will receive a personalised email explaining why and what to work on. The ₹1,000 fee is non-refundable — you received a full month of live training on real platforms regardless of selection outcome.'
+                                    a: 'You will receive a personalised email explaining why and what to work on. The ₹1,000 fee is non-refundable, as you received a full month of live training on real platforms regardless of selection outcome.'
                                 },
                                 {
                                     q: 'Can I attend if I am from a college not mentioned on the form?',
@@ -258,7 +258,7 @@ export default function Apply() {
                                 },
                                 {
                                     q: 'Will sessions be recorded?',
-                                    a: 'Yes. All live sessions are recorded and shared with enrolled participants only. However attendance to live sessions is still mandatory — recordings are for revision only, not a substitute for being present.'
+                                    a: 'Yes. All live sessions are recorded and shared with enrolled participants only. However attendance to live sessions is still mandatory. Recordings are for revision only and are not a substitute for being present.'
                                 },
                                 {
                                     q: 'When does the programme start?',
@@ -348,7 +348,7 @@ export default function Apply() {
                                                 <div key={field.name}>
                                                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors[field.name] ? '#d93025' : '#1d1d1f' }}>
                                                         {field.label} <span style={{ color: '#d93025' }}>*</span>
-                                                        {formErrors[field.name] && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}> — {formErrors[field.name]}</span>}
+                                                        {formErrors[field.name] && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}>: {formErrors[field.name]}</span>}
                                                     </label>
                                                     <div style={{ display: 'flex', gap: '1.5rem' }}>
                                                         <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
@@ -485,7 +485,7 @@ export default function Apply() {
                                     <div style={{ marginBottom: '2rem' }}>
                                         <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: formErrors.agreesToTraining ? '#d93025' : '#1d1d1f' }}>
                                             Willing to take training before internship <span style={{ color: '#d93025' }}>*</span>
-                                            {formErrors.agreesToTraining && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}> — {formErrors.agreesToTraining}</span>}
+                                            {formErrors.agreesToTraining && <span style={{ color: '#d93025', fontWeight: 'normal', fontSize: '0.85rem' }}>: {formErrors.agreesToTraining}</span>}
                                         </label>
                                         <div style={{ display: 'flex', gap: '1.5rem' }}>
                                             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
