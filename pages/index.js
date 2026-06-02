@@ -68,7 +68,7 @@ export default function Home() {
                             maxWidth: "1000px",
                             margin: "0 auto"
                         }}>
-                            Marketing Automation Personalised For Small Businesses in London
+                            Marketing Automation Personalised For Small Owner-Led Businesses in London
                         </h1>
                     </Reveal>
                     <Reveal delay={0.5}>
