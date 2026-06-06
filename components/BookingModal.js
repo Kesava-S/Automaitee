@@ -104,18 +104,30 @@ export default function BookingModal({ isOpen, onClose }) {
                 break;
 
             case 'companyName':
-                if (value.trim() && value.trim().length < 2) {
+                if (!value.trim()) {
+                    error = 'Company name is required';
+                } else if (value.trim().length < 2) {
                     error = 'Company name must be at least 2 characters';
                 }
                 break;
 
             case 'industry':
-                // Optional field, no validation needed
+                if (!value.trim()) {
+                    error = 'Industry is required';
+                }
                 break;
 
             case 'goal':
-                if (value.trim() && value.trim().length < 10) {
+                if (!value.trim()) {
+                    error = 'Goal is required';
+                } else if (value.trim().length < 10) {
                     error = 'Please provide more details (at least 10 characters)';
+                }
+                break;
+
+            case 'duration':
+                if (!value) {
+                    error = 'Duration is required';
                 }
                 break;
 
@@ -157,8 +169,8 @@ export default function BookingModal({ isOpen, onClose }) {
         setErrors(prev => ({ ...prev, dateTime: '' }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (e, type = 'booking') => {
+        if (e) e.preventDefault();
 
         // Validate all fields before submitting
         const newErrors = {};
@@ -208,15 +220,17 @@ export default function BookingModal({ isOpen, onClose }) {
                 month: 'long',
                 day: 'numeric'
             }) : '',
-            bookingTime: selectedTime,
-            timestamp: new Date().toISOString()
+            bookingTime: selectedTime || '',
+            timestamp: new Date().toISOString(),
+            status: type === 'booking' ? 'enquiry' : 'pending'
         };
 
         // console.log('Submitting payload:', payload);
 
         try {
             // N8N Webhook URL
-            const webhookUrl = `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/book-consultation`;
+            const endpoint = type === 'booking' ? 'book-consultation' : 'submit-form';
+            const webhookUrl = `${process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL}/${endpoint}`;
 
             const response = await fetch(webhookUrl, {
                 method: 'POST',
@@ -292,7 +306,7 @@ export default function BookingModal({ isOpen, onClose }) {
                             <h2 className="animated-text" style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>
                                 Schedule a time to talk
                             </h2>
-                            <form onSubmit={handleSubmit} id="bookingForm">
+                            <form onSubmit={(e) => handleSubmit(e, 'booking')} id="bookingForm">
                                 <div className="form-group">
                                     <label>Name *</label>
                                     <input
@@ -330,7 +344,7 @@ export default function BookingModal({ isOpen, onClose }) {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label>Duration</label>
+                                        <label>Duration *</label>
                                         <select
                                             name="duration"
                                             value={formData.duration}
@@ -380,9 +394,9 @@ export default function BookingModal({ isOpen, onClose }) {
                                     </div>
                                     {errors.whatsapp && <span className="error-message">{errors.whatsapp}</span>}
                                 </div>
-                                <div className="form-row">
+                                 <div className="form-row">
                                     <div className="form-group">
-                                        <label>Company</label>
+                                        <label>Company *</label>
                                         <input
                                             type="text"
                                             name="companyName"
@@ -394,7 +408,7 @@ export default function BookingModal({ isOpen, onClose }) {
                                         {errors.companyName && <span className="error-message">{errors.companyName}</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label>Industry</label>
+                                        <label>Industry *</label>
                                         <select
                                             name="industry"
                                             value={formData.industry}
@@ -446,7 +460,7 @@ export default function BookingModal({ isOpen, onClose }) {
                                     ></textarea>
                                 </div>
                                 <div className="form-group">
-                                    <label>Goal</label>
+                                    <label>Goal *</label>
                                     <textarea
                                         name="goal"
                                         rows="2"
@@ -527,12 +541,20 @@ export default function BookingModal({ isOpen, onClose }) {
                             <br />
                             <div className="modal-footer">
                                 <button
-                                    type="submit"
-                                    form="bookingForm"
+                                    type="button"
                                     className="submit-btn"
                                     disabled={isSubmitting}
+                                    onClick={(e) => handleSubmit(e, 'booking')}
                                 >
                                     {isSubmitting ? 'Booking...' : 'Confirm Booking'}
+                                </button>
+                                <button
+                                    type="button"
+                                    className="submit-btn secondary"
+                                    disabled={isSubmitting}
+                                    onClick={(e) => handleSubmit(e, 'inquiry')}
+                                >
+                                    {isSubmitting ? 'Submitting...' : 'Submit Form'}
                                 </button>
                             </div>
                         </div>
@@ -560,6 +582,63 @@ export default function BookingModal({ isOpen, onClose }) {
                 .form-group textarea.error:focus {
                     border-color: #ef4444;
                     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+                }
+
+                .modal-footer {
+                    display: flex;
+                    gap: 12px;
+                    margin-top: 24px;
+                    width: 100%;
+                }
+
+                .submit-btn {
+                    flex: 1;
+                    width: 100%;
+                    padding: 14px;
+                    background: #0071e3;
+                    color: white;
+                    border: none;
+                    border-radius: 12px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    text-align: center;
+                }
+
+                .submit-btn:hover:not(:disabled) {
+                    background: #0077ed;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+                }
+
+                .submit-btn:active:not(:disabled) {
+                    transform: translateY(0);
+                }
+
+                .submit-btn:disabled {
+                    background: #d2d2d7;
+                    cursor: not-allowed;
+                }
+
+                .submit-btn.secondary {
+                    background: transparent;
+                    color: #0071e3;
+                    border: 2px solid #0071e3;
+                }
+
+                .submit-btn.secondary:hover:not(:disabled) {
+                    background: rgba(0, 113, 227, 0.05);
+                    border-color: #0077ed;
+                    color: #0077ed;
+                    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.1);
+                }
+
+                @media (max-width: 768px) {
+                    .modal-footer {
+                        flex-direction: column;
+                        gap: 8px;
+                    }
                 }
             `}</style>
         </div>

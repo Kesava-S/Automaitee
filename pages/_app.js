@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import '../styles/admin.css'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -37,20 +36,7 @@ function MyApp({ Component, pageProps }) {
         setIsMobileMenuOpen(!isMobileMenuOpen)
     }
 
-    // Admin routes use their own self-contained layout
-    if (router.pathname.startsWith('/admin')) {
-        return (
-            <>
-                <Head>
-                    <title>Admin | Automaitee</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="icon" href="/logo.png" />
-                    <meta name="robots" content="noindex, nofollow" />
-                </Head>
-                <Component {...pageProps} />
-            </>
-        )
-    }
+
 
     return (
         <>
