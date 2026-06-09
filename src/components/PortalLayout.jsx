@@ -63,7 +63,7 @@ export default function PortalLayout({ clientData, onSignOut }) {
             <span>Sign out</span>
           </button>
         </div>
-      </</aside>
+      </aside>
 
       {/* Main Content Area */}
       <main className="flex-1 ml-64 min-h-screen flex flex-col">
