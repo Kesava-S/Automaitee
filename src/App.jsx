@@ -98,8 +98,10 @@ export default function App() {
     );
   }
 
+  const isPortalPath = typeof window !== 'undefined' && window.location.pathname.startsWith('/portal');
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={isPortalPath ? '/portal' : '/'}>
       <Routes>
         {/* Public route */}
         <Route 
