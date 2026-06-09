@@ -9,6 +9,8 @@
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  background: radial-gradient(circle at 50% 0%, #fbfbfd 0%, #ffffff 100%) !important;
+  min-height: 100vh;
 }
 
 .portal-root *,
@@ -17,7 +19,7 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  border-color: #e2e8f0; /* Default border color (gray-200) */
+  border-color: rgba(0, 0, 0, 0.08); /* Default border color (matching Apple style border) */
 }
 
 .portal-root button {
@@ -54,5 +56,222 @@
   -webkit-appearance: button;
   background-color: transparent;
   background-image: none;
+}
+
+/* Premium light theme adjustments scoped to the portal */
+
+/* Force backgrounds of general layout wrappers inside portal-root to inherit the gradient */
+.portal-root .bg-slate-50,
+.portal-root .bg-gray-50,
+.portal-root .bg-slate-50\/50,
+.portal-root .bg-gray-50\/50 {
+  background: radial-gradient(circle at 50% 0%, #fbfbfd 0%, #ffffff 100%) !important;
+}
+
+/* Style cards inside portal */
+.portal-root .bg-white {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Card hover lift effect for portal metric cards and generic rounded cards, but not structural layouts or modals */
+.portal-root .grid > div.bg-white:hover,
+.portal-root .bg-white.rounded-2xl:not(aside):not(header):not(.modal-content):hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 113, 227, 0.12) !important;
+}
+
+/* Prevent layout wrappers and structural bg-white elements from lifting or casting card shadows */
+.portal-root aside.bg-white,
+.portal-root header.bg-white,
+.portal-root tr.bg-white,
+.portal-root table.bg-white,
+.portal-root div.fixed.bg-white,
+.portal-root .modal-content {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Adjust standard border classes to be super thin and matching Apple aesthetic */
+.portal-root .border-gray-200,
+.portal-root .border-slate-200,
+.portal-root .border-slate-100,
+.portal-root .border-gray-100 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Inputs & select fields styling */
+.portal-root input,
+.portal-root select,
+.portal-root textarea {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  color: #1d1d1f !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.portal-root input:focus,
+.portal-root select:focus,
+.portal-root textarea:focus {
+  border-color: #0071e3 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15) !important;
+  background-color: #ffffff !important;
+}
+
+/* Primary buttons styling: Apple Blue gradient */
+.portal-root .bg-blue-600,
+.portal-root .bg-blue-500,
+.portal-root .submit-btn {
+  background: linear-gradient(135deg, #0071e3 0%, #42a1ff 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.portal-root .bg-blue-600:hover,
+.portal-root .bg-blue-500:hover,
+.portal-root .submit-btn:hover:not(:disabled) {
+  transform: scale(1.02) !important;
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.3) !important;
+  background: linear-gradient(135deg, #0076ee 0%, #4da8ff 100%) !important;
+}
+
+.portal-root .bg-blue-600:active,
+.portal-root .bg-blue-500:active,
+.portal-root .submit-btn:active:not(:disabled) {
+  transform: scale(0.98) !important;
+}
+
+/* Secondary & White buttons styling */
+.portal-root button.bg-white,
+.portal-root .bg-white.border {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #1d1d1f !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.portal-root button.bg-white:hover,
+.portal-root .bg-white.border:hover {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Soft blue interactive tags and buttons */
+.portal-root .bg-blue-50 {
+  background-color: rgba(0, 113, 227, 0.06) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.12) !important;
+}
+
+.portal-root .text-blue-600 {
+  color: #0071e3 !important;
+}
+
+.portal-root .bg-blue-50:hover {
+  background-color: rgba(0, 113, 227, 0.12) !important;
+}
+
+.portal-root .bg-blue-100 {
+  background-color: rgba(0, 113, 227, 0.12) !important;
+}
+
+/* Red / Sign Out styling */
+.portal-root .bg-red-50,
+.portal-root .hover\:bg-red-50:hover {
+  background-color: rgba(255, 59, 48, 0.06) !important;
+}
+.portal-root .text-red-600,
+.portal-root .text-red-650 {
+  color: #ff3b30 !important;
+}
+
+/* Sidebars styling overrides */
+.portal-root aside {
+  background: linear-gradient(180deg, rgba(246, 246, 250, 0.98) 0%, rgba(235, 242, 250, 0.98) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.portal-root aside a.active {
+  background-color: rgba(0, 113, 227, 0.08) !important;
+  color: #0071e3 !important;
+  font-weight: 600 !important;
+}
+
+.portal-root aside a:not(.active):hover {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  color: #1d1d1f !important;
+}
+
+/* Sticky top header styling overrides */
+.portal-root header {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Table styles */
+.portal-root table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.portal-root th {
+  background-color: rgba(0, 0, 0, 0.01) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #86868b !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  padding: 14px 24px !important;
+  text-transform: uppercase !important;
+}
+
+.portal-root td {
+  padding: 16px 24px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  font-size: 0.875rem !important;
+  color: #1d1d1f !important;
+}
+
+.portal-root tr:hover {
+  background-color: rgba(0, 0, 0, 0.005) !important;
+}
+
+/* Modals & Overlays styling */
+.portal-root .fixed.inset-0.bg-slate-900\/50,
+.portal-root .fixed.inset-0.bg-black\/50,
+.portal-root .fixed.inset-0.bg-slate-900\/60 {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  animation: fadeIn 0.3s ease-out !important;
+}
+
+.portal-root .modal-content,
+.portal-root div.fixed > div.bg-white {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12) !important;
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 

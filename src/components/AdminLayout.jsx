@@ -17,16 +17,16 @@ export default function AdminLayout({ onSignOut }) {
   ];
 
   return (
-    <div className="flex min-h-screen bg-slate-100 text-slate-800 font-sans">
+    <div className="flex min-h-screen bg-gray-50 text-gray-800 font-sans">
       {/* Left Sidebar */}
-      <aside className="w-64 bg-slate-900 text-slate-350 border-r border-slate-800 flex flex-col justify-between fixed h-full z-10">
+      <aside className="w-64 bg-white border-r border-gray-200 flex flex-col justify-between fixed h-full z-10">
         <div>
           {/* Header */}
-          <div className="p-6 border-b border-slate-800">
+          <div className="p-6 border-b border-gray-200">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="font-bold text-lg text-white tracking-tight">Automaitee Admin</span>
+              <span className="font-bold text-lg text-gray-900 tracking-tight">Automaitee Admin</span>
             </div>
-            <p className="text-xs text-slate-500">Service Provider Panel</p>
+            <p className="text-xs text-gray-500 font-medium">Service Provider Panel</p>
           </div>
 
           {/* Navigation Links */}
@@ -38,8 +38,8 @@ export default function AdminLayout({ onSignOut }) {
                 className={({ isActive }) =>
                   `flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                     isActive
-                      ? 'bg-slate-800 text-white'
-                      : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-650 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >
@@ -50,10 +50,10 @@ export default function AdminLayout({ onSignOut }) {
         </div>
 
         {/* Footer / Sign Out */}
-        <div className="p-4 border-t border-slate-800">
+        <div className="p-4 border-t border-gray-200">
           <button
             onClick={handleSignOutClick}
-            className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-sm font-medium text-red-400 hover:bg-red-950/20 hover:text-red-300 transition-all"
+            className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-sm font-medium text-red-650 hover:bg-red-50 transition-all"
           >
             <span>Sign out</span>
           </button>
@@ -62,9 +62,9 @@ export default function AdminLayout({ onSignOut }) {
 
       {/* Main Content Area */}
       <main className="flex-1 ml-64 min-h-screen flex flex-col">
-        <header className="h-16 bg-white border-b border-gray-250 flex items-center justify-between px-8 sticky top-0 z-20">
-          <div className="text-sm font-medium text-slate-500">
-            Admin console &bull; <span className="text-slate-800">System Operator</span>
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-20">
+          <div className="text-sm font-medium text-gray-500">
+            Admin console &bull; <span className="text-gray-800">System Operator</span>
           </div>
           <div className="flex items-center space-x-2">
             <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
