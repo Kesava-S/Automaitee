@@ -212,6 +212,8 @@ function MyApp({ Component, pageProps }) {
                                         <Link href="/privacy-policy" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Privacy Policy</Link>
                                         <Link href="/terms-of-service" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Terms of Service</Link>
                                         <Link href="/refund-policy" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Refund Policy</Link>
+                                        <Link href="/portal/login" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Client</Link>
+                                        <Link href="/portal/login" style={{ fontSize: '0.9rem', color: '#a1a1aa', textDecoration: 'none' }}>Admin</Link>
                                     </div>
                                 </div>
                             </div>
