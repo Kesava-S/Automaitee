@@ -289,8 +289,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
             {activeStep === 3 && (
               <form onSubmit={handleSetPassword} className="space-y-5">
                 {passwordError && (
-                  <div className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-start space-x-3 text-red-600 text-sm">
-                    <span className="text-base mt-0.5">⚠️</span>
+                  <div className="p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm">
                     <span>{passwordError}</span>
                   </div>
                 )}
@@ -348,8 +347,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
             
             {activeStep === 4 && (
               <div className="space-y-6 pt-2">
-                <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl flex items-start space-x-3 text-emerald-800 text-sm">
-                  <span className="text-lg mt-0.5">🎉</span>
+                <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-800 text-sm">
                   <div>
                     <strong className="block font-semibold">Onboarding complete!</strong>
                     <span className="text-emerald-700">Welcome to your portal. Your credentials are set and your contract accepted.</span>

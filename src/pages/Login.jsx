@@ -43,17 +43,13 @@ export default function Login({ clientData, onLoginSuccess }) {
       <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-blue-600 text-2xl mb-4">
-            🤖
-          </div>
           <h1 className="text-2xl font-bold text-slate-900">Client portal</h1>
           <p className="text-sm text-slate-500 mt-1">Sign in to get started</p>
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl flex items-start space-x-3 text-red-600 text-sm">
-            <span className="text-base mt-0.5">⚠️</span>
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm">
             <span>{error}</span>
           </div>
         )}

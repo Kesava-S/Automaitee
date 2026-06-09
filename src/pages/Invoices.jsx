@@ -5,6 +5,11 @@ export default function Invoices({ invoices }) {
     // TODO: Replace with real PDF download from backend storage
   };
 
+  const handlePayBill = (invoice) => {
+    // TODO: Replace with payment gateway API / bank redirection
+    alert(`Redirecting to bank gateway for invoice ${invoice.invoiceNumber} (Amount: £${invoice.amount.toFixed(2)})`);
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -17,7 +22,6 @@ export default function Invoices({ invoices }) {
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         {invoices.length === 0 ? (
           <div className="p-12 text-center text-gray-500">
-            <span className="text-3xl block mb-2">💳</span>
             <p className="font-semibold">No invoices available.</p>
           </div>
         ) : (
@@ -48,7 +52,7 @@ export default function Invoices({ invoices }) {
                       </p>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600 font-mono font-medium">{inv.invoiceNumber}</td>
-                    <td className="px-6 py-4 text-sm font-bold text-gray-950">₹ {inv.amount.toFixed(2)}</td>
+                    <td className="px-6 py-4 text-sm font-bold text-gray-950">£ {inv.amount.toFixed(2)}</td>
                     <td className="px-6 py-4">
                       <span className={`inline-flex px-2.5 py-1 text-xs font-semibold rounded-md border ${
                         inv.status === 'Paid'
@@ -59,12 +63,22 @@ export default function Invoices({ invoices }) {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button
-                        onClick={() => handleDownloadPdf(inv.invoiceNumber)}
-                        className="px-4 py-2 border border-gray-200 hover:border-gray-300 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all active:scale-[0.98]"
-                      >
-                        📥 Download PDF
-                      </button>
+                      <div className="flex items-center justify-end space-x-2">
+                        {inv.status === 'Due' && (
+                          <button
+                            onClick={() => handlePayBill(inv)}
+                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl transition-all active:scale-[0.98]"
+                          >
+                            Pay bill
+                          </button>
+                        )}
+                        <button
+                          onClick={() => handleDownloadPdf(inv.invoiceNumber)}
+                          className="px-4 py-2 border border-gray-200 hover:border-gray-300 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all active:scale-[0.98]"
+                        >
+                          Download PDF
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

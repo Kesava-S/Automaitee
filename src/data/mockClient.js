@@ -11,5 +11,6 @@ export const mockClient = {
   tcAcceptedDate: null,
   onboardingComplete: false,
   accountStatus: "active",
-  createdAt: "2026-05-01"
+  createdAt: "2026-05-01",
+  contractExpiryDate: "2027-05-01"
 };

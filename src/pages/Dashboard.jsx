@@ -6,9 +6,7 @@ export default function Dashboard({ clientData, requests, invoices }) {
   // Compute metrics
   const openRequestsCount = requests.filter(r => r.status === 'In progress').length;
   
-  const pendingInvoicesSum = invoices
-    .filter(inv => inv.status === 'Due')
-    .reduce((sum, inv) => sum + inv.amount, 0);
+  const pendingBillsCount = invoices.filter(inv => inv.status === 'Due').length;
 
   const isContractSigned = clientData.tcAccepted;
 
@@ -39,40 +37,32 @@ export default function Dashboard({ clientData, requests, invoices }) {
       {/* Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Open Requests */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm flex items-center space-x-5">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 text-2xl flex items-center justify-center">
-            📨
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Open Requests</h3>
-            <p className="text-3xl font-bold text-gray-950 mt-1">{openRequestsCount}</p>
-          </div>
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Open Requests</h3>
+          <p className="text-3xl font-bold text-gray-950 mt-1">{openRequestsCount}</p>
         </div>
 
         {/* Pending Invoices */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm flex items-center space-x-5">
-          <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 text-2xl flex items-center justify-center">
-            💳
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Pending Amount</h3>
-            <p className="text-3xl font-bold text-gray-950 mt-1">₹ {pendingInvoicesSum.toFixed(2)}</p>
-          </div>
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Pending Bills</h3>
+          <p className="text-3xl font-bold text-gray-950 mt-1">{pendingBillsCount}</p>
         </div>
 
         {/* Contract Status */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm flex items-center space-x-5">
-          <div className={`w-12 h-12 rounded-xl text-2xl flex items-center justify-center ${
-            isContractSigned ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'
-          }`}>
-            📝
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Contract Status</h3>
-            <p className={`text-xl font-bold mt-1 ${isContractSigned ? 'text-emerald-600' : 'text-red-500'}`}>
-              {isContractSigned ? 'Signed' : 'Not Signed'}
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Contract Status</h3>
+          <p className={`text-xl font-bold mt-1 ${isContractSigned ? 'text-emerald-600' : 'text-red-500'}`}>
+            {isContractSigned ? 'Signed' : 'Not Signed'}
+          </p>
+          {isContractSigned && clientData.contractExpiryDate && (
+            <p className="text-xs text-gray-500 mt-2 font-medium">
+              Expires: {new Date(clientData.contractExpiryDate).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+              })}
             </p>
-          </div>
+          )}
         </div>
       </div>
 

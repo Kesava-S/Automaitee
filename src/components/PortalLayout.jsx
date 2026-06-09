@@ -9,10 +9,10 @@ export default function PortalLayout({ clientData, onSignOut }) {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/dashboard', icon: '📊' },
-    { name: 'Contract', path: '/contract', icon: '📝' },
-    { name: 'Requests', path: '/requests', icon: '📨' },
-    { name: 'Invoices', path: '/invoices', icon: '💳' },
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Contract', path: '/contract' },
+    { name: 'Requests', path: '/requests' },
+    { name: 'Invoices', path: '/invoices' },
   ];
 
   return (
@@ -23,7 +23,6 @@ export default function PortalLayout({ clientData, onSignOut }) {
           {/* Header/Client Info */}
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl">🤖</span>
               <span className="font-bold text-lg text-gray-900 tracking-tight">Automaitee</span>
             </div>
             <div className="mt-2">
@@ -46,7 +45,6 @@ export default function PortalLayout({ clientData, onSignOut }) {
                   }`
                 }
               >
-                <span className="text-base">{item.icon}</span>
                 <span>{item.name}</span>
               </NavLink>
             ))}
@@ -59,7 +57,6 @@ export default function PortalLayout({ clientData, onSignOut }) {
             onClick={handleSignOutClick}
             className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
           >
-            <span>🚪</span>
             <span>Sign out</span>
           </button>
         </div>

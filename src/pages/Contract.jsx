@@ -20,6 +20,7 @@ Client Representative: ${clientData.name}
 Company Name: ${clientData.company}
 Service Plan: ${clientData.plan}
 Effective Date: ${clientData.createdAt ? formatDate(clientData.createdAt) : 'N/A'}
+Expiry Date: ${clientData.contractExpiryDate ? formatDate(clientData.contractExpiryDate) : 'N/A'}
 
 1. SERVICE DESCRIPTION
 Service Provider agrees to deploy and maintain custom AI and API automation integrations, reporting dashboards, and marketing synchronization hooks as described in the "${clientData.plan}".
@@ -55,45 +56,7 @@ This agreement is executed digitally. The Client's checkbox selection and legal 
         </div>
       </div>
 
-      {/* Acceptance Record */}
-      <div className="p-6 border-t border-gray-200 bg-gray-50/50">
-        <h3 className="text-sm font-semibold text-gray-900 mb-4">Acceptance Audit Record</h3>
-        
-        <div className="space-y-4 max-w-xl">
-          <div className="flex items-start space-x-3">
-            <input
-              id="accepted-tc"
-              type="checkbox"
-              checked={clientData.tcAccepted}
-              disabled
-              className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-not-allowed"
-            />
-            <label htmlFor="accepted-tc" className="text-sm text-gray-700 font-medium cursor-not-allowed">
-              I have read and agree to the terms and conditions
-            </label>
-          </div>
 
-          <div>
-            <label htmlFor="signature-name" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              Full Name Signature
-            </label>
-            <input
-              id="signature-name"
-              type="text"
-              value={clientData.tcAcceptedName || ''}
-              disabled
-              placeholder="Not Signed"
-              className="w-full px-4 py-2.5 bg-gray-100 border border-gray-200 rounded-xl text-sm font-semibold text-gray-900 cursor-not-allowed"
-            />
-          </div>
-
-          {clientData.tcAccepted && (
-            <p className="text-xs text-gray-500 font-medium">
-              Accepted on <strong className="text-gray-700">{formatDate(clientData.tcAcceptedDate)}</strong> &bull; Cannot be changed
-            </p>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

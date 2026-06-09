@@ -24,7 +24,8 @@ export default function NewRequest({ onSubmitRequest }) {
       type: type,
       details: details.trim(),
       status: "In progress",
-      submittedDate: new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
+      submittedDate: new Date().toISOString().split('T')[0], // Format: YYYY-MM-DD
+      latestUpdate: "We have received your request and our engineering team is reviewing it. We will post an update here within 1 business day."
     };
 
     // TODO: Replace with API call to save request to database
@@ -46,8 +47,7 @@ export default function NewRequest({ onSubmitRequest }) {
       {/* Form Area */}
       <div className="p-6">
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl flex items-start space-x-3 text-red-600 text-sm">
-            <span className="text-base mt-0.5">⚠️</span>
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm">
             <span>{error}</span>
           </div>
         )}
@@ -74,8 +74,7 @@ export default function NewRequest({ onSubmitRequest }) {
 
           {/* Cancellation Notice Warning */}
           {type === 'Cancellation request' && (
-            <div className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-start space-x-3 text-red-700 text-sm animate-fadeIn">
-              <span className="text-lg mt-0.5">⚠️</span>
+            <div className="p-4 bg-red-50 border border-red-100 rounded-xl text-red-700 text-sm animate-fadeIn">
               <div>
                 <strong className="block font-semibold">Contract notice warning</strong>
                 <span className="text-red-600">Cancellation requires 30 days notice as per your contract. We will confirm receipt within 1 business day.</span>

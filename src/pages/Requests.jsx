@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Requests({ requests }) {
+  const [selectedRequestForTracking, setSelectedRequestForTracking] = useState(null);
   const navigate = useNavigate();
 
   // Helper for status badge styling
@@ -37,7 +39,6 @@ export default function Requests({ requests }) {
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         {requests.length === 0 ? (
           <div className="p-12 text-center text-gray-500">
-            <span className="text-3xl block mb-2">📨</span>
             <p className="font-semibold">No requests submitted yet.</p>
             <button
               onClick={() => navigate('/requests/new')}
@@ -75,9 +76,17 @@ export default function Requests({ requests }) {
                       })}
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex px-2.5 py-1 text-xs font-semibold rounded-md border ${getStatusStyle(req.status)}`}>
-                        {req.status}
-                      </span>
+                      <div className="flex items-center space-x-3">
+                        <span className={`inline-flex px-2.5 py-1 text-xs font-semibold rounded-md border ${getStatusStyle(req.status)}`}>
+                          {req.status}
+                        </span>
+                        <button
+                          onClick={() => setSelectedRequestForTracking(req)}
+                          className="px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100 text-xs font-semibold rounded-lg transition-all active:scale-[0.98]"
+                        >
+                          Track
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -86,6 +95,54 @@ export default function Requests({ requests }) {
           </div>
         )}
       </div>
+
+      {/* Track Progress Modal */}
+      {selectedRequestForTracking && (
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
+          <div className="bg-white w-full max-w-md rounded-2xl border border-slate-200 shadow-xl overflow-hidden animate-slideUp">
+            {/* Modal Header */}
+            <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900">Track Progress</h3>
+                <p className="text-xs text-slate-500 mt-1">{selectedRequestForTracking.title}</p>
+              </div>
+              <button 
+                onClick={() => setSelectedRequestForTracking(null)}
+                className="text-slate-400 hover:text-slate-600 text-lg font-semibold h-8 w-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all"
+              >
+                &times;
+              </button>
+            </div>
+            
+            {/* Modal Content */}
+            <div className="p-6 space-y-5">
+              <div>
+                <span className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Status</span>
+                <span className={`inline-flex mt-1.5 px-2.5 py-1 text-xs font-semibold rounded-md border ${getStatusStyle(selectedRequestForTracking.status)}`}>
+                  {selectedRequestForTracking.status}
+                </span>
+              </div>
+              
+              <div className="p-4 bg-slate-50 border border-slate-150 rounded-xl">
+                <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Latest Comment from Automaitee</span>
+                <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                  {selectedRequestForTracking.latestUpdate || "No comments posted yet. We will review your request and update this status shortly."}
+                </p>
+              </div>
+            </div>
+            
+            {/* Modal Footer */}
+            <div className="px-6 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-end">
+              <button
+                onClick={() => setSelectedRequestForTracking(null)}
+                className="px-4 py-2 bg-slate-200 hover:bg-slate-350 text-slate-700 font-semibold text-sm rounded-xl transition-all"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

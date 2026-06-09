@@ -4,5 +4,9 @@ import dynamic from 'next/dynamic';
 const App = dynamic(() => import('../../src/App'), { ssr: false });
 
 export default function PortalPage() {
-  return <App />;
+  return (
+    <div className="portal-root min-h-screen bg-slate-50">
+      <App />
+    </div>
+  );
 }
