@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function Dashboard({ clientData, requests, invoices }) {
+export default function Dashboard({ clientData, requests, invoices, announcements = [] }) {
   const navigate = useNavigate();
 
   // Compute metrics
@@ -12,6 +12,41 @@ export default function Dashboard({ clientData, requests, invoices }) {
 
   return (
     <div className="space-y-8">
+      {/* Due notification Alert Banner */}
+      {clientData.dueNotification && (
+        <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl flex items-start space-x-3 text-sm font-medium shadow-sm animate-fadeIn">
+          <span className="text-lg mt-0.5">🔔</span>
+          <div>
+            <strong className="block font-bold">Important Notice</strong>
+            <span>{clientData.dueNotification}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Global Announcements */}
+      {announcements.length > 0 && (
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm space-y-4">
+          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Company Announcements</h2>
+          <div className="divide-y divide-gray-150">
+            {announcements.map((ann) => (
+              <div key={ann.id} className="py-4 first:pt-0 last:pb-0 space-y-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold text-gray-900 text-base">{ann.title}</h3>
+                  <span className="text-xs text-gray-500 font-medium">
+                    {new Date(ann.date).toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: 'short',
+                      year: 'numeric'
+                    })}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-650 leading-relaxed whitespace-pre-wrap">{ann.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Welcome Banner */}
       <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between">
         <div>

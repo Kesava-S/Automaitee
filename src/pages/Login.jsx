@@ -11,23 +11,25 @@ export default function Login({ clientData, onLoginSuccess }) {
     e.preventDefault();
     setError('');
 
-    // On submit, check if username matches mockClient.email AND password matches mockClient.temporaryPassword OR mockClient.password (if set)
+    // Check Admin Login Credentials
+    if (email.toLowerCase() === 'admin@automaitee.com' && password === 'Admin-2026') {
+      // TODO: Replace with real authentication API call
+      localStorage.setItem('portalSession', 'admin-user');
+      onLoginSuccess();
+      navigate('/admin/dashboard');
+      return;
+    }
+
+    // Check Client Login Credentials
     const emailMatch = email.toLowerCase() === clientData.email.toLowerCase();
-    
-    // Check temporary password OR custom password if custom is set
     const correctPassword = clientData.customPassword || clientData.temporaryPassword;
     const passwordMatch = password === correctPassword;
 
     if (emailMatch && passwordMatch) {
       // TODO: Replace with real authentication API call
-      
-      // Save session to localStorage key "portalSession" with value of userId
       localStorage.setItem('portalSession', clientData.userId);
-      
-      // Update app state
       onLoginSuccess();
 
-      // Redirect based on onboarding status
       if (clientData.onboardingComplete) {
         navigate('/dashboard');
       } else {

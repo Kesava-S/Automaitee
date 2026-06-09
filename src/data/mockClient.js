@@ -12,5 +12,7 @@ export const mockClient = {
   onboardingComplete: false,
   accountStatus: "active",
   createdAt: "2026-05-01",
-  contractExpiryDate: "2027-05-01"
+  contractExpiryDate: "2027-05-01",
+  customServices: [],
+  dueNotification: ""
 };

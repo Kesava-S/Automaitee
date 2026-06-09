@@ -9,6 +9,7 @@ import { mockInvoices } from './data/mockInvoices';
 // Component imports
 import RouteGuard from './components/RouteGuard';
 import PortalLayout from './components/PortalLayout';
+import AdminLayout from './components/AdminLayout';
 
 // Page imports
 import Login from './pages/Login';
@@ -19,11 +20,28 @@ import Requests from './pages/Requests';
 import NewRequest from './pages/NewRequest';
 import Invoices from './pages/Invoices';
 
+// Admin Page imports
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminClients from './pages/admin/AdminClients';
+import AdminRequests from './pages/admin/AdminRequests';
+import AdminAnnouncements from './pages/admin/AdminAnnouncements';
+import AdminBilling from './pages/admin/AdminBilling';
+
+const defaultAnnouncements = [
+  {
+    id: "ann-001",
+    title: "System Update: Sync Upgraded",
+    content: "The reporting synchronization hooks have been upgraded to the latest protocols for faster response speeds. Please submit a request if you face any issues.",
+    date: "2026-06-08"
+  }
+];
+
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [clientData, setClientData] = useState(mockClient);
   const [requests, setRequests] = useState([]);
   const [invoices, setInvoices] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Mount effect to check localStorage state and seed defaults
@@ -55,7 +73,16 @@ export default function App() {
       setInvoices(mockInvoices);
     }
 
-    // 4. Check portalSession
+    // 4. Seed Announcements Data
+    const storedAnnouncements = localStorage.getItem('portalAnnouncements');
+    if (storedAnnouncements) {
+      setAnnouncements(JSON.parse(storedAnnouncements));
+    } else {
+      localStorage.setItem('portalAnnouncements', JSON.stringify(defaultAnnouncements));
+      setAnnouncements(defaultAnnouncements);
+    }
+
+    // 5. Check portalSession
     const session = localStorage.getItem('portalSession');
     if (session) {
       setCurrentUser(session);
@@ -75,6 +102,24 @@ export default function App() {
     const updatedRequests = [newRequest, ...requests];
     setRequests(updatedRequests);
     localStorage.setItem('portalRequests', JSON.stringify(updatedRequests));
+  };
+
+  // Update requests list (from admin status updates)
+  const handleUpdateRequests = (updatedRequests) => {
+    setRequests(updatedRequests);
+    localStorage.setItem('portalRequests', JSON.stringify(updatedRequests));
+  };
+
+  // Update invoices list (from admin billing generation)
+  const handleUpdateInvoices = (updatedInvoices) => {
+    setInvoices(updatedInvoices);
+    localStorage.setItem('portalInvoices', JSON.stringify(updatedInvoices));
+  };
+
+  // Update announcements list (from admin broadcasts)
+  const handleUpdateAnnouncements = (updatedAnnouncements) => {
+    setAnnouncements(updatedAnnouncements);
+    localStorage.setItem('portalAnnouncements', JSON.stringify(updatedAnnouncements));
   };
 
   // Authenticate login session
@@ -108,7 +153,9 @@ export default function App() {
           path="/login" 
           element={
             currentUser ? (
-              clientData.onboardingComplete ? (
+              currentUser === 'admin-user' ? (
+                <Navigate to="/admin/dashboard" replace />
+              ) : clientData.onboardingComplete ? (
                 <Navigate to="/dashboard" replace />
               ) : (
                 <Navigate to="/onboarding" replace />
@@ -119,7 +166,7 @@ export default function App() {
           } 
         />
 
-        {/* Protected routes wrapped in RouteGuard */}
+        {/* Protected Client routes wrapped in RouteGuard */}
         <Route element={<RouteGuard currentUser={currentUser} clientData={clientData} />}>
           
           {/* Onboarding route (guarded inside RouteGuard) */}
@@ -133,7 +180,7 @@ export default function App() {
             } 
           />
 
-          {/* Post-onboarding routes wrapped in PortalLayout */}
+          {/* Post-onboarding Client routes wrapped in PortalLayout */}
           <Route element={<PortalLayout clientData={clientData} onSignOut={handleSignOut} />}>
             <Route 
               path="/dashboard" 
@@ -142,6 +189,7 @@ export default function App() {
                   clientData={clientData} 
                   requests={requests} 
                   invoices={invoices} 
+                  announcements={announcements}
                 />
               } 
             />
@@ -164,12 +212,74 @@ export default function App() {
           </Route>
         </Route>
 
+        {/* Protected Admin routes wrapped in AdminLayout */}
+        <Route 
+          path="/admin" 
+          element={
+            currentUser === 'admin-user' ? (
+              <AdminLayout onSignOut={handleSignOut} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        >
+          <Route 
+            path="dashboard" 
+            element={
+              <AdminDashboard 
+                clientData={clientData} 
+                requests={requests} 
+                invoices={invoices} 
+                announcements={announcements} 
+              />
+            } 
+          />
+          <Route 
+            path="clients" 
+            element={
+              <AdminClients 
+                clientData={clientData} 
+                onUpdateClient={handleUpdateClient} 
+              />
+            } 
+          />
+          <Route 
+            path="requests" 
+            element={
+              <AdminRequests 
+                requests={requests} 
+                onUpdateRequests={handleUpdateRequests} 
+              />
+            } 
+          />
+          <Route 
+            path="announcements" 
+            element={
+              <AdminAnnouncements 
+                announcements={announcements} 
+                onUpdateAnnouncements={handleUpdateAnnouncements} 
+              />
+            } 
+          />
+          <Route 
+            path="billing" 
+            element={
+              <AdminBilling 
+                invoices={invoices} 
+                onUpdateInvoices={handleUpdateInvoices} 
+              />
+            } 
+          />
+        </Route>
+
         {/* Catch-all redirects */}
         <Route 
           path="/" 
           element={
             currentUser ? (
-              clientData.onboardingComplete ? (
+              currentUser === 'admin-user' ? (
+                <Navigate to="/admin/dashboard" replace />
+              ) : clientData.onboardingComplete ? (
                 <Navigate to="/dashboard" replace />
               ) : (
                 <Navigate to="/onboarding" replace />

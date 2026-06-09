@@ -24,6 +24,9 @@ Expiry Date: ${clientData.contractExpiryDate ? formatDate(clientData.contractExp
 
 1. SERVICE DESCRIPTION
 Service Provider agrees to deploy and maintain custom AI and API automation integrations, reporting dashboards, and marketing synchronization hooks as described in the "${clientData.plan}".
+${clientData.customServices && clientData.customServices.length > 0 ? `
+The following additional services have been appended to this agreement by addendum:
+${clientData.customServices.map((svc, i) => ` - ${svc}`).join('\n')}` : ''}
 
 2. PAYMENT TERMS
 Billing occurs automatically on a recurring monthly subscription basis. Invoices are generated at the start of each service month and are viewable inside the Client Portal.
