@@ -8,6 +8,13 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+})
 
 const BookingModal = dynamic(() => import('../components/BookingModal'), { ssr: false })
 const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false })
@@ -157,7 +164,7 @@ function MyApp({ Component, pageProps }) {
                             </div>
                         )}
 
-                        <main style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', minHeight: '100vh', paddingBottom: '40px', borderBottomLeftRadius: '2rem', borderBottomRightRadius: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
+                        <main className={inter.className} style={{ position: 'relative', zIndex: 10, background: '#fbfbfd', minHeight: '100vh', paddingBottom: '40px', borderBottomLeftRadius: '2rem', borderBottomRightRadius: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
                             <Component {...pageProps} openBookingModal={(source) => { setBookingSource(source || ''); setIsBookingModalOpen(true); }} />
                         </main>
 

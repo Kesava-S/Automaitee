@@ -691,8 +691,11 @@ section {
     
     .hero {
         padding: 6rem 0 !important;
-        min-height: auto !important;
+        min-height: 600px !important;
         height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
         position: relative !important; /* Disable sticky/fixed on mobile for better performance */
     }
 

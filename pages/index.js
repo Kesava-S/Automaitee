@@ -58,7 +58,7 @@ export default function Home() {
                     <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', background: 'radial-gradient(circle at top, transparent 10%, #fbfbfd 90%)' }}></div>
                 </div>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Reveal>
+                    <Reveal width="100%">
 
                         <h1 style={{ 
                             background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", 
@@ -71,7 +71,7 @@ export default function Home() {
                             Marketing and Management Automation For Owner-Led Businesses in London
                         </h1>
                     </Reveal>
-                    <Reveal delay={0.5}>
+                    <Reveal delay={0.5} width="100%">
                         <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
                             The Automations are <AnimatedTextCycle 
                                 words={[
@@ -94,7 +94,7 @@ export default function Home() {
                             />
                         </div>
                     </Reveal>
-                    <Reveal delay={0.6}>
+                    <Reveal delay={0.6} width="100%">
                         <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem' }}>
                             Save 10+ hours a week on marketing operations without hiring a team.
                         </p>

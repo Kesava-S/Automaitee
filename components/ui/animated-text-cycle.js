@@ -12,6 +12,11 @@ export default function AnimatedTextCycle({
   const [width, setWidth] = useState("auto");
   const [widths, setWidths] = useState([]);
   const measureRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Measure all word widths once on mount or when words change
   const wordsKey = words.join('|');
@@ -87,13 +92,13 @@ export default function AnimatedTextCycle({
       <motion.span 
         className="relative inline-block"
         animate={{ 
-          width,
-          transition: { 
-            type: "spring",
-            stiffness: 150,
-            damping: 15,
-            mass: 1.2,
-          }
+          width: isMounted ? width : "auto"
+        }}
+        transition={currentIndex === 0 ? { duration: 0 } : { 
+          type: "spring",
+          stiffness: 150,
+          damping: 15,
+          mass: 1.2,
         }}
         style={{ position: "relative", display: "inline-block" }}
       >
