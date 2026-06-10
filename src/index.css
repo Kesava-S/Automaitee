@@ -129,7 +129,7 @@
 .portal-root .bg-blue-600,
 .portal-root .bg-blue-500,
 .portal-root .submit-btn {
-  background: linear-gradient(135deg, #0071e3 0%, #42a1ff 100%) !important;
+  background: linear-gradient(135deg, #005fc0 0%, #0071e3 100%) !important;
   color: #ffffff !important;
   border: none !important;
   font-weight: 600 !important;
@@ -142,7 +142,7 @@
 .portal-root .submit-btn:hover:not(:disabled) {
   transform: scale(1.02) !important;
   box-shadow: 0 6px 18px rgba(0, 113, 227, 0.3) !important;
-  background: linear-gradient(135deg, #0076ee 0%, #4da8ff 100%) !important;
+  background: linear-gradient(135deg, #0052a3 0%, #0066cc 100%) !important;
 }
 
 .portal-root .bg-blue-600:active,
@@ -194,7 +194,7 @@
 }
 .portal-root .text-red-600,
 .portal-root .text-red-650 {
-  color: #ff3b30 !important;
+  color: #dc2626 !important;
 }
 
 /* Sidebars styling overrides */
@@ -237,7 +237,7 @@
 .portal-root th {
   background-color: rgba(0, 0, 0, 0.01) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-  color: #86868b !important;
+  color: #6e6e73 !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.05em !important;

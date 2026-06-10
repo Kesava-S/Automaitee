@@ -136,7 +136,7 @@ export default function Requests({ requests }) {
             <div className="px-6 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-end">
               <button
                 onClick={() => setSelectedRequestForTracking(null)}
-                className="px-4 py-2 bg-slate-200 hover:bg-slate-350 text-slate-700 font-semibold text-sm rounded-xl transition-all"
+                className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-sm rounded-xl transition-all"
               >
                 Close
               </button>

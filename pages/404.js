@@ -46,7 +46,7 @@ export default function Custom404() {
           color: #1d1d1f;
         }
         .error-description {
-          color: #86868b;
+          color: #6e6e73;
           font-size: 1.1rem;
           margin: 0 auto 2.5rem;
           max-width: 480px;

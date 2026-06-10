@@ -105,11 +105,11 @@ export default function AdminAnnouncements({ announcements, onUpdateAnnouncement
                       <h3 className="font-bold text-slate-900 text-sm">{ann.title}</h3>
                       <span className="text-xs text-slate-400 font-semibold">{ann.date}</span>
                     </div>
-                    <p className="text-sm text-slate-650 leading-relaxed whitespace-pre-wrap">{ann.content}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{ann.content}</p>
                   </div>
                   <button
                     onClick={() => handleDelete(ann.id)}
-                    className="text-xs font-bold text-red-500 hover:text-red-755 hover:bg-red-50 px-2 py-1.5 rounded transition-all shrink-0"
+                    className="text-xs font-bold text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1.5 rounded transition-all shrink-0"
                   >
                     Delete
                   </button>

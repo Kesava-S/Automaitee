@@ -69,7 +69,7 @@ export default function BeautySalons({ openBookingModal }) {
                                 <div style={{ fontSize: '0.95rem', color: '#515154' }}>win-back rate with the right message at the right time</div>
                             </div>
                             <div style={{ background: '#fff', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 14px rgba(0,0,0,0.05)', flex: '1 1 250px', maxWidth: '300px' }}>
-                                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#34c759', marginBottom: '0.5rem' }}>£400+</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#147d36', marginBottom: '0.5rem' }}>£400+</div>
                                 <div style={{ fontSize: '0.95rem', color: '#515154' }}>average monthly revenue recovered per salon</div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ export default function BeautySalons({ openBookingModal }) {
                                         <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>{item.step}</h3>
                                         <p style={{ margin: 0, fontSize: '1.1rem', color: '#515154', lineHeight: '1.6' }}>{item.desc}</p>
                                         {item.example && (
-                                            <div style={{ marginTop: '1rem', padding: '1rem', background: '#fff', borderRadius: '8px', borderLeft: '4px solid #34c759', fontStyle: 'italic', color: '#1d1d1f' }}>
+                                            <div style={{ marginTop: '1rem', padding: '1rem', background: '#fff', borderRadius: '8px', borderLeft: '4px solid #147d36', fontStyle: 'italic', color: '#1d1d1f' }}>
                                                 {item.example}
                                             </div>
                                         )}
@@ -217,7 +217,7 @@ export default function BeautySalons({ openBookingModal }) {
 
                         <div style={{ background: '#fff', border: '2px solid #0071e3', borderRadius: '24px', padding: '4rem 2rem', boxShadow: '0 15px 40px rgba(0,113,227,0.1)', maxWidth: '500px', margin: '0 auto' }}>
                             <div style={{ fontSize: '4rem', fontWeight: '800', color: '#1d1d1f', marginBottom: '1rem', lineHeight: '1' }}>
-                                £49<span style={{ fontSize: '1.25rem', color: '#86868b', fontWeight: '500' }}> / month</span>
+                                £49<span style={{ fontSize: '1.25rem', color: '#6e6e73', fontWeight: '500' }}> / month</span>
                             </div>
                             <p style={{ fontSize: '1.1rem', color: '#515154', marginBottom: '2rem', lineHeight: '1.6' }}>
                                 Everything included. No setup fee. No long-term contract. Cancel any time.

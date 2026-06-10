@@ -39,7 +39,7 @@ export default function AdminLayout({ onSignOut }) {
                   `flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                     isActive
                       ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-650 hover:bg-gray-50 hover:text-gray-900'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >

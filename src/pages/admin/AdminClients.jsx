@@ -141,7 +141,7 @@ export default function AdminClients({ clientData, onUpdateClient }) {
                 type="checkbox"
                 checked={showNotification}
                 onChange={(e) => setShowNotification(e.target.checked)}
-                className="h-4 w-4 text-blue-600 border-slate-350 rounded focus:ring-blue-500"
+                className="h-4 w-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
               />
               <label htmlFor="toggle-notice" className="text-xs font-semibold text-slate-700">
                 Display alert banner on client dashboard

@@ -35,7 +35,7 @@ export const blogs = [
                 }
                 .section-header p {
                     font-size: 0.9rem;
-                    color: #86868b;
+                    color: #6e6e73;
                     margin: 0.25rem 0 0 0;
                 }
 
@@ -83,7 +83,7 @@ export const blogs = [
                 .timeline-year {
                     padding-top: 15px;
                     font-size: 0.85rem;
-                    color: #86868b;
+                    color: #6e6e73;
                     font-weight: 500;
                 }
 
@@ -175,7 +175,7 @@ export const blogs = [
                 }
                 .kpi-label {
                     font-size: 0.85rem;
-                    color: #86868b;
+                    color: #6e6e73;
                     font-weight: 500;
                 }
 
@@ -194,7 +194,7 @@ export const blogs = [
                 .barrier-percentage {
                     font-size: 1.25rem;
                     font-weight: 700;
-                    color: #ff3b30;
+                    color: #dc2626;
                     margin-bottom: 0.25rem;
                 }
                 .barrier-text {
@@ -209,7 +209,7 @@ export const blogs = [
             </style>
 
             <div class="stats-container">
-                <p style="color: #86868b; margin-bottom: 3rem;">British small businesses are shifting. From routine tasks to deep analytics, the adoption of AI is accelerating. This report visualises the hard data driving the UK SME landscape from 2023 to 2026.</p>
+                <p style="color: #6e6e73; margin-bottom: 3rem;">British small businesses are shifting. From routine tasks to deep analytics, the adoption of AI is accelerating. This report visualises the hard data driving the UK SME landscape from 2023 to 2026.</p>
 
                 <!-- Section 1: Adoption Growth -->
                 <div class="visual-section">
@@ -262,7 +262,7 @@ export const blogs = [
                         </div>
                         <div class="bar-item">
                             <div class="bar-label-group"><span>Real Estate</span><span>11%</span></div>
-                            <div class="bar-track"><div class="bar-fill" style="width: 11%; background: #ff3b30;"></div></div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 11%; background: #dc2626;"></div></div>
                         </div>
                     </div>
                 </div>
@@ -298,7 +298,7 @@ export const blogs = [
                         <div class="ring-container">
                             <svg class="ring-svg">
                                 <circle class="ring-bg" cx="50" cy="50" r="40"></circle>
-                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 180.8; stroke: #ff3b30;"></circle>
+                                <circle class="ring-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: 180.8; stroke: #dc2626;"></circle>
                             </svg>
                             <span class="ring-text">28% Operations</span>
                         </div>
@@ -365,7 +365,7 @@ export const blogs = [
                 </div>
 
                 <div style="text-align: center; margin-top: 4rem;">
-                    <p style="color: #86868b; font-size: 0.9rem;">Source: UK SME Survey Leaders, YouGov, Moneypenny, and ONS Insights (2023–2026).</p>
+                    <p style="color: #6e6e73; font-size: 0.9rem;">Source: UK SME Survey Leaders, YouGov, Moneypenny, and ONS Insights (2023–2026).</p>
                     <a href="/book-consultation" class="nav-link" style="display: inline-block; padding: 1rem 2rem; background: #0071e3; color: #fff; border-radius: 99px; text-decoration: none; font-weight: 600; margin-top: 1rem;">Start Your AI Journey →</a>
                 </div>
             </div>

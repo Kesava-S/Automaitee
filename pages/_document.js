@@ -14,8 +14,8 @@ export default function Document() {
           :root {
             --background: #ffffff;
             --foreground: #1d1d1f;
-            --accent-gradient: linear-gradient(135deg, #0071e3 0%, #42a1ff 100%);
-            --text-secondary: #86868b;
+            --accent-gradient: linear-gradient(135deg, #005fc0 0%, #0071e3 100%);
+            --text-secondary: #6e6e73;
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
           }
           body {

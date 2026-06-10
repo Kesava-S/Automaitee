@@ -40,7 +40,7 @@ export default function Dashboard({ clientData, requests, invoices, announcement
                     })}
                   </span>
                 </div>
-                <p className="text-sm text-gray-650 leading-relaxed whitespace-pre-wrap">{ann.content}</p>
+                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{ann.content}</p>
               </div>
             ))}
           </div>

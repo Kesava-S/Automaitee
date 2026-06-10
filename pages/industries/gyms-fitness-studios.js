@@ -166,7 +166,7 @@ export default function GymFitnessStudioAutomation() {
                         <h2 style={{ fontSize: '1.8rem', fontWeight: '600', padding: '2rem', borderBottom: '1px solid var(--card-border)', margin: 0 }}>Why Choose Automaitee Over DIY Tools?</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
                             <div style={{ padding: '2rem', background: '#f8f9fa' }}>
-                                <h3 style={{ fontSize: '1.2rem', color: '#86868b', marginBottom: '1.5rem' }}>DIY Tools (Zapier, Make)</h3>
+                                <h3 style={{ fontSize: '1.2rem', color: '#6e6e73', marginBottom: '1.5rem' }}>DIY Tools (Zapier, Make)</h3>
                                 <ul style={{ listStyle: 'none', padding: 0, color: 'var(--text-secondary)' }}>
                                     <li style={{ marginBottom: '1rem' }}>❌ Requires setup & maintenance</li>
                                     <li style={{ marginBottom: '1rem' }}>❌ Limited customization</li>
