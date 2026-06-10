@@ -21,11 +21,9 @@ export default function Sustainability() {
                         ← Back to Home
                     </Link>
 
-                    <Reveal width="100%">
-                        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '700', marginBottom: '1.5rem', lineHeight: '1.1', color: '#1d1d1f' }}>
-                            Sustainable Digital Operations & Lean Business Automation
-                        </h1>
-                    </Reveal>
+                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '700', marginBottom: '1.5rem', lineHeight: '1.1', color: '#1d1d1f' }}>
+                        Sustainable Digital Operations & Lean Business Automation
+                    </h1>
 
                     <Reveal delay={0.1} width="100%">
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '900px', lineHeight: '1.6', marginBottom: '3rem' }}>

@@ -83,11 +83,9 @@ export default function WorkWithUs() {
 
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>
                 <div className="container">
-                    <Reveal width="100%">
-                        <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            Life at Automaitee Digital
-                        </h1>
-                    </Reveal>
+                    <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Life at Automaitee Digital
+                    </h1>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', lineHeight: '1.6' }}>
                             We are a team of passionate automation engineers, designers, and innovators focused on simplifying work and empowering people with AI.

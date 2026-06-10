@@ -36,11 +36,9 @@ export default function Services() {
             {/* HERO SECTION */}
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>
                 <div className="container">
-                    <Reveal width="100%">
-                        <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1.5rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-                            Done-For-You AI Marketing Automation for London Small Businesses
-                        </h1>
-                    </Reveal>
+                    <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1.5rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+                        Done-For-You AI Marketing Automation for London Small Businesses
+                    </h1>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ 
                             fontSize: '1.25rem', 

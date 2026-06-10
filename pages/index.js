@@ -58,73 +58,65 @@ export default function Home() {
                     <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', background: 'radial-gradient(circle at top, transparent 10%, #fbfbfd 90%)' }}></div>
                 </div>
                 <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Reveal width="100%">
-
-                        <h1 style={{ 
-                            background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", 
-                            WebkitBackgroundClip: "text", 
-                            backgroundClip: "text", 
-                            WebkitTextFillColor: "transparent",
-                            maxWidth: "1000px",
-                            margin: "0 auto"
-                        }}>
-                            Marketing and Management Automation For Owner-Led Businesses in London
-                        </h1>
-                    </Reveal>
-                    <Reveal delay={0.5} width="100%">
-                        <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
-                            The Automations are <AnimatedTextCycle 
-                                words={[
-                                    "Transparent",
-                                    "Personal",
-                                    "Monitored",
-                                    "Continuously Optimized",
-                                    "secure and GDPR-compliant.",
-                                    "smart and value-driven.",
-                                    "UK-focused and market-savvy."
-                                ]} 
-                                interval={3000} 
-                                style={{ 
-                                    fontWeight: '600',
-                                    background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    backgroundClip: "text",
-                                    WebkitTextFillColor: "transparent"
-                                }}
-                            />
-                        </div>
-                    </Reveal>
-                    <Reveal delay={0.6} width="100%">
-                        <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem' }}>
-                            Save 10+ hours a week on marketing operations without hiring a team.
-                        </p>
-                    </Reveal>
-                    <Reveal delay={0.7} width="100%">
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-                            <Link href="/services?openMicro=true" style={{
-                                display: 'inline-block',
-                                background: '#e8f2fc',
-                                color: '#0071e3',
-                                padding: '6px 16px',
-                                borderRadius: '20px',
-                                fontSize: '0.9rem',
+                    <h1 style={{ 
+                        background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)", 
+                        WebkitBackgroundClip: "text", 
+                        backgroundClip: "text", 
+                        WebkitTextFillColor: "transparent",
+                        maxWidth: "1000px",
+                        margin: "0 auto",
+                        textAlign: "center"
+                    }}>
+                        Marketing and Management Automation For Owner-Led Businesses in London
+                    </h1>
+                    <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
+                        The Automations are <AnimatedTextCycle 
+                            words={[
+                                "Transparent",
+                                "Personal",
+                                "Monitored",
+                                "Continuously Optimized",
+                                "secure and GDPR-compliant.",
+                                "smart and value-driven.",
+                                "UK-focused and market-savvy."
+                            ]} 
+                            interval={3000} 
+                            style={{ 
                                 fontWeight: '600',
-                                letterSpacing: '0.5px',
-                                textDecoration: 'none'
-                            }}>
-                                Automation starts from just £49
-                            </Link>
-                            <Link href="/services" className="cta-button">
-                                View Services
-                            </Link>
-                            <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
-                                Hire AI Automation Talent
-                            </Link>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem', maxWidth: '400px', textAlign: 'center', lineHeight: '1.5' }}>
-                                Kondamaal helps you hire monitored remote freelancers for your AI automation, quality-assured by an expert mentor.
-                            </p>
-                        </div>
-                    </Reveal>
+                                background: "linear-gradient(180deg, #1d1d1f 0%, #434344 100%)",
+                                WebkitBackgroundClip: "text",
+                                backgroundClip: "text",
+                                WebkitTextFillColor: "transparent"
+                            }}
+                        />
+                    </div>
+                    <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem' }}>
+                        Save 10+ hours a week on marketing operations without hiring a team.
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
+                        <Link href="/services?openMicro=true" style={{
+                            display: 'inline-block',
+                            background: '#e8f2fc',
+                            color: '#0071e3',
+                            padding: '6px 16px',
+                            borderRadius: '20px',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            letterSpacing: '0.5px',
+                            textDecoration: 'none'
+                        }}>
+                            Automation starts from just £49
+                        </Link>
+                        <Link href="/services" className="cta-button">
+                            View Services
+                        </Link>
+                        <Link href="https://www.kondamaal.com/" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid #000' }}>
+                            Hire AI Automation Talent
+                        </Link>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '-0.5rem', maxWidth: '400px', textAlign: 'center', lineHeight: '1.5' }}>
+                            Kondamaal helps you hire monitored remote freelancers for your AI automation, quality-assured by an expert mentor.
+                        </p>
+                    </div>
                 </div>
             </section>
 
