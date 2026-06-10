@@ -17,15 +17,9 @@ export default function Services() {
             setTimeout(() => {
                 const element = document.getElementById('our-solutions');
                 if (element) {
-                    const offset = 100;
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = element.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             }, 100);
@@ -80,7 +74,7 @@ export default function Services() {
             </section>
 
             {/* SECTION 2 - Our Solutions */}
-            <section id="our-solutions" style={{ padding: '80px 0', backgroundColor: '#fbfbfd' }}>
+            <section id="our-solutions" style={{ padding: '80px 0', backgroundColor: '#fbfbfd', scrollMarginTop: '100px' }}>
                 <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
                     <Reveal width="100%">
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>

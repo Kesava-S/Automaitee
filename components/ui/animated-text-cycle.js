@@ -10,19 +10,27 @@ export default function AnimatedTextCycle({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [width, setWidth] = useState("auto");
+  const [widths, setWidths] = useState([]);
   const measureRef = useRef(null);
 
-  // Get the width of the current word
+  // Measure all word widths once on mount or when words change
+  const wordsKey = words.join('|');
   useEffect(() => {
     if (measureRef.current) {
       const elements = measureRef.current.children;
-      if (elements.length > currentIndex) {
-        // Add a small buffer (15px) to prevent text wrapping and clipping edge letters
-        const newWidth = elements[currentIndex].getBoundingClientRect().width + 15;
-        setWidth(`${newWidth}px`);
-      }
+      const calculatedWidths = Array.from(elements).map(
+        (el) => el.getBoundingClientRect().width + 15
+      );
+      setWidths(calculatedWidths);
     }
-  }, [currentIndex]);
+  }, [wordsKey]);
+
+  // Set container width based on current word index from cache
+  useEffect(() => {
+    if (widths.length > currentIndex) {
+      setWidth(`${widths[currentIndex]}px`);
+    }
+  }, [currentIndex, widths]);
 
   useEffect(() => {
     const timer = setInterval(() => {

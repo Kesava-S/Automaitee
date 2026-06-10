@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Onboarding({ clientData, onUpdateClient }) {
   const navigate = useNavigate();
   const tcBoxRef = useRef(null);
+  const sentinelRef = useRef(null);
 
   // Determine current active step based on client state
   const [activeStep, setActiveStep] = useState(1);
@@ -31,16 +32,31 @@ export default function Onboarding({ clientData, onUpdateClient }) {
     }
   }, [clientData, navigate]);
 
-  // Scroll detection for T&C box
-  const handleScroll = () => {
-    if (!tcBoxRef.current) return;
-    const { scrollTop, scrollHeight, clientHeight } = tcBoxRef.current;
-    
-    // Check if scrolled within 3px of bottom to accommodate zoom levels
-    if (scrollHeight - scrollTop <= clientHeight + 3) {
-      setIsScrolledToBottom(true);
-    }
-  };
+  // Scroll detection for T&C box via IntersectionObserver
+  useEffect(() => {
+    if (activeStep !== 2) return;
+    const sentinel = sentinelRef.current;
+    const tcBox = tcBoxRef.current;
+    if (!sentinel || !tcBox) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsScrolledToBottom(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        root: tcBox,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [activeStep]);
 
   // Step 2 - Accept Terms and Conditions
   const handleAcceptTc = (e) => {
@@ -203,7 +219,6 @@ export default function Onboarding({ clientData, onUpdateClient }) {
                 {/* Scrollable Terms */}
                 <div 
                   ref={tcBoxRef}
-                  onScroll={handleScroll}
                   className="h-[200px] overflow-y-auto p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-600 leading-relaxed space-y-4"
                 >
                   <h4 className="font-bold text-slate-800">1. Acceptance of Terms</h4>
@@ -216,6 +231,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
                   <p>Providing your name represents your legal consent to execute this portal terms record. This signature creates a write-once audit log that cannot be modified.</p>
                   
                   <p className="text-xs text-slate-400 font-semibold pt-4">--- END OF SERVICE AGREEMENT ---</p>
+                  <div ref={sentinelRef} style={{ height: "1px", marginTop: "-1px" }} />
                 </div>
 
                 <form onSubmit={handleAcceptTc} className="space-y-5">
