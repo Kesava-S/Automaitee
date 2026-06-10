@@ -83,6 +83,8 @@ export default function ChatWindow() {
 
   return (
     <div
+      role="dialog"
+      aria-label="Chat window"
       style={{
         position: 'fixed',
         bottom: '7rem',
@@ -259,6 +261,7 @@ export default function ChatWindow() {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type a message..."
+          aria-label="Chat message text"
           disabled={isTyping}
           style={{
             flex: 1,
@@ -276,6 +279,7 @@ export default function ChatWindow() {
         <button
           type="submit"
           disabled={!inputText.trim() || isTyping}
+          aria-label="Send message"
           style={{
             width: '40px',
             height: '40px',

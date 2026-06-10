@@ -42,6 +42,7 @@ export default function ChatBot() {
                 e.stopPropagation();
                 setShowWelcomePopup(false);
               }}
+              aria-label="Close welcome prompt"
               style={{
                 position: 'absolute',
                 top: '-8px',
@@ -83,6 +84,9 @@ export default function ChatBot() {
           setIsOpen(!isOpen);
           setShowWelcomePopup(false);
         }}
+        aria-label={isOpen ? "Close chat" : "Open chat"}
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
         style={{
           position: 'fixed',
           bottom: '2rem',

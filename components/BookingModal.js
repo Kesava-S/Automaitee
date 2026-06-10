@@ -283,7 +283,7 @@ export default function BookingModal({ isOpen, onClose }) {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="modal-close" onClick={onClose}>
+                <button className="modal-close" onClick={onClose} aria-label="Close modal">
                     <X size={24} />
                 </button>
 
@@ -477,9 +477,9 @@ export default function BookingModal({ isOpen, onClose }) {
                         {/* Right Column: Calendar */}
                         <div className="calendar-column">
                             <div className="calendar-header">
-                                <button onClick={handlePrevMonth}><ChevronLeft size={20} /></button>
+                                <button onClick={handlePrevMonth} aria-label="Previous month"><ChevronLeft size={20} /></button>
                                 <h3>{months[currentMonth.getMonth()]} {currentMonth.getFullYear()}</h3>
-                                <button onClick={handleNextMonth}><ChevronRight size={20} /></button>
+                                <button onClick={handleNextMonth} aria-label="Next month"><ChevronRight size={20} /></button>
                             </div>
 
                             <div className="calendar-grid">
@@ -508,6 +508,8 @@ export default function BookingModal({ isOpen, onClose }) {
                                             type="button"
                                             disabled={isDisabled}
                                             style={isDisabled ? { opacity: 0.3, cursor: 'not-allowed' } : {}}
+                                            aria-label={date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                                            aria-pressed={isSelected}
                                         >
                                             {day}
                                         </button>
@@ -525,6 +527,7 @@ export default function BookingModal({ isOpen, onClose }) {
                                                 className={`time-slot ${selectedTime === time ? 'selected' : ''}`}
                                                 onClick={() => handleTimeSelect(time)}
                                                 type="button"
+                                                aria-pressed={selectedTime === time}
                                             >
                                                 {time}
                                             </button>

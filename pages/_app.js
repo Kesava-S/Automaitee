@@ -91,7 +91,13 @@ function MyApp({ Component, pageProps }) {
                     <nav className="navbar">
                         <div className="container nav-content">
                             {/* Mobile Menu Button - Placed Left */}
-                            <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle menu">
+                            <button
+                                className="mobile-menu-btn"
+                                onClick={toggleMobileMenu}
+                                aria-label="Toggle menu"
+                                aria-expanded={isMobileMenuOpen}
+                                aria-controls="mobile-nav-menu"
+                            >
                                 {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                             </button>
 
@@ -123,7 +129,7 @@ function MyApp({ Component, pageProps }) {
                         </div>
 
                         {/* Mobile Navigation Drawer */}
-                        <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+                        <div id="mobile-nav-menu" className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
                             <div className="mobile-menu-links">
                                 <Link href="/" replace={router.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)} className={`mobile-nav-link ${router.pathname === '/' ? 'active' : ''}`}>
                                     Home

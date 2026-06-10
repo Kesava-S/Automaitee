@@ -88,6 +88,8 @@ export default function Services() {
                         <div style={{ marginBottom: '2rem' }}>
                             <button 
                                 onClick={() => setShowMicro(!showMicro)}
+                                aria-expanded={showMicro}
+                                aria-controls="micro-services-content"
                                 style={{ 
                                     width: '100%', 
                                     background: '#fff', 
@@ -112,7 +114,7 @@ export default function Services() {
                             </button>
 
                             {showMicro && (
-                                <div style={{ padding: '2rem 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                                <div id="micro-services-content" style={{ padding: '2rem 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                                     {/* Beauty Salons Option */}
                                     <Link href="/industries/beauty-salons" style={{ textDecoration: 'none' }}>
                                         <div className="card micro-saas-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
@@ -190,6 +192,8 @@ export default function Services() {
                         <div style={{ marginBottom: '2rem' }}>
                             <button 
                                 onClick={() => setShowFullFunnel(!showFullFunnel)}
+                                aria-expanded={showFullFunnel}
+                                aria-controls="full-funnel-services-content"
                                 style={{ 
                                     width: '100%', 
                                     background: '#fff', 
@@ -215,7 +219,7 @@ export default function Services() {
 
                             {showFullFunnel && (
                                 <>
-                                    <div className="grid" style={{ padding: '2rem 0' }}>
+                                    <div id="full-funnel-services-content" className="grid" style={{ padding: '2rem 0' }}>
                                     {/* Starter Package */}
                                     <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff' }}>
                                         <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>STARTER</h3>
@@ -330,6 +334,8 @@ export default function Services() {
                                     <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
                                         <button 
                                             onClick={() => setShowComparison(!showComparison)}
+                                            aria-expanded={showComparison}
+                                            aria-controls="comparison-table-content"
                                             style={{ 
                                                 background: '#1d1d1f', 
                                                 color: '#fff', 
@@ -350,7 +356,7 @@ export default function Services() {
 
                                         {showComparison && (
                                             <Reveal>
-                                                <div style={{ marginTop: '2rem', overflowX: 'auto', textAlign: 'left' }}>
+                                                <div id="comparison-table-content" style={{ marginTop: '2rem', overflowX: 'auto', textAlign: 'left' }}>
                                                     <table className="comparison-table" style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
                                                         <thead>
                                                             <tr style={{ background: '#f5f5f7' }}>

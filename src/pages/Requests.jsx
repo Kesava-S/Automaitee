@@ -99,15 +99,16 @@ export default function Requests({ requests }) {
       {/* Track Progress Modal */}
       {selectedRequestForTracking && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="bg-white w-full max-w-md rounded-2xl border border-slate-200 shadow-xl overflow-hidden animate-slideUp">
+          <div role="dialog" aria-modal="true" aria-labelledby="track-progress-title" className="bg-white w-full max-w-md rounded-2xl border border-slate-200 shadow-xl overflow-hidden animate-slideUp">
             {/* Modal Header */}
             <div className="p-6 border-b border-slate-100 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Track Progress</h3>
+                <h3 id="track-progress-title" className="text-lg font-bold text-slate-900">Track Progress</h3>
                 <p className="text-xs text-slate-500 mt-1">{selectedRequestForTracking.title}</p>
               </div>
               <button 
                 onClick={() => setSelectedRequestForTracking(null)}
+                aria-label="Close track progress modal"
                 className="text-slate-400 hover:text-slate-600 text-lg font-semibold h-8 w-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all"
               >
                 &times;
