@@ -185,7 +185,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
                 ✓
               </div>
               <div>
-                <h3 className="font-bold text-slate-800">Step 1 — Logged in</h3>
+                <h2 className="font-bold text-slate-800">Step 1 — Logged in</h2>
                 <p className="text-sm text-slate-400">Credentials verified</p>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
           }`}>
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Step 2 — Read and accept terms and conditions</h3>
+                <h2 className="text-lg font-bold text-slate-900">Step 2 — Read and accept terms and conditions</h2>
                 <p className="text-sm text-slate-500 mt-1">Review the portal service agreement below</p>
               </div>
               {clientData.tcAccepted && (
@@ -221,13 +221,13 @@ export default function Onboarding({ clientData, onUpdateClient }) {
                   ref={tcBoxRef}
                   className="h-[200px] overflow-y-auto p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-600 leading-relaxed space-y-4"
                 >
-                  <h4 className="font-bold text-slate-800">1. Acceptance of Terms</h4>
+                  <h3 className="font-bold text-slate-800">1. Acceptance of Terms</h3>
                   <p>By checking the acceptance box and entering your full legal name below, you agree to comply with and be bound by the Service Provider terms. These terms govern your use of the client portal and project reporting interfaces.</p>
                   
-                  <h4 className="font-bold text-slate-800">2. Privacy & Data Handling</h4>
+                  <h3 className="font-bold text-slate-800">2. Privacy &amp; Data Handling</h3>
                   <p>We respect client data and secure all integration endpoints. We do not distribute database files, credentials, or code assets to third parties without prior authorization.</p>
                   
-                  <h4 className="font-bold text-slate-800">3. Electronic Signature</h4>
+                  <h3 className="font-bold text-slate-800">3. Electronic Signature</h3>
                   <p>Providing your name represents your legal consent to execute this portal terms record. This signature creates a write-once audit log that cannot be modified.</p>
                   
                   <p className="text-xs text-slate-400 font-semibold pt-4">--- END OF SERVICE AGREEMENT ---</p>
@@ -292,7 +292,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
           }`}>
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Step 3 — Set permanent password</h3>
+                <h2 className="text-lg font-bold text-slate-900">Step 3 — Set permanent password</h2>
                 <p className="text-sm text-slate-500 mt-1">Replace your temporary credentials with a secure password</p>
               </div>
               {clientData.passwordChanged && (
@@ -359,7 +359,7 @@ export default function Onboarding({ clientData, onUpdateClient }) {
               ? 'border-blue-500 ring-2 ring-blue-500/10' 
               : 'border-slate-200 opacity-55 pointer-events-none'
           }`}>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Step 4 — Complete</h3>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">Step 4 — Complete</h2>
             
             {activeStep === 4 && (
               <div className="space-y-6 pt-2">

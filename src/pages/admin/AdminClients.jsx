@@ -104,7 +104,7 @@ export default function AdminClients({ clientData, onUpdateClient }) {
         {/* Card: Contract Expiry */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4 flex flex-col justify-between">
           <div>
-            <h3 className="font-bold text-slate-900 text-base">Edit Contract Expiry</h3>
+            <h2 className="font-bold text-slate-900 text-base">Edit Contract Expiry</h2>
             <p className="text-xs text-slate-500 mt-0.5">Extend or reduce the legal duration of the service contract.</p>
           </div>
           <form onSubmit={handleUpdateExpiry} className="space-y-4 pt-2">
@@ -131,7 +131,7 @@ export default function AdminClients({ clientData, onUpdateClient }) {
         {/* Card: Due Warning Alerts */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
           <div>
-            <h3 className="font-bold text-slate-900 text-base">Notify due bills</h3>
+            <h2 className="font-bold text-slate-900 text-base">Notify due bills</h2>
             <p className="text-xs text-slate-500 mt-0.5">Push a banner warning to the client's dashboard regarding invoice deadlines.</p>
           </div>
           <form onSubmit={handleUpdateNotification} className="space-y-4 pt-2">
@@ -176,13 +176,13 @@ export default function AdminClients({ clientData, onUpdateClient }) {
       {/* Card: Contract Addendum Services */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-6">
         <div>
-          <h3 className="font-bold text-slate-900 text-base">Contract Services Addendums</h3>
+          <h2 className="font-bold text-slate-900 text-base">Contract Services Addendums</h2>
           <p className="text-xs text-slate-500 mt-0.5">Append or remove specific add-on services from the client's official contract text.</p>
         </div>
 
         {/* Existing services listing */}
         <div>
-          <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Custom Contract Services</h4>
+          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Custom Contract Services</h3>
           {(!clientData.customServices || clientData.customServices.length === 0) ? (
             <p className="text-sm text-slate-500 italic">No additional services have been added to the base plan yet.</p>
           ) : (

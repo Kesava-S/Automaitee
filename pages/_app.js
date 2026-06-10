@@ -187,7 +187,7 @@ function MyApp({ Component, pageProps }) {
                                     
                                     {/* Pages */}
                                     <div>
-                                        <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Company</h4>
+                                        <p style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Company</p>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                                             <Link href="/" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Home</Link>
                                             <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Services</Link>
@@ -199,7 +199,7 @@ function MyApp({ Component, pageProps }) {
 
                                     {/* Services */}
                                     <div>
-                                        <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Services</h4>
+                                        <p style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Services</p>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                                             <Link href="/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Full Funnel Systems</Link>
                                             <Link href="https://www.automaitee.com/services" style={{ color: '#a1a1aa', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.95rem' }}>Starter Package</Link>
@@ -210,7 +210,7 @@ function MyApp({ Component, pageProps }) {
 
                                     {/* Contact */}
                                     <div>
-                                        <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Contact</h4>
+                                        <p style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: '600' }}>Contact</p>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#a1a1aa', fontSize: '0.95rem' }}>
                                             <a href="mailto:support@automaitee.com" style={{ color: '#a1a1aa', textDecoration: 'none' }}>support@automaitee.com</a>
                                             <p style={{ margin: 0, lineHeight: '1.6' }}>Serving businesses in London, United Kingdom<br />India-based</p>

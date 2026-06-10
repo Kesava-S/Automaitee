@@ -103,7 +103,7 @@ export default function Requests({ requests }) {
             {/* Modal Header */}
             <div className="p-6 border-b border-slate-100 flex items-center justify-between">
               <div>
-                <h3 id="track-progress-title" className="text-lg font-bold text-slate-900">Track Progress</h3>
+                <h2 id="track-progress-title" className="text-lg font-bold text-slate-900">Track Progress</h2>
                 <p className="text-xs text-slate-500 mt-1">{selectedRequestForTracking.title}</p>
               </div>
               <button 

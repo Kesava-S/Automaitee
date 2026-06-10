@@ -135,19 +135,19 @@ export default function HospitalityAutomation() {
                         <h2 style={{ fontSize: '2.5rem', fontWeight: '600', marginBottom: '2rem', textAlign: 'center' }}>How Automaitee Works</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>1. Consultation</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>1. Consultation</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>We map your current workflows and identify automation opportunities.</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>2. Design</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>2. Design</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Custom automation workflows are tailored to your business logic.</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>3. Implementation</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>3. Implementation</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Seamless integration with booking engines, POS, CRM, and channels.</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>4. Optimization</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>4. Optimization</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Continuous monitoring and adjustments to maximize efficiency.</p>
                             </div>
                         </div>

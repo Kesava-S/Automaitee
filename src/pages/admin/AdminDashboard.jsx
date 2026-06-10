@@ -22,28 +22,28 @@ export default function AdminDashboard({ clientData, requests, invoices, announc
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Total Clients */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Active Clients</h3>
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Active Clients</h2>
           <p className="text-3xl font-bold text-slate-900 mt-1">1</p>
           <span className="text-xs text-slate-500 mt-1 block">{clientData.company} ({clientData.name})</span>
         </div>
 
         {/* Open Requests */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Open Requests</h3>
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Open Requests</h2>
           <p className="text-3xl font-bold text-slate-900 mt-1">{openRequestsCount}</p>
           <span className="text-xs text-slate-500 mt-1 block">Awaiting updates or resolutions</span>
         </div>
 
         {/* Due Invoices */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Unpaid Bills</h3>
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Unpaid Bills</h2>
           <p className="text-3xl font-bold text-slate-900 mt-1">{dueBillsCount}</p>
           <span className="text-xs text-slate-500 mt-1 block">Total: £ {outstandingAmount.toFixed(2)}</span>
         </div>
 
         {/* Broadcast Announcements */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Announcements</h3>
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Announcements</h2>
           <p className="text-3xl font-bold text-slate-900 mt-1">{announcements.length}</p>
           <span className="text-xs text-slate-500 mt-1 block">Active global broadcasts</span>
         </div>

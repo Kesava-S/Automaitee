@@ -197,7 +197,7 @@ export default function Apply() {
                     {/* ── POPUP 1: Expectations ── */}
                     {step === 1 && (
                         <motion.div key="p1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
-                            <h2 style={h2Style}>What we expect from you</h2>
+                            <h1 style={h2Style}>What we expect from you</h1>
                             <p style={pStyle}>
                                 This programme demands genuine commitment. Live sessions are mandatory. You are allowed a maximum of one absence during the course, and only if you inform us before the session begins. Missing a session without prior notice results in immediate removal from the programme, with no exceptions and no refund.
                             </p>
@@ -217,7 +217,7 @@ export default function Apply() {
                     {/* ── POPUP 2: Course Fee ── */}
                     {step === 2 && (
                         <motion.div key="p2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={modalStyle}>
-                            <h2 style={h2Style}>Course fee</h2>
+                            <h1 style={h2Style}>Course fee</h1>
                             <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#f0fdf4', color: '#166534', borderRadius: '0.5rem', fontWeight: '600', fontSize: '1.1rem' }}>
                                 ₹1,000 (one-time, non-refundable)
                             </div>
@@ -241,7 +241,7 @@ export default function Apply() {
                     {/* ── POPUP 3: FAQ ── */}
                     {step === 3 && (
                         <motion.div key="p3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} style={{ ...modalStyle, maxWidth: '750px' }}>
-                            <h2 style={h2Style}>Frequently asked questions</h2>
+                            <h1 style={h2Style}>Frequently asked questions</h1>
 
                             {[
                                 {
@@ -266,7 +266,7 @@ export default function Apply() {
                                 },
                             ].map(({ q, a }) => (
                                 <div key={q} style={{ marginBottom: '1.5rem' }}>
-                                    <h4 style={{ fontWeight: '600', marginBottom: '0.25rem' }}>{q}</h4>
+                                    <h2 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.25rem' }}>{q}</h2>
                                     <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>{a}</p>
                                 </div>
                             ))}
@@ -321,7 +321,7 @@ export default function Apply() {
 
                                     {/* Section 1: Academic Eligibility */}
                                     <div style={{ marginBottom: '3rem' }}>
-                                        <h3 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 1: Academic Eligibility</h3>
+                                        <h2 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 1: Academic Eligibility</h2>
 
                                         <div style={{ marginBottom: '1.5rem' }}>
                                             <label style={fieldHeader}>
@@ -367,7 +367,7 @@ export default function Apply() {
 
                                     {/* Section 2: Skills & Background */}
                                     <div style={{ marginBottom: '3rem' }}>
-                                        <h3 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 2: Skills &amp; Background</h3>
+                                        <h2 style={{ fontSize: '1.35rem', fontWeight: '600', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '0.75rem' }}>Section 2: Skills &amp; Background</h2>
 
                                         {/* Coding Languages — Required */}
                                         <div style={{ marginBottom: '1.5rem' }}>
@@ -523,7 +523,7 @@ export default function Apply() {
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1rem' }}>Application Submitted!</h2>
+                            <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1rem' }}>Application Submitted!</h1>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: '1.6' }}>
                                 Thank you for applying to the {displayedRole} programme. Our team will review your application and be in touch soon.
                             </p>

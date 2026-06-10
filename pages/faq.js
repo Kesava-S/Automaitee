@@ -42,7 +42,7 @@ export default function FAQ() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         {faqs.map((faq) => (
                             <div key={faq.id} className="feature-card" style={{ padding: '2rem' }}>
-                                <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem', color: '#1d1d1f' }}>{faq.question}</h3>
+                                <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem', color: '#1d1d1f' }}>{faq.question}</h2>
                                 <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>{faq.answer}</p>
                             </div>
                         ))}

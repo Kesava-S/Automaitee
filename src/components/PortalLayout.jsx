@@ -26,7 +26,7 @@ export default function PortalLayout({ clientData, onSignOut }) {
               <span className="font-bold text-lg text-gray-900 tracking-tight">Automaitee</span>
             </div>
             <div className="mt-2">
-              <h3 className="font-semibold text-gray-900 truncate">{clientData?.name}</h3>
+              <p className="font-semibold text-gray-900 truncate">{clientData?.name}</p>
               <p className="text-xs text-gray-500 truncate">{clientData?.company}</p>
             </div>
           </div>

@@ -8,6 +8,21 @@ export default function Document() {
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="shortcut icon" href="/logo.png" />
 
+        {/* Register Trusted Types default policy */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            if (typeof window !== 'undefined' && window.trustedTypes) {
+              if (!window.trustedTypes.defaultPolicy) {
+                window.trustedTypes.createPolicy('default', {
+                  createHTML: (string) => string,
+                  createScript: (string) => string,
+                  createScriptURL: (string) => string
+                });
+              }
+            }
+          `
+        }} />
+
         {/* Critical CSS for LCP elements (Hero) */}
         <style dangerouslySetInnerHTML={{
           __html: `

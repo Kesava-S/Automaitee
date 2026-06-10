@@ -73,19 +73,19 @@ export default function Dashboard({ clientData, requests, invoices, announcement
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Open Requests */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Open Requests</h3>
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Open Requests</h2>
           <p className="text-3xl font-bold text-gray-950 mt-1">{openRequestsCount}</p>
         </div>
 
         {/* Pending Invoices */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Pending Bills</h3>
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Pending Bills</h2>
           <p className="text-3xl font-bold text-gray-950 mt-1">{pendingBillsCount}</p>
         </div>
 
         {/* Contract Status */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Contract Status</h3>
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Contract Status</h2>
           <p className={`text-xl font-bold mt-1 ${isContractSigned ? 'text-emerald-600' : 'text-red-500'}`}>
             {isContractSigned ? 'Signed' : 'Not Signed'}
           </p>

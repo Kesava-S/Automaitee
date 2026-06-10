@@ -144,19 +144,19 @@ export default function RentalPropertyBusinessAutomation() {
                         <h2 style={{ fontSize: '2.5rem', fontWeight: '600', marginBottom: '2rem', textAlign: 'center' }}>How Automaitee Works</h2>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>1. Consultation</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>1. Consultation</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Understand lead management, tenant workflows, and property operations</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>2. Design</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>2. Design</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Build workflows for lead capture, tenant onboarding, payments, and maintenance</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>3. Implementation</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>3. Implementation</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Integrate with property software, messaging apps, calendars, and payment gateways</p>
                             </div>
                             <div>
-                                <h4 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>4. Optimization</h4>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>4. Optimization</h3>
                                 <p style={{ color: 'var(--text-secondary)' }}>Monitor automations, provide ongoing support, and refine workflows for efficiency</p>
                             </div>
                         </div>

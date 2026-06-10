@@ -218,7 +218,7 @@ export default function PayPage() {
           {tokenState === 'invalid' && (
             <div style={centerCard}>
               <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-              <h2 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem' }}>Invalid Link</h2>
+              <h1 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem', fontSize: '1.5rem' }}>Invalid Link</h1>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
                 This payment link is not valid. It may have been modified or is incorrect.
               </p>
@@ -230,7 +230,7 @@ export default function PayPage() {
           {tokenState === 'expired' && (
             <div style={centerCard}>
               <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⏰</div>
-              <h2 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem' }}>Link Expired</h2>
+              <h1 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem', fontSize: '1.5rem' }}>Link Expired</h1>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
                 This payment link has expired (valid for 48 hours). Please contact us to receive a new link.
               </p>
@@ -242,7 +242,7 @@ export default function PayPage() {
           {success && (
             <div style={centerCard}>
               <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎉</div>
-              <h2 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem' }}>You&apos;re all set!</h2>
+              <h1 style={{ color: '#0f172a', fontWeight: 700, margin: '0 0 0.5rem', fontSize: '1.5rem' }}>You&apos;re all set!</h1>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
                 Your free week has started. We&apos;ll be in touch shortly to kick things off.
               </p>

@@ -121,7 +121,7 @@ export default function Services() {
                                             <div style={{ background: '#f5f5f7', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="scissors" style={{ fontSize: '1.5rem' }}>✂️</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h3>
+                                            <h4 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>SilentChurn for Beauty Salons</h4>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Your regulars are quietly leaving. We bring them back automatically. A simple, zero-management tool to recover lost revenue.
@@ -138,7 +138,7 @@ export default function Services() {
                                             <div style={{ background: '#fff8e1', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="star" style={{ fontSize: '1.5rem' }}>⭐</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h3>
+                                            <h4 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Post-Visit Loyalty &amp; Feedback Loop</h4>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Turn every meal into a return visit. Automatically collect feedback and route happy customers to Google Reviews, while catching unhappy ones before they post publicly.
@@ -155,7 +155,7 @@ export default function Services() {
                                             <div style={{ background: '#fff3e0', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="warning" style={{ fontSize: '1.5rem' }}>⚠️</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h3>
+                                            <h4 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>Allergen Compliance Checker</h4>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 Automatically verify every menu item against the 14 major allergens. Catch non-compliant items the moment your menu changes, before they become a legal liability. <em style={{ color: '#86868b', fontStyle: 'normal' }}>Natasha's Law compliant.</em>
@@ -172,7 +172,7 @@ export default function Services() {
                                             <div style={{ background: '#e8f5e9', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="calendar" style={{ fontSize: '1.5rem' }}>📅</span>
                                             </div>
-                                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h3>
+                                            <h4 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#1d1d1f' }}>No-Show &amp; Reservation Recovery Bot</h4>
                                             <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#34c759', marginBottom: '1rem' }}>£49 / month</div>
                                             <p style={{ color: '#515154', marginBottom: '1rem', flexGrow: 1, lineHeight: '1.6' }}>
                                                 When a reservation is cancelled, the bot contacts your waitlist, matches party size, and fills the table, all within 15 minutes, with zero manual effort.
@@ -222,12 +222,12 @@ export default function Services() {
                                     <div id="full-funnel-services-content" className="grid" style={{ padding: '2rem 0' }}>
                                     {/* Starter Package */}
                                     <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff' }}>
-                                        <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>STARTER</h3>
+                                        <h4 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>STARTER</h4>
                                         <p style={{ color: '#86868b', marginBottom: '1rem', flexGrow: 0 }}>Best for businesses just getting started with automation</p>
                                         <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem' }}>Monthly retainer from £600/month</p>
                                         
                                         <div style={{ marginBottom: '2rem' }}>
-                                            <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>What happens automatically every day:</h4>
+                                            <p style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f', fontWeight: '600' }}>What happens automatically every day:</p>
                                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                 {[
                                                     "Your ads on Google and Meta are monitored, so you get an instant alert if spend goes over budget",
@@ -245,7 +245,7 @@ export default function Services() {
                                         </div>
 
                                         <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid #e5e5ea' }}>
-                                            <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>What you get:</h4>
+                                            <p style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f', fontWeight: '600' }}>What you get:</p>
                                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                 {[
                                                     "2 ad platforms connected (Google Ads + Meta Ads)",
@@ -271,12 +271,12 @@ export default function Services() {
                                     {/* Pro Package */}
                                     <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '2px solid #0071e3', borderRadius: '16px', backgroundColor: '#fff', position: 'relative' }}>
                                         <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#0071e3', color: '#fff', padding: '4px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold' }}>POPULAR</div>
-                                        <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>PRO</h3>
+                                        <h4 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#1d1d1f' }}>PRO</h4>
                                         <p style={{ color: '#86868b', marginBottom: '1rem', flexGrow: 0 }}>Best for businesses ready to scale with a full automated marketing engine</p>
                                         <p style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '2rem', color: '#0071e3' }}>Monthly retainer from £1,200/month</p>
                                         
                                         <div style={{ marginBottom: '2rem' }}>
-                                            <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f' }}>Everything in Starter, plus:</h4>
+                                            <p style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#1d1d1f', fontWeight: '600' }}>Everything in Starter, plus:</p>
                                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                 {[
                                                     "All four ad platforms connected, including Google, Meta, LinkedIn, and TikTok",

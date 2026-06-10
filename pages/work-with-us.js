@@ -123,25 +123,25 @@ export default function WorkWithUs() {
                                 <div className="card" style={{ padding: '2.5rem', textAlign: 'left', background: 'white', borderRadius: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', height: '100%', display: 'flex', flexDirection: 'column' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
                                         <div>
-                                            <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
+                                            <h4 style={{ fontSize: '1.5rem', fontWeight: '700', margin: 0, color: 'var(--foreground)' }}>
                                                 {job.title} {job.positions && <span style={{ fontSize: '1rem', fontWeight: 'normal', color: 'var(--text-secondary)' }}>({job.positions})</span>}
-                                            </h3>
-                                            <h4 style={{ fontSize: '1.1rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
-                                                {job.team}
                                             </h4>
+                                            <p style={{ fontSize: '1.1rem', color: '#0071e3', fontWeight: '600', marginTop: '0.25rem', marginBottom: '1rem' }}>
+                                                {job.team}
+                                            </p>
                                         </div>
                                         <span style={{ background: '#e0ece0', color: '#116c4c', padding: '0.35rem 0.85rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 'bold' }}>Internship</span>
                                     </div>
                                     
                                     <div style={{ marginBottom: '1.5rem' }}>
-                                        <h5 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)' }}>What you will do:</h5>
+                                        <p style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)', margin: '0 0 0.5rem' }}>What you will do:</p>
                                         <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
                                             {job.description}
                                         </p>
                                     </div>
 
                                     <div style={{ marginBottom: '2rem', flexGrow: 1 }}>
-                                        <h5 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)' }}>Qualifications:</h5>
+                                        <p style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--foreground)', margin: '0 0 0.5rem' }}>Qualifications:</p>
                                         <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                                             {job.qualifications.map((q, i) => (
                                                 <li key={i} style={{ marginBottom: '0.25rem' }}>{q}</li>
