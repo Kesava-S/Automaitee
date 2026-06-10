@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { teamCategories } from '../data/team'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion' // Make sure you have framer-motion installed
@@ -88,11 +89,12 @@ export default function Team() {
                                                 border: '4px solid #f5f5f7',
                                                 position: 'relative' // For overlay if needed
                                             }}>
-                                                <img
+                                                <Image
                                                     src={member.image}
                                                     alt={member.name}
-                                                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: member.objectPosition || 'center' }}
-                                                    loading="lazy"
+                                                    fill
+                                                    sizes="150px"
+                                                    style={{ objectFit: 'cover', objectPosition: member.objectPosition || 'center' }}
                                                 />
                                             </div>
                                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: '600', color: 'var(--foreground)' }}>

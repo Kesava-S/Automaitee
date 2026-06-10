@@ -4,15 +4,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-
-
-
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
-import BookingModal from '../components/BookingModal'
-import ChatBot from '../components/ChatBot'
-import FloatingShapes from '../components/FloatingShapes'
 import { Menu, X } from 'lucide-react'
-import { SparklesCore } from '../components/ui/sparkles'
+
+const BookingModal = dynamic(() => import('../components/BookingModal'), { ssr: false })
+const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false })
+const FloatingShapes = dynamic(() => import('../components/FloatingShapes'), { ssr: false })
+const SparklesCore = dynamic(() => import('../components/ui/sparkles').then(mod => mod.SparklesCore), { ssr: false })
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
@@ -65,9 +65,9 @@ function MyApp({ Component, pageProps }) {
             {/* Google Tag (gtag.js) */}
             <Script
                 src="https://www.googletagmanager.com/gtag/js?id=G-10FZYWH1VQ"
-                strategy="afterInteractive"
+                strategy="lazyOnload"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="lazyOnload">
                 {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps }) {
                             </button>
 
                             <Link href="/" replace={router.pathname === '/'} className="logo">
-                                <img src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" loading="lazy" />
+                                <Image src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" width={1024} height={682} priority />
                             </Link>
 
                             {/* Desktop Navigation */}
@@ -167,7 +167,7 @@ function MyApp({ Component, pageProps }) {
                                     {/* Brand */}
                                     <div>
                                         <Link href="/" replace={router.pathname === '/'}>
-                                            <img src="/logo.png" alt="Automaitee" className="logo-image" style={{ marginBottom: '1.5rem', marginLeft: 'auto', marginRight: 'auto' }} />
+                                            <Image src="/logo.png" alt="Automaitee" className="logo-image" width={1024} height={682} style={{ marginBottom: '1.5rem', marginLeft: 'auto', marginRight: 'auto' }} />
                                         </Link>
                                         <p style={{ color: '#a1a1aa', lineHeight: '1.6', fontSize: '0.95rem' }}>Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.</p>
                                     </div>

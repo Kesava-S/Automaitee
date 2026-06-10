@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { blogs } from '../../data/blogs'
 
@@ -95,12 +96,16 @@ export default function BlogPost({ blog }) {
                         height: '400px',
                         borderRadius: '20px',
                         overflow: 'hidden',
-                        marginBottom: '3rem'
+                        marginBottom: '3rem',
+                        position: 'relative'
                     }}>
-                        <img
+                        <Image
                             src={blog.image}
                             alt={blog.title}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            fill
+                            sizes="(max-width: 800px) 100vw, 800px"
+                            style={{ objectFit: 'cover' }}
+                            priority
                         />
                     </div>
 

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { services } from '../../data/services'
 
 export async function getStaticPaths() {
@@ -86,9 +87,11 @@ export default function ServicePage({ service }) {
                             <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '2rem' }}>
                                 Unified Marketing Automation Workflow
                             </h2>
-                            <img
+                            <Image
                                 src={service.workflowImage}
                                 alt="Unified Marketing Automation Workflow"
+                                width={1024}
+                                height={682}
                                 style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
                             />
                         </div>

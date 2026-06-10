@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { blogs } from '../data/blogs'
 
 export default function Blogs() {
@@ -37,13 +38,15 @@ export default function Blogs() {
                                     overflow: 'hidden',
                                     borderRadius: '12px',
                                     marginBottom: '1.5rem',
-                                    backgroundColor: '#f5f5f7'
+                                    backgroundColor: '#f5f5f7',
+                                    position: 'relative'
                                 }}>
-                                    <img
+                                    <Image
                                         src={blog.image}
                                         alt={blog.title}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
-                                        loading="lazy"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 350px"
+                                        style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
                                     />
                                 </div>
                                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
