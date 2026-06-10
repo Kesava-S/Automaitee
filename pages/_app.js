@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps }) {
                             </button>
 
                             <Link href="/" replace={router.pathname === '/'} className="logo">
-                                <Image src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" width={1024} height={682} priority />
+                                <Image src="/logo.png" alt="Automaitee Digital Logo" className="logo-image" width={210} height={140} priority />
                             </Link>
 
                             {/* Desktop Navigation */}
@@ -167,7 +167,7 @@ function MyApp({ Component, pageProps }) {
                                     {/* Brand */}
                                     <div>
                                         <Link href="/" replace={router.pathname === '/'}>
-                                            <Image src="/logo.png" alt="Automaitee" className="logo-image" width={1024} height={682} style={{ marginBottom: '1.5rem', marginLeft: 'auto', marginRight: 'auto' }} />
+                                            <Image src="/logo.png" alt="Automaitee" className="logo-image" width={210} height={140} style={{ marginBottom: '1.5rem', marginLeft: 'auto', marginRight: 'auto' }} />
                                         </Link>
                                         <p style={{ color: '#a1a1aa', lineHeight: '1.6', fontSize: '0.95rem' }}>Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.</p>
                                     </div>
