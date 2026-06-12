@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#4B0082" />
+  <circle cx="100" cy="100" r="40" fill="#FF8C00">
+    <animate attributeName="r" values="35; 50; 35" dur="1.5s" repeatCount="indefinite" />
+    <animate attributeName="fill" values="#FF8C00; #FF0080; #FF8C00" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <text x="50%" y="50%" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="24" font-weight="bold" dy=".3em">Ajay</text>
+</svg>

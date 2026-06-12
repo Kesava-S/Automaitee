@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scoped base styles for the portal to avoid clashing with the marketing website */
+.portal-root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  background: radial-gradient(circle at 50% 0%, #fbfbfd 0%, #ffffff 100%) !important;
+  min-height: 100vh;
+}
+
+.portal-root *,
+.portal-root *::before,
+.portal-root *::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.portal-root button {
+  background-color: transparent;
+  background-image: none;
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.portal-root input,
+.portal-root select,
+.portal-root textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+.portal-root select {
+  text-transform: none;
+}
+
+.portal-root button,
+.portal-root [type='button'],
+.portal-root [type='reset'],
+.portal-root [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* ─── Layout background ─────────────────────────────────────────────────────── */
+
+.portal-root .bg-slate-50,
+.portal-root .bg-gray-50,
+.portal-root .bg-slate-50\/50,
+.portal-root .bg-gray-50\/50 {
+  background: radial-gradient(circle at 50% 0%, #fbfbfd 0%, #ffffff 100%) !important;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────────────────── */
+
+.portal-root .bg-white {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Card hover — metric cards and rounded content cards only */
+.portal-root .grid > div.bg-white:hover,
+.portal-root .bg-white.rounded-2xl:not(aside):not(header):not(.modal-content):hover {
+  transform: translateY(-3px) scale(1.005) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07) !important;
+  border-color: rgba(0, 113, 227, 0.1) !important;
+}
+
+/* Structural elements must never lift */
+.portal-root aside.bg-white,
+.portal-root header.bg-white,
+.portal-root tr.bg-white,
+.portal-root table.bg-white,
+.portal-root div.fixed.bg-white,
+.portal-root .modal-content {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ─── Borders ────────────────────────────────────────────────────────────────── */
+
+.portal-root .border-gray-200,
+.portal-root .border-slate-200,
+.portal-root .border-slate-100,
+.portal-root .border-gray-100 {
+  border-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ─── Inputs ─────────────────────────────────────────────────────────────────── */
+
+.portal-root input,
+.portal-root select,
+.portal-root textarea {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  color: #1d1d1f !important;
+  font-size: 0.9rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+.portal-root input:focus,
+.portal-root select:focus,
+.portal-root textarea:focus {
+  border-color: #0071e3 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.12) !important;
+  background-color: #ffffff !important;
+}
+
+/* ─── Primary buttons (blue gradient) ───────────────────────────────────────── */
+
+.portal-root .bg-blue-600,
+.portal-root .bg-blue-500,
+.portal-root .submit-btn {
+  background: linear-gradient(135deg, #0071e3 0%, #42a1ff 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 3px 10px rgba(0, 113, 227, 0.22) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease !important;
+}
+
+.portal-root .bg-blue-600:hover,
+.portal-root .bg-blue-500:hover,
+.portal-root .submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.32) !important;
+  background: linear-gradient(135deg, #0076ee 0%, #4da8ff 100%) !important;
+}
+
+.portal-root .bg-blue-600:active,
+.portal-root .bg-blue-500:active,
+.portal-root .submit-btn:active:not(:disabled) {
+  transform: scale(0.98) !important;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.2) !important;
+}
+
+/* ─── Secondary / white buttons ─────────────────────────────────────────────── */
+
+.portal-root button.bg-white,
+.portal-root .bg-white.border {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  color: #1d1d1f !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.portal-root button.bg-white:hover,
+.portal-root .bg-white.border:hover {
+  background: rgba(0, 0, 0, 0.015) !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ─── Blue accent chips ──────────────────────────────────────────────────────── */
+
+.portal-root .bg-blue-50 {
+  background-color: rgba(0, 113, 227, 0.06) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.10) !important;
+}
+
+.portal-root .text-blue-600 {
+  color: #0071e3 !important;
+}
+
+.portal-root .bg-blue-50:hover {
+  background-color: rgba(0, 113, 227, 0.10) !important;
+}
+
+.portal-root .bg-blue-100 {
+  background-color: rgba(0, 113, 227, 0.10) !important;
+}
+
+/* ─── Red / destructive ──────────────────────────────────────────────────────── */
+
+.portal-root .bg-red-50,
+.portal-root .hover\:bg-red-50:hover {
+  background-color: rgba(255, 59, 48, 0.06) !important;
+}
+
+.portal-root .text-red-600,
+.portal-root .text-red-650 {
+  color: #ff3b30 !important;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────────────────── */
+
+.portal-root aside {
+  background: linear-gradient(180deg, rgba(247, 247, 251, 0.99) 0%, rgba(237, 243, 252, 0.99) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.portal-root aside a.active {
+  background-color: rgba(0, 113, 227, 0.08) !important;
+  color: #0071e3 !important;
+  font-weight: 600 !important;
+}
+
+.portal-root aside a:not(.active):hover {
+  background-color: rgba(0, 0, 0, 0.025) !important;
+  color: #1d1d1f !important;
+}
+
+/* ─── Top header ─────────────────────────────────────────────────────────────── */
+
+.portal-root header {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ─── Tables ─────────────────────────────────────────────────────────────────── */
+
+.portal-root table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.portal-root th {
+  background-color: rgba(0, 0, 0, 0.01) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  color: #86868b !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  padding: 13px 24px !important;
+  text-transform: uppercase !important;
+}
+
+.portal-root td {
+  padding: 15px 24px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  font-size: 0.875rem !important;
+  color: #1d1d1f !important;
+}
+
+.portal-root tr:last-child td {
+  border-bottom: none !important;
+}
+
+.portal-root tr:hover td {
+  background-color: rgba(0, 0, 0, 0.006) !important;
+}
+
+/* ─── Modals & Overlays ──────────────────────────────────────────────────────── */
+
+.portal-root .fixed.inset-0.bg-slate-900\/50,
+.portal-root .fixed.inset-0.bg-black\/50,
+.portal-root .fixed.inset-0.bg-slate-900\/60 {
+  background: rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  animation: fadeIn 0.2s ease-out !important;
+}
+
+.portal-root .modal-content,
+.portal-root div.fixed > div.bg-white {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14) !important;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ─── Slate-900 dark buttons (admin) ─────────────────────────────────────────── */
+
+.portal-root .bg-slate-900 {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+}
+
+.portal-root .bg-slate-900:hover {
+  background-color: #1e293b !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.28) !important;
+}
+
+.portal-root .bg-slate-900:active {
+  transform: scale(0.98) !important;
+}
+
+/* ─── Quick-action group buttons (admin dashboard) ───────────────────────────── */
+
+.portal-root .group:hover .group-hover\:scale-110 {
+  transform: scale(1.1) !important;
+}
+
+.portal-root .group:hover .group-hover\:opacity-100 {
+  opacity: 1 !important;
+}
