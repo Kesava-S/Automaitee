@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>{isPortal ? "Automaitee Client Portal" : "Automaitee AI Digital Automation"}</title>
+                <title>{isPortal ? "Automaitee Client Portal" : "Automaitee | AI Management & Marketing Automation"}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/logo.png" />
 
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:site_name" content={isPortal ? "Automaitee Client Portal" : "Automaitee AI Digital Automation"} />
+                <meta property="og:site_name" content={isPortal ? "Automaitee Client Portal" : "Automaitee | AI Management & Marketing Automation"} />
                 <meta property="og:image" content="https://www.automaitee.com/og-image.png" />
 
                 {/* Twitter */}

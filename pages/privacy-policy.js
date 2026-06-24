@@ -4,12 +4,12 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Privacy Policy | Automaitee AI</title>
+                <title>Privacy Policy | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
-                <meta property="og:title" content="Privacy Policy | Automaitee AI" />
+                <meta property="og:title" content="Privacy Policy | Automaitee | AI Management & Marketing Automation" />
                 <meta property="og:description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
                 <meta property="og:url" content="https://www.automaitee.com/privacy-policy" />
-                <meta name="twitter:title" content="Privacy Policy | Automaitee AI" />
+                <meta name="twitter:title" content="Privacy Policy | Automaitee | AI Management & Marketing Automation" />
                 <meta name="twitter:description" content="Read Automaitee's privacy policy to understand how we collect, use, and protect your data in line with UK GDPR requirements." />
             </Head>
 

@@ -72,12 +72,12 @@ export default function WorkWithUs() {
     return (
         <>
             <Head>
-                <title>Work With Us | Automaitee Digital</title>
+                <title>Work With Us | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
-                <meta property="og:title" content="Work With Us | Automaitee Digital" />
+                <meta property="og:title" content="Work With Us | Automaitee | AI Management & Marketing Automation" />
                 <meta property="og:description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
                 <meta property="og:url" content="https://www.automaitee.com/work-with-us" />
-                <meta name="twitter:title" content="Work With Us | Automaitee Digital" />
+                <meta name="twitter:title" content="Work With Us | Automaitee | AI Management & Marketing Automation" />
                 <meta name="twitter:description" content="Discover life at Automaitee Digital and explore open roles to join our team." />
             </Head>
 

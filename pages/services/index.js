@@ -29,15 +29,15 @@ export default function Services() {
     return (
         <>
             <Head>
-                <title>Done-For-You Marketing Automation | Automaitee</title>
-                <meta name="description" content="Done-for-you AI marketing automation for London small businesses. Generate leads, respond instantly, and track results automatically, starting from £49/month." />
+                <title>Done-For-You Management and Marketing Automation | Automaitee</title>
+                <meta name="description" content="Done-for-you AI management and marketing automation for London small businesses. Generate leads, respond instantly, and track results automatically, starting from £49/month." />
             </Head>
 
             {/* HERO SECTION */}
             <div style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center' }}>
                 <div className="container">
                     <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1.5rem', background: 'linear-gradient(180deg, #1d1d1f 0%, #434344 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-                        Done-For-You AI Marketing Automation for London Small Businesses
+                        Done-For-You AI Management and Marketing Automation for London Small Businesses
                     </h1>
                     <Reveal width="100%" delay={0.2}>
                         <p style={{ 
@@ -47,7 +47,7 @@ export default function Services() {
                             color: '#515154',
                             lineHeight: '1.6'
                         }}>
-                            We build automated marketing systems that generate leads, respond instantly, and report results, without you lifting a finger.
+                            We build automated management and marketing systems that generate leads, respond instantly, and report results, without you lifting a finger.
                         </p>
                     </Reveal>
                 </div>
@@ -78,7 +78,7 @@ export default function Services() {
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                             <h2 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#1d1d1f' }}>Our Solutions</h2>
                             <p style={{ fontSize: '1.1rem', color: '#515154', maxWidth: '700px', margin: '0.5rem auto 0' }}>
-                                We build custom marketing automation systems that run your lead generation, customer responses, and performance reporting on autopilot.
+                                We build custom AI management and marketing automation systems that run your lead generation, customer responses, and performance reporting on autopilot.
                             </p>
                         </div>
                     </Reveal>

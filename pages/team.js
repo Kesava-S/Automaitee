@@ -13,12 +13,12 @@ export default function Team() {
     return (
         <>
             <Head>
-                <title>Our Team | Automaitee AI Digital Automation</title>
+                <title>Our Team | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content="Meet the experts behind Automaitee who are transforming businesses with AI." />
-                <meta property="og:title" content="Our Team | Automaitee AI Digital Automation" />
+                <meta property="og:title" content="Our Team | Automaitee | AI Management & Marketing Automation" />
                 <meta property="og:description" content="Meet the experts behind Automaitee who are transforming businesses with AI." />
                 <meta property="og:url" content="https://www.automaitee.com/team" />
-                <meta name="twitter:title" content="Our Team | Automaitee AI Digital Automation" />
+                <meta name="twitter:title" content="Our Team | Automaitee | AI Management & Marketing Automation" />
                 <meta name="twitter:description" content="Meet the experts behind Automaitee who are transforming businesses with AI." />
             </Head>
 

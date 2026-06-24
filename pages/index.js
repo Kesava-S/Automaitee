@@ -14,15 +14,15 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>AI Marketing Automation for London Small Businesses | Automaitee</title>
-                <meta name="description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
+                <title>AI Management and Marketing Automation for London Small Businesses | Automaitee</title>
+                <meta name="description" content="Affordable business automation solutions. Simplify management, marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
-                <meta property="og:title" content="Automaitee | AI & Business Automation" />
-                <meta property="og:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
+                <meta property="og:title" content="Automaitee | AI Management & Marketing Automation" />
+                <meta property="og:description" content="Affordable business automation solutions. Simplify management, marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
                 <meta property="og:url" content="https://www.automaitee.com/" />
 
-                <meta name="twitter:title" content="Automaitee | AI & Business Automation" />
-                <meta name="twitter:description" content="Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
+                <meta name="twitter:title" content="Automaitee | AI Management & Marketing Automation" />
+                <meta name="twitter:description" content="Affordable business automation solutions. Simplify management, marketing, sales, process, and reporting with AI automation and reduce workforce costs." />
 
                 <script
                     type="application/ld+json"
@@ -30,10 +30,10 @@ export default function Home() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Organization",
-                            "name": "Automaitee AI Digital Automation",
+                            "name": "Automaitee | AI Management & Marketing Automation",
                             "url": "https://www.automaitee.com",
                             "logo": "https://www.automaitee.com/og-image.png",
-                            "description": "Affordable business automation solutions. Simplify marketing, sales, process, and reporting with AI automation.",
+                            "description": "Affordable business automation solutions. Simplify management, marketing, sales, process, and reporting with AI automation.",
                             "email": "support@automaitee.com",
                             "sameAs": [
                                     "https://www.facebook.com/profile.php?id=61588731975851",
@@ -130,7 +130,7 @@ export default function Home() {
                     <Reveal width="100%">
                         <div style={{ textAlign: 'center' }}>
                             <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Why Automaitee</h2>
-                            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '4rem' }}>AI Marketing Automation Technology for London Small Businesses</p>
+                            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '4rem' }}>AI Management and Marketing Automation Technology for London Small Businesses</p>
                         </div>
                     </Reveal>
                     <div className="grid">

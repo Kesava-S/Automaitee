@@ -7,12 +7,12 @@ export default function Blogs() {
     return (
         <>
             <Head>
-                <title>Blog | Automaitee AI Digital Automation</title>
+                <title>Blog | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content="Latest insights on AI, Automation, and Business Growth." />
-                <meta property="og:title" content="Blog | Automaitee AI Digital Automation" />
+                <meta property="og:title" content="Blog | Automaitee | AI Management & Marketing Automation" />
                 <meta property="og:description" content="Latest insights on AI, Automation, and Business Growth." />
                 <meta property="og:url" content="https://www.automaitee.com/blog" />
-                <meta name="twitter:title" content="Blog | Automaitee AI Digital Automation" />
+                <meta name="twitter:title" content="Blog | Automaitee | AI Management & Marketing Automation" />
                 <meta name="twitter:description" content="Latest insights on AI, Automation, and Business Growth." />
             </Head>
 

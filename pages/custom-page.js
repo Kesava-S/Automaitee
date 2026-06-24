@@ -84,7 +84,7 @@ export default function CustomPage() {
     return (
         <>
             <Head>
-                <title>{content.title} | Automaitee AI</title>
+                <title>{content.title} | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content={content.description} />
             </Head>
 

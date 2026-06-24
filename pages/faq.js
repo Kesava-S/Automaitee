@@ -6,12 +6,12 @@ export default function FAQ() {
     return (
         <>
             <Head>
-                <title>Frequently Asked Questions | Automaitee AI</title>
+                <title>Frequently Asked Questions | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
-                <meta property="og:title" content="Frequently Asked Questions | Automaitee AI" />
+                <meta property="og:title" content="Frequently Asked Questions | Automaitee | AI Management & Marketing Automation" />
                 <meta property="og:description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
                 <meta property="og:url" content="https://www.automaitee.com/faq" />
-                <meta name="twitter:title" content="Frequently Asked Questions | Automaitee AI" />
+                <meta name="twitter:title" content="Frequently Asked Questions | Automaitee | AI Management & Marketing Automation" />
                 <meta name="twitter:description" content="Find answers to common questions about our AI automation services, pricing, security, and implementation process." />
                 <script
                     type="application/ld+json"

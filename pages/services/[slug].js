@@ -20,14 +20,14 @@ export default function ServicePage({ service }) {
     return (
         <>
             <Head>
-                <title>{service.title} | Automaitee AI</title>
+                <title>{service.title} | Automaitee | AI Management & Marketing Automation</title>
                 <meta name="description" content={service.description} />
 
-                <meta property="og:title" content={`${service.title} | Automaitee AI`} />
+                <meta property="og:title" content={`${service.title} | Automaitee | AI Management & Marketing Automation`} />
                 <meta property="og:description" content={service.description} />
                 <meta property="og:url" content={`https://www.automaitee.com/services/${service.slug}`} />
 
-                <meta name="twitter:title" content={`${service.title} | Automaitee AI`} />
+                <meta name="twitter:title" content={`${service.title} | Automaitee | AI Management & Marketing Automation`} />
                 <meta name="twitter:description" content={service.description} />
 
                 <script
@@ -40,7 +40,7 @@ export default function ServicePage({ service }) {
                             "description": service.description,
                             "provider": {
                                 "@type": "Organization",
-                                "name": "Automaitee AI",
+                                "name": "Automaitee | AI Management & Marketing Automation",
                                 "url": "https://www.automaitee.com"
                             },
                             "areaServed": "Global",
