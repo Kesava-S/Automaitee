@@ -67,7 +67,7 @@ export default function Home() {
                         margin: "0 auto",
                         textAlign: "center"
                     }}>
-                        Marketing and Management Automation For Owner-Led Businesses in London
+                        AI Management and Marketing Automation For Owner-Led Businesses in London
                     </h1>
                     <div style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1.5rem auto', color: 'var(--text-secondary)', lineHeight: '1.6', textAlign: 'center' }}>
                         The Automations are <AnimatedTextCycle 
