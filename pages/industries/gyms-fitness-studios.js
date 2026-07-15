@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function GymFitnessStudioAutomation() {
+export default function GymFitnessStudioAutomation({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -193,9 +193,14 @@ export default function GymFitnessStudioAutomation() {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
                             Automate memberships, class schedules, trainer assignments, billing, and member communications, all customized for your gym or fitness studio.
                         </p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal("gyms-fitness-studios"); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book Your Free Consultation
-                        </Link>
+                        </a>
                     </div>
 
                 </div>

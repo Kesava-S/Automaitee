@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function CustomPage() {
+export default function CustomPage({ openBookingModal }) {
     const content = {
         title: "UK-Based Marketing Advantage",
         description: "Why managing ads from the UK/Europe creates a premium perception and delivers higher-quality leads for Indian construction projects.",
@@ -123,9 +123,14 @@ export default function CustomPage() {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
                             Leverage the UK advantage for your construction business today.
                         </p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('custom-page'); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book a Strategy Call
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

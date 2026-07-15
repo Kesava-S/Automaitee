@@ -16,7 +16,7 @@ export async function getStaticProps({ params }) {
     return { props: { service } }
 }
 
-export default function ServicePage({ service }) {
+export default function ServicePage({ service, openBookingModal }) {
     return (
         <>
             <Head>
@@ -157,9 +157,14 @@ export default function ServicePage({ service }) {
                     <div style={{ marginTop: '6rem', padding: '3rem', background: 'var(--gray-50)', borderRadius: '20px', textAlign: 'center' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>{service.ctaTitle || 'Ready to get started?'}</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>{service.ctaDescription || `Transform your business with our ${service.title.toLowerCase()} solutions.`}</p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal(`service-page-${service.slug}`); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             {service.ctaButtonText || 'Book a Free Consultation'}
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

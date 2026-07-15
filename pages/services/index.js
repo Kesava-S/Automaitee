@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Reveal } from '../../components/Reveal';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function Services() {
+export default function Services({ openBookingModal }) {
     const router = useRouter();
     const [showComparison, setShowComparison] = useState(false);
     const [showMicro, setShowMicro] = useState(false);
@@ -133,7 +133,7 @@ export default function Services() {
                                     </Link>
 
                                     {/* Card 2: Post-Visit Loyalty & Feedback Loop */}
-                                    <Link href="/book-consultation" style={{ textDecoration: 'none' }}>
+                                    <a href="/book-consultation" onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('post-visit-loyalty'); }} style={{ textDecoration: 'none' }}>
                                         <div className="card micro-saas-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
                                             <div style={{ background: '#fff8e1', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="star" style={{ fontSize: '1.5rem' }}>⭐</span>
@@ -147,10 +147,10 @@ export default function Services() {
                                                 Book a Free Consultation <span>→</span>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </a>
 
                                     {/* Card 3: Allergen Compliance Checker */}
-                                    <Link href="/book-consultation" style={{ textDecoration: 'none' }}>
+                                    <a href="/book-consultation" onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('allergen-compliance'); }} style={{ textDecoration: 'none' }}>
                                         <div className="card micro-saas-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
                                             <div style={{ background: '#fff3e0', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="warning" style={{ fontSize: '1.5rem' }}>⚠️</span>
@@ -164,10 +164,10 @@ export default function Services() {
                                                 Book a Free Consultation <span>→</span>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </a>
 
                                     {/* Card 4: No-Show & Reservation Recovery Bot */}
-                                    <Link href="/book-consultation" style={{ textDecoration: 'none' }}>
+                                    <a href="/book-consultation" onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('no-show-recovery'); }} style={{ textDecoration: 'none' }}>
                                         <div className="card micro-saas-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', padding: '2rem', border: '1px solid #e5e5ea', borderRadius: '16px', backgroundColor: '#fff', transition: 'all 0.3s' }}>
                                             <div style={{ background: '#e8f5e9', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                                                 <span role="img" aria-label="calendar" style={{ fontSize: '1.5rem' }}>📅</span>
@@ -181,7 +181,7 @@ export default function Services() {
                                                 Book a Free Consultation <span>→</span>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </a>
                                 </div>
                             )}
                         </div>
@@ -469,19 +469,24 @@ export default function Services() {
                         <p style={{ fontSize: '1.2rem', marginBottom: '2.5rem', opacity: 0.9, lineHeight: '1.6' }}>
                             Not sure which package is right for you? Book a free 30-minute consultation. We will review your current setup, identify where you are losing leads, and recommend exactly what your business needs.
                         </p>
-                        <Link href="/book-consultation" style={{ 
-                            display: 'inline-block',
-                            background: '#fff', 
-                            color: '#0071e3', 
-                            padding: '16px 32px', 
-                            fontSize: '1.1rem', 
-                            fontWeight: 'bold',
-                            borderRadius: '30px',
-                            textDecoration: 'none',
-                            boxShadow: '0 4px 14px rgba(0,0,0,0.1)'
-                        }}>
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('services-cta'); }}
+                            style={{ 
+                                display: 'inline-block',
+                                background: '#fff', 
+                                color: '#0071e3', 
+                                padding: '16px 32px', 
+                                fontSize: '1.1rem', 
+                                fontWeight: 'bold',
+                                borderRadius: '30px',
+                                textDecoration: 'none',
+                                boxShadow: '0 4px 14px rgba(0,0,0,0.1)',
+                                cursor: 'pointer'
+                            }}
+                        >
                             Book Free Consultation
-                        </Link>
+                        </a>
                     </Reveal>
                 </div>
             </section>

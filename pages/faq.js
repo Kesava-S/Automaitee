@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { faqs } from '../data/faqs'
 
-export default function FAQ() {
+export default function FAQ({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -50,9 +50,14 @@ export default function FAQ() {
 
                     <div style={{ textAlign: 'center', marginTop: '4rem' }}>
                         <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Still have questions?</p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('faq'); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book a Free Consultation
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

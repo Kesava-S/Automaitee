@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function HealthcareWellnessAutomation() {
+export default function HealthcareWellnessAutomation({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -185,9 +185,14 @@ export default function HealthcareWellnessAutomation() {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
                             Automate appointments, patient records, billing, inventory, and telehealth workflows, all customized for your clinic or wellness business.
                         </p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal("healthcare-wellness"); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book Your Free Consultation
-                        </Link>
+                        </a>
                     </div>
 
                 </div>

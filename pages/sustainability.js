@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Reveal } from '../components/Reveal'
 
-export default function Sustainability() {
+export default function Sustainability({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -172,9 +172,14 @@ export default function Sustainability() {
                             <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 2.5rem', lineHeight: '1.6' }}>
                                 Ready to permanently eliminate digital waste, streamline communication, and scale operations effortlessly? Connect with our senior technical specialists to map your streamlined workflow.
                             </p>
-                            <Link href="/book-consultation" className="cta-button">
+                            <a 
+                                href="/book-consultation" 
+                                onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal('sustainability'); }}
+                                className="cta-button"
+                                style={{ cursor: 'pointer' }}
+                            >
                                 Book Your Free Technical Consultation
-                            </Link>
+                            </a>
                         </section>
                     </div>
                 </div>

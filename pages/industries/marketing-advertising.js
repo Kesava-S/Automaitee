@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function MarketingAdvertisingAutomation() {
+export default function MarketingAdvertisingAutomation({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -195,9 +195,14 @@ export default function MarketingAdvertisingAutomation() {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
                             Automate social media, email campaigns, analytics, customer segmentation, and ad spend optimization, all customized for your agency or freelance business.
                         </p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal("marketing-advertising"); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book Your Free Consultation
-                        </Link>
+                        </a>
                     </div>
 
                 </div>

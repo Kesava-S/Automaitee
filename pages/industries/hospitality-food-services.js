@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function HospitalityAutomation() {
+export default function HospitalityAutomation({ openBookingModal }) {
     return (
         <>
             <Head>
@@ -184,9 +184,14 @@ export default function HospitalityAutomation() {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem' }}>
                             Automate bookings, guest communication, staff scheduling, and inventory management, all customized for your business.
                         </p>
-                        <Link href="/book-consultation" className="cta-button">
+                        <a 
+                            href="/book-consultation" 
+                            onClick={(e) => { e.preventDefault(); openBookingModal && openBookingModal("hospitality-food-services"); }}
+                            className="cta-button"
+                            style={{ cursor: 'pointer' }}
+                        >
                             Book Your Free Consultation
-                        </Link>
+                        </a>
                     </div>
 
                 </div>
